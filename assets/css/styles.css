@@ -1,0 +1,255 @@
+:root {
+  --bg: #2B2B2B; --bg-alt: #333333; --text: #EDEDED; --muted: #CFCFCF;
+  --card: #4A4A4A; --brand: #A60F2D; --radius: 14px; --shadow: 0 10px 30px rgba(0,0,0,.35);
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body { font-family: "Nunito", system-ui, -apple-system, Segoe UI, Roboto, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+.container { width: min(1100px, 92vw); margin: 0 auto; }
+.site-header { position: sticky; top: 0; z-index: 1000; background: rgba(0,0,0,.35); backdrop-filter: blur(8px); border-bottom: 1px solid rgba(255,255,255,.06); }
+.nav { display: flex; align-items: center; justify-content: space-between; padding: .8rem 0; }
+.brand { display: inline-flex; align-items: center; gap: .6rem; font-weight: 800; letter-spacing: .08em; text-decoration: none; color: var(--text); }
+.brand-mark { width: 28px; height: 28px; }
+.brand-text { font-weight: 900; }
+.nav-toggle { display: none; background: none; border: none; font-size: 1.6rem; color: var(--text); }
+.nav-menu { display: flex; gap: 1rem; list-style: none; margin: 0; padding: 0; }
+.nav-menu a { color: var(--text); text-decoration: none; opacity: .9; }
+.nav-menu a:hover { color: var(--brand); }
+.pill { padding: .4rem .7rem; border: 1px solid rgba(255,255,255,.18); border-radius: 999px; }
+
+.hero { display: grid; place-items: center; text-align: center; padding: 9rem 1rem 5rem; background: radial-gradient(60rem 40rem at 50% -10%, rgba(166,15,45,.28), transparent 40%), var(--bg); }
+.kicker { color: var(--brand); font-weight: 800; letter-spacing: .06em; text-transform: uppercase; font-size: .9rem; }
+.hero-title { font-size: clamp(2.4rem, 4vw, 3.4rem); margin: .3rem 0; line-height: 1.1; }
+.hero-sub { margin: .6rem auto 1.2rem; max-width: 65ch; color: var(--muted); }
+.hero-ctas { display: flex; gap: .8rem; justify-content: center; flex-wrap: wrap; margin-top: 1rem; }
+.btn { display: inline-block; padding: .75rem 1.1rem; border-radius: 999px; border: 1px solid rgba(255,255,255,.18); text-decoration: none; color: var(--text); }
+.btn.primary { background: var(--brand); border-color: var(--brand); }
+.btn.ghost { background: transparent; }
+.btn:hover { transform: translateY(-1px); box-shadow: var(--shadow); }
+
+.section { padding: 3.5rem 0; }
+.section h2 { margin: 0 0 1rem; font-size: 1.6rem; display: flex; align-items: center; gap: .7rem; }
+.secno { display: inline-grid; place-items: center; width: 2.5rem; height: 2.5rem; border-radius: .6rem; background: var(--card); border: 1px solid rgba(255,255,255,.1); color: var(--brand); font-weight: 900; }
+
+.quick-facts { display: grid; gap: .3rem; padding-left: 1.2rem; }
+
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; }
+.stat { background: var(--card); border: 1px solid rgba(255,255,255,.06); border-radius: var(--radius); padding: 1rem; text-align: center; }
+.stat span { display: block; font-size: 2rem; font-weight: 900; }
+.stat small { color: var(--muted); }
+
+.chips { display: flex; flex-wrap: wrap; gap: .5rem; }
+.chips span { background: var(--card); border: 1px solid rgba(255,255,255,.06); padding: .5rem .7rem; border-radius: 999px; font-size: .95rem; }
+
+.timeline { list-style: none; margin: 0; padding: 0; display: grid; gap: 1rem; }
+.timeline .time { color: var(--muted); margin-bottom: .2rem; }
+.timeline .detail { background: var(--card); padding: 1rem; border-radius: var(--radius); border: 1px solid rgba(255,255,255,.06); }
+
+.cards { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+.card { background: var(--card); border: 1px solid rgba(255,255,255,.06); border-radius: var(--radius); padding: 1rem; display: flex; flex-direction: column; gap: .6rem; }
+.card h3 { margin: 0; font-size: 1.2rem; }
+.card p { margin: 0; color: var(--muted); }
+.card .meta { font-size: .9rem; color: var(--muted); }
+.card .tags { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .4rem; }
+.card .tags span { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1); border-radius: 999px; padding: .25rem .5rem; font-size: .85rem; }
+
+.grid-2 { display: grid; gap: .8rem; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+label span { display: block; font-weight: 700; margin-bottom: .25rem; }
+input, textarea { width: 100%; padding: .8rem; border-radius: .6rem; background: var(--bg-alt); border: 1px solid rgba(255,255,255,.12); color: var(--text); }
+.form-status { margin-top: .6rem; color: var(--muted); }
+
+.site-footer { border-top: 1px solid rgba(255,255,255,.06); padding: 1rem 0 2rem; margin-top: 2rem; background: linear-gradient(transparent, rgba(0,0,0,.2)); }
+.footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+.footer-links a { color: var(--muted); text-decoration: none; margin-left: 1rem; }
+.footer-links a:hover { color: var(--text); }
+
+@media (max-width: 800px) {
+  .nav-toggle { display: inline-block; }
+  .nav-menu { display: none; position: absolute; right: 4vw; top: 3.4rem; background: var(--bg-alt); padding: .8rem; border-radius: .6rem; border: 1px solid rgba(255,255,255,.08); }
+  .nav-menu.open { display: grid; gap: .6rem; }
+}
+
+/* === Added by v1.1.10 merge (header/footer + social icons) === */
+header{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:14px 24px;border-bottom:1px solid var(--border, #2b2b2b);position:sticky;top:0;background:rgba(15,15,15,.9);backdrop-filter:saturate(120%) blur(6px);z-index:10}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.08em}
+.brand img{width:28px;height:28px}
+.brand a{display:flex;align-items:center;gap:10px;text-decoration:none;color:inherit}
+nav a{margin:0 10px;opacity:.85;text-decoration:none;color:inherit}
+nav a:hover{opacity:1;color:#A60F2D}
+.social{display:flex;gap:.6rem;align-items:center}
+.icon{width:22px;height:22px;display:block}
+.social a{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:8px;transition:transform .15s ease,opacity .15s ease,color .15s ease;opacity:.85;color:#fff}
+.social a:hover{opacity:1;transform:translateY(-1px);color:#A60F2D}
+footer{border-top:1px solid var(--border, #2b2b2b);padding:12px 24px;display:flex;align-items:center;justify-content:space-between}
+.small{font-size:.92rem;opacity:.8}
+/* === End added === */
+
+
+/* Layout: pin footer to bottom */
+body { min-height: 100vh; display: flex; flex-direction: column; }
+main { flex: 1 0 auto; }
+.site-footer { flex-shrink: 0; }
+
+
+
+/* (removed old footer color rules) */
+.site-footer a[href*="duloup.co"]:link,
+.site-footer a[href*="duloup.co"]:active,
+.site-footer a[href*="duloup.co"]:focus {
+  color: var(--text);
+}
+.site-footer a[href*="duloup.co"]:visited {
+  color: var(--brand);
+}
+
+
+
+/* Buttons */
+.btn { display:inline-flex; align-items:center; gap:.5rem; padding:.5rem .9rem; border-radius: 8px; border:1px solid rgba(255,255,255,.15); text-decoration:none; color: var(--text); }
+.btn:hover { border-color: rgba(255,255,255,.35); transform: translateY(-1px); }
+.btn-small { font-size:.9rem; padding:.35rem .7rem; }
+
+/* Cards Grid */
+.grid.cards { display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem; margin: 1.2rem 0 3rem; }
+.card { background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow); display:flex; flex-direction:column; justify-content:space-between; }
+.card-body { padding: 1rem 1rem .5rem; }
+.card-actions { padding: 0 1rem 1rem; }
+.tags { display:flex; flex-wrap:wrap; gap:.4rem; margin-top:.5rem; }
+.tag { font-size:.8rem; padding:.2rem .5rem; border:1px solid rgba(255,255,255,.12); border-radius:999px; }
+
+/* Page hero */
+.page-hero { padding: 2rem 0 1rem; }
+
+
+/* Nav visibility baseline */
+header nav { display:none; }
+header nav.is-open { display:block; }
+
+/* Nav baseline & position */
+header { position: relative; z-index: 20; }
+header nav { position: absolute; top: 56px; right: 16px; display: none; background: var(--bg-alt); border:1px solid rgba(255,255,255,.12); border-radius:12px; box-shadow: var(--shadow); padding:.4rem; z-index: 1001; }
+header nav.is-open { display:block; }
+header .menu { list-style:none; margin:0; padding:0; min-width: 240px; }
+header .menu li { border-bottom:1px solid rgba(255,255,255,.06); }
+header .menu li:last-child { border-bottom:none; }
+header .menu a { display:block; padding:.8rem 1rem; text-decoration:none; color: var(--text); }
+header .menu a:hover { background: rgba(255,255,255,.06); }
+
+/* Hamburger: white across breakpoints */
+.nav-toggle { display:inline-flex; align-items:center; justify-content:center; width:36px; height:36px; border:1px solid rgba(255,255,255,.25); border-radius:8px; background: transparent; color: #fff; margin-left:.6rem; cursor:pointer; }
+.nav-toggle:hover { border-color: rgba(255,255,255,.5); transform: translateY(-1px); }
+/* Ensure the right-side cluster (social + button) stays aligned */
+.site-header .social { display:flex; align-items:center; gap:.6rem; }
+@media(min-width:900px){
+  header nav { top: 60px; }
+}
+
+/* Footer DULOUP brand color */
+.site-footer a[href*="duloup.co"] { color: var(--brand) !important; }
+.site-footer a[href*="duloup.co"]:visited { color: var(--brand) !important; }
+.site-footer a[href*="duloup.co"]:hover { color: var(--brand) !important; text-decoration: underline; text-underline-offset: 2px; }
+
+/* Footer social icons */
+.site-footer .social { display:flex; align-items:center; gap:.8rem; margin-top:.6rem; }
+.site-footer .social .icon { width:20px; height:20px; fill: currentColor; }
+.site-footer .social a { color: var(--text); }
+.site-footer .social a:hover { color: var(--brand); }
+
+/* Footer row single-line */
+.site-footer .container.footer-row { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; }
+.site-footer .container.footer-row p.small { margin:0; }
+.site-footer .container.footer-row .social { margin:0; }
+
+/* Artifact cards polish */
+#work-grid .card { border:1px solid rgba(255,255,255,.08); border-radius:12px; background: var(--bg-alt); box-shadow:0 2px 6px rgba(0,0,0,.25); transition: transform .15s ease, box-shadow .15s ease; }
+#work-grid .card:hover { transform: translateY(-3px); box-shadow:0 4px 10px rgba(0,0,0,.35); }
+#work-grid .card-body h3 { margin-top:0; font-size:1.15rem; }
+#work-grid .card-body p.meta { font-size:.85rem; color: var(--muted); margin:.25rem 0 .5rem; }
+#work-grid .tags { margin:.25rem 0 .75rem; display:flex; flex-wrap:wrap; gap:.4rem; }
+#work-grid .tag { background:rgba(255,255,255,.08); border-radius:8px; padding:.15rem .6rem; font-size:.75rem; color: var(--muted); }
+#work-grid .card-actions { margin-top:.5rem; }
+#work-grid .card-actions .btn { display:inline-block; padding:.4rem .9rem; font-size:.8rem; border-radius:6px; background: var(--brand); color:#fff; text-decoration:none; transition: background .15s ease; }
+#work-grid .card-actions .btn:hover { background:#800b20; }
+
+/* Artifact categories */
+#work-grid section { margin-bottom: 2rem; }
+#work-grid h2 { font-size:1.3rem; margin:1.2rem 0 .8rem; border-bottom:1px solid rgba(255,255,255,.1); padding-bottom:.4rem; }
+
+/* Footer DULOUP enforced red */
+.site-footer p.small a[href*="duloup.co"]:link,
+.site-footer p.small a[href*="duloup.co"]:visited,
+.site-footer p.small a[href*="duloup.co"]:hover,
+.site-footer p.small a[href*="duloup.co"]:active {
+  color: var(--brand) !important;
+  text-decoration: none;
+}
+
+/* Contact form styles */
+.contact-form { padding: 2rem 0 3rem; }
+.contact-form .form-row { display:grid; grid-template-columns: 1fr; gap:.8rem; }
+.contact-form input, .contact-form textarea { width:100%; border:1px solid rgba(255,255,255,.12); border-radius:8px; background: rgba(0,0,0,.15); color: var(--text); padding:.8rem 1rem; font: inherit; }
+.contact-form textarea { resize: vertical; }
+.contact-form .btn { margin-top: .8rem; }
+@media(min-width:700px){
+  .contact-form .form-row { grid-template-columns: 1fr 1fr; }
+}
+
+/* Footer copyright enforce */
+.site-footer .container { display:block; }
+.site-footer p.small { margin: 0.75rem 0; }
+.site-footer p.small a[href*="duloup.co"] { color: var(--brand) !important; text-decoration: none; }
+.site-footer p.small a[href*="duloup.co"]:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+/* Footer layout update */
+.site-footer .footer-row { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; }
+.site-footer p.small { margin:.5rem 0; }
+.site-footer p.small.left { text-align:left; flex:1; }
+.site-footer p.small.right { text-align:right; }
+.site-footer p.small a[href*="duloup.co"] { color: var(--brand) !important; text-decoration: none; }
+.site-footer p.small a[href*="duloup.co"]:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+/* Footer PP ToS styling */
+.site-footer p.small.right { font-size: 0.85rem; color: rgba(255,255,255,0.6); }
+.site-footer p.small.right a { color: rgba(255,255,255,0.6); text-decoration: none; margin-left: .25rem; margin-right: .25rem; }
+.site-footer p.small.right a:hover { color: #fff; text-decoration: underline; }
+.site-footer .footer-row { align-items: baseline; }
+
+/* Brand logo size */
+.brand-mark { height: 28px; width: auto; vertical-align: middle; }
+
+/* Home button hover glow */
+.brand-mark:hover {
+  filter: drop-shadow(0 0 6px #A60F2D);
+  transition: filter 0.3s ease;
+}
+
+
+/* v1.2.10 PAS cards */
+.cards { display: grid; grid-template-columns: 1fr; gap: 16px; margin-top: 16px; }
+.card { background: #1f1f1f; border: 1px solid #333; border-radius: 10px; overflow: hidden; }
+.card a { display: block; padding: 12px; text-decoration: none; color: inherit; }
+.card img { width: 100%; height: auto; display: block; border-radius: 6px; }
+.card h3 { margin: 10px 0 6px; font-size: 1.1rem; }
+.card p { margin: 0 0 10px; font-size: 0.95rem; opacity: 0.9; }
+.card .btn { display: inline-block; padding: 8px 12px; border: 1px solid #444; border-radius: 6px; font-weight: 700; }
+@media (min-width: 700px) { .cards { grid-template-columns: repeat(2, 1fr); } }
+
+
+/* v1.2.3 Footer layout */
+.site-footer { display:flex; justify-content:space-between; align-items:center; gap:1rem; padding:16px 20px; }
+.site-footer .footer-left { text-align:left; }
+.site-footer .footer-right { text-align:right; }
+.site-footer a { text-decoration:none; }
+.site-footer a:hover { text-decoration:underline; }
+.duloup-link { color:#A60F2D; font-weight:bold; }
+
+
+/* v1.2.1 Home logo sizing */
+.home-logo { width: 28px; height: 28px; display: inline-block; vertical-align: middle; }
+@media (min-width: 768px) { .home-logo { width: 32px; height: 32px; } }
+
+
+/* v1.2 CLI & code overflow fixes */
+pre, code, .cli { white-space: pre-wrap; word-break: break-word; overflow-x: auto; font-size: 0.95rem; line-height: 1.35; }
+@media (max-width: 420px) { pre, code, .cli { font-size: 0.9rem; } }
+
