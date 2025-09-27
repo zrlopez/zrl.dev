@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "dev": "wrangler dev",
-    "deploy": "wrangler deploy",
-    "deploy:preview": "wrangler deploy --env preview",
-    "build": "echo 'No build step required for static site'"
+    "deploy": "npx wrangler pages project create zrl-dev-site --production-branch main --preview-branch '' || npx wrangler pages deploy dist --project-name zrl-dev-site",
+    "deploy:preview": "wrangler pages deploy dist --env preview",
+    "build": "echo 'Static site - no build step required'"
   },
   "repository": {
     "type": "git",
@@ -16,11 +16,11 @@
   "author": "Zachary Ryan (Rothschild) Lopez",
   "license": "MIT",
   "devDependencies": {
-    "wrangler": "^3.75.0"
+    "wrangler": "^4.40.2"
   },
   "keywords": [
     "personal-website",
-    "cloudflare-workers",
+    "cloudflare-pages",
     "static-site"
   ]
 }
