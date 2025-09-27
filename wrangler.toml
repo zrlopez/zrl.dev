@@ -1,9 +1,6 @@
 name = "zrl-dev-site"
 compatibility_date = "2024-09-26"
 
-# Pages configuration
-pages_build_output_dir = "dist"
-
 # Main production environment
 [env.production]
 name = "zrl-dev-site"
