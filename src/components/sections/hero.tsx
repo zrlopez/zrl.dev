@@ -47,14 +47,14 @@ export function Hero() {
               View Work
               <ExternalLink className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
             </Link>
-            <Link
+            <a
               href="/resume.pdf"
               download
               className="inline-flex items-center px-6 py-3 border border-border rounded-lg font-medium hover:bg-secondary transition-colors duration-200 group"
             >
               Download Résumé
               <Download className="ml-2 w-4 h-4 group-hover:translate-y-1 transition-transform duration-200" />
-            </Link>
+            </a>
           </motion.div>
 
           <motion.div
