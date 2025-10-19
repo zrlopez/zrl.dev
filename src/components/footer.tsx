@@ -74,13 +74,13 @@ export function Footer() {
           <div>
             <h3 className="font-semibold mb-4">Resources</h3>
             <div className="space-y-2">
-              <Link href="/resume.pdf" className="block text-sm text-muted-foreground hover:text-foreground transition-colors duration-200">
+              <a href="/resume.pdf" download className="block text-sm text-muted-foreground hover:text-foreground transition-colors duration-200">
                 Resume
-              </Link>
-              <Link href="/privacy" className="block text-sm text-muted-foreground hover:text-foreground transition-colors duration-200">
+              </a>
+              <Link href="/privacy.html" className="block text-sm text-muted-foreground hover:text-foreground transition-colors duration-200">
                 Privacy Policy
               </Link>
-              <Link href="/terms" className="block text-sm text-muted-foreground hover:text-foreground transition-colors duration-200">
+              <Link href="/terms.html" className="block text-sm text-muted-foreground hover:text-foreground transition-colors duration-200">
                 Terms of Service
               </Link>
             </div>
