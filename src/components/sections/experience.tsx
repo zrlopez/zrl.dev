@@ -7,7 +7,7 @@ const experiences = [
   {
     title: 'Data Operations Analyst',
     company: 'Apple',
-    location: 'Cupertino, CA',
+    location: 'Austin, TX',
     period: 'Sep 2021–Jun 2024',
     description: 'Reviewed high-volume assistant interactions with linguistic tagging and QA, driving a 12% accuracy lift across targeted domains; refined prompts, intents, and fallbacks across en_US, en_CA, en_UK; built dashboards to monitor throughput, error classes, and taxonomy drift.',
     highlights: [
