@@ -77,10 +77,10 @@ export function Footer() {
               <a href="/resume.pdf" download className="block text-sm text-muted-foreground hover:text-foreground transition-colors duration-200">
                 Resume
               </a>
-              <Link href="/privacy.html" className="block text-sm text-muted-foreground hover:text-foreground transition-colors duration-200">
+              <Link href="/privacy" className="block text-sm text-muted-foreground hover:text-foreground transition-colors duration-200">
                 Privacy Policy
               </Link>
-              <Link href="/terms.html" className="block text-sm text-muted-foreground hover:text-foreground transition-colors duration-200">
+              <Link href="/terms" className="block text-sm text-muted-foreground hover:text-foreground transition-colors duration-200">
                 Terms of Service
               </Link>
             </div>
