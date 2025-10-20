@@ -75,7 +75,7 @@ export function Footer() {
             <h3 className="font-semibold mb-4">Resources</h3>
             <div className="space-y-2">
               <a href="/resume.pdf" download className="block text-sm text-muted-foreground hover:text-foreground transition-colors duration-200">
-                Resume
+                Résumé
               </a>
               <Link href="/privacy" className="block text-sm text-muted-foreground hover:text-foreground transition-colors duration-200">
                 Privacy Policy
