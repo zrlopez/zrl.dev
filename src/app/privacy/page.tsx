@@ -5,40 +5,46 @@ import LegalLayout from '@/components/LegalLayout'
 export default function PrivacyPage() {
   return (
     <LegalLayout title="Privacy Policy">
-      <p>This Privacy Policy explains how zrl.dev ("we", "us", or "our") collects, uses, and protects your information.</p>
+      <p><strong>Last updated:</strong> October 2025</p>
 
-      <h2>Contact</h2>
-      <p>For privacy inquiries: <a href="mailto:privacy@zrl.dev">privacy@zrl.dev</a>.</p>
+      <h2>1. Scope</h2>
+      <p>This Privacy Policy explains how zrl.dev ("we," "us," or "our") collects, uses, discloses, and safeguards personal data when you use this website (the "Site"). This Policy is designed to address applicable U.S. laws, including the Texas Data Privacy and Security Act (TDPSA), to the extent they apply to us.</p>
 
-      <h2>1. Information We Collect</h2>
-      <p>We collect minimal information necessary to operate this site, such as technical logs and aggregate analytics. If you contact us, we retain the details you provide to respond to your inquiry.</p>
+      <h2>2. Personal Data We Collect</h2>
+      <p>We collect the following categories of personal data, depending on your interactions: (a) identifiers (e.g., name, email if you contact us); (b) internet or device information (e.g., IP address, pages viewed); (c) communications you voluntarily submit. We do not intentionally collect sensitive personal data.</p>
 
-      <h2>2. How We Use Information</h2>
-      <p>We use information to maintain and improve the site, respond to inquiries, and ensure security and reliability.</p>
+      <h2>3. Sources of Personal Data</h2>
+      <p>We collect personal data directly from you (e.g., emails you send), automatically via your device/browser, and from service providers that support Site operations (e.g., hosting, CDN, analytics).</p>
 
-      <h2>3. Cookies and Analytics</h2>
-      <p>This site may use privacy-preserving analytics and essential cookies. You can configure your browser to limit cookies.</p>
+      <h2>4. Purposes of Processing</h2>
+      <p>We process personal data to operate, maintain, secure, and improve the Site; respond to inquiries; analyze performance; prevent fraud or misuse; comply with legal obligations; and protect our rights.</p>
 
-      <h2>4. Data Sharing</h2>
-      <p>We do not sell your personal information. We may share information with service providers (e.g., hosting/CDN) strictly to operate the site.</p>
+      <h2>5. Disclosures to Third Parties</h2>
+      <p>We may disclose personal data to: (a) service providers (e.g., hosting/CDN, analytics) bound by contractual obligations; (b) governmental, legal, or regulatory authorities where required by law; (c) parties in connection with a business transfer. We do not sell personal data or use it for targeted advertising.</p>
 
-      <h2>5. Data Retention</h2>
-      <p>We retain information only as long as necessary for the purposes described and to comply with applicable laws.</p>
+      <h2>6. Cookies and Analytics</h2>
+      <p>We may use essential cookies and privacy-preserving analytics to understand Site performance. You can adjust browser settings to limit cookies.</p>
 
-      <h2>6. Security</h2>
-      <p>We implement reasonable technical and organizational security measures to protect information.</p>
+      <h2>7. Data Retention</h2>
+      <p>We retain personal data only as long as necessary for the purposes outlined in this Policy and to comply with applicable laws.</p>
 
-      <h2>7. Your Rights</h2>
-      <p>Depending on your location, you may have rights to access, correct, or delete your data. To exercise rights, contact <a href="mailto:privacy@zrl.dev">privacy@zrl.dev</a>.</p>
+      <h2>8. Security</h2>
+      <p>We implement reasonable administrative, technical, and physical measures appropriate to the nature and volume of personal data processed to help protect it against unauthorized access, use, or disclosure.</p>
 
-      <h2>8. International Data Transfers</h2>
-      <p>Data may be processed in the United States and other locations where our service providers operate.</p>
+      <h2>9. Your Rights</h2>
+      <p>Depending on your location and applicable law, you may have rights to access, correct, delete, or obtain a copy of your personal data, and to opt out of certain processing. To submit a request, contact privacy@zrl.dev. We will verify and respond within the timeframes required by applicable law.</p>
 
-      <h2>9. Children’s Privacy</h2>
-      <p>This site is not directed to children under 13. We do not knowingly collect personal information from children.</p>
+      <h2>10. Children’s Data</h2>
+      <p>The Site is not directed to children under 13, and we do not knowingly collect personal data from children.</p>
 
-      <h2>10. Changes to this Policy</h2>
-      <p>We may update this Privacy Policy from time to time. The updated version will be indicated by the "Last updated" date.</p>
+      <h2>11. International Transfers</h2>
+      <p>Personal data may be processed in the United States or other locations where our providers operate. We take steps designed to ensure appropriate protections consistent with applicable law.</p>
+
+      <h2>12. Changes to this Policy</h2>
+      <p>We may update this Policy periodically. Material changes will be indicated by updating the “Last updated” date. Your continued use of the Site after changes indicates acceptance.</p>
+
+      <h2>13. Contact</h2>
+      <p>For privacy inquiries or to exercise rights: <a href="mailto:privacy@zrl.dev">privacy@zrl.dev</a>.</p>
     </LegalLayout>
   )
 }
