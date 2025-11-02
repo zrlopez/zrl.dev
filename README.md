@@ -115,6 +115,17 @@ Update your personal information in the component files:
 MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## 🤝 Contributing
+## 🌐 Live Demo  
+- [zrl.dev](https://zrl.dev) — view the portfolio online.  
+
+## 🚀 Deployment Guides  
+### Vercel (recommended)  
+1. Push your code to GitHub.  
+2. Connect the repository to [Vercel](https://vercel.com/).  
+3. Vercel will automatically deploy your site.  
+
+### Netlify / Cloudflare Pages  
+- Set build command to `npm run build` and output directory to `.next`.
 
 Contributions are welcome! Please feel free to submit a Pull Request.
 
