@@ -8,7 +8,7 @@ export default function TermsPage() {
       <h2 id="description">1. Site Description and Purpose</h2>
       <p>The Site is a personal portfolio showcasing work experience, projects and qualifications. It may include embedded content from platforms like GitHub and LinkedIn and a contact form for professional inquiries.</p>
       <h2 id="eligibility">2. Eligibility and Account Security</h2>
-      <ul>
+      <ul className="list-disc ml-6 space-y-1">
         <li><strong>Age Requirement:</strong> You must be at least 18 years old or the age of majority in your jurisdiction.</li>
         <li><strong>Professional Use:</strong> The Site is intended for professional networking, recruiting and business purposes only.</li>
         <li><strong>Account Security:</strong> If account‑based features are offered, you are responsible for safeguarding your credentials and any activities that occur under your account.</li>
@@ -16,7 +16,7 @@ export default function TermsPage() {
       <h2 id="acceptable-use">3. Acceptable Use Policy</h2>
       <p>You may access and use the Site for lawful, professional purposes such as evaluating qualifications and contacting us regarding opportunities.</p>
       <p><strong>Prohibited activities:</strong></p>
-      <ul>
+      <ul className="list-disc ml-6 space-y-1">
         <li>Use the Site for any unlawful, fraudulent or harmful purpose.</li>
         <li>Attempt to interfere with the Site’s security, integrity or performance.</li>
         <li>Misrepresent your identity or qualifications.</li>
