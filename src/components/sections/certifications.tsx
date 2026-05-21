@@ -1,0 +1,243 @@
+'use client'
+
+import { useState, useEffect } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { Award, ExternalLink, X } from 'lucide-react'
+
+interface Certification {
+  id: string
+  title: string
+  issuer: string
+  date: string
+  status: 'earned' | 'expected'
+  // Replace placeholderSrc with a base64 data URI when ready:
+  // placeholderSrc: `data:image/jpeg;base64,${yourBase64String}`
+  placeholderSrc: string
+  verifyUrl?: string
+}
+
+const CERTS: Certification[] = [
+  {
+    id: 'kaggle-python',
+    title: 'Python',
+    issuer: 'Kaggle',
+    date: 'May 18, 2026',
+    status: 'earned',
+    placeholderSrc: '/certs/Zachary-Ryan-Lopez-Python.jpeg',
+  },
+  {
+    id: 'kaggle-pandas',
+    title: 'Pandas',
+    issuer: 'Kaggle',
+    date: 'May 19, 2026',
+    status: 'earned',
+    placeholderSrc: '/certs/Zachary-Ryan-Lopez-Pandas.jpeg',
+  },
+  {
+    id: 'kaggle-ml',
+    title: 'Intermediate Machine Learning',
+    issuer: 'Kaggle',
+    date: 'May 19, 2026',
+    status: 'earned',
+    placeholderSrc: '/certs/Zachary-Ryan-Lopez-Intermediate-Machine-Learning.jpeg',
+  },
+  {
+    id: 'kaggle-sql',
+    title: 'Advanced SQL',
+    issuer: 'Kaggle',
+    date: 'May 19, 2026',
+    status: 'earned',
+    placeholderSrc: '/certs/Zachary-Ryan-Lopez-Advanced-SQL.jpeg',
+  },
+  {
+    id: 'hubspot-seoii',
+    title: 'SEO II Certification',
+    issuer: 'HubSpot Academy',
+    date: 'May 18, 2026',
+    status: 'earned',
+    placeholderSrc: '/certs/HubSpot_SEO_II_Certification_Zachary_Lopez_May_2026.jpeg',
+    verifyUrl: 'https://app.hubspot.com/academy/certifications',
+  },
+  {
+    id: 'hubspot-servicehub',
+    title: 'Service Hub Software Certified',
+    issuer: 'HubSpot Academy',
+    date: 'May 18, 2026',
+    status: 'earned',
+    placeholderSrc: '/certs/HubSpot_Service_Hub_Software_Zachary_Lopez_2026.jpeg',
+    verifyUrl: 'https://app.hubspot.com/academy/certifications',
+  },
+]
+
+export function Certifications() {
+  const [openCert, setOpenCert] = useState<Certification | null>(null)
+  const [imgLoaded, setImgLoaded] = useState(false)
+
+  // ESC key closes modal
+  useEffect(() => {
+    function onKey(e: KeyboardEvent) {
+      if (e.key === 'Escape') setOpenCert(null)
+    }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [])
+
+  // Reset load state each time a new cert opens
+  useEffect(() => {
+    if (openCert) setImgLoaded(false)
+  }, [openCert])
+
+  return (
+    <section id="certifications" className="section-padding">
+      <div className="max-w-7xl mx-auto container-padding">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="mb-16"
+        >
+          <div className="flex items-center gap-4 mb-8">
+            <span className="text-sm font-medium text-muted-foreground">06</span>
+            <h2 className="text-3xl md:text-4xl font-bold">Certifications</h2>
+          </div>
+          <p className="text-lg text-muted-foreground max-w-2xl">
+            A growing collection of certifications across data science, machine learning, SQL, and digital marketing.
+          </p>
+        </motion.div>
+
+        {/* Cert Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {CERTS.map((cert, i) => (
+            <motion.article
+              key={cert.id}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: i * 0.08 }}
+              viewport={{ once: true }}
+              className="bg-secondary/30 rounded-xl p-5 flex flex-col gap-4 border border-border hover:border-primary/40 transition-colors duration-200"
+            >
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center shrink-0">
+                  <Award className="w-5 h-5 text-primary" />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <h3 className="font-semibold leading-tight">{cert.title}</h3>
+                  <p className="text-sm text-muted-foreground mt-0.5">{cert.issuer}</p>
+                  <p className="text-xs text-muted-foreground mt-1">{cert.date}</p>
+                </div>
+              </div>
+
+              <div className="flex items-center justify-between mt-auto pt-2 border-t border-border">
+                <button
+                  onClick={() => setOpenCert(cert)}
+                  className="text-sm font-medium text-primary hover:text-primary/80 transition-colors duration-200"
+                  aria-haspopup="dialog"
+                >
+                  View Certificate
+                </button>
+
+                {cert.verifyUrl && (
+                  <a
+                    href={cert.verifyUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-1 text-xs text-muted-foreground hover:text-foreground transition-colors duration-200"
+                    aria-label={`Verify ${cert.title} on HubSpot`}
+                  >
+                    Verify <ExternalLink className="w-3 h-3" />
+                  </a>
+                )}
+              </div>
+            </motion.article>
+          ))}
+        </div>
+      </div>
+
+      {/* Modal */}
+      <AnimatePresence>
+        {openCert && (
+          <motion.div
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-8"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            role="dialog"
+            aria-modal="true"
+            aria-label={`${openCert.title} certificate`}
+          >
+            {/* Backdrop */}
+            <motion.div
+              className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+              onClick={() => setOpenCert(null)}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+            />
+
+            {/* Modal panel */}
+            <motion.div
+              className="relative bg-background rounded-xl shadow-2xl w-full max-w-3xl max-h-[90vh] flex flex-col overflow-hidden border border-border"
+              initial={{ y: 24, opacity: 0, scale: 0.97 }}
+              animate={{ y: 0, opacity: 1, scale: 1 }}
+              exit={{ y: 24, opacity: 0, scale: 0.97 }}
+              transition={{ duration: 0.25 }}
+            >
+              {/* Header */}
+              <div className="flex items-start justify-between p-5 border-b border-border">
+                <div>
+                  <h3 className="font-semibold text-lg">{openCert.title}</h3>
+                  <p className="text-sm text-muted-foreground">{openCert.issuer} &middot; {openCert.date}</p>
+                </div>
+                <button
+                  onClick={() => setOpenCert(null)}
+                  className="p-1.5 rounded-lg text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors duration-200"
+                  aria-label="Close certificate"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
+
+              {/* Image — loads only when modal opens */}
+              <div className="flex-1 overflow-auto p-5">
+                {!imgLoaded && (
+                  <div className="w-full h-64 flex items-center justify-center text-muted-foreground text-sm">
+                    Loading…
+                  </div>
+                )}
+                <img
+                  src={openCert.placeholderSrc}
+                  alt={`${openCert.title} — ${openCert.issuer} certificate`}
+                  className={`w-full h-auto object-contain rounded-lg transition-opacity duration-300 ${
+                    imgLoaded ? 'opacity-100' : 'opacity-0 absolute'
+                  }`}
+                  onLoad={() => setImgLoaded(true)}
+                />
+              </div>
+
+              {/* Footer */}
+              <div className="p-5 border-t border-border flex items-center justify-end gap-4">
+                {openCert.verifyUrl && (
+                  <a
+                    href={openCert.verifyUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-1.5 text-sm text-primary hover:text-primary/80 transition-colors duration-200"
+                  >
+                    Open Verification <ExternalLink className="w-3.5 h-3.5" />
+                  </a>
+                )}
+                <button
+                  onClick={() => setOpenCert(null)}
+                  className="px-4 py-2 text-sm rounded-lg bg-secondary hover:bg-secondary/80 transition-colors duration-200"
+                >
+                  Close
+                </button>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </section>
+  )
+}
