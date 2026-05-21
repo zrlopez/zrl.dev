@@ -2,7 +2,17 @@
 
 import { motion } from 'framer-motion'
 import { Mail, MessageSquare, Send, MapPin, Clock } from 'lucide-react'
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
+
+declare global {
+  interface Window {
+    turnstile: {
+      render: (container: string | HTMLElement, options: Record<string, unknown>) => string
+      reset: (widgetId: string) => void
+      remove: (widgetId: string) => void
+    }
+  }
+}
 
 export function Contact() {
   const [formData, setFormData] = useState({
@@ -13,6 +23,44 @@ export function Contact() {
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitted, setSubmitted] = useState(false)
+  const [error, setError] = useState<string | null>(null)
+  const [turnstileToken, setTurnstileToken] = useState<string | null>(null)
+  const widgetRef = useRef<string | null>(null)
+  const containerRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const scriptId = 'cf-turnstile-script'
+    if (!document.getElementById(scriptId)) {
+      const script = document.createElement('script')
+      script.id = scriptId
+      script.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js'
+      script.async = true
+      script.defer = true
+      document.head.appendChild(script)
+    }
+
+    const tryRender = () => {
+      if (window.turnstile && containerRef.current && !widgetRef.current) {
+        widgetRef.current = window.turnstile.render(containerRef.current, {
+          sitekey: process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY,
+          callback: (token: string) => setTurnstileToken(token),
+          'expired-callback': () => setTurnstileToken(null),
+          'error-callback': () => setTurnstileToken(null),
+          theme: 'auto',
+        })
+      } else {
+        setTimeout(tryRender, 200)
+      }
+    }
+    tryRender()
+
+    return () => {
+      if (widgetRef.current && window.turnstile) {
+        window.turnstile.remove(widgetRef.current)
+        widgetRef.current = null
+      }
+    }
+  }, [])
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData(prev => ({
@@ -23,19 +71,40 @@ export function Contact() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    setError(null)
+
+    if (!turnstileToken) {
+      setError('Please complete the security check before submitting.')
+      return
+    }
+
     setIsSubmitting(true)
-    
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1000))
-    
-    setSubmitted(true)
-    setIsSubmitting(false)
-    
-    // Reset form after 3 seconds
-    setTimeout(() => {
-      setSubmitted(false)
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...formData, turnstileToken }),
+      })
+
+      if (!res.ok) {
+        const data = await res.json()
+        throw new Error(data.error || 'Something went wrong')
+      }
+
+      setSubmitted(true)
       setFormData({ name: '', email: '', subject: '', message: '' })
-    }, 3000)
+      setTurnstileToken(null)
+      if (widgetRef.current && window.turnstile) {
+        window.turnstile.reset(widgetRef.current)
+      }
+
+      setTimeout(() => setSubmitted(false), 5000)
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Something went wrong. Please try again.')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -53,8 +122,8 @@ export function Contact() {
             <h2 className="text-3xl md:text-4xl font-bold">Get In Touch</h2>
           </div>
           <p className="text-lg text-muted-foreground max-w-2xl">
-            I'm always interested in new opportunities and interesting projects. 
-            Whether you have a question or just want to say hi, I'll try my best to get back to you!
+            I&apos;m always interested in new opportunities and interesting projects.
+            Whether you have a question or just want to say hi, I&apos;ll try my best to get back to you!
           </p>
         </motion.div>
 
@@ -103,10 +172,10 @@ export function Contact() {
             <div className="p-6 bg-secondary/30 rounded-xl">
               <div className="flex items-center gap-3 mb-4">
                 <MessageSquare className="w-5 h-5 text-primary" />
-                <h4 className="font-medium">Let's discuss</h4>
+                <h4 className="font-medium">Let&apos;s discuss</h4>
               </div>
               <p className="text-sm text-muted-foreground">
-                I'm particularly interested in opportunities involving AI/ML data operations, 
+                I&apos;m particularly interested in opportunities involving AI/ML data operations,
                 product analytics, or building systems that improve data quality and user experience.
               </p>
             </div>
@@ -122,9 +191,7 @@ export function Contact() {
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium mb-2">
-                    Name
-                  </label>
+                  <label htmlFor="name" className="block text-sm font-medium mb-2">Name</label>
                   <input
                     type="text"
                     id="name"
@@ -137,9 +204,7 @@ export function Contact() {
                   />
                 </div>
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium mb-2">
-                    Email
-                  </label>
+                  <label htmlFor="email" className="block text-sm font-medium mb-2">Email</label>
                   <input
                     type="email"
                     id="email"
@@ -152,11 +217,9 @@ export function Contact() {
                   />
                 </div>
               </div>
-              
+
               <div>
-                <label htmlFor="subject" className="block text-sm font-medium mb-2">
-                  Subject
-                </label>
+                <label htmlFor="subject" className="block text-sm font-medium mb-2">Subject</label>
                 <input
                   type="text"
                   id="subject"
@@ -170,9 +233,7 @@ export function Contact() {
               </div>
 
               <div>
-                <label htmlFor="message" className="block text-sm font-medium mb-2">
-                  Message
-                </label>
+                <label htmlFor="message" className="block text-sm font-medium mb-2">Message</label>
                 <textarea
                   id="message"
                   name="message"
@@ -185,13 +246,20 @@ export function Contact() {
                 />
               </div>
 
+              {/* Turnstile Widget */}
+              <div ref={containerRef} />
+
+              {error && (
+                <p className="text-sm text-red-500">{error}</p>
+              )}
+
               <button
                 type="submit"
-                disabled={isSubmitting || submitted}
+                disabled={isSubmitting || submitted || !turnstileToken}
                 className="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200 group"
               >
                 {submitted ? (
-                  'Message Sent!'
+                  'Message Sent! ✓'
                 ) : isSubmitting ? (
                   'Sending...'
                 ) : (
