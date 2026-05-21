@@ -10,20 +10,27 @@ interface Certification {
   issuer: string
   date: string
   status: 'earned' | 'expected'
-  // Replace placeholderSrc with a base64 data URI when ready:
-  // placeholderSrc: `data:image/jpeg;base64,${yourBase64String}`
-  placeholderSrc: string
+  // To use base64: set placeholderSrc to `data:image/png;base64,${yourBase64String}`
+  placeholderSrc: string | null
   verifyUrl?: string
 }
 
 const CERTS: Certification[] = [
+  {
+    id: 'harvard-cs50p',
+    title: 'Programming with Python (CS50P)',
+    issuer: 'Harvard University',
+    date: 'May 20, 2026',
+    status: 'earned',
+    placeholderSrc: '/certs/Harvard-CS50P-Zachary-Ryan-Lopez.png',
+  },
   {
     id: 'kaggle-python',
     title: 'Python',
     issuer: 'Kaggle',
     date: 'May 18, 2026',
     status: 'earned',
-    placeholderSrc: '/certs/Zachary-Ryan-Lopez-Python.jpeg',
+    placeholderSrc: '/certs/Zachary-Ryan-Lopez-Python.png',
   },
   {
     id: 'kaggle-pandas',
@@ -31,7 +38,7 @@ const CERTS: Certification[] = [
     issuer: 'Kaggle',
     date: 'May 19, 2026',
     status: 'earned',
-    placeholderSrc: '/certs/Zachary-Ryan-Lopez-Pandas.jpeg',
+    placeholderSrc: '/certs/Zachary-Ryan-Lopez-Pandas.png',
   },
   {
     id: 'kaggle-ml',
@@ -39,7 +46,7 @@ const CERTS: Certification[] = [
     issuer: 'Kaggle',
     date: 'May 19, 2026',
     status: 'earned',
-    placeholderSrc: '/certs/Zachary-Ryan-Lopez-Intermediate-Machine-Learning.jpeg',
+    placeholderSrc: '/certs/Zachary-Ryan-Lopez-Intermediate-Machine-Learning.png',
   },
   {
     id: 'kaggle-sql',
@@ -47,7 +54,7 @@ const CERTS: Certification[] = [
     issuer: 'Kaggle',
     date: 'May 19, 2026',
     status: 'earned',
-    placeholderSrc: '/certs/Zachary-Ryan-Lopez-Advanced-SQL.jpeg',
+    placeholderSrc: '/certs/Zachary-Ryan-Lopez-Advanced-SQL.png',
   },
   {
     id: 'hubspot-seoii',
@@ -55,7 +62,7 @@ const CERTS: Certification[] = [
     issuer: 'HubSpot Academy',
     date: 'May 18, 2026',
     status: 'earned',
-    placeholderSrc: '/certs/HubSpot_SEO_II_Certification_Zachary_Lopez_May_2026.jpeg',
+    placeholderSrc: '/certs/HubSpot_SEO_II_Certification_Zachary_Lopez_May_2026.png',
     verifyUrl: 'https://app.hubspot.com/academy/certifications',
   },
   {
@@ -64,8 +71,16 @@ const CERTS: Certification[] = [
     issuer: 'HubSpot Academy',
     date: 'May 18, 2026',
     status: 'earned',
-    placeholderSrc: '/certs/HubSpot_Service_Hub_Software_Zachary_Lopez_2026.jpeg',
+    placeholderSrc: '/certs/HubSpot_Service_Hub_Software_Zachary_Lopez_2026.png',
     verifyUrl: 'https://app.hubspot.com/academy/certifications',
+  },
+  {
+    id: 'apple-acit',
+    title: 'Apple Certified iOS Technician (ACiT)',
+    issuer: 'Apple',
+    date: 'March 14, 2019',
+    status: 'earned',
+    placeholderSrc: null, // cert image coming soon
   },
 ]
 
@@ -73,7 +88,6 @@ export function Certifications() {
   const [openCert, setOpenCert] = useState<Certification | null>(null)
   const [imgLoaded, setImgLoaded] = useState(false)
 
-  // ESC key closes modal
   useEffect(() => {
     function onKey(e: KeyboardEvent) {
       if (e.key === 'Escape') setOpenCert(null)
@@ -82,7 +96,6 @@ export function Certifications() {
     return () => window.removeEventListener('keydown', onKey)
   }, [])
 
-  // Reset load state each time a new cert opens
   useEffect(() => {
     if (openCert) setImgLoaded(false)
   }, [openCert])
@@ -143,7 +156,7 @@ export function Certifications() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-1 text-xs text-muted-foreground hover:text-foreground transition-colors duration-200"
-                    aria-label={`Verify ${cert.title} on HubSpot`}
+                    aria-label={`Verify ${cert.title}`}
                   >
                     Verify <ExternalLink className="w-3 h-3" />
                   </a>
@@ -200,19 +213,28 @@ export function Certifications() {
 
               {/* Image — loads only when modal opens */}
               <div className="flex-1 overflow-auto p-5">
-                {!imgLoaded && (
-                  <div className="w-full h-64 flex items-center justify-center text-muted-foreground text-sm">
-                    Loading…
+                {openCert.placeholderSrc === null ? (
+                  <div className="w-full h-64 flex flex-col items-center justify-center gap-2 text-muted-foreground">
+                    <Award className="w-10 h-10 opacity-30" />
+                    <p className="text-sm">Certificate image coming soon</p>
                   </div>
+                ) : (
+                  <>
+                    {!imgLoaded && (
+                      <div className="w-full h-64 flex items-center justify-center text-muted-foreground text-sm">
+                        Loading…
+                      </div>
+                    )}
+                    <img
+                      src={openCert.placeholderSrc}
+                      alt={`${openCert.title} — ${openCert.issuer} certificate`}
+                      className={`w-full h-auto object-contain rounded-lg transition-opacity duration-300 ${
+                        imgLoaded ? 'opacity-100' : 'opacity-0 absolute'
+                      }`}
+                      onLoad={() => setImgLoaded(true)}
+                    />
+                  </>
                 )}
-                <img
-                  src={openCert.placeholderSrc}
-                  alt={`${openCert.title} — ${openCert.issuer} certificate`}
-                  className={`w-full h-auto object-contain rounded-lg transition-opacity duration-300 ${
-                    imgLoaded ? 'opacity-100' : 'opacity-0 absolute'
-                  }`}
-                  onLoad={() => setImgLoaded(true)}
-                />
               </div>
 
               {/* Footer */}
