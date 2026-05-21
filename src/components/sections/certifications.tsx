@@ -23,6 +23,7 @@ const CERTS: Certification[] = [
     date: 'May 20, 2026',
     status: 'earned',
     placeholderSrc: '/certs/Harvard-CS50P-Zachary-Ryan-Lopez.png',
+    verifyUrl: 'https://cs50.harvard.edu/certificates/a2fb0892-7781-498c-b3e0-2552de74b397',
   },
   {
     id: 'kaggle-python',
@@ -31,6 +32,7 @@ const CERTS: Certification[] = [
     date: 'May 18, 2026',
     status: 'earned',
     placeholderSrc: '/certs/Zachary-Ryan-Lopez-Python.png',
+    verifyUrl: 'https://www.kaggle.com/learn/certification/zrlopez/python',
   },
   {
     id: 'kaggle-pandas',
@@ -39,6 +41,7 @@ const CERTS: Certification[] = [
     date: 'May 19, 2026',
     status: 'earned',
     placeholderSrc: '/certs/Zachary-Ryan-Lopez-Pandas.png',
+    verifyUrl: 'https://www.kaggle.com/learn/certification/zrlopez/pandas',
   },
   {
     id: 'kaggle-ml',
@@ -47,6 +50,7 @@ const CERTS: Certification[] = [
     date: 'May 19, 2026',
     status: 'earned',
     placeholderSrc: '/certs/Zachary-Ryan-Lopez-Intermediate-Machine-Learning.png',
+    verifyUrl: 'https://www.kaggle.com/learn/certification/zrlopez/intermediate-machine-learning',
   },
   {
     id: 'kaggle-sql',
@@ -55,6 +59,7 @@ const CERTS: Certification[] = [
     date: 'May 19, 2026',
     status: 'earned',
     placeholderSrc: '/certs/Zachary-Ryan-Lopez-Advanced-SQL.png',
+    verifyUrl: 'https://www.kaggle.com/learn/certification/zrlopez/advanced-sql',
   },
   {
     id: 'hubspot-seoii',
@@ -63,7 +68,7 @@ const CERTS: Certification[] = [
     date: 'May 18, 2026',
     status: 'earned',
     placeholderSrc: '/certs/HubSpot_SEO_II_Certification_Zachary_Lopez_May_2026.png',
-    verifyUrl: 'https://app.hubspot.com/academy/certifications',
+    verifyUrl: 'https://app-na2.hubspot.com/academy/achievements/3z03ccxd/en/1/zachary-lopez/seo-ii',
   },
   {
     id: 'hubspot-servicehub',
@@ -72,7 +77,7 @@ const CERTS: Certification[] = [
     date: 'May 18, 2026',
     status: 'earned',
     placeholderSrc: '/certs/HubSpot_Service_Hub_Software_Zachary_Lopez_2026.png',
-    verifyUrl: 'https://app.hubspot.com/academy/certifications',
+    verifyUrl: 'https://app-na2.hubspot.com/academy/achievements/6dhmh4p0/en/1/zachary-lopez/service-hub-software',
   },
   {
     id: 'apple-acit',
