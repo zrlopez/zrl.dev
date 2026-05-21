@@ -5,80 +5,79 @@ import { ExternalLink, Github, Calendar, Tag } from 'lucide-react'
 import Link from 'next/link'
 import { useState } from 'react'
 
-// Updated projects data based on your current portfolio
 const projects = [
   {
     id: 1,
-    title: 'Siri Data Quality — Accuracy Lift',
-    summary: 'Linguistic tagging and QA workflow across targeted domains raised accuracy while reducing annotation variance.',
-    role: 'Data Ops Analyst',
-    year: '2024',
-    tags: ['NLP/NLU', 'Annotation QA', 'Taxonomy'],
+    title: 'AI/ML Experiment Suite',
+    summary: 'Designed and executed 10+ NLP annotation experiments using Python and SQL to evaluate labeling consistency and test workflow assumptions, reducing variance by 15%.',
+    role: 'Lead',
+    year: '2024–2026',
+    tags: ['NLP', 'Python', 'SQL', 'Annotation QA'],
     category: 'Data Operations',
     featured: true,
-    link: '',
+    link: 'https://zrl.dev',
     github: '',
   },
   {
     id: 2,
-    title: 'Localization Nuance — Multi-locale Optimization',
-    summary: 'Refined prompts, intents, and fallbacks across en_US, en_CA, en_UK; partnered with ML and Product for higher match success.',
-    role: 'Analyst',
-    year: '2023',
-    tags: ['Localization', 'Prompt Eval', 'UX'],
-    category: 'ML Engineering',
+    title: 'Data Pipeline Prototypes',
+    summary: 'Engineered ETL and data-validation pipelines with Pandas and SQLite, automating quality checks and generating Tableau-ready outputs — reducing reporting processing time by 40%.',
+    role: 'Engineer',
+    year: '2025–2026',
+    tags: ['ETL', 'Pandas', 'SQLite', 'Tableau'],
+    category: 'Data Engineering',
     featured: true,
     link: '',
     github: '',
   },
   {
     id: 3,
-    title: 'Operational Dashboards',
-    summary: 'Built monitoring for throughput, error classes, and taxonomy drift; accelerated iteration with clearer readouts.',
-    role: 'Builder',
-    year: '2022–2024',
-    tags: ['Tableau', 'Metrics', 'Stakeholders'],
+    title: 'Annotation Analytics Dashboard',
+    summary: 'Developed an interactive dashboard to track annotation quality trends, ML support metrics, and workflow performance patterns.',
+    role: 'Developer',
+    year: 'Sep 2025',
+    tags: ['Analytics', 'Dashboard', 'ML Metrics'],
     category: 'Analytics',
     featured: true,
-    link: '',
+    link: 'https://zrl.dev/projects/annotation-dashboard',
     github: '',
   },
   {
     id: 4,
-    title: 'Apple Pay Merchant Onboarding',
-    summary: 'Supported SDK/API integrations and testing with e-merchants; improved conversion with better UX messaging.',
-    role: 'BizDev',
-    year: '2021',
-    tags: ['SDK/API', 'Onboarding', 'Payments'],
-    category: 'Business Development',
-    featured: false,
+    title: 'Health Record System',
+    summary: 'Built a secure SQLite-based personal health record application with a React frontend for aggregating medical documents (PDFs, XMLs, JSON) with HIPAA-compliant local storage and data visualization.',
+    role: 'Developer',
+    year: 'Aug 2025',
+    tags: ['SQLite', 'React', 'HIPAA', 'Python'],
+    category: 'Data Engineering',
+    featured: true,
     link: '',
     github: '',
   },
   {
     id: 5,
-    title: 'Genomics — VCF Variant Analysis',
-    summary: 'Exploratory pipeline with bcftools/ClinVar; rare variant filtering & inheritance pattern checks.',
-    role: 'Analyst',
-    year: '2025',
-    tags: ['Genomics', 'VCF', 'Python'],
-    category: 'Data Science',
-    featured: true,
-    link: '',
-    github: '',
-  },
-  {
-    id: 6,
-    title: 'Modern Portfolio Website',
-    summary: 'Complete redesign and modernization of portfolio using Next.js, TypeScript, and Tailwind CSS.',
+    title: 'Portfolio Website',
+    summary: 'Designed and built a modern portfolio using Next.js, TypeScript, and Tailwind CSS — deployed on Cloudflare Pages.',
     role: 'Developer',
-    year: '2025',
-    tags: ['Next.js', 'TypeScript', 'Tailwind'],
+    year: '2025–2026',
+    tags: ['Next.js', 'TypeScript', 'Tailwind', 'Cloudflare'],
     category: 'Web Development',
     featured: true,
     link: 'https://zrl.dev',
     github: 'https://github.com/zrlopez/zrl.dev',
-  }
+  },
+  {
+    id: 6,
+    title: 'Officer Cadet — Army ROTC',
+    summary: 'Completed two years of Military Science I–II coursework and training at UT Austin, strengthening leadership, discipline, and team coordination under structured, high-accountability conditions.',
+    role: 'Officer Cadet',
+    year: '2015–2017',
+    tags: ['Leadership', 'Team Coordination', 'Military Science'],
+    category: 'Leadership',
+    featured: false,
+    link: '',
+    github: '',
+  },
 ]
 
 const categories = ['All', ...new Set(projects.map(p => p.category))]
@@ -87,7 +86,7 @@ export function Projects() {
   const [selectedCategory, setSelectedCategory] = useState('All')
   const [showAll, setShowAll] = useState(false)
 
-  const filteredProjects = projects.filter(project => 
+  const filteredProjects = projects.filter(project =>
     selectedCategory === 'All' || project.category === selectedCategory
   )
 
@@ -156,7 +155,7 @@ export function Projects() {
                 <h3 className="text-xl font-semibold mb-3 group-hover:text-primary transition-colors duration-200">
                   {project.title}
                 </h3>
-                
+
                 <p className="text-muted-foreground text-sm leading-relaxed mb-4">
                   {project.summary}
                 </p>
@@ -189,7 +188,7 @@ export function Projects() {
                     <Link
                       href={project.github}
                       target="_blank"
-                      rel="noopener noreferrer"
+[...]
                       className="flex items-center gap-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-200"
                     >
                       <Github className="w-4 h-4" />
