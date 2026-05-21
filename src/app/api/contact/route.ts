@@ -1,8 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { Resend } from 'resend'
 
-const resend = new Resend(process.env.RESEND_API_KEY)
-
 async function verifyTurnstile(token: string, ip: string): Promise<boolean> {
   const res = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
     method: 'POST',
@@ -19,6 +17,9 @@ async function verifyTurnstile(token: string, ip: string): Promise<boolean> {
 
 export async function POST(req: NextRequest) {
   try {
+    // Lazy-init Resend inside the handler so build-time env var absence doesn't crash
+    const resend = new Resend(process.env.RESEND_API_KEY)
+
     const { name, email, subject, message, turnstileToken } = await req.json()
 
     if (!name || !email || !subject || !message || !turnstileToken) {
