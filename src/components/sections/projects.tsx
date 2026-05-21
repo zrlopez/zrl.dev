@@ -77,7 +77,7 @@ const projects = [
     category: 'Web Development',
     featured: true,
     link: 'https://zrl.dev',
-    github: 'https://github.com/zrduloup/zrl.dev',
+    github: 'https://github.com/zrlopez/zrl.dev',
   }
 ]
 
