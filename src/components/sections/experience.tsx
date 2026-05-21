@@ -4,16 +4,28 @@ import { motion } from 'framer-motion'
 import { CalendarDays, MapPin } from 'lucide-react'
 
 const experiences = [
+    {
+    title: 'AI/ML Data Operations Researcher',
+    company: 'Independent',
+    location: 'Austin, TX',
+    period: 'Jun 2024–Present',
+    description: 'Independent research and portfolio development focused on AI/ML data operations, annotation quality, ETL validation, and workflow analytics.',
+    highlights: [
+      'Built Python and SQL utilities for annotation QA, data validation, and lightweight analysis.',
+      'Designed and tested annotation experiments to evaluate consistency, taxonomy drift, and workflow assumptions.',
+      'Published methodology notes, dashboards, or supporting artifacts on GitHub and zrl.dev.'
+    ]
+  },
   {
     title: 'Data Operations Analyst',
     company: 'Apple',
     location: 'Austin, TX',
     period: 'Sep 2021–Jun 2024',
-    description: 'Reviewed high-volume assistant interactions with linguistic tagging and QA, driving a 12% accuracy lift across targeted domains; refined prompts, intents, and fallbacks across en_US, en_CA, en_UK; built dashboards to monitor throughput, error classes, and taxonomy drift.',
+    description: 'Reviewed high-volume assistant interactions, improved annotation quality, and supported taxonomy governance across multiple locales.',
     highlights: [
-      '12% accuracy improvement across targeted domains',
-      'Multi-locale prompt optimization (en_US, en_CA, en_UK)',
-      'Built operational dashboards for ML teams'
+      'Improved accuracy in targeted domains through QA review and labeling refinement.',
+      'Tuned prompts, intents, and fallbacks across en_US, en_CA, and en_UK.',
+      'Built dashboards to monitor throughput, error classes, and taxonomy drift.'
     ]
   },
   {
@@ -21,11 +33,11 @@ const experiences = [
     company: 'Apple',
     location: 'Austin, TX',
     period: 'Mar 2019–Sep 2021',
-    description: 'Diagnosed recurring faults via log analysis; reduced repeat visits by ~20% and mentored teammates with playbooks that improved first-time resolution and triage speed.',
+    description: 'Diagnosed recurring technical issues using logs and structured troubleshooting, helping reduce repeat visits and improve team resolution quality.',
     highlights: [
-      '20% reduction in repeat customer visits',
-      'Developed diagnostic playbooks for team',
-      'Improved first-time resolution rates'
+      'Reduced repeat customer visits through better diagnostics and escalation handling.',
+      'Created or refined playbooks to improve triage speed and consistency.',
+      'Supported teammates with repeatable troubleshooting patterns.'
     ]
   },
   {
@@ -33,23 +45,23 @@ const experiences = [
     company: 'Apple',
     location: 'Austin, TX',
     period: 'Jan 2021–Jun 2021',
-    description: 'Prospected e-merchants and supported SDK/API onboarding and testing; improved conversion with optimized integration paths and checkout messaging.',
+    description: 'Supported merchant onboarding and technical integration for Apple Pay, bridging business development and SDK/API testing.',
     highlights: [
-      'E-merchant SDK/API integration support',
-      'Optimized payment flow conversion rates',
-      'Technical onboarding facilitation'
+      'Helped merchants work through onboarding and integration steps.',
+      'Improved conversion through clearer checkout and implementation guidance.',
+      'Supported testing and technical validation for payment flows.'
     ]
   },
   {
-    title: 'iOS Technical Support Advisor',
+    title: 'AppleCare Support Advisor',
     company: 'Apple',
     location: 'Austin, TX',
     period: 'Mar 2020–Jan 2021',
-    description: 'Achieved 90%+ same-call resolution across 2,000+ cases with minimal escalations using remote diagnostics and precise documentation.',
+    description: 'Delivered remote diagnostics and customer support for iOS issues across a large volume of cases.',
     highlights: [
-      '90%+ same-call resolution rate',
-      '2,000+ customer cases handled',
-      'Expert in remote diagnostics'
+      'Maintained strong same-call resolution performance.',
+      'Resolved high case volume with low escalation rates.',
+      'Used documentation and diagnostics to improve consistency.'
     ]
   }
 ]
@@ -113,8 +125,8 @@ export function Experience() {
                     </p>
                     
                     <div className="space-y-2">
-                      {experience.highlights.map((highlight, highlightIndex) => (
-                        <div key={highlightIndex} className="flex items-start gap-2">
+                      {experience.highlights.map((highlight) => (
+                        <div key={highlight} className="flex items-start gap-2">
                           <div className="w-1.5 h-1.5 bg-primary rounded-full mt-2 flex-shrink-0" />
                           <span className="text-sm text-muted-foreground">{highlight}</span>
                         </div>

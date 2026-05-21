@@ -34,7 +34,7 @@
 
 ```bash
 # Clone the repository
-git clone https://github.com/zrduloup/zrl.dev.git
+git clone https://github.com/zrlopez/zrl.dev.git
 
 # Navigate to the project directory
 cd zrl.dev
