@@ -59,7 +59,7 @@ const projects = [
     title: 'Portfolio Website',
     summary: 'Designed and built a modern portfolio using Next.js, TypeScript, and Tailwind CSS — deployed on Cloudflare Pages.',
     role: 'Developer',
-    year: '2025–2026',
+    year: '2025–Present',
     tags: ['Next.js', 'TypeScript', 'Tailwind', 'Cloudflare'],
     category: 'Web Development',
     featured: true,
@@ -188,7 +188,7 @@ export function Projects() {
                     <Link
                       href={project.github}
                       target="_blank"
-[...]
+                      rel="noopener noreferrer"
                       className="flex items-center gap-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-200"
                     >
                       <Github className="w-4 h-4" />
