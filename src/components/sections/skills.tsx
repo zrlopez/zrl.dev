@@ -13,7 +13,7 @@ const skillCategories = [
     title: 'Tools & Platforms',
     skills: [
       'Pandas', 'SQLite', 'Tableau', 'Power BI', 'Jupyter',
-      'Git', 'GitHub', 'Jira', 'Confluence', 'Excel'
+      'Git', 'GitHub', 'Jira', 'Confluence', 'Figma', 'Excel'
     ]
   },
   {
