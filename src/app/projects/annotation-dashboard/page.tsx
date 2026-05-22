@@ -3,21 +3,22 @@
 import { motion } from 'framer-motion'
 import { Github, ArrowLeft, BarChart2, AlertTriangle, Users, Cpu, Tag, Calendar, Code2, Layers } from 'lucide-react'
 import Link from 'next/link'
+import { AnnotationDashboardDemo } from './_components/AnnotationDashboardDemo'
 
 const tech = [
-  'JavaScript (ES6+)',
-  'Chart.js 4.4.4',
-  'HTML5 / CSS3',
-  'CSS Variables',
-  'CSS Grid & Flexbox',
-  'Real-time DOM Manipulation',
+  'Next.js 14',
+  'TypeScript',
+  'Recharts',
+  'Tailwind CSS',
+  'React Hooks',
+  'Real-time State',
 ]
 
 const highlights = [
-  { icon: BarChart2, title: 'Live KPI Metrics', description: 'Four real-time KPI cards — throughput, error rate, team efficiency, and capacity utilization — update every 5 seconds with independent variation per metric.' },
-  { icon: AlertTriangle, title: 'Alert Threshold Engine', description: 'Alert thresholds sync live to KPI values each tick, automatically flagging warning states when error rate or capacity cross configured limits.' },
-  { icon: Users, title: 'Team Performance View', description: 'Per-member productivity cards, task completion bar charts, and a weekly utilization heatmap with low / medium / high classification.' },
-  { icon: Cpu, title: 'Capacity Forecasting', description: 'Historical vs. predicted capacity trend chart with forward-looking forecast bands to surface resource bottlenecks before they occur.' },
+  { icon: BarChart2,     title: 'Live KPI Metrics',        description: 'Four real-time KPI cards — throughput, error rate, team efficiency, and capacity utilization — update every 5 seconds with independent variation per metric.' },
+  { icon: AlertTriangle, title: 'Alert Threshold Engine',  description: 'Alert thresholds sync live to KPI values each tick, automatically flagging warning states when error rate or capacity cross configured limits.' },
+  { icon: Users,         title: 'Team Performance View',   description: 'Per-member productivity cards, task completion bar charts, and a weekly utilization heatmap with low / medium / high classification.' },
+  { icon: Cpu,           title: 'Capacity Forecasting',    description: 'Historical vs. predicted capacity trend chart with forward-looking forecast bands to surface resource bottlenecks before they occur.' },
 ]
 
 const fixes = [
@@ -37,6 +38,7 @@ export default function AnnotationDashboardPage() {
   return (
     <div className="min-h-screen bg-background">
 
+      {/* Hero */}
       <section className="section-padding border-b border-border">
         <div className="max-w-5xl mx-auto container-padding">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
@@ -48,7 +50,7 @@ export default function AnnotationDashboardPage() {
               <span className="text-xs text-muted-foreground flex items-center gap-1"><Calendar className="w-3 h-3" /> Sep 2025</span>
             </div>
             <h1 className="text-4xl md:text-5xl font-bold mb-4 leading-tight">Annotation Analytics Dashboard</h1>
-            <p className="text-lg text-muted-foreground max-w-2xl mb-8">An interactive real-time dashboard for tracking annotation quality trends, ML support metrics, and workflow performance patterns — built entirely in vanilla JS with no framework dependencies.</p>
+            <p className="text-lg text-muted-foreground max-w-2xl mb-8">An interactive real-time dashboard for tracking annotation quality trends, ML support metrics, and workflow performance patterns — rebuilt in Next.js + Recharts with live state updates.</p>
             <div className="flex flex-wrap gap-3">
               <a href="https://github.com/zrlopez/performance-analytics-tool" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 transition-colors">
                 <Github className="w-4 h-4" />View on GitHub
@@ -61,14 +63,15 @@ export default function AnnotationDashboardPage() {
         </div>
       </section>
 
+      {/* Overview */}
       <section className="section-padding border-b border-border">
         <div className="max-w-5xl mx-auto container-padding">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }} className="grid md:grid-cols-2 gap-12 items-start">
             <div>
               <h2 className="text-2xl font-bold mb-4">Overview</h2>
               <p className="text-muted-foreground mb-4">Built to simulate the kind of operational visibility used in ML data operations — tracking pipeline throughput, annotation error rates, team efficiency, and infrastructure capacity in one unified view.</p>
-              <p className="text-muted-foreground mb-4">The dashboard runs entirely client-side with no backend or build step. Real-time updates are driven by a 5-second interval loop that recalculates each KPI independently, updates trend badges, syncs alert thresholds, and re-applies color logic — all without page refresh.</p>
-              <p className="text-muted-foreground">Went through a full code review cycle covering metric calculation correctness, accessibility, error resilience, CDN security, and UI polish — resulting in 10+ targeted fixes across all severity tiers.</p>
+              <p className="text-muted-foreground mb-4">Real-time updates are driven by a 5-second interval hook that recalculates each KPI independently, updates trend badges, syncs alert thresholds, and re-applies color logic — all without page refresh.</p>
+              <p className="text-muted-foreground">Went through a full code review cycle covering metric calculation correctness, accessibility, error resilience, and UI polish — resulting in 10+ targeted fixes across all severity tiers.</p>
             </div>
             <div className="space-y-4">
               <div className="rounded-xl border border-border bg-secondary/30 p-6">
@@ -92,6 +95,7 @@ export default function AnnotationDashboardPage() {
         </div>
       </section>
 
+      {/* Feature Highlights */}
       <section className="section-padding border-b border-border bg-secondary/10">
         <div className="max-w-5xl mx-auto container-padding">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }} className="mb-10">
@@ -110,6 +114,23 @@ export default function AnnotationDashboardPage() {
         </div>
       </section>
 
+      {/* Live Demo */}
+      <section className="section-padding border-b border-border">
+        <div className="max-w-5xl mx-auto container-padding">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }} className="mb-8">
+            <div className="flex items-center gap-4 mb-2">
+              <BarChart2 className="w-5 h-5 text-primary" />
+              <h2 className="text-2xl font-bold">Live Demo</h2>
+            </div>
+            <p className="text-muted-foreground">Fully interactive — KPIs update every 5 seconds. Toggle dark mode inside the demo independently of the page theme.</p>
+          </motion.div>
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.1 }} viewport={{ once: true }} className="rounded-2xl border border-border overflow-hidden">
+            <AnnotationDashboardDemo />
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Code Review Fixes */}
       <section className="section-padding">
         <div className="max-w-5xl mx-auto container-padding">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }} className="mb-10">
@@ -127,6 +148,7 @@ export default function AnnotationDashboardPage() {
         </div>
       </section>
 
+      {/* CTA */}
       <section className="section-padding border-t border-border bg-secondary/10">
         <div className="max-w-5xl mx-auto container-padding text-center">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }}>

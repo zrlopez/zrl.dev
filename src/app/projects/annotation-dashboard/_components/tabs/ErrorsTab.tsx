@@ -1,0 +1,69 @@
+"use client";
+import {
+  ResponsiveContainer, PieChart, Pie, Cell,
+  LineChart, Line, BarChart, Bar,
+  XAxis, YAxis, CartesianGrid, Tooltip, Legend,
+} from "recharts";
+import { DashboardChartCard } from "../DashboardChartCard";
+import { CHART_COLORS, CHART_THEME } from "../chartTheme";
+import type { SEED_DATA } from "../dashboardData";
+
+interface Props { isDark: boolean; data: typeof SEED_DATA; }
+
+export function ErrorsTab({ isDark, data }: Props) {
+  const theme = isDark ? CHART_THEME.dark : CHART_THEME.light;
+  const SEV   = [CHART_COLORS[2], CHART_COLORS[5], CHART_COLORS[1], CHART_COLORS[3]];
+  const fmt   = (v: string) => new Date(v).toLocaleDateString("en-US", { month: "short", day: "numeric" });
+
+  return (
+    <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
+      <DashboardChartCard title="Error Classification" subtitle="By error type">
+        <ResponsiveContainer width="100%" height={220}>
+          <PieChart>
+            <Pie data={data.errorData.classification} dataKey="count" nameKey="type" cx="50%" cy="50%" outerRadius={80}>
+              {data.errorData.classification.map((_, i) => <Cell key={i} fill={CHART_COLORS[i % CHART_COLORS.length]} />)}
+            </Pie>
+            <Tooltip contentStyle={{ background: theme.tooltip.bg, border: `1px solid ${theme.tooltip.border}`, borderRadius: 8 }} />
+            <Legend wrapperStyle={{ fontSize: 12, color: theme.text }} />
+          </PieChart>
+        </ResponsiveContainer>
+      </DashboardChartCard>
+
+      <DashboardChartCard title="Error Trend" subtitle="Daily errors over 25 days">
+        <ResponsiveContainer width="100%" height={220}>
+          <LineChart data={data.errorData.trends}>
+            <CartesianGrid strokeDasharray="3 3" stroke={theme.grid} />
+            <XAxis dataKey="date" tick={{ fill: theme.text, fontSize: 10 }} interval={6} tickFormatter={fmt} />
+            <YAxis tick={{ fill: theme.text, fontSize: 11 }} />
+            <Tooltip contentStyle={{ background: theme.tooltip.bg, border: `1px solid ${theme.tooltip.border}`, borderRadius: 8 }} labelFormatter={(v) => new Date(v).toLocaleDateString()} />
+            <Line type="monotone" dataKey="value" stroke={CHART_COLORS[2]} strokeWidth={2} dot={false} />
+          </LineChart>
+        </ResponsiveContainer>
+      </DashboardChartCard>
+
+      <DashboardChartCard title="Severity Breakdown">
+        <ResponsiveContainer width="100%" height={220}>
+          <PieChart>
+            <Pie data={data.errorData.severity} dataKey="count" nameKey="level" cx="50%" cy="50%" innerRadius={50} outerRadius={80}>
+              {data.errorData.severity.map((_, i) => <Cell key={i} fill={SEV[i % SEV.length]} />)}
+            </Pie>
+            <Tooltip contentStyle={{ background: theme.tooltip.bg, border: `1px solid ${theme.tooltip.border}`, borderRadius: 8 }} />
+            <Legend wrapperStyle={{ fontSize: 12, color: theme.text }} />
+          </PieChart>
+        </ResponsiveContainer>
+      </DashboardChartCard>
+
+      <DashboardChartCard title="Resolution Time" subtitle="Avg hours by type">
+        <ResponsiveContainer width="100%" height={220}>
+          <BarChart data={data.errorData.resolutionTime.byType} layout="vertical">
+            <CartesianGrid strokeDasharray="3 3" stroke={theme.grid} />
+            <XAxis type="number" tick={{ fill: theme.text, fontSize: 11 }} unit="h" />
+            <YAxis dataKey="type" type="category" tick={{ fill: theme.text, fontSize: 10 }} width={110} />
+            <Tooltip contentStyle={{ background: theme.tooltip.bg, border: `1px solid ${theme.tooltip.border}`, borderRadius: 8 }} formatter={(v: number) => [`${v}h`, "Avg Resolution"]} />
+            <Bar dataKey="time" fill={CHART_COLORS[3]} radius={[0, 4, 4, 0]} />
+          </BarChart>
+        </ResponsiveContainer>
+      </DashboardChartCard>
+    </div>
+  );
+}
