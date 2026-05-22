@@ -43,7 +43,7 @@ export function ThroughputTab({ isDark, data }: Props) {
       <DashboardChartCard title="Process Breakdown" subtitle="Share of total throughput">
         <ResponsiveContainer width="100%" height={220}>
           <PieChart>
-            <Pie data={data.throughputData.byProcess} dataKey="value" nameKey="process" cx="50%" cy="50%" outerRadius={80} label={({ percentage }: { percentage: number }) => `${percentage}%`}>
+            <Pie data={data.throughputData.byProcess} dataKey="value" nameKey="process" cx="50%" cy="50%" outerRadius={80} label={(props: import('recharts').PieLabelRenderProps) => `${props.percent != null ? (Number(props.percent) * 100).toFixed(1) : 0}%`}>
               {data.throughputData.byProcess.map((_, i) => <Cell key={i} fill={CHART_COLORS[i % CHART_COLORS.length]} />)}
             </Pie>
             <Tooltip contentStyle={{ background: theme.tooltip.bg, border: `1px solid ${theme.tooltip.border}`, borderRadius: 8 }} />

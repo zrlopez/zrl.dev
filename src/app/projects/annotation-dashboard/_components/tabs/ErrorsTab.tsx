@@ -59,7 +59,7 @@ export function ErrorsTab({ isDark, data }: Props) {
             <CartesianGrid strokeDasharray="3 3" stroke={theme.grid} />
             <XAxis type="number" tick={{ fill: theme.text, fontSize: 11 }} unit="h" />
             <YAxis dataKey="type" type="category" tick={{ fill: theme.text, fontSize: 10 }} width={110} />
-            <Tooltip contentStyle={{ background: theme.tooltip.bg, border: `1px solid ${theme.tooltip.border}`, borderRadius: 8 }} formatter={(v: number) => [`${v}h`, "Avg Resolution"]} />
+            <Tooltip contentStyle={{ background: theme.tooltip.bg, border: `1px solid ${theme.tooltip.border}`, borderRadius: 8 }} formatter={(v) => (v != null ? [`${v}h`, "Avg Resolution"] : ["", "Avg Resolution"])} />
             <Bar dataKey="time" fill={CHART_COLORS[3]} radius={[0, 4, 4, 0]} />
           </BarChart>
         </ResponsiveContainer>
