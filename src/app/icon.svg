@@ -5,9 +5,12 @@
     dominant-baseline="central"
     text-anchor="middle"
     font-family="Georgia, 'Times New Roman', serif"
-    font-size="13"
+    font-size="15.6"
     font-weight="700"
     letter-spacing="0.5"
-    fill="#1a2035"
+    fill="white"
+    stroke="white"
+    stroke-width="0.3"
+    paint-order="stroke fill"
   >ZRL</text>
 </svg>
