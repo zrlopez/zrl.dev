@@ -47,7 +47,7 @@ export default function AnnotationDashboardPage() {
             </Link>
             <div className="flex flex-wrap items-center gap-3 mb-4">
               <span className="text-xs font-medium px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/20">Analytics</span>
-              <span className="text-xs text-muted-foreground flex items-center gap-1"><Calendar className="w-3 h-3" /> Sep 2025</span>
+              <span className="text-xs text-muted-foreground flex items-center gap-1"><Calendar className="w-3 h-3" /> 2025–Present</span>
             </div>
             <h1 className="text-4xl md:text-5xl font-bold mb-4 leading-tight">Annotation Analytics Dashboard</h1>
             <p className="text-lg text-muted-foreground max-w-2xl mb-8">An interactive real-time dashboard for tracking annotation quality trends, ML support metrics, and workflow performance patterns — rebuilt in Next.js + Recharts with live state updates.</p>
@@ -78,7 +78,7 @@ export default function AnnotationDashboardPage() {
                 <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wide mb-4">Project Details</h3>
                 <dl className="space-y-3 text-sm">
                   <div className="flex justify-between"><dt className="text-muted-foreground">Role</dt><dd className="font-medium">Developer</dd></div>
-                  <div className="flex justify-between"><dt className="text-muted-foreground">Year</dt><dd className="font-medium">Sep 2025</dd></div>
+                  <div className="flex justify-between"><dt className="text-muted-foreground">Year</dt><dd className="font-medium">2025–Present</dd></div>
                   <div className="flex justify-between"><dt className="text-muted-foreground">Type</dt><dd className="font-medium">Frontend / Analytics</dd></div>
                   <div className="flex justify-between"><dt className="text-muted-foreground">Tabs</dt><dd className="font-medium">6 views</dd></div>
                   <div className="flex justify-between"><dt className="text-muted-foreground">Update Interval</dt><dd className="font-medium">5 seconds</dd></div>

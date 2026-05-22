@@ -7,6 +7,18 @@ import { useState } from 'react'
 
 const projects = [
   {
+    id: 3,
+    title: 'Annotation Analytics Dashboard',
+    summary: 'Developed an interactive dashboard to track annotation quality trends, ML support metrics, and workflow performance patterns.',
+    role: 'Developer',
+    year: '2025–Present',
+    tags: ['Analytics', 'Dashboard', 'ML Metrics'],
+    category: 'Analytics',
+    featured: true,
+    link: 'https://zrl.dev/projects/annotation-dashboard',
+    github: '',
+  },
+  {
     id: 1,
     title: 'AI/ML Experiment Suite',
     summary: 'Designed and executed 10+ NLP annotation experiments using Python and SQL to evaluate labeling consistency and test workflow assumptions, reducing variance by 15%.',
@@ -28,18 +40,6 @@ const projects = [
     category: 'Data Engineering',
     featured: true,
     link: '',
-    github: '',
-  },
-  {
-    id: 3,
-    title: 'Annotation Analytics Dashboard',
-    summary: 'Developed an interactive dashboard to track annotation quality trends, ML support metrics, and workflow performance patterns.',
-    role: 'Developer',
-    year: 'Sep 2025',
-    tags: ['Analytics', 'Dashboard', 'ML Metrics'],
-    category: 'Analytics',
-    featured: true,
-    link: 'https://zrl.dev/projects/annotation-dashboard',
     github: '',
   },
   {
