@@ -10,6 +10,8 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
+    "@emnapi/core": "^1.10.0",
+    "@emnapi/runtime": "^1.10.0",
     "clsx": "^2.0.0",
     "framer-motion": "^10.0.0",
     "lucide-react": "^0.292.0",
