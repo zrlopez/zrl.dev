@@ -1,10 +1,10 @@
 'use client'
 
 import { motion, AnimatePresence } from 'framer-motion'
-import { Mail, MessageSquare, Send, MapPin, Clock, CheckCircle } from 'lucide-react'
-import { useState, useEffect, useRef } from 'react'
+import { Mail, MessageSquare, Send, MapPin, Clock, CheckCircle, AlertCircle } from 'lucide-react'
+import { useState, useEffect, useRef, useCallback } from 'react'
 
-// ── Field length limits (must mirror backend FIELD_LIMITS in functions/api/contact.ts)
+// ── Field length limits (must mirror functions/api/contact.ts LIMITS) ──────────
 const FIELD_LIMITS = {
   name:    100,
   email:   254,
@@ -12,8 +12,8 @@ const FIELD_LIMITS = {
   message: 5_000,
 } as const
 
-// ── Turnstile retry budget: 50 attempts × 200 ms = 10 seconds maximum wait
-const MAX_TURNSTILE_ATTEMPTS = 50
+// Maximum retry attempts when waiting for Turnstile to load (~10 seconds).
+const TURNSTILE_MAX_ATTEMPTS = 50
 
 declare global {
   interface Window {
@@ -25,20 +25,56 @@ declare global {
   }
 }
 
+interface FormData {
+  name:    string
+  email:   string
+  subject: string
+  message: string
+}
+
+const INITIAL_FORM: FormData = { name: '', email: '', subject: '', message: '' }
+
 export function Contact() {
-  const [formData, setFormData] = useState({
-    name:    '',
-    email:   '',
-    subject: '',
-    message: '',
-  })
+  const [formData,       setFormData]       = useState<FormData>(INITIAL_FORM)
   const [isSubmitting,   setIsSubmitting]   = useState(false)
   const [submitted,      setSubmitted]      = useState(false)
   const [error,          setError]          = useState<string | null>(null)
   const [turnstileToken, setTurnstileToken] = useState<string | null>(null)
-  const widgetRef       = useRef<string | null>(null)
-  const containerRef    = useRef<HTMLDivElement>(null)
-  const attemptsRef     = useRef(0)
+  const [captchaError,   setCaptchaError]   = useState(false)
+
+  const widgetRef    = useRef<string | null>(null)
+  const containerRef = useRef<HTMLDivElement>(null)
+  const timeoutRef   = useRef<ReturnType<typeof setTimeout> | null>(null)
+  const attemptsRef  = useRef(0)
+
+  // ── Load and render Turnstile widget ──────────────────────────────────────
+  const tryRender = useCallback(() => {
+    // Guard: bail out after MAX_ATTEMPTS to prevent infinite loop when
+    // Cloudflare's CDN is unreachable or the script fails to load.
+    if (attemptsRef.current >= TURNSTILE_MAX_ATTEMPTS) {
+      setCaptchaError(true)
+      return
+    }
+    attemptsRef.current += 1
+
+    if (window.turnstile && containerRef.current && !widgetRef.current) {
+      widgetRef.current = window.turnstile.render(containerRef.current, {
+        sitekey:           process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY,
+        callback:          (token: string) => {
+          setTurnstileToken(token)
+          setCaptchaError(false)
+        },
+        'expired-callback': () => setTurnstileToken(null),
+        'error-callback':   () => {
+          setTurnstileToken(null)
+          setCaptchaError(true)
+        },
+        theme: 'auto',
+      })
+    } else {
+      timeoutRef.current = setTimeout(tryRender, 200)
+    }
+  }, [])
 
   useEffect(() => {
     const scriptId = 'cf-turnstile-script'
@@ -48,55 +84,31 @@ export function Contact() {
       script.src          = 'https://challenges.cloudflare.com/turnstile/v0/api.js'
       script.async        = true
       script.defer        = true
-      script.crossOrigin  = 'anonymous'   // ← best practice for external scripts
+      script.crossOrigin  = 'anonymous' // FINDING 2.7: add crossOrigin for external script
       document.head.appendChild(script)
     }
 
-    // Reset attempt counter on mount / re-mount
     attemptsRef.current = 0
-
-    const tryRender = () => {
-      // Bail out after MAX_TURNSTILE_ATTEMPTS to prevent infinite polling
-      if (attemptsRef.current >= MAX_TURNSTILE_ATTEMPTS) {
-        setError(
-          'Security check failed to load. Please refresh the page and try again.'
-        )
-        return
-      }
-      attemptsRef.current += 1
-
-      if (window.turnstile && containerRef.current && !widgetRef.current) {
-        widgetRef.current = window.turnstile.render(containerRef.current, {
-          sitekey:          process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY,
-          callback:         (token: string) => setTurnstileToken(token),
-          'expired-callback': () => setTurnstileToken(null),
-          'error-callback':   () => {
-            setTurnstileToken(null)
-            setError('Security check encountered an error. Please refresh the page.')
-          },
-          theme: 'auto',
-        })
-      } else {
-        setTimeout(tryRender, 200)
-      }
-    }
     tryRender()
 
     return () => {
+      // Clear any pending retry timeout on unmount to prevent memory leaks.
+      if (timeoutRef.current) clearTimeout(timeoutRef.current)
+
       if (widgetRef.current && window.turnstile) {
         window.turnstile.remove(widgetRef.current)
         widgetRef.current = null
       }
     }
-  }, [])
+  }, [tryRender])
 
+  // ── Form field handler ───────────────────────────────────────────────────
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData(prev => ({
-      ...prev,
-      [e.target.name]: e.target.value,
-    }))
+    const { name, value } = e.target
+    setFormData(prev => ({ ...prev, [name]: value }))
   }
 
+  // ── Submit handler ─────────────────────────────────────────────────────
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setError(null)
@@ -115,25 +127,34 @@ export function Contact() {
         body:    JSON.stringify({ ...formData, turnstileToken }),
       })
 
+      const data = await res.json() as { error?: string; requestId?: string }
+
       if (!res.ok) {
-        const data = await res.json() as { error?: string }
-        throw new Error(data.error ?? 'Something went wrong')
+        throw new Error(data.error ?? 'Something went wrong. Please try again.')
       }
 
       setSubmitted(true)
-      setFormData({ name: '', email: '', subject: '', message: '' })
+      setFormData(INITIAL_FORM)
       setTurnstileToken(null)
+      attemptsRef.current = 0
+
       if (widgetRef.current && window.turnstile) {
         window.turnstile.reset(widgetRef.current)
       }
 
       setTimeout(() => setSubmitted(false), 6_000)
+
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Something went wrong. Please try again.')
+      const message = err instanceof Error ? err.message : 'Something went wrong. Please try again.'
+      setError(message)
     } finally {
       setIsSubmitting(false)
     }
   }
+
+  const messageRemaining = FIELD_LIMITS.message - formData.message.length
+  const isOverLimit      = messageRemaining < 0
+  const isNearLimit      = messageRemaining >= 0 && messageRemaining < 200
 
   return (
     <section id="contact" className="section-padding">
@@ -217,7 +238,7 @@ export function Contact() {
             viewport={{ once: true }}
             className="space-y-6"
           >
-            {/* Success Banner — role=status for polite screen-reader announcement */}
+            {/* Success Banner — aria-live so screen readers announce it */}
             <AnimatePresence>
               {submitted && (
                 <motion.div
@@ -243,7 +264,9 @@ export function Contact() {
             <form onSubmit={handleSubmit} className="space-y-6" noValidate>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium mb-2">Name</label>
+                  <label htmlFor="name" className="block text-sm font-medium mb-2">
+                    Name <span aria-hidden="true" className="text-red-500">*</span>
+                  </label>
                   <input
                     type="text"
                     id="name"
@@ -253,12 +276,15 @@ export function Contact() {
                     required
                     maxLength={FIELD_LIMITS.name}
                     autoComplete="name"
+                    aria-required="true"
                     className="w-full px-4 py-3 bg-background border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-colors duration-200"
                     placeholder="Your name"
                   />
                 </div>
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium mb-2">Email</label>
+                  <label htmlFor="email" className="block text-sm font-medium mb-2">
+                    Email <span aria-hidden="true" className="text-red-500">*</span>
+                  </label>
                   <input
                     type="email"
                     id="email"
@@ -268,6 +294,7 @@ export function Contact() {
                     required
                     maxLength={FIELD_LIMITS.email}
                     autoComplete="email"
+                    aria-required="true"
                     className="w-full px-4 py-3 bg-background border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-colors duration-200"
                     placeholder="your@email.com"
                   />
@@ -275,7 +302,9 @@ export function Contact() {
               </div>
 
               <div>
-                <label htmlFor="subject" className="block text-sm font-medium mb-2">Subject</label>
+                <label htmlFor="subject" className="block text-sm font-medium mb-2">
+                  Subject <span aria-hidden="true" className="text-red-500">*</span>
+                </label>
                 <input
                   type="text"
                   id="subject"
@@ -284,13 +313,31 @@ export function Contact() {
                   onChange={handleChange}
                   required
                   maxLength={FIELD_LIMITS.subject}
+                  aria-required="true"
                   className="w-full px-4 py-3 bg-background border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-colors duration-200"
                   placeholder="What&apos;s this about?"
                 />
               </div>
 
               <div>
-                <label htmlFor="message" className="block text-sm font-medium mb-2">Message</label>
+                <div className="flex items-center justify-between mb-2">
+                  <label htmlFor="message" className="block text-sm font-medium">
+                    Message <span aria-hidden="true" className="text-red-500">*</span>
+                  </label>
+                  {/* Character count — visible when approaching limit */}
+                  {(isNearLimit || isOverLimit) && (
+                    <span
+                      className={`text-xs tabular-nums ${
+                        isOverLimit ? 'text-red-500 font-medium' : 'text-muted-foreground'
+                      }`}
+                      aria-live="polite"
+                    >
+                      {isOverLimit
+                        ? `${Math.abs(messageRemaining)} over limit`
+                        : `${messageRemaining} remaining`}
+                    </span>
+                  )}
+                </div>
                 <textarea
                   id="message"
                   name="message"
@@ -299,29 +346,59 @@ export function Contact() {
                   required
                   rows={6}
                   maxLength={FIELD_LIMITS.message}
+                  aria-required="true"
+                  aria-describedby={isNearLimit || isOverLimit ? 'message-count' : undefined}
                   className="w-full px-4 py-3 bg-background border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-colors duration-200 resize-none"
                   placeholder="Tell me about your project or just say hello!"
                 />
               </div>
 
               {/* Turnstile Widget */}
-              <div ref={containerRef} aria-label="Security verification" />
+              {captchaError ? (
+                <div
+                  role="alert"
+                  className="flex items-center gap-2 p-3 bg-yellow-500/10 border border-yellow-500/30 rounded-lg text-sm text-yellow-600 dark:text-yellow-400"
+                >
+                  <AlertCircle className="w-4 h-4 shrink-0" aria-hidden="true" />
+                  Security check failed to load. Please{' '}
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setCaptchaError(false)
+                      attemptsRef.current = 0
+                      tryRender()
+                    }}
+                    className="underline hover:no-underline"
+                  >
+                    try again
+                  </button>
+                  {' '}or refresh the page.
+                </div>
+              ) : (
+                <div ref={containerRef} aria-label="Security verification" />
+              )}
 
-              {/* Error — role=alert for immediate screen-reader announcement */}
+              {/* Error message — role=alert ensures screen readers announce it immediately */}
               {error && (
-                <p role="alert" aria-live="assertive" className="text-sm text-red-500">
-                  {error}
-                </p>
+                <div
+                  role="alert"
+                  aria-live="assertive"
+                  className="flex items-start gap-2 p-3 bg-red-500/10 border border-red-500/30 rounded-lg"
+                >
+                  <AlertCircle className="w-4 h-4 text-red-500 mt-0.5 shrink-0" aria-hidden="true" />
+                  <p className="text-sm text-red-500">{error}</p>
+                </div>
               )}
 
               <button
                 type="submit"
-                disabled={isSubmitting || submitted || !turnstileToken}
+                disabled={isSubmitting || submitted || !turnstileToken || isOverLimit}
                 className="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200 group"
+                aria-busy={isSubmitting}
               >
                 {isSubmitting ? (
                   <>
-                    <span className="sr-only">Sending message…</span>
+                    <span className="sr-only">Sending message, please wait.</span>
                     <span aria-hidden="true">Sending…</span>
                   </>
                 ) : (
