@@ -1,0 +1,9 @@
+# robots.txt — zrl.dev
+# Allow all crawlers by default (public portfolio site).
+# Disallow API paths from indexing — no value in crawling these.
+
+User-agent: *
+Allow: /
+Disallow: /api/
+
+Sitemap: https://zrl.dev/sitemap.xml

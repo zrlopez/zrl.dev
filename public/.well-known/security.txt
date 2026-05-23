@@ -1,9 +1,11 @@
-# Security contact information for zrl.dev
-# Per RFC 9116: https://www.rfc-editor.org/rfc/rfc9116
+# Security disclosure policy for zrl.dev
+# RFC 9116 — https://www.rfc-editor.org/rfc/rfc9116
+#
+# If you have found a security vulnerability in this site, please
+# disclose it responsibly using the contact below. I appreciate
+# good-faith research and will respond promptly.
 
 Contact: mailto:hello@zrl.dev
-Expires: 2027-05-23T00:00:00.000Z
 Preferred-Languages: en
-Scope: https://zrl.dev
-Policy: https://github.com/zrlopez/zrl.dev/blob/main/SECURITY.md
+Expires: 2027-06-01T00:00:00.000Z
 Canonical: https://zrl.dev/.well-known/security.txt
