@@ -152,7 +152,7 @@ jobs:
 
       - name: Upload SBOM artifact
         # actions/upload-artifact@v4.6.2
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: sbom-${{ github.sha }}
           path: sbom.json
@@ -193,7 +193,7 @@ jobs:
         # Avoids exposing compiled server internals and source maps as
         # a public artifact on this open-source repository.
         # actions/upload-artifact@v4.6.2
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         if: success()
         with:
           name: build-id-${{ github.sha }}
