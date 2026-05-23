@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     template: '%s | ZRL',
   },
   description: 'Portfolio of Zachary Ryan Lopez — AI/ML, data ops, support engineering, and brand systems.',
-  keywords: ['AI/ML', 'Data Operations', 'Support Engineering', 'Portfolio', 'Austin', 'Texas'],
+  keywords: ['AI/ML', 'Data Operations', 'Support Engineering', 'Portfolio', 'Houston', 'Texas'],
   authors: [{ name: 'Zachary Ryan Lopez' }],
   creator: 'Zachary Ryan Lopez',
   metadataBase: new URL('https://zrl.dev'),
@@ -47,11 +47,13 @@ export const metadata: Metadata = {
     images: ['/og-image.jpg'],
   },
   robots: {
-    index: false,
-    follow: false,
+    // Indexing enabled — this portfolio supports active job search visibility.
+    // Previously disabled (index: false). Flipped intentionally.
+    index: true,
+    follow: true,
     googleBot: {
-      index: false,
-      follow: false,
+      index: true,
+      follow: true,
       'max-video-preview': -1,
       'max-image-preview': 'large',
       'max-snippet': -1,
@@ -65,6 +67,11 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
+    // suppressHydrationWarning is intentional here — next-themes writes the
+    // resolved color scheme (class="dark" or class="light") to <html> on the
+    // client after SSR, which always causes a mismatch. Suppressing at the
+    // <html> element only prevents false-positive hydration warnings without
+    // masking real component-level hydration bugs.
     <html lang="en" className={nunito.variable} suppressHydrationWarning>
       <head>
         <link rel="icon" href="/favicon.ico" />
