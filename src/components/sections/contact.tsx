@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Mail, MessageSquare, Send, MapPin, Clock, CheckCircle, AlertCircle } from 'lucide-react'
 import { useState, useEffect, useRef, useCallback } from 'react'
 
-// ── Field length limits (must mirror functions/api/contact.ts LIMITS) ──────────
+// ── Field length limits (mirrors functions/api/contact.ts LIMITS) ────────────
 const FIELD_LIMITS = {
   name:    100,
   email:   254,
@@ -14,6 +14,9 @@ const FIELD_LIMITS = {
 
 // Maximum retry attempts when waiting for Turnstile to load (~10 seconds).
 const TURNSTILE_MAX_ATTEMPTS = 50
+
+// Fetch timeout in milliseconds — fail fast when Resend API is degraded.
+const FETCH_TIMEOUT_MS = 15_000
 
 declare global {
   interface Window {
@@ -32,7 +35,23 @@ interface FormData {
   message: string
 }
 
+type FieldName = keyof FormData
+
 const INITIAL_FORM: FormData = { name: '', email: '', subject: '', message: '' }
+
+/**
+ * Reads the CSP nonce injected by middleware.ts via a <meta name="x-nonce">
+ * element in the page layout. Returns an empty string when running on the
+ * client before hydration or when the meta tag is absent (dev without middleware).
+ */
+function getCspNonce(): string {
+  if (typeof document === 'undefined') return ''
+  return (
+    document
+      .querySelector<HTMLMetaElement>('meta[name="x-nonce"]')
+      ?.getAttribute('content') ?? ''
+  )
+}
 
 export function Contact() {
   const [formData,       setFormData]       = useState<FormData>(INITIAL_FORM)
@@ -46,11 +65,12 @@ export function Contact() {
   const containerRef = useRef<HTMLDivElement>(null)
   const timeoutRef   = useRef<ReturnType<typeof setTimeout> | null>(null)
   const attemptsRef  = useRef(0)
+  // Keeps the AbortController for the in-flight fetch so we can cancel
+  // it on unmount or when a new submission starts.
+  const abortRef     = useRef<AbortController | null>(null)
 
-  // ── Load and render Turnstile widget ──────────────────────────────────────
+  // ── Load and render Turnstile widget ──────────────────────────────────
   const tryRender = useCallback(() => {
-    // Guard: bail out after MAX_ATTEMPTS to prevent infinite loop when
-    // Cloudflare's CDN is unreachable or the script fails to load.
     if (attemptsRef.current >= TURNSTILE_MAX_ATTEMPTS) {
       setCaptchaError(true)
       return
@@ -78,13 +98,22 @@ export function Contact() {
 
   useEffect(() => {
     const scriptId = 'cf-turnstile-script'
+
     if (!document.getElementById(scriptId)) {
-      const script        = document.createElement('script')
-      script.id           = scriptId
-      script.src          = 'https://challenges.cloudflare.com/turnstile/v0/api.js'
-      script.async        = true
-      script.defer        = true
-      script.crossOrigin  = 'anonymous' // FINDING 2.7: add crossOrigin for external script
+      const script       = document.createElement('script')
+      script.id          = scriptId
+      script.src         = 'https://challenges.cloudflare.com/turnstile/v0/api.js'
+      script.async       = true
+      script.defer       = true
+      script.crossOrigin = 'anonymous'
+
+      // ── REM-14 FIX: apply CSP nonce so middleware's nonce-gated
+      //    script-src directive permits this dynamically created element.
+      //    Without this the browser blocks the script silently and the
+      //    Turnstile widget never renders.
+      const nonce = getCspNonce()
+      if (nonce) script.nonce = nonce
+
       document.head.appendChild(script)
     }
 
@@ -92,8 +121,9 @@ export function Contact() {
     tryRender()
 
     return () => {
-      // Clear any pending retry timeout on unmount to prevent memory leaks.
       if (timeoutRef.current) clearTimeout(timeoutRef.current)
+      // Cancel any in-flight fetch on unmount.
+      abortRef.current?.abort()
 
       if (widgetRef.current && window.turnstile) {
         window.turnstile.remove(widgetRef.current)
@@ -102,13 +132,17 @@ export function Contact() {
     }
   }, [tryRender])
 
-  // ── Form field handler ───────────────────────────────────────────────────
+  // ── Form field handler — REM-16: enforce limits in state ──────────────
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
-    setFormData(prev => ({ ...prev, [name]: value }))
+    const field = name as FieldName
+    const limit = FIELD_LIMITS[field]
+    // Slice in state so the controlled component value can never exceed the
+    // server-side limit even if the input is programmatically populated.
+    setFormData(prev => ({ ...prev, [field]: value.slice(0, limit) }))
   }
 
-  // ── Submit handler ─────────────────────────────────────────────────────
+  // ── Submit handler — REM-15: 15 s AbortController timeout ────────────
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setError(null)
@@ -118,6 +152,15 @@ export function Contact() {
       return
     }
 
+    // Cancel any stale in-flight request before starting a new one.
+    abortRef.current?.abort()
+    const controller = new AbortController()
+    abortRef.current = controller
+
+    // Auto-abort after FETCH_TIMEOUT_MS to prevent indefinite spinner
+    // when Resend's API is degraded or the network is unreachable.
+    const timeoutId = setTimeout(() => controller.abort(), FETCH_TIMEOUT_MS)
+
     setIsSubmitting(true)
 
     try {
@@ -125,7 +168,10 @@ export function Contact() {
         method:  'POST',
         headers: { 'Content-Type': 'application/json' },
         body:    JSON.stringify({ ...formData, turnstileToken }),
+        signal:  controller.signal,
       })
+
+      clearTimeout(timeoutId)
 
       const data = await res.json() as { error?: string; requestId?: string }
 
@@ -145,10 +191,18 @@ export function Contact() {
       setTimeout(() => setSubmitted(false), 6_000)
 
     } catch (err) {
-      const message = err instanceof Error ? err.message : 'Something went wrong. Please try again.'
-      setError(message)
+      clearTimeout(timeoutId)
+      // AbortError is thrown when the signal fires (timeout or unmount).
+      // Distinguish between user-visible timeout and a server error.
+      if (err instanceof DOMException && err.name === 'AbortError') {
+        setError('Request timed out. Please check your connection and try again.')
+      } else {
+        const message = err instanceof Error ? err.message : 'Something went wrong. Please try again.'
+        setError(message)
+      }
     } finally {
       setIsSubmitting(false)
+      abortRef.current = null
     }
   }
 
@@ -238,7 +292,7 @@ export function Contact() {
             viewport={{ once: true }}
             className="space-y-6"
           >
-            {/* Success Banner — aria-live so screen readers announce it */}
+            {/* Success Banner */}
             <AnimatePresence>
               {submitted && (
                 <motion.div
@@ -324,9 +378,9 @@ export function Contact() {
                   <label htmlFor="message" className="block text-sm font-medium">
                     Message <span aria-hidden="true" className="text-red-500">*</span>
                   </label>
-                  {/* Character count — visible when approaching limit */}
                   {(isNearLimit || isOverLimit) && (
                     <span
+                      id="message-count"
                       className={`text-xs tabular-nums ${
                         isOverLimit ? 'text-red-500 font-medium' : 'text-muted-foreground'
                       }`}
@@ -378,7 +432,7 @@ export function Contact() {
                 <div ref={containerRef} aria-label="Security verification" />
               )}
 
-              {/* Error message — role=alert ensures screen readers announce it immediately */}
+              {/* Error message */}
               {error && (
                 <div
                   role="alert"

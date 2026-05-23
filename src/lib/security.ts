@@ -2,20 +2,30 @@
  * security.ts
  * Shared server-side security utilities.
  *
- * IMPORTANT: Import only in server components and Cloudflare Pages Functions.
- * Never import into client bundles — this module has no client-safe surface.
+ * IMPORTANT: This module is server-only. The 'server-only' import below
+ * causes Next.js to throw a build error if this module is ever imported
+ * into a Client Component or the browser bundle — preventing accidental
+ * exposure of sanitization logic and keeping the client bundle clean.
  *
- * Functions in this module are intentionally narrow and composable:
+ * REM-06: htmlEscape() is now re-exported from html-escaper (a direct
+ * dependency of Next.js) to eliminate the risk of the two implementations
+ * diverging over time. The API is identical — existing callers require
+ * no changes.
+ *
+ * Functions:
  *   sanitizeField()       — strip control chars, normalize whitespace
  *   sanitizeHeaderField() — sanitizeField + strip RFC 5322 header-folding chars
  *   htmlEscape()          — escape for HTML body contexts ONLY (not headers)
  *   validateEmail()       — RFC 5321 format check + header injection guard
  */
 
+import 'server-only'
+import { escape as _htmlEscaperEscape } from 'html-escaper'
+
 /**
  * Removes non-printable Unicode control characters and normalizes whitespace.
  *
- * Strips all C0 and C1 control characters (U+0000–U+001F, U+007F, U+0080–U+009F)
+ * Strips C0 and C1 control characters (U+0000–U+001F, U+007F, U+0080–U+009F)
  * which have no legitimate use in form input and could confuse downstream
  * parsers, log aggregators, or email clients.
  *
@@ -41,49 +51,45 @@ export function sanitizeField(str: string, allowNewlines = false): string {
  *   - Horizontal tab (\t, U+0009)  — header folding
  *
  * Safe to use directly in email API payloads as From/To/Subject values.
- * Do NOT then also run htmlEscape() on the result — that would corrupt the header.
+ * Do NOT also run htmlEscape() on the result — that would corrupt the header.
  */
 export function sanitizeHeaderField(str: string): string {
   return str
-    .replace(/[\r\n\t]/g, ' ') // flatten newlines/tabs before broader strip
+    .replace(/[\r\n\t]/g, ' ') // flatten before broader strip
     .replace(/[\u0000-\u001F\u007F\u0080-\u009F]/g, '')
     .trim()
 }
 
 /**
- * Escapes HTML special characters.
+ * Escapes HTML special characters for safe insertion into HTML body content.
  *
- * Use ONLY when inserting user-controlled strings into an HTML body context
- * (e.g., the body of an HTML email). Do NOT use for email header fields
- * (To, From, Reply-To, Subject) — HTML encoding is not valid in RFC 5322
- * headers and will break email clients.
+ * REM-06: Delegates to html-escaper rather than maintaining an inline
+ * implementation. html-escaper is a production-hardened library that encodes
+ * & < > " ' — identical coverage to the previous inline implementation.
  *
- * Converts: & < > " ' / `
+ * Use ONLY for HTML body contexts (e.g., HTML email body).
+ * Do NOT use for email header fields (To, From, Subject) — HTML encoding
+ * is not valid in RFC 5322 headers and will corrupt the header value.
  */
 export function htmlEscape(str: string): string {
-  return str
-    .replace(/&/g,  '&amp;')
-    .replace(/</g,  '&lt;')
-    .replace(/>/g,  '&gt;')
-    .replace(/"/g,  '&quot;')
-    .replace(/'/g,  '&#39;')
-    .replace(/\//g, '&#x2F;')  // closes HTML tags in some legacy parsers
-    .replace(/`/g,  '&#96;')   // template-literal injection guard
+  return _htmlEscaperEscape(str)
 }
 
 /**
  * Validates an email address against an RFC 5321-compatible pattern.
  *
- * Explicitly blocks \r and \n to prevent email header injection regardless
- * of what sanitization has already been applied upstream. Defense in depth.
+ * Blocks \r and \n unconditionally to prevent header injection regardless
+ * of upstream sanitization. Defense in depth.
  *
  * Returns false for empty strings, strings with whitespace-only content,
  * addresses exceeding 254 characters (RFC 5321 max), or any that fail
- * the format pattern.
+ * the format pattern. Also rejects addresses with non-ASCII characters
+ * (IDN / punycode) to prevent encoding-based bypass attempts.
  */
 export function validateEmail(email: string): boolean {
   if (!email || email.length > 254) return false
   if (/[\r\n]/.test(email))         return false  // header injection guard
+  if (/[^\x00-\x7F]/.test(email))   return false  // block IDN / non-ASCII
   const pattern = /^[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,63}$/
   return pattern.test(email.trim())
 }
