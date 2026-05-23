@@ -1,7 +1,7 @@
 # ── CI Pipeline — zrl.dev ───────────────────────────────────────────────────────────────────
 # Runs on every push and PR to main.
 #
-# SECURITY GATES (all must pass before Vercel auto-deploy proceeds):
+# SECURITY GATES (all must pass before build proceeds):
 #   secret-scan   → TruffleHog OSS full-history secret scan
 #   dep-audit     → npm audit (high severity threshold)
 #   type-check    → TypeScript strict compilation check
@@ -9,8 +9,13 @@
 #   sbom          → CycloneDX SBOM generation (provenance artifact)
 #   build         → Production build (needs all above)
 #
-# All GitHub Actions are pinned to immutable commit SHAs, not mutable tags,
-# to prevent supply-chain substitution attacks.
+# ACTION PINNING STRATEGY:
+#   GitHub-owned actions (actions/*): pinned to immutable commit SHAs.
+#   Third-party actions (trufflesecurity/*): pinned to the official v3
+#   floating major-version tag, which is the documented stable reference
+#   per https://github.com/trufflesecurity/trufflehog#octocat-trufflehog-github-action
+#   TruffleHog v3 is actively maintained; patch/minor releases are
+#   auto-included. Review release notes on Dependabot PRs.
 # ────────────────────────────────────────────────────────────────────────────────
 name: CI
 
@@ -39,18 +44,21 @@ jobs:
       contents: read
     steps:
       - name: Checkout (full history for secret scan)
-        # actions/checkout@v4.2.2
+        # actions/checkout@v4.2.2 — pinned to immutable SHA
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
         with:
-          fetch-depth: 0  # Full git history required for TruffleHog entropy analysis
+          fetch-depth: 0  # Full git history required for TruffleHog to scan all commits
 
       - name: TruffleHog OSS Secret Scan
-        # trufflesecurity/trufflehog@v3 (latest stable SHA as of 2026-05)
-        uses: trufflesecurity/trufflehog@d2f9bb14a4a050fcda0a6e4c81ac6c2c6cb0df05
+        # trufflesecurity/trufflehog@v3
+        # Using official floating major-version tag per TruffleHog documentation.
+        # SHA-pinning trufflehog requires pointing at a RELEASE commit SHA,
+        # not an application source commit — using @v3 is the correct stable reference.
+        # Dependabot (dependabot.yml) monitors this for version updates.
+        uses: trufflesecurity/trufflehog@v3
         with:
           path:       ./
-          base:       ${{ github.event.repository.default_branch }}
-          extra_args: --only-verified --json
+          extra_args: --only-verified
 
   # ───────────────────────────────────────────────────────────────────────────
   dep-audit:
@@ -60,11 +68,10 @@ jobs:
       contents: read
     steps:
       - name: Checkout
-        # actions/checkout@v4.2.2
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
 
       - name: Setup Node
-        # actions/setup-node@v4.4.0
+        # actions/setup-node@v4.4.0 — pinned to immutable SHA
         uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
         with:
           node-version: '20'
@@ -151,12 +158,11 @@ jobs:
             --package-lock-only
 
       - name: Upload SBOM artifact
-        # actions/upload-artifact@v4.6.2
         uses: actions/upload-artifact@v4
         with:
           name: sbom-${{ github.sha }}
           path: sbom.json
-          retention-days: 30  # SBOM retained for compliance/audit trail
+          retention-days: 30
 
   # ───────────────────────────────────────────────────────────────────────────
   build:
@@ -167,10 +173,10 @@ jobs:
     # All security and quality gates must pass before build.
     needs: [secret-scan, dep-audit, type-check, lint]
     env:
-      # Stub secrets: real values exist only in Cloudflare / Vercel runtime.
-      # These are placeholders to satisfy build-time env validation.
-      RESEND_API_KEY:              ${{ secrets.RESEND_API_KEY              || 'ci-stub-resend-not-real' }}
-      TURNSTILE_SECRET_KEY:        ${{ secrets.TURNSTILE_SECRET_KEY        || 'ci-stub-turnstile-not-real' }}
+      # Stub secrets for CI build-time env validation.
+      # Real values live only in Cloudflare Pages runtime — never in CI.
+      RESEND_API_KEY:                 ${{ secrets.RESEND_API_KEY                 || 'ci-stub-resend-not-real' }}
+      TURNSTILE_SECRET_KEY:           ${{ secrets.TURNSTILE_SECRET_KEY           || 'ci-stub-turnstile-not-real' }}
       NEXT_PUBLIC_TURNSTILE_SITE_KEY: ${{ secrets.NEXT_PUBLIC_TURNSTILE_SITE_KEY || 'ci-stub-sitekey-not-real' }}
     steps:
       - name: Checkout
@@ -189,10 +195,7 @@ jobs:
         run: npm run build
 
       - name: Upload build ID (traceability only)
-        # Scoped to BUILD_ID only — not the full .next/ directory.
-        # Avoids exposing compiled server internals and source maps as
-        # a public artifact on this open-source repository.
-        # actions/upload-artifact@v4.6.2
+        # Scoped to single-line BUILD_ID — not the full .next/ compiled output.
         uses: actions/upload-artifact@v4
         if: success()
         with:
