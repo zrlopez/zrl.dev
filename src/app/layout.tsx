@@ -83,7 +83,6 @@ export default function RootLayout({
           attribute="class"
           defaultTheme="light"
           enableSystem
-          disableTransitionOnChange={false}
         >
           <Navigation />
           <main className="flex-1">{children}</main>

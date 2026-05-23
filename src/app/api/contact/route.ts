@@ -3,7 +3,9 @@ import { Resend } from 'resend'
 import { htmlEscape, validateEmail, sanitizeField } from '@/lib/security'
 import { validateEnv } from '@/lib/env'
 
-export const runtime = 'edge'
+// Node.js runtime: required for Resend SDK (uses node:buffer internals).
+// Edge runtime would fail at module resolution for this route.
+export const runtime = 'nodejs'
 
 // Allowlisted origins — CSRF protection
 const ALLOWED_ORIGINS = ['https://zrl.dev']
@@ -128,10 +130,10 @@ export async function POST(req: NextRequest) {
     const safeMessage = htmlEscape(sanitizeField(message))
 
     // ── Send email ────────────────────────────────────────────────────────────
-    await resend.emails.send({
+    const { error: sendError } = await resend.emails.send({
       from: 'Contact Form <hello@zrl.dev>',
-      to:   'hello@zrl.dev',
-      reply_to: safeEmail,
+      to:   ['hello@zrl.dev'],
+      replyTo: safeEmail,
       subject: `[zrl.dev] ${safeSubject}`,
       html: `
         <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto;">
@@ -159,6 +161,11 @@ export async function POST(req: NextRequest) {
         </div>
       `,
     })
+
+    // ── Resend v4: check discriminated union error ────────────────────────────
+    if (sendError) {
+      throw new Error(`Resend delivery failed: ${sendError.message}`)
+    }
 
     // ── Structured audit log (no PII) ─────────────────────────────────────────
     console.log(JSON.stringify({
