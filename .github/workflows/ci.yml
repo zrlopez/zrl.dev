@@ -11,11 +11,10 @@
 #
 # ACTION PINNING STRATEGY:
 #   GitHub-owned actions (actions/*): pinned to immutable commit SHAs.
-#   Third-party actions (trufflesecurity/*): pinned to the official v3
-#   floating major-version tag, which is the documented stable reference
-#   per https://github.com/trufflesecurity/trufflehog#octocat-trufflehog-github-action
-#   TruffleHog v3 is actively maintained; patch/minor releases are
-#   auto-included. Review release notes on Dependabot PRs.
+#   Third-party actions (trufflesecurity/*): pinned to v3.95.3 (tag SHA: 37b77001).
+#   TruffleHog v3.95.3+ requires Node 24 for its action runtime — a setup-node
+#   step is included in the secret-scan job to satisfy this requirement.
+#   Dependabot (dependabot.yml) monitors trufflehog for version updates.
 # ────────────────────────────────────────────────────────────────────────────────
 name: CI
 
@@ -44,18 +43,22 @@ jobs:
       contents: read
     steps:
       - name: Checkout (full history for secret scan)
-        # actions/checkout@v4.2.2 — pinned to immutable SHA
+        # actions/checkout@v6 — pinned to immutable SHA
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
         with:
           fetch-depth: 0  # Full git history required for TruffleHog to scan all commits
 
+      - name: Setup Node 24 (required by TruffleHog action runtime v3.95.3+)
+        # actions/setup-node@v6.4.0 — pinned to immutable SHA
+        uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e
+        with:
+          node-version: '24'
+
       - name: TruffleHog OSS Secret Scan
-        # trufflesecurity/trufflehog@v3
-        # Using official floating major-version tag per TruffleHog documentation.
-        # SHA-pinning trufflehog requires pointing at a RELEASE commit SHA,
-        # not an application source commit — using @v3 is the correct stable reference.
-        # Dependabot (dependabot.yml) monitors this for version updates.
-        uses: trufflesecurity/trufflehog@v3
+        # trufflesecurity/trufflehog@v3.95.3 — pinned to immutable tag SHA 37b77001
+        # v3.95.3 bumped internal JS action runtime to Node 24 (see release notes).
+        # Node 24 setup step above satisfies this requirement.
+        uses: trufflesecurity/trufflehog@37b77001d0174ebec2fcca2bd83ff83a6d45a3ab
         with:
           path:       ./
           extra_args: --only-verified
@@ -71,7 +74,7 @@ jobs:
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
 
       - name: Setup Node
-        # actions/setup-node@v4.4.0 — pinned to immutable SHA
+        # actions/setup-node@v6.4.0 — pinned to immutable SHA
         uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e
         with:
           node-version: '20'
