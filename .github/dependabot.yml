@@ -1,0 +1,58 @@
+# ── Dependabot Configuration — zrl.dev ─────────────────────────────────────────
+#
+# Opens PRs for:
+#   - npm patch + minor updates weekly (major = manual review required)
+#   - GitHub Actions updates weekly (SHA-pinned, Dependabot updates SHAs)
+#
+# Security advisories open PRs immediately regardless of schedule
+# (configured separately in GitHub repository Security settings).
+
+version: 2
+updates:
+
+  # ── npm packages ──────────────────────────────────────────────────────────
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+      time: '09:00'
+      timezone: America/Chicago
+    open-pull-requests-limit: 10
+    labels:
+      - dependencies
+    commit-message:
+      prefix: 'fix(deps)'
+      prefix-development: 'chore(deps-dev)'
+    # Skip major version bumps — require intentional manual upgrades
+    ignore:
+      - dependency-name: '*'
+        update-types:
+          - version-update:semver-major
+    # Group minor + patch updates into a single PR to reduce noise
+    groups:
+      production-minor-patch:
+        dependency-type: production
+        update-types:
+          - minor
+          - patch
+      dev-minor-patch:
+        dependency-type: development
+        update-types:
+          - minor
+          - patch
+
+  # ── GitHub Actions ──────────────────────────────────────────────────────────
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+      time: '09:00'
+      timezone: America/Chicago
+    open-pull-requests-limit: 5
+    labels:
+      - dependencies
+      - github-actions
+    commit-message:
+      prefix: 'ci(actions)'
