@@ -150,4 +150,4 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 ---
 
-**© 2026 Zachary Ryan Lopez. All rigthts reserved.** | [zrl.dev](https://zrl.dev) | [LinkedIn](https://linkedin.com/in/zrlopez) made with 🤍 in atx
+**© 2026 Zachary Ryan Lopez. All rights reserved.** | [zrl.dev](https://zrl.dev) | [LinkedIn](https://linkedin.com/in/zrlopez) made with 🤍 in atx
