@@ -1,58 +1,48 @@
-# ── Dependabot Configuration — zrl.dev ─────────────────────────────────────────
+# Dependabot configuration — zrl.dev
+# https://docs.github.com/en/code-security/dependabot/dependabot-version-updates
 #
-# Opens PRs for:
-#   - npm patch + minor updates weekly (major = manual review required)
-#   - GitHub Actions updates weekly (SHA-pinned, Dependabot updates SHAs)
-#
-# Security advisories open PRs immediately regardless of schedule
-# (configured separately in GitHub repository Security settings).
+# Automated dependency update PRs prevent silent accumulation of CVEs.
+# Schedule: weekly (Monday, 09:00 CT). Both npm packages and GitHub Actions
+# are monitored separately since they have different update cadences and
+# different security implications.
 
 version: 2
 updates:
 
-  # ── npm packages ──────────────────────────────────────────────────────────
+  # ── npm packages ─────────────────────────────────────────────────────
   - package-ecosystem: npm
     directory: /
     schedule:
       interval: weekly
-      day: monday
-      time: '09:00'
+      day:  monday
+      time: "09:00"
       timezone: America/Chicago
-    open-pull-requests-limit: 10
     labels:
       - dependencies
-    commit-message:
-      prefix: 'fix(deps)'
-      prefix-development: 'chore(deps-dev)'
-    # Skip major version bumps — require intentional manual upgrades
-    ignore:
-      - dependency-name: '*'
-        update-types:
-          - version-update:semver-major
-    # Group minor + patch updates into a single PR to reduce noise
+    open-pull-requests-limit: 10
     groups:
-      production-minor-patch:
-        dependency-type: production
+      # Group minor and patch updates into a single weekly PR to reduce noise.
+      # Security updates always get individual PRs regardless of grouping.
+      minor-and-patch:
+        patterns:
+          - "*"
         update-types:
           - minor
           - patch
-      dev-minor-patch:
-        dependency-type: development
-        update-types:
-          - minor
-          - patch
+    ignore:
+      # Next.js major versions require manual testing before upgrade.
+      - dependency-name: next
+        update-types: ["version-update:semver-major"]
 
-  # ── GitHub Actions ──────────────────────────────────────────────────────────
+  # ── GitHub Actions ──────────────────────────────────────────────────
   - package-ecosystem: github-actions
     directory: /
     schedule:
       interval: weekly
-      day: monday
-      time: '09:00'
+      day:  monday
+      time: "09:00"
       timezone: America/Chicago
-    open-pull-requests-limit: 5
     labels:
       - dependencies
       - github-actions
-    commit-message:
-      prefix: 'ci(actions)'
+    open-pull-requests-limit: 5
