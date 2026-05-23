@@ -23,6 +23,7 @@
     "tailwind-merge": "2.6.0"
   },
   "devDependencies": {
+    "@cloudflare/workers-types": "4.20250525.0",
     "@types/html-escaper": "3.0.2",
     "@types/node": "22.15.21",
     "@types/react": "19.1.5",
