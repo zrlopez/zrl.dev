@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Award, ExternalLink, X } from 'lucide-react'
 
@@ -230,13 +231,16 @@ export function Certifications() {
                         Loading…
                       </div>
                     )}
-                    <img
+                    <Image
                       src={openCert.placeholderSrc}
                       alt={`${openCert.title} — ${openCert.issuer} certificate`}
+                      width={800}
+                      height={600}
                       className={`w-full h-auto object-contain rounded-lg transition-opacity duration-300 ${
                         imgLoaded ? 'opacity-100' : 'opacity-0 absolute'
                       }`}
                       onLoad={() => setImgLoaded(true)}
+                      unoptimized
                     />
                   </>
                 )}

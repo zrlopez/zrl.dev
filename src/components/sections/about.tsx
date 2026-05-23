@@ -26,7 +26,7 @@ export function About() {
           </div>
           
           <p className="text-lg md:text-xl text-muted-foreground leading-relaxed mb-12">
-            I'm an AI/ML data operations specialist with 7+ years improving annotation quality 
+            I&apos;m an AI/ML data operations specialist with 7+ years improving annotation quality 
             and UX for high-volume pipelines. I partner with ML and Product to reduce error classes, 
             tune taxonomies, and accelerate iteration through dashboards and QA rigor.
           </p>

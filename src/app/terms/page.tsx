@@ -7,7 +7,7 @@ export default function TermsPage() {
     <LegalLayout title="Terms of Service">
       <p><strong>Last updated:</strong> November 2025</p>
 
-      <p>These Terms of Service ("Terms") are a binding agreement between you ("user" or "you") and Zachary Ryan Lopez ("we", "us" or "our"). By accessing or using the zrl.dev website ("Site") you agree to be bound by these Terms. If you do not agree, please do not use the Site.</p>
+      <p>These Terms of Service (&quot;Terms&quot;) are a binding agreement between you (&quot;user&quot; or &quot;you&quot;) and Zachary Ryan Lopez (&quot;we&quot;, &quot;us&quot; or &quot;our&quot;). By accessing or using the zrl.dev website (&quot;Site&quot;) you agree to be bound by these Terms. If you do not agree, please do not use the Site.</p>
 
       <section className="mb-6">
         <h2>1. Site Description and Purpose</h2>

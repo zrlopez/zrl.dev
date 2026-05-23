@@ -6,7 +6,7 @@ export default function PrivacyPage() {
   return (
     <LegalLayout title="Privacy Policy">
       <p><strong>Last updated:</strong> November 2025</p>
-      <p>We created this Privacy Policy to explain in clear terms how we collect, use and share personal information when you visit or interact with zrl.dev ("we," "us," or "our"). We comply with U.S. privacy laws such as the Texas Data Privacy and Security Act (TDPSA).</p>
+      <p>We created this Privacy Policy to explain in clear terms how we collect, use and share personal information when you visit or interact with zrl.dev (&quot;we,&quot; &quot;us,&quot; or &quot;our&quot;). We comply with U.S. privacy laws such as the Texas Data Privacy and Security Act (TDPSA).</p>
 
       <section className="mb-6">
         <h2>Information We Collect</h2>
