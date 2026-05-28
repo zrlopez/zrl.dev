@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     template: '%s | ZRL',
   },
   description: 'Portfolio of Zachary Ryan Lopez — AI/ML, data ops, support engineering, and brand systems.',
-  keywords: ['AI/ML', 'Data Operations', 'Support Engineering', 'Portfolio', 'Houston', 'Texas'],
+  keywords: ['AI/ML', 'Data Operations', 'Support Engineering', 'Portfolio', 'Austin', 'Texas'],
   authors: [{ name: 'Zachary Ryan Lopez' }],
   creator: 'Zachary Ryan Lopez',
   metadataBase: new URL('https://zrl.dev'),
