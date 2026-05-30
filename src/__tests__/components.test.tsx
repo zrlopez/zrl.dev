@@ -15,7 +15,6 @@ import { render, screen } from '@testing-library/react';
 jest.mock('framer-motion', () => ({
   motion: new Proxy({}, {
     get: (_: unknown, tag: string) =>
-      // eslint-disable-next-line react/display-name
       ({ children, ...rest }: React.HTMLAttributes<HTMLElement> & { children?: React.ReactNode }) =>
         React.createElement(tag === 'div' ? 'div' : tag, rest, children),
   }),
@@ -27,13 +26,11 @@ jest.mock('framer-motion', () => ({
 jest.mock('lucide-react', () =>
   new Proxy({}, {
     get: (_: unknown, name: string) =>
-      // eslint-disable-next-line react/display-name
       () => <svg data-testid={`icon-${name}`} />,
   })
 );
 
 jest.mock('next/link', () =>
-  // eslint-disable-next-line react/display-name
   ({ children, href }: { children: React.ReactNode; href: string }) =>
     <a href={href}>{children}</a>
 );
