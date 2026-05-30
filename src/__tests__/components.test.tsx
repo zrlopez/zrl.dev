@@ -30,10 +30,12 @@ jest.mock('lucide-react', () =>
   })
 );
 
-jest.mock('next/link', () =>
-  ({ children, href }: { children: React.ReactNode; href: string }) =>
-    <a href={href}>{children}</a>
-);
+jest.mock('next/link', () => {
+  function MockLink({ children, href }: { children: React.ReactNode; href: string }) {
+    return <a href={href}>{children}</a>;
+  }
+  return MockLink;
+});
 
 jest.mock('next/navigation', () => ({
   useRouter: () => ({ push: jest.fn() }),
