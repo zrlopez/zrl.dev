@@ -1,0 +1,44 @@
+---
+engines:
+  eslint:
+    enabled: true
+    options:
+      config:
+        env:
+          browser: true
+          es2022: true
+          node: true
+        parserOptions:
+          ecmaVersion: 2022
+          sourceType: module
+          ecmaFeatures:
+            jsx: true
+        rules:
+          # React 17+ JSX transform — no longer needs React in scope
+          react/react-in-jsx-scope: off
+          # Arrow functions and template literals are standard in modern JS
+          no-restricted-syntax: off
+          # Trailing commas — Prettier enforces these, not a bug
+          comma-dangle: off
+          # ES5 prototype methods are valid in modern targets
+          prefer-template: off
+
+  # Disable CSS/SCSS engine — globals.css uses Tailwind directives not standard SCSS
+  stylelint:
+    enabled: false
+
+  # Disable legacy pmd/checkstyle engines not relevant to TS/React
+  pmd:
+    enabled: false
+  jacksonlinter:
+    enabled: false
+
+ignore:
+  - ".next/**"
+  - "node_modules/**"
+  - "coverage/**"
+  - "public/**"
+  - "*.config.js"
+  - "*.config.ts"
+  - "src/__tests__/**"
+  - "src/__mocks__/**"
