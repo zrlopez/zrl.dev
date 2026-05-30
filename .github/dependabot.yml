@@ -33,6 +33,10 @@ updates:
       # Next.js major versions require manual testing before upgrade.
       - dependency-name: next
         update-types: ["version-update:semver-major"]
+      # All other major version bumps require manual review — grouped PRs
+      # are still created but must be approved explicitly before merging.
+      - dependency-name: "*"
+        update-types: ["version-update:semver-major"]
 
   # ── GitHub Actions ──────────────────────────────────────────────────
   - package-ecosystem: github-actions
