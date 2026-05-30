@@ -1,5 +1,7 @@
+import { clsx } from 'clsx';
+
 describe('smoke', () => {
-  it('renders without crashing', () => {
-    expect(true).toBe(true);
+  it('clsx utility works', () => {
+    expect(clsx('foo', 'bar')).toBe('foo bar');
   });
 });
