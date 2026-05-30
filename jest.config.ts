@@ -11,6 +11,7 @@ const config: Config = {
   setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/src/$1',
+    '^server-only$': '<rootDir>/src/__mocks__/server-only.ts',
   },
   collectCoverageFrom: [
     'src/**/*.{ts,tsx}',
