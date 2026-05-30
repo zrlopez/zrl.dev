@@ -2,7 +2,8 @@
 
 ![Status](https://img.shields.io/badge/status-live-brightgreen)
 ![Stack](https://img.shields.io/badge/stack-Next.js%20%2B%20TypeScript%20%2B%20Tailwind-0A66C2)
-![CI](https://github.com/zrlopez/zrl.dev/actions/workflows/ci.yml/badge.svg)
+![CI](https://github.com/zrlopez/zrl.dev/actions/workflows/secured_ci.yml/badge.svg)
+[![codecov](https://codecov.io/gh/zrlopez/zrl.dev/branch/main/graph/badge.svg)](https://codecov.io/gh/zrlopez/zrl.dev)
 ![License](https://img.shields.io/badge/license-MIT-blue)
 
 > A modern, responsive portfolio website built with Next.js, TypeScript, and Tailwind CSS.
