@@ -130,7 +130,7 @@ jobs:
             --package-lock-only
 
       - name: Upload SBOM artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: sbom-${{ github.sha }}
           path: sbom.json
@@ -230,7 +230,7 @@ jobs:
 
       - name: Upload build ID (traceability only)
         if: success()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: build-id-${{ github.sha }}
           path: .next/BUILD_ID
