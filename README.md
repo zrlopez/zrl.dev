@@ -3,6 +3,7 @@
 ![Status](https://img.shields.io/badge/status-live-brightgreen)
 ![Stack](https://img.shields.io/badge/stack-Next.js%20%2B%20TypeScript%20%2B%20Tailwind-0A66C2)
 ![CI](https://github.com/zrlopez/zrl.dev/actions/workflows/secured_ci.yml/badge.svg)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/32ef4bb80c5240a2a5facf9877cbeb94)](https://app.codacy.com/gh/zrlopez/zrl.dev?utm_source=github.com&utm_medium=referral&utm_content=zrlopez/zrl.dev&utm_campaign=Badge_Grade)
 [![codecov](https://codecov.io/gh/zrlopez/zrl.dev/branch/main/graph/badge.svg)](https://codecov.io/gh/zrlopez/zrl.dev)
 ![License](https://img.shields.io/badge/license-MIT-blue)
 
