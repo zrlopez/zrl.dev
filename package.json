@@ -1,1 +1,57 @@
-ewogICJuYW1lIjogInpybC1kZXYtcG9ydGZvbGlvIiwKICAidmVyc2lvbiI6ICIyLjEuMCIsCiAgImRlc2NyaXB0aW9uIjogIlBvcnRmb2xpbyBvZiBaYWNoYXJ5IFJ5YW4gTG9wZXogLS0gQUkvTUwgRGF0YSBTcGVjaWFsaXN0LCBIZW91c3RvbiBUWCIsCiAgInNjcmlwdHMiOiB7CiAgICAiZGV2IjogIm5leHQgZGV2IiwKICAgICJidWlsZCI6ICJuZXh0IGJ1aWxkIiwKICAgICJzdGFydCI6ICJuZXh0IHN0YXJ0IiwKICAgICJsaW50IjogImVzbGludCBzcmMgLS1leHQgLnRzLC50c3ggLS1tYXgtd2FybmluZ3MgMCIsCiAgICAidHlwZS1jaGVjayI6ICJ0c2MgLS1ub0VtaXQiLAogICAgImF1ZGl0IjogIm5wbSBhdWRpdCAtLWF1ZGl0LWxldmVsPWhpZ2giLAogICAgInRlc3QiOiAiamVzdCIsCiAgICAidGVzdDpjb3ZlcmFnZSI6ICJqZXN0IC0tY292ZXJhZ2UgLS1wYXNzV2l0aE5vVGVzdHMiCiAgfSwKICAiZGVwZW5kZW5jaWVzIjogewogICAgImNsc3giOiAiMi4xLjEiLAogICAgImZyYW1lci1tb3Rpb24iOiAiMTEuMTguMiIsCiAgICAiaHRtbC1lc2NhcGVyIjogIjMuMC4zIiwKICAgICJsdWNpZGUtcmVhY3QiOiAiMC40NjguMCIsCiAgICAibmV4dCI6ICIxNS41LjE4IiwKICAgICJuZXh0LXRoZW1lcyI6ICIwLjQuNiIsCiAgICAicmVhY3QiOiAiMTkuMi42IiwKICAgICJyZWFjdC1kb20iOiAiMTkuMi42IiwKICAgICJyZWNoYXJ0cyI6ICIyLjE1LjMiLAogICAgInRhaWx3aW5kLW1lcmdlIjogIjIuNi4wIgogIH0sCiAgImRldkRlcGVuZGVuY2llcyI6IHsKICAgICJAY2xvdWRmbGFyZS93b3JrZXJzLXR5cGVzIjogIjQuMjAyNjA1MzAuMSIsCiAgICAiQGVzbGludC9lc2xpbnRyYyI6ICIzLjMuNSIsCiAgICAiQHRlc3RpbmctbGlicmFyeS9kb20iOiAiXjEwLjQuMSIsCiAgICAiQHRlc3RpbmctbGlicmFyeS9qZXN0LWRvbSI6ICI2LjkuMSIsCiAgICAiQHRlc3RpbmctbGlicmFyeS9yZWFjdCI6ICIxNi4zLjIiLAogICAgIkB0eXBlcy9odG1sLWVzY2FwZXIiOiAiMy4wLjQiLAogICAgIkB0eXBlcy9qZXN0IjogIjI5LjUuMTQiLAogICAgIkB0eXBlcy9ub2RlIjogIjIyLjE1LjIxIiwKICAgICJAdHlwZXMvcmVhY3QiOiAiMTkuMi4xNSIsCiAgICAiQHR5cGVzL3JlYWN0LWRvbSI6ICIxOS4yLjMiLAogICAgImF1dG9wcmVmaXhlciI6ICIxMC41LjAiLAogICAgImVzbGludCI6ICI5LjI3LjAiLAogICAgImVzbGludC1jb25maWctbmV4dCI6ICIxNS41LjE4IiwKICAgICJqZXN0IjogIjI5LjcuMCIsCiAgICAiamVzdC1lbnZpcm9ubWVudC1qc2RvbSI6ICIyOS43LjAiLAogICAgImplc3QtanVuaXQiOiAiXjE3LjAuMCIsCiAgICAicG9zdGNzcyI6ICI4LjUuMTUiLAogICAgInRhaWx3aW5kY3NzIjogIjMuNC4xNyIsCiAgICAidHMtamVzdCI6ICIyOS40LjExIiwKICAgICJ0cy1ub2RlIjogIl4xMC45LjIiLAogICAgInR5cGVzY3JpcHQiOiAiNS44LjMiCiAgfSwKICAiZW5naW5lcyI6IHsKICAgICJub2RlIjogIj49MjAuMC4wIiwKICAgICJucG0iOiAiPj0xMC4wLjAiCiAgfSwKICAib3ZlcnJpZGVzIjogewogICAgInBvc3Rjc3MiOiAiOC41LjE1IgogIH0KfQo=
+{
+  "name": "zrl-dev-portfolio",
+  "version": "2.1.0",
+  "description": "Portfolio of Zachary Ryan Lopez -- AI/ML Data Specialist, Heouston TX",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint src --ext .ts,.tsx --max-warnings 0",
+    "type-check": "tsc --noEmit",
+    "audit": "npm audit --audit-level=high",
+    "test": "jest",
+    "test:coverage": "jest --coverage --passWithNoTests"
+  },
+  "dependencies": {
+    "clsx": "2.1.1",
+    "framer-motion": "11.18.2",
+    "html-escaper": "3.0.3",
+    "lucide-react": "0.468.0",
+    "next": "15.5.18",
+    "next-themes": "0.4.6",
+    "react": "19.2.6",
+    "react-dom": "19.2.6",
+    "recharts": "2.15.3",
+    "tailwind-merge": "2.6.0"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "4.20260530.1",
+    "@eslint/eslintrc": "3.3.5",
+    "@testing-library/dom": "^10.4.1",
+    "@testing-library/jest-dom": "6.9.1",
+    "@testing-library/react": "16.3.2",
+    "@types/html-escaper": "3.0.4",
+    "@types/jest": "29.5.14",
+    "@types/node": "22.15.21",
+    "@types/react": "19.2.15",
+    "@types/react-dom": "19.2.3",
+    "autoprefixer": "10.5.0",
+    "eslint": "9.27.0",
+    "eslint-config-next": "15.5.18",
+    "jest": "29.7.0",
+    "jest-environment-jsdom": "29.7.0",
+    "jest-junit": "^17.0.0",
+    "postcss": "8.5.15",
+    "tailwindcss": "3.4.17",
+    "ts-jest": "29.4.11",
+    "ts-node": "^10.9.2",
+    "typescript": "5.8.3"
+  },
+  "engines": {
+    "node": ">=20.0.0",
+    "npm": ">=10.0.0"
+  },
+  "overrides": {
+    "postcss": "8.5.15"
+  }
+}
