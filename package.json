@@ -1,7 +1,7 @@
 {
   "name": "zrl-dev-portfolio",
   "version": "2.1.0",
-  "description": "Portfolio of Zachary Ryan Lopez — AI/ML Data Specialist, Houston TX",
+  "description": "Portfolio of Zachary Ryan Lopez -- AI/ML Data Specialist, Heouston TX",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -37,7 +37,7 @@
     "@types/react-dom": "19.2.3",
     "autoprefixer": "10.5.0",
     "eslint": "9.27.0",
-    "eslint-config-next": "15.3.2",
+    "eslint-config-next": "15.5.18",
     "jest": "29.7.0",
     "jest-environment-jsdom": "29.7.0",
     "jest-junit": "^17.0.0",

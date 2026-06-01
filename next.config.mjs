@@ -43,6 +43,7 @@ const securityHeaders = [
   },
 ]
 
+/** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
     remotePatterns: [
@@ -69,4 +70,4 @@ const nextConfig = {
   compress: true,
 }
 
-module.exports = nextConfig
+export default nextConfig
