@@ -69,9 +69,9 @@ export default async function OGImage() {
               display:         'flex',
               alignItems:      'center',
               justifyContent:  'center',
-              width:           '52px',
-              height:          '52px',
-              borderRadius:    '10px',
+              width:           '100px',
+              height:          '100px',
+              borderRadius:    '18px',
               backgroundColor: '#0d1117',
               border:          '1px solid rgba(255,255,255,0.08)',
             }}
@@ -79,8 +79,8 @@ export default async function OGImage() {
             {/* ZRL letterforms — inline SVG paths from icon.svg */}
             <svg
               viewBox="0 0 500 500"
-              width="38"
-              height="38"
+              width="72"
+              height="72"
               style={{ display: 'block' }}
             >
               <path
@@ -128,12 +128,7 @@ export default async function OGImage() {
                 fontWeight:    800,
                 letterSpacing: '-0.02em',
                 lineHeight:    1,
-                background:    'linear-gradient(90deg, #e2e8f0 0%, #a1a1aa 100%)',
-                backgroundClip: 'text',
-                color:         'transparent',
-                // @vercel/og supports -webkit-background-clip
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor:  'transparent',
+                color:         '#94a3b8',
               }}
             >
               Lopez
