@@ -2,7 +2,6 @@
 
 import * as React from 'react'
 import Link from 'next/link'
-import Image from 'next/image'
 import { useTheme } from 'next-themes'
 import { Moon, Sun, Menu, X, Github, Linkedin } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
@@ -31,20 +30,34 @@ export function Navigation() {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
       <div className="max-w-7xl mx-auto container-padding">
         <div className="flex items-center justify-between h-16">
-          {/* Logo */}
+          {/* Logo — inline SVG mark, no external file dependency */}
           <Link
             href="/"
-            className="flex items-center justify-center w-10 h-10 rounded-lg bg-transparent dark:bg-transparent light:bg-zinc-900/10 hover:opacity-80 transition-opacity duration-200"
-            aria-label="Home"
+            className="flex items-center justify-center w-10 h-10 rounded-lg hover:opacity-80 transition-opacity duration-200"
+            aria-label="Home — Zachary Ryan Lopez"
           >
-            <Image
-              src="/icon.svg"
-              alt="ZRL"
-              width={36}
-              height={36}
-              className="w-9 h-9"
-              priority
-            />
+            <svg
+              viewBox="0 0 40 40"
+              width="36"
+              height="36"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <rect width="40" height="40" rx="8" fill="#c0281d" />
+              <text
+                x="20"
+                y="28"
+                textAnchor="middle"
+                fontFamily="Nunito, sans-serif"
+                fontWeight="800"
+                fontStyle="italic"
+                fontSize="20"
+                fill="#ffffff"
+                letterSpacing="-0.5"
+              >
+                zrl
+              </text>
+            </svg>
           </Link>
 
           {/* Desktop Navigation */}
@@ -80,7 +93,7 @@ export function Navigation() {
               <Linkedin className="w-5 h-5" />
               <span className="sr-only">LinkedIn</span>
             </Link>
-            
+
             {/* Theme Toggle */}
             <button
               onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
