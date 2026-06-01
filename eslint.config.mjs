@@ -11,6 +11,9 @@ const compat = new FlatCompat({
 
 const eslintConfig = [
   ...compat.extends('next/core-web-vitals', 'next/typescript'),
+  {
+    ignores: ['**/*.svg', '.next/**', 'node_modules/**'],
+  },
 ];
 
 export default eslintConfig;
