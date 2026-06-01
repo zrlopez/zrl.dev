@@ -13,9 +13,20 @@ export function Footer() {
           {/* Brand */}
           <div className="md:col-span-2">
             <div className="flex items-center space-x-2 mb-4">
-              <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-                <span className="text-primary-foreground font-bold text-sm">ZRL</span>
-              </div>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" aria-hidden="true">
+                <rect width="32" height="32" rx="7" fill="#c0281d"/>
+                <text
+                  x="16"
+                  y="23"
+                  textAnchor="middle"
+                  fontFamily="Nunito, ui-rounded, system-ui, sans-serif"
+                  fontWeight="800"
+                  fontStyle="italic"
+                  fontSize="16"
+                  letterSpacing="-1"
+                  fill="#ffffff"
+                >zrl</text>
+              </svg>
               <span className="font-semibold">Zachary Ryan Lopez</span>
             </div>
             <p className="text-muted-foreground text-sm leading-relaxed mb-4">
