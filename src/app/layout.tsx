@@ -81,8 +81,8 @@ export default function RootLayout({
       <body className="min-h-screen bg-background font-sans antialiased">
         <ThemeProvider
           attribute="class"
-          defaultTheme="light"
-          enableSystem
+          defaultTheme="dark"
+          enableSystem={false}
         >
           <Navigation />
           <main className="flex-1">{children}</main>

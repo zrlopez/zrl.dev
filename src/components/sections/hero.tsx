@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { ArrowDown, Download, ExternalLink } from 'lucide-react'
+import { ArrowDown, Download } from 'lucide-react'
 import Link from 'next/link'
 
 export function Hero() {
@@ -38,19 +38,12 @@ export function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16"
+            className="flex justify-center items-center mb-16"
           >
-            <Link
-              href="#projects"
-              className="inline-flex items-center px-6 py-3 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 transition-colors duration-200 group"
-            >
-              View Work
-              <ExternalLink className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
-            </Link>
             <a
               href="/resume.pdf"
               download
-              className="inline-flex items-center px-6 py-3 border border-border rounded-lg font-medium hover:bg-secondary transition-colors duration-200 group"
+              className="inline-flex items-center px-8 py-3 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 transition-colors duration-200 group"
             >
               Download Résumé
               <Download className="ml-2 w-4 h-4 group-hover:translate-y-1 transition-transform duration-200" />

@@ -257,7 +257,7 @@ export function Contact() {
                   </div>
                   <div>
                     <p className="font-medium">Location</p>
-                    <p className="text-muted-foreground">Houston, TX</p>
+                    <p className="text-muted-foreground">Austin, TX</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-4">

@@ -1,87 +1,94 @@
-'use client'
-
-import { motion } from 'framer-motion'
+const CORE_SKILLS = new Set([
+  'Python',
+  'SQL',
+  'Annotation QA',
+  'NLP Evaluation',
+  'ETL Pipelines',
+  'Prompt Engineering',
+  'MLOps',
+])
 
 const skillCategories = [
   {
-    title: 'Computer Languages',
+    title: 'Languages & Data',
     skills: [
-      'Python', 'SQL', 'HTML', 'CSS', 'JSON'
-    ]
+      'Python', 'SQL', 'HTML', 'CSS', 'JSON',
+      'Pandas', 'SQLite', 'Jupyter',
+    ],
   },
   {
     title: 'Tools & Platforms',
     skills: [
-      'Pandas', 'SQLite', 'Tableau', 'Power BI', 'Jupyter',
-      'Git', 'GitHub', 'Jira', 'Confluence', 'Figma', 'Excel'
-    ]
+      'Git', 'GitHub', 'Jira', 'Confluence',
+      'Tableau', 'Power BI', 'Excel', 'Figma',
+    ],
   },
   {
-    title: 'AI & Data',
+    title: 'AI & Data Operations',
     skills: [
-      'Annotation QA', 'ETL Pipeline Design', 'Data Validation', 'Error Analysis',
-      'Taxonomy Governance', 'PII Handling', 'NLP Evaluation', 'RLHF',
-      'Prompt Engineering', 'IAA', 'MLOps', 'A/B Testing', 'UX Evaluation',
-      'Ontology Design', 'IRR'
-    ]
+      'Annotation QA', 'ETL Pipelines', 'MLOps', 'NLP Evaluation',
+      'Prompt Engineering', 'RLHF', 'Data Validation', 'Error Analysis',
+      'Taxonomy Governance', 'PII Handling', 'A/B Testing',
+      'Ontology Design', 'UX Evaluation', 'IAA', 'IRR',
+    ],
   },
   {
-    title: 'Professional Skills',
+    title: 'Professional',
     skills: [
       'Cross-functional Collaboration', 'Stakeholder Communication',
       'SOP & Guideline Authoring', 'Training & Enablement',
-      'Escalation Resolution', 'Customer-facing Support',
+      'Escalation Resolution', 'Project Coordination',
+      'Workflow Improvement', 'Process Automation',
       'Experiment Design', 'Evidence-driven Decision Making',
-      'Project Coordination', 'Workflow Improvement', 'Process Automation'
-    ]
-  }
+    ],
+  },
 ]
 
 export function Skills() {
   return (
     <section id="skills" className="section-padding bg-secondary/20">
       <div className="max-w-7xl mx-auto container-padding">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="mb-16"
-        >
+        <div className="mb-16 animate-fade-in-up">
           <div className="flex items-center gap-4 mb-8">
             <span className="text-sm font-medium text-muted-foreground">03</span>
             <h2 className="text-3xl md:text-4xl font-bold">Skills</h2>
           </div>
-        </motion.div>
+        </div>
 
         <div className="space-y-12">
           {skillCategories.map((category, categoryIndex) => (
-            <motion.div
+            <div
               key={category.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: categoryIndex * 0.2 }}
-              viewport={{ once: true }}
+              className="animate-fade-in-up"
+              style={{ animationDelay: `${categoryIndex * 120}ms`, animationFillMode: 'both' }}
             >
-              <h3 className="text-xl font-semibold mb-6 text-primary">{category.title}</h3>
-              <div className="flex flex-wrap gap-3">
-                {category.skills.map((skill, skillIndex) => (
-                  <motion.span
-                    key={skill}
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    transition={{
-                      duration: 0.4,
-                      delay: categoryIndex * 0.2 + skillIndex * 0.05
-                    }}
-                    viewport={{ once: true }}
-                    className="px-4 py-2 bg-background border border-border rounded-full text-sm font-medium hover:bg-secondary transition-colors duration-200 cursor-default"
-                  >
-                    {skill}
-                  </motion.span>
-                ))}
+              <h3 className="text-base font-semibold mb-5 text-muted-foreground uppercase tracking-widest">
+                {category.title}
+              </h3>
+              <div className="flex flex-wrap gap-2">
+                {category.skills.map((skill) => {
+                  const isCore = CORE_SKILLS.has(skill)
+                  return (
+                    <span
+                      key={skill}
+                      className={
+                        isCore
+                          ? 'inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-semibold border border-primary/40 bg-primary/10 text-foreground cursor-default'
+                          : 'px-3 py-1.5 bg-background border border-border rounded-full text-sm font-medium text-muted-foreground hover:text-foreground hover:border-primary/30 transition-colors duration-200 cursor-default'
+                      }
+                    >
+                      {isCore && (
+                        <span className="inline-block w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0" aria-hidden="true" />
+                      )}
+                      {skill}
+                      {isCore && (
+                        <span className="ml-0.5 text-[10px] font-bold uppercase tracking-wider text-primary/70">Core</span>
+                      )}
+                    </span>
+                  )
+                })}
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

@@ -31,10 +31,14 @@ export function Navigation() {
       <div className="max-w-7xl mx-auto container-padding">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-sm">ZRL</span>
-            </div>
+          <Link href="/" className="flex items-center" aria-label="Home">
+            <img
+              src="/icon.svg"
+              alt="ZRL"
+              width={36}
+              height={36}
+              className="w-9 h-9 transition-opacity duration-200 hover:opacity-80"
+            />
           </Link>
 
           {/* Desktop Navigation */}
