@@ -1,1 +1,73 @@
-LyoqIEB0eXBlIHtpbXBvcnQoJ25leHQnKS5OZXh0Q29uZmlnfSAqLwoKLy8gU3RhdGljIHNlY3VyaXR5IGhlYWRlcnMgb25seS4gUGVyLXJlcXVlc3QgQ1NQIGlzIHNldCBpbiBtaWRkbGV3YXJlLnRzIHNvCi8vIGV2ZXJ5IEhUTUwgcmVzcG9uc2UgZ2V0cyBhIHVuaXF1ZSBub25jZS4KY29uc3Qgc2VjdXJpdHlIZWFkZXJzID0gWwogIHsKICAgIGtleTogJ1N0cmljdC1UcmFuc3BvcnQtU2VjdXJpdHknLAogICAgdmFsdWU6ICdtYXgtYWdlPTYzMDcyMDAwOyBpbmNsdWRlU3ViRG9tYWluczsgcHJlbG9hZCcsCiAgfSwKICB7CiAgICBrZXk6ICdYLUZyYW1lLU9wdGlvbnMnLAogICAgdmFsdWU6ICdERU5ZJywKICB9LAogIHsKICAgIGtleTogJ1gtQ29udGVudC1UeXBlLU9wdGlvbnMnLAogICAgdmFsdWU6ICdub3NuaWZmJywKICB9LAogIHsKICAgIGtleTogJ1JlZmVycmVyLVBvbGljeScsCiAgICB2YWx1ZTogJ3N0cmljdC1vcmlnaW4td2hlbi1jcm9zcy1vcmlnaW4nLAogIH0sCiAgewogICAga2V5OiAnUGVybWlzc2lvbnMtUG9saWN5JywKICAgIHZhbHVlOiBbCiAgICAgICdjYW1lcmE9KCknLAogICAgICAnbWljcm9waG9uZT0oKScsCiAgICAgICdnZW9sb2NhdGlvbj0oKScsCiAgICAgICdwYXltZW50PSgpJywKICAgICAgJ3VzYj0oKScsCiAgICAgICdibHVldG9vdGg9KCknLAogICAgICAnYWNjZWxlcm9tZXRlcj0oKScsCiAgICAgICdneXJvc2NvcGU9KCknLAogICAgICAnbWFnbmV0b21ldGVyPSgpJywKICAgIF0uam9pbignLCAnKSwKICB9LAogIHsKICAgIGtleTogJ1gtRE5TLVByZWZldGNoLUNvbnRyb2wnLAogICAgdmFsdWU6ICdvZmYnLAogIH0sCiAgewogICAga2V5OiAnQ3Jvc3MtT3JpZ2luLU9wZW5lci1Qb2xpY3knLAogICAgdmFsdWU6ICdzYW1lLW9yaWdpbicsCiAgfSwKXQoKLyoqIEB0eXBlIHtpbXBvcnQoJ25leHQnKS5OZXh0Q29uZmlnfSAqLwpjb25zdCBuZXh0Q29uZmlnID0gewogIGltYWdlczogewogICAgcmVtb3RlUGF0dGVybnM6IFsKICAgICAgewogICAgICAgIHByb3RvY29sOiAnaHR0cHMnLAogICAgICAgIGhvc3RuYW1lOiAnYXZhdGFycy5naXRodWJ1c2VyY29udGVudC5jb20nLAogICAgICAgIHBhdGhuYW1lOiAnL3UvKionLAogICAgICB9LAogICAgICB7CiAgICAgICAgcHJvdG9jb2w6ICdodHRwcycsCiAgICAgICAgaG9zdG5hbWU6ICdnaXRodWIuY29tJywKICAgICAgfSwKICAgIF0sCiAgfSwKICBhc3luYyBoZWFkZXJzKCkgewogICAgcmV0dXJuIFsKICAgICAgewogICAgICAgIHNvdXJjZTogJy8oLiopJywKICAgICAgICBoZWFkZXJzOiBzZWN1cml0eUhlYWRlcnMsCiAgICAgIH0sCiAgICBdCiAgfSwKICBwb3dlcmVkQnlIZWFkZXI6IGZhbHNlLAogIGNvbXByZXNzOiB0cnVlLAp9CgpleHBvcnQgZGVmYXVsdCBuZXh0Q29uZmlnCg==
+/** @type {import('next').NextConfig} */
+
+// Static security headers only. Per-request CSP is set in middleware.ts so
+// every HTML response gets a unique nonce.
+const securityHeaders = [
+  {
+    key: 'Strict-Transport-Security',
+    value: 'max-age=63072000; includeSubDomains; preload',
+  },
+  {
+    key: 'X-Frame-Options',
+    value: 'DENY',
+  },
+  {
+    key: 'X-Content-Type-Options',
+    value: 'nosniff',
+  },
+  {
+    key: 'Referrer-Policy',
+    value: 'strict-origin-when-cross-origin',
+  },
+  {
+    key: 'Permissions-Policy',
+    value: [
+      'camera=()',
+      'microphone=()',
+      'geolocation=()',
+      'payment=()',
+      'usb=()',
+      'bluetooth=()',
+      'accelerometer=()',
+      'gyroscope=()',
+      'magnetometer=()',
+    ].join(', '),
+  },
+  {
+    key: 'X-DNS-Prefetch-Control',
+    value: 'off',
+  },
+  {
+    key: 'Cross-Origin-Opener-Policy',
+    value: 'same-origin',
+  },
+]
+
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'avatars.githubusercontent.com',
+        pathname: '/u/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'github.com',
+      },
+    ],
+  },
+  async headers() {
+    return [
+      {
+        source: '/(.*)',
+        headers: securityHeaders,
+      },
+    ]
+  },
+  poweredByHeader: false,
+  compress: true,
+}
+
+export default nextConfig

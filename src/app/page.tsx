@@ -1,1 +1,23 @@
-aW1wb3J0IHsgSGVybyB9IGZyb20gJ0AvY29tcG9uZW50cy9zZWN0aW9ucy9oZXJvJwppbXBvcnQgeyBBYm91dCB9IGZyb20gJ0AvY29tcG9uZW50cy9zZWN0aW9ucy9hYm91dCcKaW1wb3J0IHsgU3RhdHMgfSBmcm9tICdAL2NvbXBvbmVudHMvc2VjdGlvbnMvc3RhdHMnCmltcG9ydCB7IFNraWxscyB9IGZyb20gJ0AvY29tcG9uZW50cy9zZWN0aW9ucy9za2lsbHMnCmltcG9ydCB7IEV4cGVyaWVuY2UgfSBmcm9tICdAL2NvbXBvbmVudHMvc2VjdGlvbnMvZXhwZXJpZW5jZScKaW1wb3J0IHsgUHJvamVjdHMgfSBmcm9tICdAL2NvbXBvbmVudHMvc2VjdGlvbnMvcHJvamVjdHMnCmltcG9ydCB7IENlcnRpZmljYXRpb25zIH0gZnJvbSAnQC9jb21wb25lbnRzL3NlY3Rpb25zL2NlcnRpZmljYXRpb25zJwppbXBvcnQgeyBDb250YWN0IH0gZnJvbSAnQC9jb21wb25lbnRzL3NlY3Rpb25zL2NvbnRhY3QnCgpleHBvcnQgZGVmYXVsdCBmdW5jdGlvbiBIb21lUGFnZSgpIHsKICByZXR1cm4gKAogICAgPGRpdiBjbGFzc05hbWU9ImZsZXggZmxleC1jb2wgbWluLWgtc2NyZWVuIj4KICAgICAgPEhlcm8gLz4KICAgICAgPEFib3V0IC8+CiAgICAgIDxTdGF0cyAvPgogICAgICA8U2tpbGxzIC8+CiAgICAgIDxFeHBlcmllbmNlIC8+CiAgICAgIDxQcm9qZWN0cyAvPgogICAgICA8Q2VydGlmaWNhdGlvbnMgLz4KICAgICAgPENvbnRhY3QgLz4KICAgIDwvZGl2PgogICkKfQo=
+import { Hero } from '@/components/sections/hero'
+import { About } from '@/components/sections/about'
+import { Stats } from '@/components/sections/stats'
+import { Skills } from '@/components/sections/skills'
+import { Experience } from '@/components/sections/experience'
+import { Projects } from '@/components/sections/projects'
+import { Certifications } from '@/components/sections/certifications'
+import { Contact } from '@/components/sections/contact'
+
+export default function HomePage() {
+  return (
+    <div className="flex flex-col min-h-screen">
+      <Hero />
+      <About />
+      <Stats />
+      <Skills />
+      <Experience />
+      <Projects />
+      <Certifications />
+      <Contact />
+    </div>
+  )
+}
