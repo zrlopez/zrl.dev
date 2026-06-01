@@ -57,26 +57,14 @@ const projects = [
   {
     id: 5,
     title: 'Portfolio Website',
-    summary: 'Designed and built a modern portfolio using Next.js, TypeScript, and Tailwind CSS — deployed on Cloudflare Pages.',
+    summary: 'Designed and built this portfolio using Next.js, TypeScript, and Tailwind CSS — deployed on Vercel with Cloudflare handling DNS and CDN.',
     role: 'Developer',
     year: '2025–Present',
-    tags: ['Next.js', 'TypeScript', 'Tailwind', 'Cloudflare'],
+    tags: ['Next.js', 'TypeScript', 'Tailwind', 'Vercel'],
     category: 'Web Development',
     featured: true,
     link: 'https://zrl.dev',
     github: 'https://github.com/zrlopez/zrl.dev',
-  },
-  {
-    id: 6,
-    title: 'Officer Cadet — Army ROTC',
-    summary: 'Completed two years of Military Science I–II coursework and training at UT Austin, strengthening leadership, discipline, and team coordination under structured, high-accountability conditions.',
-    role: 'Officer Cadet',
-    year: '2015–2017',
-    tags: ['Leadership', 'Team Coordination', 'Military Science'],
-    category: 'Leadership',
-    featured: false,
-    link: '',
-    github: '',
   },
 ]
 
