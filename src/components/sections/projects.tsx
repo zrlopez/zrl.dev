@@ -1,72 +1,11 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { ExternalLink, Github, Calendar, Tag } from 'lucide-react'
+import { ExternalLink, Github, BookOpen, FlaskConical, Calendar, Tag, ArrowRight } from 'lucide-react'
 import Link from 'next/link'
 import { useState } from 'react'
-
-const projects = [
-  {
-    id: 3,
-    title: 'Annotation Analytics Dashboard',
-    summary: 'Developed an interactive dashboard to track annotation quality trends, ML support metrics, and workflow performance patterns.',
-    role: 'Developer',
-    year: '2025–Present',
-    tags: ['Analytics', 'Dashboard', 'ML Metrics'],
-    category: 'Analytics',
-    featured: true,
-    link: 'https://zrl.dev/projects/annotation-dashboard',
-    github: '',
-  },
-  {
-    id: 1,
-    title: 'AI/ML Experiment Suite',
-    summary: 'Designed and executed 10+ NLP annotation experiments using Python and SQL to evaluate labeling consistency and test workflow assumptions, reducing variance by 15%.',
-    role: 'Lead',
-    year: '2024–2026',
-    tags: ['NLP', 'Python', 'SQL', 'Annotation QA'],
-    category: 'Data Operations',
-    featured: true,
-    link: 'https://zrl.dev',
-    github: '',
-  },
-  {
-    id: 2,
-    title: 'Data Pipeline Prototypes',
-    summary: 'Engineered ETL and data-validation pipelines with Pandas and SQLite, automating quality checks and generating Tableau-ready outputs — reducing reporting processing time by 40%.',
-    role: 'Engineer',
-    year: '2025–2026',
-    tags: ['ETL', 'Pandas', 'SQLite', 'Tableau'],
-    category: 'Data Engineering',
-    featured: true,
-    link: '',
-    github: '',
-  },
-  {
-    id: 4,
-    title: 'Health Record System',
-    summary: 'Built a secure SQLite-based personal health record application with a React frontend for aggregating medical documents (PDFs, XMLs, JSON) with HIPAA-compliant local storage and data visualization.',
-    role: 'Developer',
-    year: 'Aug 2025',
-    tags: ['SQLite', 'React', 'HIPAA', 'Python'],
-    category: 'Data Engineering',
-    featured: true,
-    link: '',
-    github: '',
-  },
-  {
-    id: 5,
-    title: 'Portfolio Website',
-    summary: 'Designed and built this portfolio using Next.js, TypeScript, and Tailwind CSS — deployed on Vercel with Cloudflare handling DNS and CDN.',
-    role: 'Developer',
-    year: '2025–Present',
-    tags: ['Next.js', 'TypeScript', 'Tailwind', 'Vercel'],
-    category: 'Web Development',
-    featured: true,
-    link: 'https://zrl.dev',
-    github: 'https://github.com/zrlopez/zrl.dev',
-  },
-]
+import { projects } from '@/lib/projects-data'
+import type { Project } from '@/lib/projects-data'
 
 const categories = ['All', ...new Set(projects.map(p => p.category))]
 
@@ -189,16 +128,15 @@ export function Projects() {
           ))}
         </div>
 
-        {filteredProjects.length > 3 && (
-          <div className="text-center">
-            <button
-              onClick={() => setShowAll(!showAll)}
-              className="inline-flex items-center px-6 py-3 border border-border rounded-lg font-medium hover:bg-secondary transition-colors duration-200"
-            >
-              {showAll ? 'Show Less' : `Show All ${filteredProjects.length} Projects`}
-            </button>
-          </div>
-        )}
+        <div className="text-center mt-4">
+          <Link
+            href="/projects"
+            className="inline-flex items-center gap-2 px-6 py-3 border border-border rounded-lg font-medium hover:bg-secondary transition-colors duration-200"
+          >
+            View All Projects
+            <ArrowRight className="w-4 h-4" />
+          </Link>
+        </div>
       </div>
     </section>
   )
