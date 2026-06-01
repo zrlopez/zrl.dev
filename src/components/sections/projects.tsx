@@ -1,23 +1,21 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { ExternalLink, Github, BookOpen, FlaskConical, Calendar, Tag, ArrowRight } from 'lucide-react'
+import { ExternalLink, Github, Calendar, Tag, ArrowRight } from 'lucide-react'
 import Link from 'next/link'
 import { useState } from 'react'
 import { projects } from '@/lib/projects-data'
-import type { Project } from '@/lib/projects-data'
 
 const categories = ['All', ...new Set(projects.map(p => p.category))]
 
 export function Projects() {
   const [selectedCategory, setSelectedCategory] = useState('All')
-  const [showAll, setShowAll] = useState(false)
 
   const filteredProjects = projects.filter(project =>
     selectedCategory === 'All' || project.category === selectedCategory
   )
 
-  const displayedProjects = showAll ? filteredProjects : filteredProjects.slice(0, 3)
+  const displayedProjects = filteredProjects.slice(0, 3)
 
   return (
     <section id="projects" className="section-padding bg-secondary/20">

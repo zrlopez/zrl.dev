@@ -1,7 +1,6 @@
 'use client'
 
 import { useState } from 'react'
-import Link from 'next/link'
 import { Github, ExternalLink, BookOpen, FlaskConical, Calendar, Tag } from 'lucide-react'
 import { projects } from '@/lib/projects-data'
 import type { Project } from '@/lib/projects-data'
