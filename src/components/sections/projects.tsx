@@ -96,7 +96,7 @@ export function Projects() {
                   ))}
                 </div>
 
-                <div className="flex items-center gap-4">
+                <div className="flex flex-wrap items-center gap-3">
                   {project.docs && (
                     <Link
                       href={project.docs}
