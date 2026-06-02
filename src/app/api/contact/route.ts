@@ -138,7 +138,7 @@ async function sendEmail(payload: ContactPayload, requestId: string): Promise<bo
       },
       body: JSON.stringify({
         from:    'contact@zrl.dev',
-        to:      ['hi@zrl.dev'],
+        to:      ['hello@zrl.dev'],
         replyTo: payload.email,
         subject: `[zrl.dev] ${payload.subject}`,
         html: [
