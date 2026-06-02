@@ -12,15 +12,15 @@ const skillCategories = [
   {
     title: 'Languages & Data',
     skills: [
-      'Python', 'SQL', 'HTML', 'CSS', 'JSON',
+      'Python', 'SQL', 'TypeScript', 'JSON',
       'Pandas', 'SQLite', 'Jupyter',
     ],
   },
   {
     title: 'Tools & Platforms',
     skills: [
-      'Git', 'GitHub', 'Jira', 'Confluence',
-      'Tableau', 'Power BI', 'Excel', 'Figma',
+      'Git', 'GitHub', 'Docker', 'Hugging Face',
+      'Jira', 'Confluence', 'Tableau', 'Power BI', 'Excel',
     ],
   },
   {
@@ -39,7 +39,7 @@ const skillCategories = [
       'SOP & Guideline Authoring', 'Training & Enablement',
       'Escalation Resolution', 'Project Coordination',
       'Workflow Improvement', 'Process Automation',
-      'Experiment Design', 'Evidence-driven Decision Making',
+      'Experiment Design',
     ],
   },
 ]

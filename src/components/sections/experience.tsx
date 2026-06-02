@@ -4,16 +4,16 @@ import { motion } from 'framer-motion'
 import { CalendarDays, MapPin } from 'lucide-react'
 
 const experiences = [
-    {
+  {
     title: 'AI/ML Data Operations Researcher',
     company: 'Independent',
     location: 'Austin, TX',
     period: 'Jun 2024–Present',
-    description: 'Independent research and portfolio development focused on AI/ML data operations, annotation quality, ETL validation, and workflow analytics.',
+    description: 'Builds and ships production-adjacent AI/ML tooling — a FastAPI incident-response system, a real-time annotation analytics dashboard, and ETL validation pipelines — while maintaining a public portfolio at zrl.dev.',
     highlights: [
-      'Built Python and SQL utilities for annotation QA, data validation, and lightweight analysis.',
-      'Designed and tested annotation experiments to evaluate consistency, taxonomy drift, and workflow assumptions.',
-      'Published methodology notes, dashboards, or supporting artifacts on GitHub and zrl.dev.'
+      'Built a production-grade ML incident-response system in Python, FastAPI, and async SQLAlchemy with audit trails, SEV1–SEV3 state handling, and versioned runbooks.',
+      'Developed a real-time annotation analytics dashboard tracking labeling quality trends, alert thresholds, and capacity forecasting; live at zrl.dev.',
+      'Engineered ETL and data-validation pipelines with Pandas and SQLite, reducing reporting time by 40%.',
     ]
   },
   {
@@ -21,11 +21,11 @@ const experiences = [
     company: 'Apple',
     location: 'Austin, TX',
     period: 'Sep 2021–Jun 2024',
-    description: 'Reviewed high-volume assistant interactions, improved annotation quality, and supported taxonomy governance across multiple locales.',
+    description: 'Partnered with global cross-functional teams to close annotation workflow gaps, audit Siri NLP datasets, and improve labeling consistency across fast-paced review cycles.',
     highlights: [
-      'Improved accuracy in targeted domains through QA review and labeling refinement.',
-      'Tuned prompts, intents, and fallbacks across en_US, en_CA, and en_UK.',
-      'Built dashboards to monitor throughput, error classes, and taxonomy drift.'
+      'Partnered with global teams to identify and close annotation workflow gaps, reducing escalation resolution time by 43%.',
+      'Audited high-volume audiovisual datasets against Siri NLP guidelines, maintaining policy-compliant labeling through fast-paced review cycles.',
+      'Applied guideline-based QA and linguistic judgment to ambiguous utterances, improving labeling consistency across NLP annotation pipelines.',
     ]
   },
   {
@@ -33,11 +33,10 @@ const experiences = [
     company: 'Apple',
     location: 'Austin, TX',
     period: 'Mar 2019–Sep 2021',
-    description: 'Diagnosed recurring technical issues using logs and structured troubleshooting, helping reduce repeat visits and improve team resolution quality.',
+    description: 'Diagnosed recurring technical faults using log analysis and trend review, reducing repeat contacts and building playbooks adopted across the team.',
     highlights: [
-      'Reduced repeat customer visits through better diagnostics and escalation handling.',
-      'Created or refined playbooks to improve triage speed and consistency.',
-      'Supported teammates with repeatable troubleshooting patterns.'
+      'Diagnosed recurring faults via log analysis and trend pattern review, reducing repeat contacts by 20%; authored playbooks adopted by 5+ teammates.',
+      'Resolved 1,200+ escalations with a 95% first-time fix rate and 4.9/5 CSAT using structured de-escalation techniques.',
     ]
   },
   {
@@ -47,9 +46,8 @@ const experiences = [
     period: 'Jan 2021–Jun 2021',
     description: 'Supported merchant onboarding and technical integration for Apple Pay, bridging business development and SDK/API testing.',
     highlights: [
-      'Helped merchants work through onboarding and integration steps.',
-      'Improved conversion through clearer checkout and implementation guidance.',
-      'Supported testing and technical validation for payment flows.'
+      'Prospected hundreds of e-commerce merchants and supported Apple Pay onboarding, integration, and adoption efforts.',
+      'Developed tailored value propositions based on API capabilities, reducing adoption resistance through direct outreach and Webex collaboration.',
     ]
   },
   {
@@ -57,11 +55,10 @@ const experiences = [
     company: 'Apple',
     location: 'Austin, TX',
     period: 'Mar 2020–Jan 2021',
-    description: 'Delivered remote diagnostics and customer support for iOS issues across a large volume of cases.',
+    description: 'Delivered remote diagnostics and customer support across 2,000+ cases, maintaining 90%+ same-call resolution with low escalation rates.',
     highlights: [
-      'Maintained strong same-call resolution performance.',
-      'Resolved high case volume with low escalation rates.',
-      'Used documentation and diagnostics to improve consistency.'
+      'Delivered 90%+ same-call resolution across 2,000+ cases through remote diagnostics and knowledge base workflows.',
+      'Minimized escalations through structured triage and consistent documentation.',
     ]
   }
 ]
