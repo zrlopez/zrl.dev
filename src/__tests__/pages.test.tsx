@@ -17,6 +17,10 @@ jest.mock('@/components/footer', () => ({
   Footer: () => <footer data-testid="footer" />,
 }));
 
+jest.mock('@vercel/speed-insights/next', () => ({
+  SpeedInsights: () => null,
+}));
+
 jest.mock('@/components/sections/hero', () => ({
   Hero: () => <section data-testid="hero" />,
 }));
