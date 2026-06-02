@@ -403,7 +403,7 @@ export function Contact() {
                   aria-required="true"
                   aria-describedby={isNearLimit || isOverLimit ? 'message-count' : undefined}
                   className="w-full px-4 py-3 bg-background border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-colors duration-200 resize-none"
-                  placeholder="Tell me about your project or just say hello!"
+                  placeholder="Say hello, ask a question, or reach out about opportunities."
                 />
               </div>
 
