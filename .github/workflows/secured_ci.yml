@@ -172,7 +172,7 @@ jobs:
           category: /language:javascript-typescript
 
   test:
-    name: Test & Coverage (Codecov)
+    name: Test & Coverage (Codacy)
     runs-on: ubuntu-latest
     timeout-minutes: 15
     permissions:
@@ -192,14 +192,6 @@ jobs:
 
       - name: Run tests with coverage
         run: npm run test:coverage
-
-      - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v6
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-          files: ./coverage/lcov.info
-          flags: unittests
-          fail_ci_if_error: false
 
   build:
     name: Production Build
