@@ -41,6 +41,20 @@ export const projects: Project[] = [
     category: 'Analytics',
     featured: true,
     link: 'https://zrl.dev/projects/annotation-dashboard',
+    github: 'https://github.com/zrlopez/performance-analytics-tool',
+  },
+  {
+    id: 5,
+    title: 'Portfolio Website',
+    summary:
+      'Designed and built this portfolio using Next.js, TypeScript, and Tailwind CSS — deployed on Vercel with Cloudflare handling DNS and CDN.',
+    role: 'Developer',
+    year: '2025–Present',
+    tags: ['Next.js', 'TypeScript', 'Tailwind', 'Vercel'],
+    category: 'Web Development',
+    featured: true,
+    link: 'https://zrl.dev',
+    github: 'https://github.com/zrlopez/zrl.dev',
   },
   {
     id: 1,
@@ -74,18 +88,5 @@ export const projects: Project[] = [
     tags: ['SQLite', 'React', 'HIPAA', 'Python'],
     category: 'Data Engineering',
     featured: true,
-  },
-  {
-    id: 5,
-    title: 'Portfolio Website',
-    summary:
-      'Designed and built this portfolio using Next.js, TypeScript, and Tailwind CSS — deployed on Vercel with Cloudflare handling DNS and CDN.',
-    role: 'Developer',
-    year: '2025–Present',
-    tags: ['Next.js', 'TypeScript', 'Tailwind', 'Vercel'],
-    category: 'Web Development',
-    featured: true,
-    link: 'https://zrl.dev',
-    github: 'https://github.com/zrlopez/zrl.dev',
   },
 ]

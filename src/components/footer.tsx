@@ -31,7 +31,7 @@ export function Footer() {
             </div>
             <p className="text-muted-foreground text-sm leading-relaxed mb-4">
               AI/ML data operations specialist focused on building systems that improve 
-              data quality and user experience. Based in Austin, TX.
+              data quality and user experience. Based in Houston, TX.
             </p>
             <div className="flex items-center space-x-4">
               <Link
@@ -53,7 +53,7 @@ export function Footer() {
                 <Linkedin className="w-5 h-5" />
               </Link>
               <Link
-                href="mailto:hello@zrl.dev"
+                href="mailto:z@zrl.dev"
                 className="text-muted-foreground hover:text-foreground transition-colors duration-200"
                 aria-label="Email"
               >
@@ -62,39 +62,47 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Quick Links */}
+          {/* Navigation */}
           <div>
-            <h3 className="font-semibold mb-4">Quick Links</h3>
-            <div className="space-y-2">
-              <Link href="#about" className="block text-sm text-muted-foreground hover:text-foreground transition-colors duration-200">
-                About
-              </Link>
-              <Link href="#experience" className="block text-sm text-muted-foreground hover:text-foreground transition-colors duration-200">
-                Experience
-              </Link>
-              <Link href="#projects" className="block text-sm text-muted-foreground hover:text-foreground transition-colors duration-200">
-                Projects
-              </Link>
-              <Link href="#contact" className="block text-sm text-muted-foreground hover:text-foreground transition-colors duration-200">
-                Contact
-              </Link>
-            </div>
+            <h3 className="font-semibold mb-4">Navigation</h3>
+            <ul className="space-y-2">
+              {[
+                { name: 'About', href: '/#about' },
+                { name: 'Experience', href: '/#experience' },
+                { name: 'Projects', href: '/#projects' },
+                { name: 'Contact', href: '/#contact' },
+              ].map((item) => (
+                <li key={item.name}>
+                  <Link
+                    href={item.href}
+                    className="text-muted-foreground hover:text-foreground transition-colors duration-200 text-sm"
+                  >
+                    {item.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
 
-          {/* Resources */}
+          {/* Projects */}
           <div>
-            <h3 className="font-semibold mb-4">Resources</h3>
-            <div className="space-y-2">
-              <a href="/resume.pdf" download className="block text-sm text-muted-foreground hover:text-foreground transition-colors duration-200">
-                Résumé
-              </a>
-              <Link href="/privacy" className="block text-sm text-muted-foreground hover:text-foreground transition-colors duration-200">
-                Privacy Policy
-              </Link>
-              <Link href="/terms" className="block text-sm text-muted-foreground hover:text-foreground transition-colors duration-200">
-                Terms of Service
-              </Link>
-            </div>
+            <h3 className="font-semibold mb-4">Projects</h3>
+            <ul className="space-y-2">
+              {[
+                { name: 'ML Incident Playbook', href: 'https://mlops.zrl.dev' },
+                { name: 'Annotation Dashboard', href: '/projects/annotation-dashboard' },
+                { name: 'All Projects', href: '/projects' },
+              ].map((item) => (
+                <li key={item.name}>
+                  <Link
+                    href={item.href}
+                    className="text-muted-foreground hover:text-foreground transition-colors duration-200 text-sm"
+                  >
+                    {item.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
 
@@ -102,13 +110,13 @@ export function Footer() {
           <div className="flex flex-col sm:flex-row justify-between items-center text-sm text-muted-foreground">
             <p>
               © {currentYear}{' '}
-              <Link 
-                href="https://duloup.co" 
-                target="_blank" 
+              <Link
+                href="https://duloup.co"
+                target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-foreground transition-colors duration-200"
               >
-                DULOUP
+                Duloup Holdings
               </Link>
               . All rights reserved.
             </p>

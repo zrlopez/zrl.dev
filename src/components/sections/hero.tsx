@@ -20,7 +20,7 @@ export function Hero() {
             </p>
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
               <span className="block">Zachary Ryan</span>
-              <span className="block gradient-text">Lopez</span>
+              <span className="block text-primary">Lopez</span>
             </h1>
           </motion.div>
 
