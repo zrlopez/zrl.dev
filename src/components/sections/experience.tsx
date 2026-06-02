@@ -75,7 +75,7 @@ export function Experience() {
           className="mb-16"
         >
           <div className="flex items-center gap-4 mb-8">
-            <span className="text-sm font-medium text-muted-foreground">04</span>
+            <span className="text-sm font-medium text-muted-foreground">05</span>
             <h2 className="text-3xl md:text-4xl font-bold">Experience</h2>
           </div>
         </motion.div>
