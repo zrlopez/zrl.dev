@@ -2,6 +2,7 @@ import { Nunito } from 'next/font/google'
 import { ThemeProvider } from '@/components/theme-provider'
 import { Navigation } from '@/components/navigation'
 import { Footer } from '@/components/footer'
+import { SpeedInsights } from '@vercel/speed-insights/next'
 import './globals.css'
 import type { Metadata } from 'next'
 
@@ -87,6 +88,7 @@ export default function RootLayout({
           <Navigation />
           <main className="flex-1">{children}</main>
           <Footer />
+          <SpeedInsights />
         </ThemeProvider>
       </body>
     </html>
