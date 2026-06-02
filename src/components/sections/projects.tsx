@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { ExternalLink, Github, Calendar, Tag, ArrowRight } from 'lucide-react'
+import { ExternalLink, Github, Calendar, Tag, ArrowRight, BookOpen, FlaskConical } from 'lucide-react'
 import Link from 'next/link'
 import { useState } from 'react'
 import { projects } from '@/lib/projects-data'
