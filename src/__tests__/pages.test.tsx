@@ -37,6 +37,10 @@ jest.mock('@/components/sections/skills', () => ({
   Skills: () => <section data-testid="skills" />,
 }));
 
+jest.mock('@/components/sections/tools', () => ({
+  Tools: () => <section data-testid="tools" />,
+}));
+
 jest.mock('@/components/sections/experience', () => ({
   Experience: () => <section data-testid="experience" />,
 }));
