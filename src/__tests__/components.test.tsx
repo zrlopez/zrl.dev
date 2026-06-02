@@ -136,9 +136,25 @@ describe('<Experience />', () => {
     expect(container).toBeTruthy();
   });
 
-  it('renders an Experience heading', () => {
+  it('renders an Experiences heading', () => {
     render(<Experience />);
-    expect(screen.getByRole('heading', { name: /^experience$/i, level: 2 })).toBeTruthy();
+    expect(screen.getByRole('heading', { name: /^experiences$/i, level: 2 })).toBeTruthy();
+  });
+});
+
+// ── Tools ─────────────────────────────────────────────────────────────────────
+
+import { Tools } from '@/components/sections/tools';
+
+describe('<Tools />', () => {
+  it('renders without crashing', () => {
+    const { container } = render(<Tools />);
+    expect(container).toBeTruthy();
+  });
+
+  it('renders a Tools & Technologies heading', () => {
+    render(<Tools />);
+    expect(screen.getByRole('heading', { name: /tools & technologies/i, level: 2 })).toBeTruthy();
   });
 });
 
