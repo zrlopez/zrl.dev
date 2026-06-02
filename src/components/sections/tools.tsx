@@ -18,16 +18,18 @@ const toolCategories = [
     ],
   },
   {
-    title: 'AI & ML Tools',
+    title: 'AI & ML',
     tools: [
       'Hugging Face', 'scikit-learn', 'Gradio',
+      'OpenAI API', 'Anthropic API', 'Claude Code',
+      'OpenAI Codex', 'LangChain', 'Weights & Biases',
     ],
   },
   {
     title: 'Infrastructure & Dev',
     tools: [
       'Docker', 'Git', 'GitHub', 'Vercel', 'Cloudflare',
-      'VS Code', 'Jira', 'Confluence',
+      'VS Code', 'Jira', 'Confluence', 'Notion', 'Linear',
     ],
   },
   {

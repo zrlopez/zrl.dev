@@ -10,20 +10,6 @@ const CORE_SKILLS = new Set([
 
 const skillCategories = [
   {
-    title: 'Languages & Data',
-    skills: [
-      'Python', 'SQL', 'TypeScript', 'JSON',
-      'Pandas', 'SQLite', 'Jupyter',
-    ],
-  },
-  {
-    title: 'Tools & Platforms',
-    skills: [
-      'Git', 'GitHub', 'Docker', 'Hugging Face',
-      'Jira', 'Confluence', 'Tableau', 'Power BI', 'Excel',
-    ],
-  },
-  {
     title: 'AI & Data Operations',
     skills: [
       'Annotation QA', 'ETL Pipelines', 'MLOps', 'NLP Evaluation',
@@ -40,6 +26,12 @@ const skillCategories = [
       'Escalation Resolution', 'Project Coordination',
       'Workflow Improvement', 'Process Automation',
       'Experiment Design',
+    ],
+  },
+  {
+    title: 'Creative & Platform',
+    skills: [
+      'Xcode', 'Swift', 'Final Cut Pro', 'Logic Pro', 'Figma',
     ],
   },
 ]
