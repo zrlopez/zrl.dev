@@ -10,7 +10,6 @@ const categories = ['All', ...new Set(projects.map(p => p.category))]
 
 export function Projects() {
   const [selectedCategory, setSelectedCategory] = useState('All')
-
   const filteredProjects = projects.filter(project =>
     selectedCategory === 'All' || project.category === selectedCategory
   )
@@ -98,6 +97,28 @@ export function Projects() {
                 </div>
 
                 <div className="flex items-center gap-4">
+                  {project.docs && (
+                    <Link
+                      href={project.docs}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 text-sm font-medium text-primary hover:text-primary/80 transition-colors duration-200"
+                    >
+                      <BookOpen className="w-4 h-4" />
+                      Docs
+                    </Link>
+                  )}
+                  {project.demo && (
+                    <Link
+                      href={project.demo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 text-sm font-medium text-primary hover:text-primary/80 transition-colors duration-200"
+                    >
+                      <FlaskConical className="w-4 h-4" />
+                      Demo
+                    </Link>
+                  )}
                   {project.link && (
                     <Link
                       href={project.link}
@@ -119,6 +140,9 @@ export function Projects() {
                       <Github className="w-4 h-4" />
                       Code
                     </Link>
+                  )}
+                  {!project.docs && !project.demo && !project.link && !project.github && (
+                    <span className="text-sm text-muted-foreground italic">Available upon request</span>
                   )}
                 </div>
               </div>

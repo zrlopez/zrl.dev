@@ -13,6 +13,7 @@
     "test:coverage": "jest --coverage --passWithNoTests"
   },
   "dependencies": {
+    "@vercel/speed-insights": "^2.0.0",
     "clsx": "2.1.1",
     "framer-motion": "11.18.2",
     "html-escaper": "3.0.3",
