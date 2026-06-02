@@ -1,7 +1,7 @@
 {
   "name": "zrl-dev-portfolio",
   "version": "2.1.0",
-  "description": "Portfolio of Zachary Ryan Lopez -- AI/ML Data Specialist, Heouston TX",
+  "description": "Portfolio of Zachary Ryan Lopez -- AI/ML Data Analyst, Austin TX",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
