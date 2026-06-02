@@ -31,7 +31,7 @@ export function Footer() {
             </div>
             <p className="text-muted-foreground text-sm leading-relaxed mb-4">
               AI/ML data operations specialist focused on building systems that improve 
-              data quality and user experience. Based in Houston, TX.
+              data quality and user experience. Based in Austin, TX.
             </p>
             <div className="flex items-center space-x-4">
               <Link
