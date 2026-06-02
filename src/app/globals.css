@@ -49,6 +49,10 @@
     @apply bg-gradient-to-r from-slate-200 to-zinc-400 bg-clip-text text-transparent;
   }
 
+  .text-brand {
+    color: #c0281d;
+  }
+
   .card-hover {
     @apply transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
   }
