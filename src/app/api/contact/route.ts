@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from 'next/server'
 export const runtime = 'edge'
 
 // ── Constants ────────────────────────────────────────────────────────────────
-const ALLOWED_ORIGINS = new Set(['https://zrl.dev'])
+const ALLOWED_ORIGINS = new Set(['https://zrl.dev', 'https://www.zrl.dev'])
 const MAX_BODY_BYTES  = 10_240
 const LIMITS = {
   name:           100,
