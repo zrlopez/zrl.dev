@@ -6,7 +6,7 @@ import Link from 'next/link'
 import { AnnotationDashboardDemo } from './_components/AnnotationDashboardDemo'
 
 const tech = [
-  'Next.js 14',
+  'Next.js 15',
   'TypeScript',
   'Recharts',
   'Tailwind CSS',
@@ -27,11 +27,7 @@ const fixes = [
   'Error rate precision preserved to 2 decimal places',
   'Inverted color logic for error rate (lower = green)',
   'Alert threshold current values wired to live KPIs',
-  'Chart.js pinned to 4.4.4 with SRI integrity hash',
-  'Null-guarded tab listeners via loop with if(btn) check',
-  'loadOverviewTab wrapped in tryLoadTab error boundary',
   'Inline theme script prevents light-mode flash on load',
-  'ARIA labelledby targets resolved — all tabpanels accessible',
 ]
 
 export default function AnnotationDashboardPage() {
