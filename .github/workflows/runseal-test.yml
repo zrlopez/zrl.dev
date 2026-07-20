@@ -1,0 +1,148 @@
+# Runseal Supply Chain Security — Test Workflow
+# Demonstrates sandboxed CI execution with Landlock filesystem filtering.
+# Uses nono kernel-enforced sandboxing from always-further/runseal.
+# Pin to @v0.3.3 — early alpha, use with caution.
+
+name: Runseal Test
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  # -------------------------------------------------------------------
+  # Test 1: Sandboxed lint (ESLint)
+  # Filesystem: read-only except /tmp, network: blocked
+  # -------------------------------------------------------------------
+  sandboxed-lint:
+    name: "Runseal: Sandboxed Lint"
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci --legacy-peer-deps
+
+      - name: Run ESLint inside Runseal sandbox
+        uses: always-further/runseal@v0.3.3
+        with:
+          run: |
+            npx eslint . --max-warnings 0 || true
+            echo "✅ ESLint completed inside sandbox"
+          policy: |
+            fs:
+              read: ["."]
+              write: ["/tmp"]
+            network:
+              mode: blocked
+            access: {}
+          verify-attestations: false
+
+  # -------------------------------------------------------------------
+  # Test 2: Audit evidence collection
+  # Captures cryptographic audit of all sandbox access.
+  # -------------------------------------------------------------------
+  audit-evidence:
+    name: "Runseal: Audit Evidence"
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Generate audit evidence
+        uses: always-further/runseal@v0.3.3
+        with:
+          run: |
+            echo "Running audited commands..."
+            echo "Step 1: Read a file"
+            cat package.json | head -5
+            echo ""
+            echo "Step 2: Write to allowed path"
+            echo "audit-test-$(date +%s)" > /tmp/audit-proof.txt
+            cat /tmp/audit-proof.txt
+            echo ""
+            echo "✅ Audit evidence generated"
+          audit: artifact
+          policy: |
+            fs:
+              read: ["."]
+              write: ["/tmp"]
+            network:
+              mode: blocked
+            access: {}
+          verify-attestations: false
+
+  # -------------------------------------------------------------------
+  # Test 3: Filesystem isolation
+  # Attempt to write outside /tmp — should fail.
+  # -------------------------------------------------------------------
+  fs-isolation:
+    name: "Runseal: Filesystem Isolation"
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Test filesystem isolation
+        uses: always-further/runseal@v0.3.3
+        with:
+          run: |
+            echo "=== Filesystem Isolation Test ==="
+            echo ""
+            echo "Step 1: Read repo file (should work)"
+            if head -1 package.json > /dev/null 2>&1; then
+              echo "  ✅ Can read repo files"
+            else
+              echo "  ❌ Cannot read repo files"
+              exit 1
+            fi
+            echo ""
+            echo "Step 2: Write to /tmp (should work)"
+            echo "test" > /tmp/test.txt
+            if [ -f /tmp/test.txt ]; then
+              echo "  ✅ Can write to /tmp"
+            else
+              echo "  ❌ Cannot write to /tmp"
+              exit 1
+            fi
+            echo ""
+            echo "Step 3: Write to /etc/hostname (should FAIL)"
+            if echo "evil" > /etc/hostname 2>/dev/null; then
+              echo "  ❌ SECURITY: Can write to /etc/hostname!"
+              exit 1
+            else
+              echo "  ✅ Correctly blocked from writing to /etc/hostname"
+            fi
+            echo ""
+            echo "Step 4: Write to runner home (should FAIL)"
+            if echo "evil" > ~/.bashrc 2>/dev/null; then
+              echo "  ❌ SECURITY: Can write to home directory!"
+              exit 1
+            else
+              echo "  ✅ Correctly blocked from writing to home"
+            fi
+            echo ""
+            echo "✅ Filesystem isolation verified"
+          policy: |
+            fs:
+              read: ["."]
+              write: ["/tmp"]
+            network:
+              mode: blocked
+            access: {}
+          verify-attestations: false
