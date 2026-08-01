@@ -45,7 +45,7 @@ describe('AnnotationDashboardPage', () => {
   })
 
   it('renders all tech stack badges', () => {
-    const techItems = ['Next.js 14', 'TypeScript', 'Recharts', 'Tailwind CSS', 'React Hooks', 'Real-time State']
+    const techItems = ['Next.js 15', 'TypeScript', 'Recharts', 'Tailwind CSS', 'React Hooks', 'Real-time State']
     techItems.forEach(tech => {
       expect(screen.getByText(tech)).toBeInTheDocument()
     })
@@ -61,7 +61,7 @@ describe('AnnotationDashboardPage', () => {
   it('renders all engineering fixes', () => {
     expect(screen.getByText(/Independent ±2.5% variation per metric/)).toBeInTheDocument()
     expect(screen.getByText(/Inverted color logic for error rate/)).toBeInTheDocument()
-    expect(screen.getByText(/ARIA labelledby targets resolved/)).toBeInTheDocument()
+    expect(screen.getByText(/Inline theme script prevents light-mode flash/)).toBeInTheDocument()
   })
 
   it('renders the AnnotationDashboardDemo component', () => {

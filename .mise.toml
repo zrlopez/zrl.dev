@@ -1,0 +1,17 @@
+[tools]
+node = "22.16.0"
+
+[tasks.audit]
+run = "npm run audit"
+
+[tasks.build]
+run = "npm run build"
+
+[tasks.lint]
+run = "npm run lint"
+
+[tasks.test]
+run = "npm test"
+
+[tasks.type-check]
+run = "npm run type-check"

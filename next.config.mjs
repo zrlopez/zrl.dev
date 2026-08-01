@@ -1,5 +1,9 @@
 /** @type {import('next').NextConfig} */
 
+import { fileURLToPath } from 'node:url'
+
+const outputFileTracingRoot = fileURLToPath(new URL('.', import.meta.url))
+
 // Static security headers only. Per-request CSP is set in middleware.ts so
 // every HTML response gets a unique nonce.
 const securityHeaders = [
@@ -66,6 +70,7 @@ const nextConfig = {
       },
     ]
   },
+  outputFileTracingRoot,
   poweredByHeader: false,
   compress: true,
 }
