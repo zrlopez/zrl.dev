@@ -2,14 +2,14 @@
 # https://docs.github.com/en/code-security/dependabot/dependabot-version-updates
 #
 # Automated dependency update PRs prevent silent accumulation of CVEs.
-# Schedule: weekly (Monday, 09:00 CT). Both npm packages and GitHub Actions
+# Schedule: weekly (Monday, 09:00 CT). Both Node packages and GitHub Actions
 # are monitored separately since they have different update cadences and
 # different security implications.
 
 version: 2
 updates:
 
-  # ── npm packages ─────────────────────────────────────────────────────
+  # ── Node packages (npm ecosystem covers pnpm lockfiles) ──────────────
   - package-ecosystem: npm
     directory: /
     schedule:
