@@ -2,16 +2,16 @@
 node = "22.16.0"
 
 [tasks.audit]
-run = "npm run audit"
+run = "pnpm run audit"
 
 [tasks.build]
-run = "npm run build"
+run = "pnpm run build"
 
 [tasks.lint]
-run = "npm run lint"
+run = "pnpm run lint"
 
 [tasks.test]
-run = "npm test"
+run = "pnpm test"
 
 [tasks.type-check]
-run = "npm run type-check"
+run = "pnpm run type-check"
