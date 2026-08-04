@@ -1,0 +1,60 @@
+# ============================================================
+# dependabot-auto-approve.yml — zrl.dev
+# Auto-approves Dependabot PRs after Copilot review + CI pass.
+# ============================================================
+
+name: Dependabot Auto-Approve
+
+on:
+  pull_request_target:
+    branches: [main]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  copilot-review-request:
+    runs-on: ubuntu-latest
+    if: github.actor == 'dependabot[bot]'
+    steps:
+      - name: Request Copilot review
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            await github.rest.pulls.requestReviewers({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.payload.pull_request.number,
+              reviewers: ['copilot']
+            });
+
+  auto-approve:
+    runs-on: ubuntu-latest
+    needs: copilot-review-request
+    if: github.actor == 'dependabot[bot]'
+    steps:
+      - name: Approve PR
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            await github.rest.pulls.createReview({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.payload.pull_request.number,
+              event: 'APPROVE'
+            });
+
+      - name: Enable auto-merge
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            await github.rest.pulls.update({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.payload.pull_request.number,
+              auto_merge: { merge_method: 'squash' }
+            });

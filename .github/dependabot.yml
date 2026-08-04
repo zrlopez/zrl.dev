@@ -1,52 +1,46 @@
-# Dependabot configuration — zrl.dev
-# https://docs.github.com/en/code-security/dependabot/dependabot-version-updates
-#
-# Automated dependency update PRs prevent silent accumulation of CVEs.
-# Schedule: weekly (Monday, 09:00 CT). Both Node packages and GitHub Actions
-# are monitored separately since they have different update cadences and
-# different security implications.
+# ============================================================
+# dependabot.yml — zrl.dev
+# Automated dependency security updates.
+# ============================================================
 
 version: 2
-updates:
 
-  # ── Node packages (npm ecosystem covers pnpm lockfiles) ──────────────
+updates:
+  # ── npm / TypeScript ────────────────────────────────────
   - package-ecosystem: npm
     directory: /
     schedule:
       interval: weekly
-      day:  monday
-      time: "09:00"
+      day: monday
+      time: "08:00"
       timezone: America/Chicago
+    open-pull-requests-limit: 5
     labels:
       - dependencies
-    open-pull-requests-limit: 10
-    groups:
-      # Group minor and patch updates into a single weekly PR to reduce noise.
-      # Security updates always get individual PRs regardless of grouping.
-      minor-and-patch:
-        patterns:
-          - "*"
-        update-types:
-          - minor
-          - patch
+      - security
+    commit-message:
+      prefix: "deps"
+      include: scope
+    reviewers:
+      - zrlopez
     ignore:
-      # Next.js major versions require manual testing before upgrade.
-      - dependency-name: next
-        update-types: ["version-update:semver-major"]
-      # All other major version bumps require manual review — grouped PRs
-      # are still created but must be approved explicitly before merging.
       - dependency-name: "*"
         update-types: ["version-update:semver-major"]
 
-  # ── GitHub Actions ──────────────────────────────────────────────────
+  # ── GitHub Actions ───────────────────────────────────────
   - package-ecosystem: github-actions
     directory: /
     schedule:
       interval: weekly
-      day:  monday
-      time: "09:00"
+      day: monday
+      time: "08:00"
       timezone: America/Chicago
+    open-pull-requests-limit: 5
     labels:
       - dependencies
-      - github-actions
-    open-pull-requests-limit: 5
+      - ci-cd
+    commit-message:
+      prefix: "ci"
+      include: scope
+    reviewers:
+      - zrlopez
