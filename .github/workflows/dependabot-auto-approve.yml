@@ -19,7 +19,7 @@ jobs:
     if: github.actor == 'dependabot[bot]'
     steps:
       - name: Request Copilot review
-        uses: actions/github-script@v7
+        uses: actions/github-script@v9
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
@@ -36,7 +36,7 @@ jobs:
     if: github.actor == 'dependabot[bot]'
     steps:
       - name: Approve PR
-        uses: actions/github-script@v7
+        uses: actions/github-script@v9
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
@@ -48,7 +48,7 @@ jobs:
             });
 
       - name: Enable auto-merge
-        uses: actions/github-script@v7
+        uses: actions/github-script@v9
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
