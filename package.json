@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "pages:build": "ENABLE_EXPERIMENTAL_COREPACK=1 pnpm dlx @cloudflare/next-on-pages@1",
     "start": "next start",
     "lint": "eslint src --ext .ts,.tsx --max-warnings 0",
     "type-check": "tsc --noEmit",
