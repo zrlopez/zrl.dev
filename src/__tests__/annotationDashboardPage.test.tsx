@@ -2,11 +2,38 @@ import React from 'react'
 import { render, screen } from '@testing-library/react'
 import AnnotationDashboardPage from '../app/projects/annotation-dashboard/page'
 
+function omitMotionProps(props: Record<string, unknown>) {
+  const {
+    animate,
+    exit,
+    initial,
+    layout,
+    transition,
+    viewport,
+    whileHover,
+    whileInView,
+    whileTap,
+    ...domProps
+  } = props
+
+  void animate
+  void exit
+  void initial
+  void layout
+  void transition
+  void viewport
+  void whileHover
+  void whileInView
+  void whileTap
+
+  return domProps
+}
+
 jest.mock('framer-motion', () => ({
   motion: new Proxy({}, {
     get: (_: unknown, tag: string) =>
       ({ children, ...rest }: React.HTMLAttributes<HTMLElement> & { children?: React.ReactNode }) =>
-        React.createElement(tag, rest, children),
+        React.createElement(tag, omitMotionProps(rest), children),
   }),
 }))
 

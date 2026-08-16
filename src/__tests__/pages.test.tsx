@@ -1,5 +1,40 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
+import { TextDecoder, TextEncoder } from 'util';
+
+class MockMessagePort {
+  onmessage: ((event: { data: unknown }) => void) | null = null;
+  postMessage = jest.fn((data: unknown) => {
+    this.onmessage?.({ data });
+  });
+  close = jest.fn();
+  start = jest.fn();
+  addEventListener = jest.fn();
+  removeEventListener = jest.fn();
+}
+
+class MockMessageChannel {
+  port1 = new MockMessagePort();
+  port2 = new MockMessagePort();
+}
+
+Object.defineProperty(globalThis, 'MessageChannel', {
+  configurable: true,
+  writable: true,
+  value: MockMessageChannel,
+});
+
+Object.defineProperty(globalThis, 'TextEncoder', {
+  configurable: true,
+  writable: true,
+  value: TextEncoder,
+});
+
+Object.defineProperty(globalThis, 'TextDecoder', {
+  configurable: true,
+  writable: true,
+  value: TextDecoder,
+});
 
 jest.mock('next/font/google', () => ({
   Nunito: () => ({ variable: '--font-nunito', className: 'nunito' }),
@@ -114,23 +149,24 @@ describe('TermsPage', () => {
 describe('RootLayout', () => {
   it('renders children without crashing', async () => {
     const { default: RootLayout } = await import('@/app/layout');
-    const { container } = render(
+    const { renderToStaticMarkup } = await import('react-dom/server');
+    const html = renderToStaticMarkup(
       <RootLayout>
         <div data-testid="child">hello</div>
       </RootLayout>
     );
-    expect(container).toBeTruthy();
-    expect(document.querySelector('[data-testid="child"]')).toBeTruthy();
+    expect(html).toContain('data-testid="child"');
   });
 
   it('renders navigation and footer', async () => {
     const { default: RootLayout } = await import('@/app/layout');
-    render(
+    const { renderToStaticMarkup } = await import('react-dom/server');
+    const html = renderToStaticMarkup(
       <RootLayout>
         <div />
       </RootLayout>
     );
-    expect(document.querySelector('[data-testid="navigation"]')).toBeTruthy();
-    expect(document.querySelector('[data-testid="footer"]')).toBeTruthy();
+    expect(html).toContain('data-testid="navigation"');
+    expect(html).toContain('data-testid="footer"');
   });
 });
