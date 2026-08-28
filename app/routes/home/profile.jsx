@@ -21,16 +21,18 @@ const ProfileText = ({ visible, titleId }) => (
       <DecoderText text="Hi there" start={visible} delay={500} />
     </Heading>
     <Text className={styles.description} data-visible={visible} size="l" as="p">
-      I’m Hamish, currently I live in Sydney working as a senior product designer at{' '}
-      <Link href="https://www.qwilr.com">Qwilr</Link>. My projects include UX design, UI
-      animations, and icon illustration. Being comfortable with code allows me to rapidly
-      prototype and validate experiences. If you’re interested in the tools and software I
-      use check out my <Link href="/uses">uses page</Link>.
+      I'm Zachary, an AI/ML Data Operations specialist based in Austin, TX with 7+
+      years of experience across Apple data operations, annotation QA, and workflow
+      improvement. I build Python and SQL tools, validate high-volume datasets, and
+      ship dashboards that track labeling quality and ML support metrics. If you're
+      interested in the tools and software I use, check out my{' '}
+      <Link href="/uses">uses page</Link>.
     </Text>
     <Text className={styles.description} data-visible={visible} size="l" as="p">
-      In my spare time I like to practice Brazilian Jiu Jitsu, play video games, and{' '}
-      <Link href="/projects/volkihar-knight">make mods</Link>. I’m always down for hearing
-      about new projects, so feel free to drop me a line.
+      Previously at Apple, I partnered with global cross-functional teams on Siri NLP
+      annotation pipelines, drove 43% faster escalation resolution, and authored
+      playbooks adopted across multiple teams. I'm always open to hearing about new
+      projects, so feel free to drop me a line.
     </Text>
   </Fragment>
 );
@@ -86,7 +88,7 @@ export const Profile = ({ id, visible, sectionRef }) => {
                   width={960}
                   height={1280}
                   sizes={`(max-width: ${media.mobile}px) 100vw, 480px`}
-                  alt="Me smiling like a goofball at the Qwilr office in Sydney"
+                  alt="Zachary Ryan Lopez — AI/ML Data Operations, Austin TX"
                 />
                 <svg className={styles.svg} data-visible={visible} viewBox="0 0 136 766">
                   <use href={`${katakana}#katakana-profile`} />
