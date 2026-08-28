@@ -20,7 +20,7 @@ import styles from './uses.module.css';
 export const meta = () => {
   return baseMeta({
     title: 'Uses',
-    description: 'A list of hardware and software I use to do my thing',
+    description: 'Tools, languages, and software I use for AI/ML Data Operations.',
   });
 };
 
@@ -35,31 +35,40 @@ export const Uses = () => {
         />
         <ProjectHeader
           title="Uses"
-          description="A somewhat comprehensive list of tools, apps, hardware, and more that I use on a daily basis to design and code things. And yeah, that is a Johnny Mnemonic GIF in the background."
+          description="A somewhat comprehensive list of the tools, technologies, software, and platforms I use to build data systems, analyze workflows, and manage AI operations."
         />
         <ProjectSection padding="none" className={styles.section}>
           <ProjectSectionContent>
             <ProjectTextRow width="m">
-              <ProjectSectionHeading>Design</ProjectSectionHeading>
+              <ProjectSectionHeading>Data & ML</ProjectSectionHeading>
               <ProjectSectionText as="div">
                 <List>
                   <ListItem>
-                    <Link href="https://www.figma.com">Figma</Link> is my primary tool for
-                    UI design these days. Made the switch from Sketch in 2020 and haven’t
-                    looked back. I’ve also created{' '}
-                    <Link href="https://www.figma.com/@hamish">a few plugins</Link> that
-                    you can install.
+                    <Link href="https://www.python.org">Python</Link> +{' '}
+                    <Link href="https://pandas.pydata.org">Pandas</Link> /{' '}
+                    <Link href="https://jupyter.org">Jupyter</Link> /{' '}
+                    <Link href="https://www.sqlite.org">SQLite</Link> are my core stack
+                    for ETL, validation, and high-volume dataset audits. Most of the
+                    pipelines behind my{' '}
+                    <Link href="/projects/annotation-dashboard">
+                      annotation dashboard
+                    </Link>{' '}
+                    and{' '}
+                    <Link href="/projects/ml-incident-response">ML incident system</Link>{' '}
+                    live here — 40% reporting time cut with automated quality checks.
                   </ListItem>
                   <ListItem>
-                    Any motion graphics I create are created in Adobe After Effects. So
-                    far I haven’t found a non-Adobe product that’s as good. If anyone has
-                    suggestions please <Link href="/contact">message me</Link>.
+                    <Link href="https://tableau.com">Tableau</Link> and{' '}
+                    <Link href="https://powerbi.microsoft.com">Power BI</Link> for
+                    throughput, error, and capacity reporting;{' '}
+                    <Link href="https://recharts.org">Recharts</Link> for the live
+                    dashboard.
                   </ListItem>
                   <ListItem>
-                    For any 3D models and video editing I use{' '}
-                    <Link href="https://www.blender.org/">Blender</Link>. Since 2.8 it’s
-                    become way simpler to use and in a lot of ways better than expensive
-                    paid tools like 3DS Max or Maya.
+                    Annotation QA, MLOps, taxonomy governance, PII handling, NLP
+                    evaluation, RLHF, prompt engineering, A/B testing, and ontology design
+                    — the ops layer that keeps labeling consistent across Siri-scale
+                    pipelines.
                   </ListItem>
                 </List>
               </ProjectSectionText>
@@ -73,41 +82,61 @@ export const Uses = () => {
               <ProjectSectionText as="div">
                 <List>
                   <ListItem>
-                    I use <Link href="https://vscodium.com/">VSCodium</Link> as my text
-                    editor, with the Tokyo Night theme and Operator Mono as my typeface of
-                    choice.
+                    <Link href="https://nextjs.org">Next.js 15</Link> +{' '}
+                    <Link href="https://www.typescriptlang.org">TypeScript</Link> +{' '}
+                    <Link href="https://tailwindcss.com">Tailwind CSS</Link> +{' '}
+                    <Link href="https://www.framer.com/motion/">Framer Motion</Link> for
+                    this site and the dashboard — currently rebuilding on this Remix base.
+                    Also <Link href="https://fastapi.tiangolo.com">FastAPI</Link> +{' '}
+                    <Link href="https://www.sqlalchemy.org">async SQLAlchemy</Link> +{' '}
+                    <Link href="https://docs.python.org/3/library/structlog.html">
+                      structlog
+                    </Link>{' '}
+                    for the incident response service.
                   </ListItem>
                   <ListItem>
-                    Firefox is my main browser for both development and general use.
+                    I use <Link href="https://code.visualstudio.com">VS Code</Link>{' '}
+                    (Catppuccin / Vira Montana, Vim bindings) and ship via{' '}
+                    <Link href="https://vercel.com">Vercel</Link> +{' '}
+                    <Link href="https://www.cloudflare.com">Cloudflare</Link> DNS/proxy.
+                    Local inference via <Link href="https://ollama.com">Ollama</Link> at{' '}
+                    <code>127.0.0.1:11434</code>.
                   </ListItem>
                   <ListItem>
-                    <Link href="https://reactjs.org/">React</Link> is my front end
-                    Javascript library of choice. The component-centric mental model is
-                    the first thing that truly made sense to me as a designer.
+                    For 3D/effects: <Link href="https://threejs.org">three.js</Link> (kept
+                    from this template) and Draco for the models. For isolation:{' '}
+                    <Link href="https://storybook.js.org">Storybook 7</Link>.
+                  </ListItem>
+                </List>
+              </ProjectSectionText>
+            </ProjectTextRow>
+          </ProjectSectionContent>
+        </ProjectSection>
+        <ProjectSection padding="none" className={styles.section}>
+          <ProjectSectionContent>
+            <ProjectTextRow width="m">
+              <ProjectSectionHeading>Workflow</ProjectSectionHeading>
+              <ProjectSectionText as="div">
+                <List>
+                  <ListItem>
+                    <Link href="https://github.com">GitHub</Link> +{' '}
+                    <Link href="https://git-scm.com">Git</Link> (Conventional Commits),{' '}
+                    <Link href="https://www.atlassian.com/software/jira">Jira</Link> /{' '}
+                    <Link href="https://www.atlassian.com/software/confluence">
+                      Confluence
+                    </Link>{' '}
+                    for SOPs, runbooks, and playbooks.{' '}
+                    <Link href="https://trufflesecurity.com/trufflehog">TruffleHog</Link>,{' '}
+                    <Link href="https://aquasecurity.github.io/trivy/">Trivy</Link>,{' '}
+                    <Link href="https://www.sigstore.dev">Cosign</Link>, and{' '}
+                    <Link href="https://codeql.github.com">CodeQL</Link> for the hardened
+                    CI.
                   </ListItem>
                   <ListItem>
-                    For 3D effects and image shaders I use{' '}
-                    <Link href="https://threejs.org/">three.js</Link>. It has a bit of a
-                    learning curve but you can do some really powerful stuff with it.
-                  </ListItem>
-                  <ListItem>
-                    For CSS I’ve used a myriad pre-processors and css-in-js solutions like
-                    styled-components, but these days I’m using vanilla CSS with{' '}
-                    <Link href="https://postcss.org/">PostCSS</Link> to get upcoming CSS
-                    features today.
-                  </ListItem>
-                  <ListItem>
-                    For Javascript animations I use{' '}
-                    <Link href="https://www.framer.com/motion/">Framer Motion</Link>, it’s
-                    a great way to add spring animations to React and three.js.
-                  </ListItem>
-                  <ListItem>
-                    For building and testing UI components in isolation I use{' '}
-                    <Link href="https://storybook.js.org/">Storybook</Link>. Check out the{' '}
-                    <Link href="https://storybook.hamishw.com">
-                      storybook for this website
-                    </Link>
-                    .
+                    Private journal via{' '}
+                    <Link href="https://github.com/zrlopez">Tilde</Link> + supermemory
+                    (local, 6767) for durable decisions. No cloud telemetry —
+                    privacy-first.
                   </ListItem>
                 </List>
               </ProjectSectionText>
@@ -121,40 +150,28 @@ export const Uses = () => {
               <Table>
                 <TableBody>
                   <TableRow>
-                    <TableHeadCell>Desktop</TableHeadCell>
-                    <TableCell>Custom built</TableCell>
+                    <TableHeadCell>Laptop</TableHeadCell>
+                    <TableCell>MacBook Pro 14″ (Apple Silicon)</TableCell>
                   </TableRow>
                   <TableRow>
-                    <TableHeadCell>Operating system</TableHeadCell>
-                    <TableCell>Arch Linux (by the way)</TableCell>
+                    <TableHeadCell>OS</TableHeadCell>
+                    <TableCell>macOS (Darwin) — zsh + mise</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableHeadCell>Editor</TableHeadCell>
+                    <TableCell>VS Code + Vim bindings</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableHeadCell>Theme</TableHeadCell>
+                    <TableCell>Catppuccin / Vira Montana</TableCell>
                   </TableRow>
                   <TableRow>
                     <TableHeadCell>Browser</TableHeadCell>
-                    <TableCell>Zen Browser</TableCell>
+                    <TableCell>Zen + Chrome (Vercel previews)</TableCell>
                   </TableRow>
                   <TableRow>
-                    <TableHeadCell>Monitor</TableHeadCell>
-                    <TableCell>1440p IPS 144hz LG 27GL850</TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableHeadCell>Keyboard</TableHeadCell>
-                    <TableCell>Tofu65</TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableHeadCell>Mouse</TableHeadCell>
-                    <TableCell>Logitech G403</TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableHeadCell>Laptop</TableHeadCell>
-                    <TableCell>Macbook Pro 14″</TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableHeadCell>Headphones</TableHeadCell>
-                    <TableCell>Audio Technica ATH-M50x/Apple Airpods</TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableHeadCell>Microphone</TableHeadCell>
-                    <TableCell>Blue Yeti</TableCell>
+                    <TableHeadCell>Runtime</TableHeadCell>
+                    <TableCell>Node 22 / Python 3.12 / pnpm + npm</TableCell>
                   </TableRow>
                 </TableBody>
               </Table>
