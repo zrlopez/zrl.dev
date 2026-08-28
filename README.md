@@ -1,154 +1,39 @@
-# ZRL.dev - Modern Portfolio Website
+<p align="center">
+  <img src="/public/favicon.svg" width="50" alt="Logo" />
+</p>
+<h1 align="center">zrl.dev</h1>
 
-![Status](https://img.shields.io/badge/status-live-brightgreen)
-![Stack](https://img.shields.io/badge/stack-Next.js%20%2B%20TypeScript%20%2B%20Tailwind-0A66C2)
-![CI](https://github.com/zrlopez/zrl.dev/actions/workflows/secured_ci.yml/badge.svg?branch=main)
-[![Codacy Badge](https://app.codacy.com/project/badge/Grade/aeaf6b328db0474f84f5fde4fd0bc174)](https://app.codacy.com/gh/zrlopez/zrl.dev/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)[![Codacy Badge](https://app.codacy.com/project/badge/Coverage/aeaf6b328db0474f84f5fde4fd0bc174)](https://app.codacy.com/gh/zrlopez/zrl.dev/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_coverage)
-![License](https://img.shields.io/badge/license-MIT-blue)
+Portfolio of Zachary Ryan Lopez — AI/ML Data Operations, Austin TX. Built with [Remix](https://remix.run/), [Three.js](https://threejs.org/), and [Framer Motion](https://www.framer.com/motion/).
 
-> A modern, responsive portfolio website built with Next.js, TypeScript, and Tailwind CSS.
+Live at [zrl.dev](https://zrl.dev) · Based on [Hamish Williams portfolio](https://github.com/HamishMW/portfolio) (MIT) with custom content and Vercel adaptation.
 
-## 🌐 Live Demo
+## Install & run
 
-- [zrl.dev](https://zrl.dev) — view the portfolio online.
-- [Annotation Analytics Dashboard](https://zrl.dev/projects/annotation-dashboard) — featured project demo.
-
-## 🚀 Features
-
-- **Modern Tech Stack**: Next.js 14 with App Router, TypeScript, Tailwind CSS
-- **Performance Optimized**: Automatic code splitting, image optimization, and caching
-- **Responsive Design**: Mobile-first approach with sophisticated breakpoints
-- **Dark/Light Mode**: Complete theme switching with system preference detection
-- **Interactive Animations**: Smooth scroll-triggered animations with Framer Motion
-- **SEO Enhanced**: Comprehensive metadata, Open Graph, and structured data
-- **Accessibility**: Semantic HTML with proper ARIA labels
-- **Contact Form**: Functional contact form with Resend email API and Cloudflare Turnstile spam protection
-- **Project Pages**: Dedicated detail pages per project (e.g. Annotation Analytics Dashboard)
-
-## 🛠️ Tech Stack
-
-- **Framework**: [Next.js 14](https://nextjs.org/)
-- **Language**: [TypeScript](https://www.typescriptlang.org/)
-- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
-- **Animations**: [Framer Motion](https://www.framer.com/motion/)
-- **Charts**: [Recharts](https://recharts.org/)
-- **Icons**: [Lucide React](https://lucide.dev/)
-- **Email**: [Resend](https://resend.com/)
-- **Spam Protection**: [Cloudflare Turnstile](https://www.cloudflare.com/products/turnstile/)
-- **Deployment**: [Vercel](https://vercel.com/) (recommended)
-
-## 🏃‍♂️ Getting Started
-
-### Prerequisites
-
-- Node.js 18+
-- npm or yarn or pnpm
-
-### Installation
+Requires Node `19.9.0+` and npm `9.6.3+`:
 
 ```bash
-# Clone the repository
-git clone https://github.com/zrlopez/zrl.dev.git
-
-# Navigate to the project directory
-cd zrl.dev
-
-# Install dependencies
 npm install
-
-# Start the development server
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) in your browser to see the result.
+Storybook:
 
-### Environment Variables
-
-Create a `.env.local` file in the root with the following:
-
-```env
-RESEND_API_KEY=your_resend_api_key
-NEXT_PUBLIC_TURNSTILE_SITE_KEY=your_turnstile_site_key
-TURNSTILE_SECRET_KEY=your_turnstile_secret_key
+```bash
+npm run dev:storybook
 ```
 
-## 📁 Project Structure
+## Deployment
 
-```
-src/
-├── app/
-│   ├── layout.tsx                        # Root layout with metadata
-│   ├── page.tsx                          # Homepage
-│   ├── globals.css                       # Global styles
-│   └── projects/
-│       └── annotation-dashboard/         # Project detail page
-├── components/
-│   ├── sections/                         # Page sections
-│   │   ├── hero.tsx
-│   │   ├── about.tsx
-│   │   ├── stats.tsx
-│   │   ├── skills.tsx
-│   │   ├── experience.tsx
-│   │   ├── projects.tsx
-│   │   └── contact.tsx
-│   ├── navigation.tsx                    # Header navigation
-│   ├── footer.tsx                        # Site footer
-│   └── theme-provider.tsx                # Theme management
-public/
-├── certs/                                # Certification images
-└── resume.pdf                            # Downloadable résumé
+This fork is configured for Vercel via `@vercel/remix` (see `vite.config.js` `vercelPreset`). Preview deploys on push; production is manual.
+
+```bash
+npm run build
 ```
 
-## 🚀 Deployment
+## Credits
 
-### Vercel (Recommended)
+Original design and template by [Hamish Williams](https://hamishw.com) — MIT licensed. Content, projects, and data replaced for personal use. Do not present template projects as your own.
 
-1. Push your code to GitHub
-2. Connect your repository to [Vercel](https://vercel.com/)
-3. Add environment variables in the Vercel project settings
-4. Vercel will automatically deploy your site
+## License
 
-### Other Platforms
-
-- **Netlify**: Set build command to `npm run build` and publish directory to `.next`
-- **Cloudflare Pages**: Configure with `npm run build` and output directory `.next`
-
-## 🎨 Customization
-
-### Colors & Theme
-
-Customize the color palette in `tailwind.config.js`:
-
-```js
-module.exports = {
-  theme: {
-    extend: {
-      colors: {
-        // Your custom colors here
-      },
-    },
-  },
-}
-```
-
-### Content
-
-Update your personal information in the component files:
-
-- **Personal info**: `src/components/sections/hero.tsx`
-- **About section**: `src/components/sections/about.tsx`
-- **Experience**: `src/components/sections/experience.tsx`
-- **Projects**: `src/components/sections/projects.tsx`
-- **Annotation Analytics Dashboard**: `src/app/projects/annotation-dashboard/`
-
-## 📄 License
-
-MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 🤝 Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
----
-
-**© 2026 Zachary Ryan Lopez. All rights reserved.** | [zrl.dev](https://zrl.dev) | [LinkedIn](https://linkedin.com/in/zrlopez)
+MIT — see `LICENSE`.
