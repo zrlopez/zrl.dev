@@ -1,34 +1,36 @@
-__  __  __
-\ \ \ \ \/
- \ \/\ \
-  \/  \/
+ _____ _____ _
+|__  /|  __ \| |
+  / / | |__) | |
+ / /_ |  _  /| |
+/____||_| \_\_|
 
 The humans.txt file explains the team, technology,
 and graphic assets behind this site humanstxt.org.
 
 _______________________________________________________________________________
 
-DESIGNER | デザイナー
+HUMAN | ヒューマン
 
-Hamish Williams
-Hand crafted design & web development
+Zachary Ryan Lopez
+AI/ML Data Operations — Austin, TX
+Portfolio: https://zrl.dev
 
-Design tools:
-Figma
-Photoshop
-Blender
-
-twitter.com/hamishmw
-github.com/hamishmw
+linkedin.com/in/zrlopez
+github.com/zrlopez
+kaggle.com/zrlopez
+hello@zrl.dev
 
 _______________________________________________________________________________
 
 TECHNOLOGY | テクノロジー
 
-React
-Remix
-Three.js
-Framer Motion
+Remix 2.7 / React 18
+Three.js / Framer Motion
+Vercel (@vercel/remix) + Cloudflare DNS
+Python / FastAPI / async SQLAlchemy
+Pandas / SQLite / Tableau / Power BI
+
+Template base: Hamish Williams portfolio (MIT)
 
 _______________________________________________________________________________
 
@@ -37,3 +39,12 @@ FONTS | フォント
 Gotham
 IPA Gothic Regular
 Hiragino Kaku Gothic W8
+Geist Mono
+
+_______________________________________________________________________________
+
+COLOPHON
+
+Harvard Crimson #A51C30
+Catppuccin / Vira Montana
+Vim bindings everywhere
