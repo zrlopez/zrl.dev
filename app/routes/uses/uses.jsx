@@ -150,28 +150,32 @@ export const Uses = () => {
               <Table>
                 <TableBody>
                   <TableRow>
-                    <TableHeadCell>Laptop</TableHeadCell>
-                    <TableCell>MacBook Pro 14″ (Apple Silicon)</TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableHeadCell>OS</TableHeadCell>
-                    <TableCell>macOS (Darwin) — zsh + mise</TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableHeadCell>Editor</TableHeadCell>
-                    <TableCell>VS Code + Vim bindings</TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableHeadCell>Theme</TableHeadCell>
-                    <TableCell>Catppuccin / Vira Montana</TableCell>
+                    <TableHeadCell>Operating system</TableHeadCell>
+                    <TableCell>Golden Gate (macOS 27)</TableCell>
                   </TableRow>
                   <TableRow>
                     <TableHeadCell>Browser</TableHeadCell>
-                    <TableCell>Zen + Chrome (Vercel previews)</TableCell>
+                    <TableCell>Brave</TableCell>
                   </TableRow>
                   <TableRow>
-                    <TableHeadCell>Runtime</TableHeadCell>
-                    <TableCell>Node 22 / Python 3.12 / pnpm + npm</TableCell>
+                    <TableHeadCell>Monitor</TableHeadCell>
+                    <TableCell>MSI MPG 274URDFW E16M</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableHeadCell>Keyboard</TableHeadCell>
+                    <TableCell>Keychron Q6 HE 8K Magnetic Switch</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableHeadCell>Mouse</TableHeadCell>
+                    <TableCell>Magic Trackpad (USB-C)</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableHeadCell>Laptop</TableHeadCell>
+                    <TableCell>16" Macbook Pro M4 Pro</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableHeadCell>Headphones</TableHeadCell>
+                    <TableCell>AirPod Max/AirPod Pro 3</TableCell>
                   </TableRow>
                 </TableBody>
               </Table>
