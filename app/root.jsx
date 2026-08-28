@@ -52,6 +52,11 @@ export const loader = async ({ request, context }) => {
   const pathnameSliced = pathname.endsWith('/') ? pathname.slice(0, -1) : url;
   const canonicalUrl = `${config.url}${pathnameSliced}`;
 
+  const sessionSecret =
+    context?.cloudflare?.env?.SESSION_SECRET ||
+    context?.env?.SESSION_SECRET ||
+    process.env.SESSION_SECRET ||
+    'fallback-secret';
   const { getSession, commitSession } = createCookieSessionStorage({
     cookie: {
       name: '__session',
@@ -59,7 +64,7 @@ export const loader = async ({ request, context }) => {
       maxAge: 604_800,
       path: '/',
       sameSite: 'lax',
-      secrets: [context.cloudflare.env.SESSION_SECRET || ' '],
+      secrets: [sessionSecret],
       secure: true,
     },
   });
