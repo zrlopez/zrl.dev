@@ -41,9 +41,10 @@ void main() {
 
 	#include <clipping_planes_fragment>
 
+  vec3 crimson = vec3(0.647, 0.11, 0.188);
   vec3 color = vec3(vUv * (0.2 - 2.0 * noise), 1.0);
-  vec3 finalColors = vec3(color.b * 1.5, color.r, color.r);
-  vec4 diffuseColor = vec4(cos(finalColors * noise * 3.0), 1.0);
+  vec3 finalColors = crimson * (0.7 + color.r * 0.9 + noise * 0.35);
+  vec4 diffuseColor = vec4(finalColors, 1.0);
   ReflectedLight reflectedLight = ReflectedLight(vec3(0.0), vec3(0.0), vec3(0.0), vec3(0.0));
   vec3 totalEmissiveRadiance = emissive;
 
