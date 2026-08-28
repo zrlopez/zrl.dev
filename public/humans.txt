@@ -1,10 +1,10 @@
-  ____  ____
- /__ //__ /|
-/__ //__ / |
-\__//__/_/
- \_//__/
-  /___/
-  |__/
+ ____  ____
+/  / /  /|
+|  |/  / |
+|__\  / /
+ \__\/ /
+  /__/_/
+  |___|
 
 The humans.txt file explains the team, technology,
 and graphic assets behind this site humanstxt.org.
@@ -45,7 +45,7 @@ Geist Mono
 
 _______________________________________________________________________________
 
-COLOPHON
+COLOPHON | JAPANENSE-HERE
 
 Harvard Crimson #A51C30
 Catppuccin / Vira Montana
