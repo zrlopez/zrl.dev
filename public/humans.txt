@@ -54,8 +54,6 @@ SITE | サイト
 Last update: 2026/08/28
 Doctype: HTML5
 Language: en
-Components: Remix 2.7, React 18, Three.js, Framer Motion
-Software: Vite, Vercel, Cloudflare, GitHub, Python / FastAPI, Pandas / SQLite
 
 _______________________________________________________________________________
 
@@ -63,14 +61,8 @@ COLOPHON | コロフォン
 
 Harvard Crimson #A51C30
 Gotham / IPA Gothic · Remix / Three.js / Vite · Vercel + Cloudflare
-Vim bindings everywhere · Ollama 127.0.0.1:11434
+Vim bindings everywhere
 
 _______________________________________________________________________________
-
-LAST UPDATE | 最終更新
-
-2026/08/28
-
-
 
 Special Thanks to Hamish Williams portfolio (MIT)

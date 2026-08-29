@@ -44,31 +44,25 @@ export const Uses = () => {
               <ProjectSectionText as="div">
                 <List>
                   <ListItem>
-                    <Link href="https://www.python.org">Python</Link> +{' '}
-                    <Link href="https://pandas.pydata.org">Pandas</Link> /{' '}
-                    <Link href="https://jupyter.org">Jupyter</Link> /{' '}
-                    <Link href="https://www.sqlite.org">SQLite</Link> are my core stack
-                    for ETL, validation, and high-volume dataset audits. Most of the
-                    pipelines behind my{' '}
-                    <Link href="/projects/annotation-dashboard">
-                      annotation dashboard
-                    </Link>{' '}
-                    and{' '}
-                    <Link href="/projects/ml-incident-response">ML incident system</Link>{' '}
-                    live here — 40% reporting time cut with automated quality checks.
+                    <Link href="https://www.python.org">Python</Link>,{' '}
+                    <Link href="https://pandas.pydata.org">Pandas</Link>,{' '}
+                    <Link href="https://jupyter.org">Jupyter</Link>, and{' '}
+                    <Link href="https://www.sqlite.org">SQLite</Link> for ETL,
+                    validation, and high-volume dataset audits — the core of both the{' '}
+                    <Link href="/projects/annotation-dashboard">annotation dashboard</Link>
+                    {' '}and the{' '}
+                    <Link href="/projects/ml-incident-response">ML incident system</Link>.
                   </ListItem>
                   <ListItem>
                     <Link href="https://tableau.com">Tableau</Link> and{' '}
                     <Link href="https://powerbi.microsoft.com">Power BI</Link> for
-                    throughput, error, and capacity reporting;{' '}
+                    reporting;{' '}
                     <Link href="https://recharts.org">Recharts</Link> for the live
                     dashboard.
                   </ListItem>
                   <ListItem>
-                    Annotation QA, MLOps, taxonomy governance, PII handling, NLP
-                    evaluation, RLHF, prompt engineering, A/B testing, and ontology design
-                    — the ops layer that keeps labeling consistent across Siri-scale
-                    pipelines.
+                    Annotation QA, taxonomy governance, RLHF, and prompt engineering —
+                    the ops layer behind Siri-scale labeling pipelines.
                   </ListItem>
                 </List>
               </ProjectSectionText>
@@ -86,23 +80,20 @@ export const Uses = () => {
                     <Link href="https://react.dev">React 18</Link> +{' '}
                     <Link href="https://vitejs.dev">Vite</Link> +{' '}
                     <Link href="https://www.framer.com/motion/">Framer Motion</Link> for
-                    this site (ported from Hamish Williams Remix template). The dashboard
-                    uses <Link href="https://nextjs.org">Next.js 15</Link> +{' '}
+                    this site.{' '}
+                    <Link href="https://nextjs.org">Next.js 15</Link> +{' '}
                     <Link href="https://www.typescriptlang.org">TypeScript</Link> +{' '}
-                    <Link href="https://tailwindcss.com">Tailwind CSS</Link>. Also{' '}
+                    <Link href="https://tailwindcss.com">Tailwind</Link> for the
+                    dashboard.{' '}
                     <Link href="https://fastapi.tiangolo.com">FastAPI</Link> +{' '}
-                    <Link href="https://www.sqlalchemy.org">async SQLAlchemy</Link> +{' '}
-                    <Link href="https://www.structlog.org/">
-                      structlog
-                    </Link>{' '}
-                    for the incident response service.
+                    <Link href="https://www.structlog.org/">structlog</Link> for the
+                    incident response service.
                   </ListItem>
                   <ListItem>
-                    I use <Link href="https://code.visualstudio.com">VS Code</Link>{' '}
-                    (Catppuccin / Vira Montana, Vim bindings) and ship via{' '}
+                    <Link href="https://code.visualstudio.com">VS Code</Link>{' '}
+                    (Catppuccin, Vim bindings), deployed via{' '}
                     <Link href="https://vercel.com">Vercel</Link> +{' '}
-                    <Link href="https://www.cloudflare.com">Cloudflare</Link> DNS/proxy.
-                    Local inference via open-weight models for zero-egress tasks.
+                    <Link href="https://www.cloudflare.com">Cloudflare</Link>.
                   </ListItem>
                   <ListItem>
                     For 3D/effects: <Link href="https://threejs.org">three.js</Link> (kept
@@ -123,21 +114,19 @@ export const Uses = () => {
                   <ListItem>
                     <Link href="https://github.com">GitHub</Link> +{' '}
                     <Link href="https://git-scm.com">Git</Link> (Conventional Commits),{' '}
-                    <Link href="https://www.atlassian.com/software/jira">Jira</Link> /{' '}
+                    <Link href="https://www.atlassian.com/software/jira">Jira</Link>, and{' '}
                     <Link href="https://www.atlassian.com/software/confluence">
                       Confluence
                     </Link>{' '}
-                    for SOPs, runbooks, and playbooks.{' '}
+                    for SOPs and runbooks.
+                  </ListItem>
+                  <ListItem>
                     <Link href="https://trufflesecurity.com/trufflehog">TruffleHog</Link>,{' '}
                     <Link href="https://aquasecurity.github.io/trivy/">Trivy</Link>,{' '}
                     <Link href="https://www.sigstore.dev">Cosign</Link>, and{' '}
-                    <Link href="https://codeql.github.com">CodeQL</Link> for the hardened
-                    CI.
+                    <Link href="https://codeql.github.com">CodeQL</Link> in CI.
                   </ListItem>
-                  <ListItem>
-                    Private local journal + supermemory (6767) for durable decisions.
-                    No cloud telemetry — privacy-first.
-                  </ListItem>
+
                 </List>
               </ProjectSectionText>
             </ProjectTextRow>
