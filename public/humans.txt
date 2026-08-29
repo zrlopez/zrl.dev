@@ -1,11 +1,9 @@
-  ____  ____
- /__ //__ /|
-/__ //__ / |
-\__//__/_/
- \_//__/
-  /___/
-  |__/
-
+ ______    
+/\___  \   
+\/_/  /__  
+  /\_____\ 
+  \/_____/ 
+           
 The humans.txt file explains the team, technology,
 and graphic assets behind this site humanstxt.org.
 
@@ -15,25 +13,24 @@ HUMAN | ヒューマン
 
 Zachary Ryan Lopez
 AI/ML Data Operations — Austin, TX
-Portfolio: https://zrl.dev
-
-linkedin.com/in/zrlopez
-github.com/zrlopez
-kaggle.com/zrlopez
-hello@zrl.dev
+Site: https://zrl.dev/contact (contact form)
+LinkedIn: linkedin.com/in/zrlopez
+GitHub: github.com/zrlopez
+Kaggle: kaggle.com/zrlopez
+Location: Austin, TX, USA
 
 _______________________________________________________________________________
 
 TECHNOLOGY | テクノロジー
 
-Remix 2.7 / React 18
-Three.js / Framer Motion
-Vercel (@vercel/remix) + Cloudflare DNS
-Python / FastAPI / async SQLAlchemy
-Pandas / SQLite / Tableau / Power BI
+Cloudflare
+Vercel
+GitHub
 
-Template base: Hamish Williams portfolio (MIT)
-
+Remix
+React
+Three.js
+Framer Motion
 _______________________________________________________________________________
 
 FONTS | フォント
@@ -45,8 +42,35 @@ Geist Mono
 
 _______________________________________________________________________________
 
+STANDARDS | スタンダード
+
+HTML5, CSS3
+JavaScript, TypeScript
+
+_______________________________________________________________________________
+
+SITE | サイト
+
+Last update: 2026/08/28
+Doctype: HTML5
+Language: en
+Components: Remix 2.7, React 18, Three.js, Framer Motion
+Software: Vite, Vercel, Cloudflare, GitHub, Python / FastAPI, Pandas / SQLite
+
+_______________________________________________________________________________
+
 COLOPHON | コロフォン
 
 Harvard Crimson #A51C30
 Gotham / IPA Gothic · Remix / Three.js / Vite · Vercel + Cloudflare
 Vim bindings everywhere · Ollama 127.0.0.1:11434
+
+_______________________________________________________________________________
+
+LAST UPDATE | 最終更新
+
+2026/08/28
+
+
+
+Special Thanks to Hamish Williams portfolio (MIT)
