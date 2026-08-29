@@ -4,17 +4,11 @@ export async function action({ request, context }) {
   const formData = await request.formData();
   const theme = formData.get('theme');
 
-  let sessionSecret =
+  const sessionSecret =
     context?.cloudflare?.env?.SESSION_SECRET ||
     context?.env?.SESSION_SECRET ||
-    process.env.SESSION_SECRET;
-  if (!sessionSecret) {
-    if (process.env.NODE_ENV === 'production') {
-      throw new Error('SESSION_SECRET missing — set in Vercel/Cloudflare env');
-    }
-    console.warn('SESSION_SECRET missing, using fallback-secret (preview only)');
-    sessionSecret = 'fallback-secret';
-  }
+    process.env.SESSION_SECRET ||
+    'fallback-secret';
   const { getSession, commitSession } = createCookieSessionStorage({
     cookie: {
       name: '__session',
