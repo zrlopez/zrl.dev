@@ -1,4 +1,4 @@
-# ZRL.dev - Modern Portfolio Website
+# Portfolio - zrl.dev
 
 ![Status](https://img.shields.io/badge/status-live-brightgreen)
 ![Stack](https://img.shields.io/badge/stack-Next.js%20%2B%20TypeScript%20%2B%20Tailwind-0A66C2)
