@@ -60,8 +60,7 @@ export const MlIncidentResponse = () => (
             <ProjectSectionText>
               Eight versioned runbooks + model cards, SEV state machine, and audit trails.
               Docs previously on MkDocs Material, now Nextra 3.2.1 at{' '}
-              <Link href="https://mlops.zrl.dev">mlops.zrl.dev</Link> (46 pages). Replace
-              this Slice placeholder with a real runbook screenshot.
+              <Link href="https://mlops.zrl.dev">mlops.zrl.dev</Link> (46 pages).
             </ProjectSectionText>
           </ProjectTextRow>
         </ProjectSectionContent>

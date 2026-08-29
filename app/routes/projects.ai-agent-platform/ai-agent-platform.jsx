@@ -22,7 +22,7 @@ import { media } from '~/utils/style';
 
 const title = 'AI Agent Orchestration Platform';
 const description =
-  'Multi-agent research, execution, and task automation across local (Ollama 127.0.0.1:11434) and cloud-hosted models — with durable memory, skill routing, and hardened CI.';
+  'Multi-agent research, execution, and task automation across local and cloud-hosted models — with durable memory, skill routing, and hardened CI.';
 const roles = ['Agent Architecture', 'Python / JS', 'MLOps'];
 
 export const meta = () => baseMeta({ title, description, prefix: 'Projects' });
@@ -54,10 +54,9 @@ export const AiAgentPlatform = () => (
             <ProjectSectionHeading>What it does</ProjectSectionHeading>
             <ProjectSectionText>
               Local-first orchestration for research → execution loops. Routes tasks
-              across Tilde, Rover, and peers via skills, keeps durable context in
-              supermemory/OpenViking, and ships with Ollama (§11434) for zero-egress
-              inference. Replace this texture with a real screen of the agent graph when
-              ready.
+              across agents via skills, keeps durable context in
+              supermemory/OpenViking, and uses open-weight models for zero-egress
+              inference.
             </ProjectSectionText>
           </ProjectTextRow>
         </ProjectSectionContent>
@@ -68,8 +67,8 @@ export const AiAgentPlatform = () => (
             <ProjectSectionHeading>Stack & hardening</ProjectSectionHeading>
             <ProjectSectionText>
               Python, FastAPI, Remix/React, Three.js. CI hardening mirrors the ML incident
-              system: TruffleHog, Trivy, Cosign, CodeQL. Private journal stays local
-              (Tilde owns that store) — see <Link href="/uses">uses</Link>.
+              system: TruffleHog, Trivy, Cosign, CodeQL. Journal and memory stay local —
+              see <Link href="/uses">uses</Link>.
             </ProjectSectionText>
           </ProjectTextRow>
         </ProjectSectionContent>

@@ -92,7 +92,7 @@ export const Uses = () => {
                     <Link href="https://tailwindcss.com">Tailwind CSS</Link>. Also{' '}
                     <Link href="https://fastapi.tiangolo.com">FastAPI</Link> +{' '}
                     <Link href="https://www.sqlalchemy.org">async SQLAlchemy</Link> +{' '}
-                    <Link href="https://docs.python.org/3/library/structlog.html">
+                    <Link href="https://www.structlog.org/">
                       structlog
                     </Link>{' '}
                     for the incident response service.
@@ -102,8 +102,7 @@ export const Uses = () => {
                     (Catppuccin / Vira Montana, Vim bindings) and ship via{' '}
                     <Link href="https://vercel.com">Vercel</Link> +{' '}
                     <Link href="https://www.cloudflare.com">Cloudflare</Link> DNS/proxy.
-                    Local inference via <Link href="https://ollama.com">Ollama</Link> at{' '}
-                    <code>127.0.0.1:11434</code>.
+                    Local inference via open-weight models for zero-egress tasks.
                   </ListItem>
                   <ListItem>
                     For 3D/effects: <Link href="https://threejs.org">three.js</Link> (kept
@@ -136,10 +135,8 @@ export const Uses = () => {
                     CI.
                   </ListItem>
                   <ListItem>
-                    Private journal via{' '}
-                    <Link href="https://github.com/zrlopez">Tilde</Link> + supermemory
-                    (local, 6767) for durable decisions. No cloud telemetry —
-                    privacy-first.
+                    Private local journal + supermemory (6767) for durable decisions.
+                    No cloud telemetry — privacy-first.
                   </ListItem>
                 </List>
               </ProjectSectionText>
@@ -154,7 +151,7 @@ export const Uses = () => {
                 <TableBody>
                   <TableRow>
                     <TableHeadCell>Operating system</TableHeadCell>
-                    <TableCell>macOS 27 Golden Gate</TableCell>
+                    <TableCell>macOS 27</TableCell>
                   </TableRow>
                   <TableRow>
                     <TableHeadCell>Browser</TableHeadCell>
