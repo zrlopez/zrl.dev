@@ -18,7 +18,8 @@ export const Monogram = forwardRef(({ highlight, className, ...props }, ref) => 
     >
       <defs>
         <clipPath id={clipId}>
-          <path d="M0 0h36v7L7 22h29v7H0v-7L29 7H0Z" />
+          {/* Z like Hamish's W: thick bars, thinner diagonal, rounded outer corner. No accent — it read as Z'. */}
+          <path d="M0 0h41.6A2.4 2.4 0 0 1 44 2.4V6.5H0ZM0 22.5H44V29H0ZM41.29 4.74 42.71 8.26 2.71 24.26 1.29 20.74Z" />
         </clipPath>
       </defs>
       <rect clipPath={`url(#${clipId})`} width="100%" height="100%" />
