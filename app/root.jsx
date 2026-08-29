@@ -52,11 +52,17 @@ export const loader = async ({ request, context }) => {
   const pathnameSliced = pathname.endsWith('/') ? pathname.slice(0, -1) : pathname;
   const canonicalUrl = `${config.url}${pathnameSliced}`;
 
-  const sessionSecret =
+  let sessionSecret =
     context?.cloudflare?.env?.SESSION_SECRET ||
     context?.env?.SESSION_SECRET ||
-    process.env.SESSION_SECRET ||
-    'fallback-secret';
+    process.env.SESSION_SECRET;
+  if (!sessionSecret) {
+    if (process.env.NODE_ENV === 'production') {
+      throw new Error('SESSION_SECRET missing — set in Vercel/Cloudflare env');
+    }
+    console.warn('SESSION_SECRET missing, using fallback-secret (preview only)');
+    sessionSecret = 'fallback-secret';
+  }
   const { getSession, commitSession } = createCookieSessionStorage({
     cookie: {
       name: '__session',

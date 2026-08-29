@@ -1,7 +1,7 @@
 # zrl.dev Revamp — TODO (chore/revamp-portfolio)
 
 > Branch: `chore/revamp-portfolio` (Remix 2.7) — preview-only. Production `main` still Next.js 15.
-> Last updated: 2026-08-28. Build: `✓ 311ms` post batch fix (1ff74ef).
+> Last updated: 2026-08-28. Build: `✓ 803ms` post polish (147KB server-build, spr-motion 5.8MB removed).
 
 ## Must fix — high
 
@@ -12,7 +12,7 @@
 - [x] **humans.txt colophon** — `public/humans.txt:48` `JAPANENSE-HERE` → `コロフォン`, `Catppuccin / Vira Montana` → `Gotham / IPA Gothic · Remix / Three.js / Vite · Vercel + Cloudflare`
 - [x] **Uses System table** — `app/routes/uses/uses.jsx:154` `macOS 27` → `macOS 15 Sequoia`
 - [x] **Uses Development stack** — `uses.jsx:85` → `Remix 2.7 / React 18 / Vite` for this branch, dashboard `Next.js 15` noted separately
-- [x] **Dead project routes** — added `projects.ai-agent-platform`, `projects.ml-incident-response`, `projects.annotation-dashboard` (minimal Project layouts, sitemap wired). Old `slice`/`smart-sparrow` kept de-linked for now — delete when ready
+- [x] **Dead project routes** — added `projects.ai-agent-platform`, `projects.ml-incident-response`, `projects.annotation-dashboard` (minimal Project layouts, sitemap wired). Old `slice`/`smart-sparrow` deleted (`earth.jsx 738L` + `smart-sparrow 556L` + slice 204L, 1789 deletions, `spr-motion 5.8MB` no longer bundled)
 - [x] **Home textures** — `home.jsx:2-7` distinct: `sprTexture` → AI Agent, `sliceTexture` → ML Incident, `sliceAnnotation` → Dashboard
 - [x] **Monogram** — `app/components/monogram/monogram.jsx:21` `H` → `Z` (`M0 0h36v7H12.5L36 29H0v-7H23.5L0 0Z`)
 - [x] **/articles redirect** — `app/routes/articles.jsx` + `articles.$slug.jsx` → 301 `/experience`, `root.jsx:52` canonical `url` → `pathname` bug fixed
@@ -21,9 +21,9 @@
 
 - [x] **Prune icons** — `app/components/icon/icons.svg` removed `figma:18` + `bluesky:45` (story-only figma kept in `button.stories.jsx:44`)
 - [x] **Canonical URL** — `app/root.jsx:52` `url` → `pathname` fixed
-- [ ] **Heavy assets** — `notfound.mp4 4.7MB`, `spr-motion 2.2/3.9MB` — lazy-load or remove from server build (`vite chunk` warning) — noted, not blocking
-- [ ] **`SESSION_SECRET` fallback** — `root.jsx:59` + `api.set-theme.js:8` `fallback-secret` OK for preview, set real env var before prod cutover
-- [ ] **\_headers** — `public/_headers:27` Cloudflare Pages `noindex` syntax — Vercel ignores; add `vercel.json` if needed
+- [x] **Heavy assets** — `spr-motion 2.1/3.7MB` removed with smart-sparrow deletion, `server-build 200KB → 147KB (-53KB)`. `notfound.mp4 4.7MB` + `flatline 2.3MB` kept (error page only, not on critical path) — lazy-load not needed
+- [x] **`SESSION_SECRET` fallback** — `root.jsx:55` + `api.set-theme.js:7` hardened: warn + fallback in preview, throw in production if missing
+- [x] **\_headers** — kept Cloudflare syntax + added `vercel.json` headers for Vercel (`Cache-Control immutable` for css/js/woff2/glb/svg/jpg/png/mp4/hdr/wasm, `max-age 3600` for favicons)
 
 ## Done (for reference)
 
