@@ -1,11 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
-  <style>
-    #favicon {
-      fill: #111;
-      @media (prefers-color-scheme: dark) {
-        fill: #fff;
-      }
-    }
-  </style>
-  <path id="favicon" d="M3.03 14h7.8a7.24 7.24 0 0 1 6.34 3.74l9.25 16.78 4.87-10.86L25.97 14h7.79a7.24 7.24 0 0 1 6.34 3.74l10.59 19.2L45.28 49 32.62 26.07 22.34 49 3.04 14Zm56.41 3.4a2.4 2.4 0 0 0-2.2-3.4H48.9l6.66 12.07 3.88-8.67Z"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+<rect width="32" height="32" rx="6" fill="#A51C30"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAACBElEQVR4nLWVPYsUQRCG39pdwfMLz/SSCwwULjAQ5BLRwMTYnyAochiYmIlgYqTmJiYqaHKJ+BFoemAoXCSnx4mCsR/n6s4jtVRr0Trrjp4vDN0zVV31dPV0twGrkgaSepIs2vzYhPe2fiNpm6THBqCtF9GedPJRZXSSLrJqjMfrS3poZo/+xwyaKNOima34DN5XBG6cViZpNo3P9CtA32ew+w8J+pWdCOR+3yTd9VpHvyz2ETN77gn+ogI/BewB3niZgWG0y2EbBx8AbYtqZtYA5yQdTIQbkq6bmc/ivKS5sPWj/pcnxPxB1nMn4AC/6kr4zALvgCbR38/0kxKMHYDbEeBTBFkDZsJ2IYJ+BUbRLgRYewI3htNCNdi1lGq/UdHf6Up/Ly2eB3oF7GyhH0Y5Haw3Df2hGDhK9GfCZy/wtqK/1ZV+uaJ/mWp/saLfBPZPRR/t4Qia6c9W//0wFt51syv9g4p+HdgVtmvVL+v2+Un0gxLcNw6wGNu+SafkDTP7EADrkq7GUeFjV83sddia1g1WsgNPqm2/BmzXP2iQ6I9KOpHoXS8ked33pZPydwdfVhPf3a+xlOCZpGMpUNHHdENNo5xgc0wDHJf0NF0WW6XReJElXYqsuTxFdAya/b/4GpyK0rhKwqyud3TWDg94Ours9IXA+6WWpV+/e7+218/n7+oadbTQO1siAAAAAElFTkSuQmCC" x="4" y="4" width="24" height="24"/>
 </svg>
