@@ -1,0 +1,44 @@
+.dashboard-root {
+  --dashboard-bg: var(--background);
+  --dashboard-card: var(--backgroundLight);
+  --dashboard-border: color-mix(in lab, var(--text) 10%, transparent);
+  --dashboard-muted: var(--textLight);
+  --dashboard-foreground: var(--text);
+}
+
+.dashboard-root :where(.rounded-xl) { border-radius: 0.75rem; }
+.dashboard-root :where(.rounded-lg) { border-radius: 0.5rem; }
+.dashboard-root :where(.rounded-md) { border-radius: 0.375rem; }
+.dashboard-root :where(.rounded-2xl) { border-radius: 1rem; }
+.dashboard-root :where(.border) { border-width: 1px; border-style: solid; border-color: var(--dashboard-border); }
+.dashboard-root :where(.bg-background) { background-color: var(--dashboard-bg); }
+.dashboard-root :where(.bg-card) { background-color: var(--dashboard-card); }
+.dashboard-root :where(.bg-secondary\/30) { background-color: color-mix(in lab, var(--text) 5%, transparent); }
+.dashboard-root :where(.bg-primary\/10) { background-color: color-mix(in lab, var(--primary) 10%, transparent); }
+.dashboard-root :where(.text-foreground) { color: var(--dashboard-foreground); }
+.dashboard-root :where(.text-muted-foreground) { color: var(--dashboard-muted); }
+.dashboard-root :where(.text-primary) { color: var(--primary); }
+.dashboard-root :where(.font-bold) { font-weight: 700; }
+.dashboard-root :where(.font-medium) { font-weight: 500; }
+.dashboard-root :where(.font-semibold) { font-weight: 600; }
+.dashboard-root :where(.text-xs) { font-size: 0.75rem; }
+.dashboard-root :where(.text-sm) { font-size: 0.875rem; }
+.dashboard-root :where(.text-xl) { font-size: 1.25rem; }
+.dashboard-root :where(.text-2xl) { font-size: 1.5rem; }
+.dashboard-root :where(.p-4) { padding: 1rem; }
+.dashboard-root :where(.p-6) { padding: 1.5rem; }
+.dashboard-root :where(.px-3) { padding-left: 0.75rem; padding-right: 0.75rem; }
+.dashboard-root :where(.py-1\.5) { padding-top: 0.375rem; padding-bottom: 0.375rem; }
+.dashboard-root :where(.space-y-1) > * + * { margin-top: 0.25rem; }
+.dashboard-root :where(.grid) { display: grid; }
+.dashboard-root :where(.grid-cols-2) { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.dashboard-root :where(.gap-3) { gap: 0.75rem; }
+.dashboard-root :where(.flex) { display: flex; }
+.dashboard-root :where(.items-center) { align-items: center; }
+.dashboard-root :where(.justify-between) { justify-content: space-between; }
+.dashboard-root :where(.space-y-4) > * + * { margin-top: 1rem; }
+.dashboard-root :where(.w-4) { width: 1rem; }
+.dashboard-root :where(.h-4) { height: 1rem; }
+.dashboard-root :where(.tabular-nums) { font-variant-numeric: tabular-nums; }
+.dashboard-root :where(.overflow-hidden) { overflow: hidden; }
+.dashboard-root :where(.overflow-y-auto) { overflow-y: auto; }

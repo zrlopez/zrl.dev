@@ -154,7 +154,7 @@ export const Uses = () => {
                 <TableBody>
                   <TableRow>
                     <TableHeadCell>Operating system</TableHeadCell>
-                    <TableCell>macOS 15 Sequoia (Golden Gate)</TableCell>
+                    <TableCell>macOS 27 Golden Gate</TableCell>
                   </TableRow>
                   <TableRow>
                     <TableHeadCell>Browser</TableHeadCell>

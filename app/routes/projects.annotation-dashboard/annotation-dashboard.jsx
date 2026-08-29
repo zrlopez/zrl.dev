@@ -13,12 +13,9 @@ import { Link } from '~/components/link';
 import { baseMeta } from '~/utils/meta';
 import usesBackgroundPlaceholder from '~/assets/uses-background-placeholder.jpg';
 import usesBackground from '~/assets/uses-background.mp4';
-import sliceAnnotation from '~/assets/slice-annotation.png';
-import sliceAnnotationLarge from '~/assets/slice-annotation-large.png';
-import sliceAnnotationPlaceholder from '~/assets/slice-annotation-placeholder.png';
-import { Image } from '~/components/image';
 import { Fragment } from 'react';
-import { media } from '~/utils/style';
+import { AnnotationDashboardDemo } from './dashboard/AnnotationDashboardDemo';
+import './dashboard.css';
 
 const title = 'Annotation Analytics Dashboard';
 const description =
@@ -30,24 +27,13 @@ export const meta = () => baseMeta({ title, description, prefix: 'Projects' });
 export const AnnotationDashboard = () => (
   <Fragment>
     <ProjectContainer>
-      <ProjectBackground
-        src={usesBackground}
-        placeholder={usesBackgroundPlaceholder}
-        opacity={0.6}
+      <ProjectBackground src={usesBackground} placeholder={usesBackgroundPlaceholder} opacity={0.6} />
+      <ProjectHeader
+        title={title}
+        description={description}
+        url="https://github.com/zrlopez/performance-analytics-tool"
+        roles={roles}
       />
-      <ProjectHeader title={title} description={description} roles={roles} />
-      <ProjectSection padding="top">
-        <ProjectSectionContent>
-          <Image
-            srcSet={`${sliceAnnotation} 440w, ${sliceAnnotationLarge} 880w`}
-            placeholder={sliceAnnotationPlaceholder}
-            width={440}
-            height={340}
-            alt="Annotation dashboard placeholder — slice annotation texture until real Recharts screenshot"
-            sizes={`(max-width: ${media.mobile}px) 90vw, 440px`}
-          />
-        </ProjectSectionContent>
-      </ProjectSection>
       <ProjectSection>
         <ProjectSectionContent>
           <ProjectTextRow>
@@ -55,7 +41,10 @@ export const AnnotationDashboard = () => (
             <ProjectSectionText>
               Live KPIs, error and throughput trends, and capacity forecasts. ETL +
               validation pipelines (Pandas/SQLite) automate high-volume checks — see{' '}
-              <Link href="/experience">experience</Link> for the ops layer.
+              <Link href="/experience">experience</Link> for the ops layer. The interactive
+              demo below mirrors the Next.js production dashboard at{' '}
+              <Link href="https://zrl.dev/projects/annotation-dashboard">zrl.dev</Link> — KPIs
+              refresh every 5 seconds.
             </ProjectSectionText>
           </ProjectTextRow>
         </ProjectSectionContent>
@@ -63,11 +52,31 @@ export const AnnotationDashboard = () => (
       <ProjectSection light>
         <ProjectSectionContent>
           <ProjectTextRow>
-            <ProjectSectionHeading>Next</ProjectSectionHeading>
+            <ProjectSectionHeading>Live Demo — 6 tabs</ProjectSectionHeading>
             <ProjectSectionText>
-              Replace this placeholder with a real dashboard capture (Recharts). Keep the
-              Slice annotation texture as a stopgap — it signals annotation work without
-              implying final UI.
+              Fully interactive — throughput, error rate, team efficiency, and capacity
+              update independently (±2.5% jitter). Toggle dark mode inside the demo; it’s
+              isolated from the site theme. Screenshot for the home preview is in{' '}
+              <code>slice-annotation.png</code> until you capture a real Recharts shot.
+            </ProjectSectionText>
+          </ProjectTextRow>
+          <div className="dashboard-root" style={{ marginTop: 32, borderRadius: 16, border: '1px solid color-mix(in lab, var(--text) 10%, transparent)', overflow: 'hidden' }}>
+            <div style={{ maxHeight: 900, overflowY: 'auto' }}>
+              <AnnotationDashboardDemo />
+            </div>
+          </div>
+        </ProjectSectionContent>
+      </ProjectSection>
+      <ProjectSection>
+        <ProjectSectionContent>
+          <ProjectTextRow>
+            <ProjectSectionHeading>Stack</ProjectSectionHeading>
+            <ProjectSectionText>
+              <Link href="https://nextjs.org">Next.js 15</Link> + TypeScript +{' '}
+              <Link href="https://recharts.org">Recharts</Link> + Tailwind, ported into
+              this Remix route with <Link href="https://www.npmjs.com/package/recharts">recharts</Link> +{' '}
+              <Link href="https://www.npmjs.com/package/lucide-react">lucide-react</Link>. Data
+              from <code>dashboardData.ts</code> + <code>useLiveKpis(5000)</code>.
             </ProjectSectionText>
           </ProjectTextRow>
         </ProjectSectionContent>
