@@ -1,38 +1,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://hamishw.com/</loc>
+    <loc>https://zrl.dev/</loc>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://zrl.dev/contact/</loc>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://hamishw.com/contact/</loc>
+    <loc>https://zrl.dev/uses/</loc>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://hamishw.com/articles/</loc>
+    <loc>https://zrl.dev/experience/</loc>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://hamishw.com/uses/</loc>
+    <loc>https://zrl.dev/projects/ai-agent-platform/</loc>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://hamishw.com/projects/slice/</loc>
+    <loc>https://zrl.dev/projects/ml-incident-response/</loc>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://hamishw.com/projects/smart-sparrow/</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://hamishw.com/projects/volkihar-knight/</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://hamishw.com/articles/hello-world</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://hamishw.com/articles/modern-styling-in-react</loc>
+    <loc>https://zrl.dev/projects/annotation-dashboard/</loc>
     <changefreq>monthly</changefreq>
   </url>
 </urlset>

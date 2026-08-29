@@ -1,10 +1,10 @@
- ____  ____
-/  / /  /|
-|  |/  / |
-|__\  / /
- \__\/ /
-  /__/_/
-  |___|
+  ____  ____
+ /__ //__ /|
+/__ //__ / |
+\__//__/_/
+ \_//__/
+  /___/
+  |__/
 
 The humans.txt file explains the team, technology,
 and graphic assets behind this site humanstxt.org.
@@ -45,8 +45,8 @@ Geist Mono
 
 _______________________________________________________________________________
 
-COLOPHON | JAPANENSE-HERE
+COLOPHON | コロフォン
 
 Harvard Crimson #A51C30
-Catppuccin / Vira Montana
-Vim bindings everywhere
+Gotham / IPA Gothic · Remix / Three.js / Vite · Vercel + Cloudflare
+Vim bindings everywhere · Ollama 127.0.0.1:11434

@@ -82,12 +82,15 @@ export const Uses = () => {
               <ProjectSectionText as="div">
                 <List>
                   <ListItem>
-                    <Link href="https://nextjs.org">Next.js 15</Link> +{' '}
-                    <Link href="https://www.typescriptlang.org">TypeScript</Link> +{' '}
-                    <Link href="https://tailwindcss.com">Tailwind CSS</Link> +{' '}
+                    <Link href="https://remix.run">Remix 2.7</Link> +{' '}
+                    <Link href="https://react.dev">React 18</Link> +{' '}
+                    <Link href="https://vitejs.dev">Vite</Link> +{' '}
                     <Link href="https://www.framer.com/motion/">Framer Motion</Link> for
-                    this site and the dashboard — currently rebuilding on this Remix base.
-                    Also <Link href="https://fastapi.tiangolo.com">FastAPI</Link> +{' '}
+                    this site (ported from Hamish Williams Remix template). The dashboard
+                    uses <Link href="https://nextjs.org">Next.js 15</Link> +{' '}
+                    <Link href="https://www.typescriptlang.org">TypeScript</Link> +{' '}
+                    <Link href="https://tailwindcss.com">Tailwind CSS</Link>. Also{' '}
+                    <Link href="https://fastapi.tiangolo.com">FastAPI</Link> +{' '}
                     <Link href="https://www.sqlalchemy.org">async SQLAlchemy</Link> +{' '}
                     <Link href="https://docs.python.org/3/library/structlog.html">
                       structlog
@@ -151,7 +154,7 @@ export const Uses = () => {
                 <TableBody>
                   <TableRow>
                     <TableHeadCell>Operating system</TableHeadCell>
-                    <TableCell>Golden Gate (macOS 27)</TableCell>
+                    <TableCell>macOS 15 Sequoia (Golden Gate)</TableCell>
                   </TableRow>
                   <TableRow>
                     <TableHeadCell>Browser</TableHeadCell>
