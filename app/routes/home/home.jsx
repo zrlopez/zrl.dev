@@ -39,7 +39,7 @@ export const links = () => {
 export const meta = () => {
   return baseMeta({
     title: 'AI/ML Data Ops',
-    description: `Portfolio of ${config.name} — an AI/ML data operations specialist building Python and SQL tools, validating high-volume datasets, and improving labeling pipelines.`,
+    description: `Portfolio of ${config.name} — an AI/ML Data Operations Analyst building Python and SQL tools, validating high-volume datasets, and improving labeling pipelines.`,
   });
 };
 
@@ -143,14 +143,14 @@ export const Home = () => {
         index={3}
         title="Annotation Analytics Dashboard"
         description="A real-time annotation analytics dashboard tracking labeling quality trends and workflow performance"
-        buttonText="View demo"
-        buttonLink="/projects/annotation-dashboard"
+        buttonText="View live demo"
+        buttonLink="/projects/annotation-dashboard#live-demo"
         model={{
           type: 'laptop',
           alt: 'Real-time annotation analytics dashboard',
           textures: [
             {
-              srcSet: `${sliceAnnotation} 440w, ${sliceAnnotationLarge} 880w`,
+              srcSet: `${sliceAnnotation} 1280w, ${sliceAnnotationLarge} 2560w`,
               placeholder: sliceAnnotationPlaceholder,
             },
           ],

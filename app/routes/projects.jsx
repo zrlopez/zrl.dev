@@ -50,7 +50,8 @@ const projects = [
     description:
       'Interactive dashboard for annotation quality trends, ML support metrics, alert thresholds, capacity forecasting, and workflow performance patterns.',
     links: [
-      ['Demo', '/projects/annotation-dashboard'],
+      ['Demo', '/projects/annotation-dashboard#live-demo'],
+      ['Case study', '/projects/annotation-dashboard'],
       ['Code', 'https://github.com/zrlopez/performance-analytics-tool'],
     ],
   },

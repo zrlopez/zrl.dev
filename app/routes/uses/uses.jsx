@@ -20,7 +20,7 @@ import styles from './uses.module.css';
 export const meta = () => {
   return baseMeta({
     title: 'Uses',
-    description: 'Tools, languages, and software I use for AI/ML Data Operations.',
+    description: 'Tools, languages, and software I use as an AI/ML Data Operations Analyst.',
   });
 };
 

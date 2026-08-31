@@ -20,7 +20,7 @@ export const meta = () => {
   return baseMeta({
     title: 'Experience',
     description:
-      'Work history and selected projects — AI/ML Data Operations, annotation QA, and workflow systems.',
+      'Work history and selected projects from an AI/ML Data Operations Analyst focused on annotation QA and workflow systems.',
   });
 };
 
@@ -55,8 +55,8 @@ export const Experience = () => {
                     Annotation analytics dashboard — live KPIs, alert thresholds, capacity
                     forecasting, six-tab workflow visibility (rebuilt JS →
                     Next.js/TS/Recharts) at{' '}
-                    <Link href="/projects/annotation-dashboard">
-                      zrl.dev/projects/annotation-dashboard
+                    <Link href="/projects/annotation-dashboard#live-demo">
+                      zrl.dev/projects/annotation-dashboard#live-demo
                     </Link>
                     .
                   </ListItem>
@@ -160,7 +160,7 @@ export const Experience = () => {
                     — FastAPI + governance artifacts (May 2026–Present).
                   </ListItem>
                   <ListItem>
-                    <Link href="/projects/annotation-dashboard">
+                    <Link href="/projects/annotation-dashboard#live-demo">
                       Annotation Analytics Dashboard
                     </Link>{' '}
                     — live KPI/ML visibility (Sep 2025–Present).

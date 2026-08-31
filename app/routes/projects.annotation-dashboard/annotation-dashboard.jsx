@@ -31,7 +31,8 @@ export const AnnotationDashboard = () => (
       <ProjectHeader
         title={title}
         description={description}
-        url="https://github.com/zrlopez/performance-analytics-tool"
+        url="#live-demo"
+        linkLabel="Jump to live demo"
         roles={roles}
       />
       <ProjectSection>
@@ -43,21 +44,21 @@ export const AnnotationDashboard = () => (
               validation pipelines (Pandas/SQLite) automate high-volume checks — see{' '}
               <Link href="/experience">experience</Link> for the ops layer. The interactive
               demo below mirrors the Next.js production dashboard at{' '}
-              <Link href="https://zrl.dev/projects/annotation-dashboard">zrl.dev</Link> — KPIs
-              refresh every 5 seconds.
+              <Link href="/projects/annotation-dashboard#live-demo">live dashboard section</Link>{' '}
+              — KPIs refresh every 5 seconds.
             </ProjectSectionText>
           </ProjectTextRow>
         </ProjectSectionContent>
       </ProjectSection>
-      <ProjectSection light>
+      <ProjectSection light id="live-demo">
         <ProjectSectionContent>
           <ProjectTextRow>
             <ProjectSectionHeading>Live Demo — 6 tabs</ProjectSectionHeading>
             <ProjectSectionText>
               Fully interactive — throughput, error rate, team efficiency, and capacity
               update independently (±2.5% jitter). Toggle dark mode inside the demo; it’s
-              isolated from the site theme. Screenshot for the home preview is in{' '}
-              <code>slice-annotation.png</code> until you capture a real Recharts shot.
+              isolated from the site theme. The home laptop preview uses a live capture of
+              this dashboard.
             </ProjectSectionText>
           </ProjectTextRow>
           <div className="dashboard-root" style={{ marginTop: 32, borderRadius: 16, border: '1px solid color-mix(in lab, var(--text) 10%, transparent)', overflow: 'hidden' }}>

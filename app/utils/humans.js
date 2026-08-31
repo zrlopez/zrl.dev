@@ -12,7 +12,7 @@ _______________________________________________________________________________
 HUMAN | ヒューマン
 
 Zachary Ryan Lopez
-AI/ML Data Operations
+AI/ML Data Operations Analyst
 Austin, TX, USA
 
 Site: https://zrl.dev/contact
@@ -80,7 +80,7 @@ _______________________________________________________________________________
 SITE | サイト
 
 Purpose:
-- Portfolio for AI/ML data operations, systems thinking, and selected builds
+- Portfolio for an AI/ML Data Operations Analyst focused on systems thinking and selected builds
 
 Current branch:
 - Remix revamp of zrl.dev

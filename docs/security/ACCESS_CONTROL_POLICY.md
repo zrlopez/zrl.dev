@@ -1,9 +1,9 @@
 # Access Control Policy
 
-**System:** zrl.dev + duloup.co  
+**System:** `zrl.dev`  
 **Owner:** Zachary Ryan Lopez (`@zrlopez`)  
-**Version:** 1.0  
-**Effective Date:** May 23, 2026  
+**Version:** 1.1  
+**Effective Date:** August 30, 2026  
 **Review Cycle:** Annual or upon material infrastructure change  
 **Classification:** Internal — Engineering & Compliance Reference
 
@@ -11,16 +11,20 @@
 
 ## 1. Purpose
 
-This policy defines how access to all systems, services, credentials, and
-infrastructure components supporting `zrl.dev` and `duloup.co` is granted,
-controlled, reviewed, and revoked. It implements the principle of least
-privilege across every control plane and data plane touchpoint.
+This policy defines how access to systems, services, credentials, and
+automation supporting `zrl.dev` is granted, reviewed, limited, and revoked.
+It is intended to reflect the current split state of the project:
 
-This document satisfies:
-- **NIST CSF PR.AC** — Identity Management and Access Control
-- **SOC 2 CC6.1** — Logical and Physical Access Controls
-- **GDPR Art. 32** — Security of Processing
-- **ISO 27001 A.9** — Access Control
+- production remains on the `main` branch and Cloudflare Pages Functions
+- the Remix revamp branch is in migration and does not yet mirror every
+  production-side control in source
+
+Standards alignment references:
+
+- **NIST CSF 2.0 PR.AA** — Identity, Authentication, and Access Control
+- **NIST SP 800-61 Rev. 3** — Incident response integration guidance
+- **SOC 2 CC6 / CC7** — Logical access and monitoring controls
+- **RFC 9116** — Coordinated vulnerability disclosure
 
 ---
 
@@ -30,204 +34,210 @@ This policy applies to:
 
 | System | Role |
 |---|---|
-| Cloudflare Pages (`zrl-dev`) | Deployment runtime + edge network |
-| Cloudflare WAF | Network threat mitigation |
-| Cloudflare KV (`zrl-rate-limits`) | Rate-limit counter store |
-| GitHub (`zrlopez/zrl.dev`) | Source code + CI/CD |
-| GitHub Actions | Automated build + security gates |
-| Resend | Transactional email delivery |
-| Domain registrar | DNS + domain ownership |
+| Cloudflare zone `zrl.dev` | DNS, WAF, DDoS, edge policy |
+| Cloudflare Pages project `zrl-dev` | Production and preview deployment runtime |
+| GitHub repository `zrlopez/zrl.dev` | Source control and review surface |
+| GitHub Actions workflows | CI, code scanning, SBOM, test gates |
+| Mail delivery providers used by the app | Contact-form delivery path |
+
+This policy does not treat historical branches as supported production systems.
 
 ---
 
 ## 3. Access Control Principles
 
-### 3.1 Least Privilege
+### 3.1 Least privilege
 
-Every principal (human, service account, CI job) is granted the minimum
-permissions required to perform its defined function. Permissions are never
-granted speculatively or "just in case."
+Every human account, workflow token, and service integration should hold only
+the permissions required for its current task.
 
-### 3.2 Separation of Concerns
+### 3.2 Separation of duties
 
-CI/CD secrets are never exposed to the build artifact. Runtime secrets exist
-only in Cloudflare Pages environment variables — never in source code,
-`.env` files committed to the repository, or GitHub Actions logs.
+Source control, CI, deployment configuration, and runtime secrets are kept in
+separate control planes where possible.
 
-### 3.3 No Standing Privileged Access
+### 3.3 MFA for privileged accounts
 
-There are no persistent admin sessions. All privileged operations (deploy,
-credential rotation, WAF rule change) are performed via dashboard or API
-with MFA-protected accounts.
+Privileged access to GitHub, Cloudflare, registrars, and mail providers must
+be protected by MFA or passkey-backed authentication.
 
-### 3.4 Audit by Default
+### 3.4 Evidence over assumption
 
-All access-relevant events are logged with a `requestId` correlation
-identifier. No personally identifiable data (raw IPs) is written to logs.
+Controls should be documented from live configuration or current repository
+state. When source and deployment diverge, the difference must be called out
+explicitly.
 
 ---
 
-## 4. Identity & Authentication Requirements
+## 4. Identity and Authentication Requirements
 
-| Account | MFA Required | Credential Type | Review Cadence |
-|---|---|---|---|
-| Cloudflare account | ✅ Yes | Password + TOTP | Annual |
-| GitHub account (`@zrlopez`) | ✅ Yes | Password + TOTP/passkey | Annual |
-| Resend account | ✅ Yes | Password + TOTP | Annual |
-| Domain registrar | ✅ Yes | Password + TOTP | Annual |
+| Account / principal | MFA required | Notes |
+|---|---|---|
+| GitHub owner account | Yes | Administrative control over source and workflows |
+| Cloudflare account access | Yes | Administrative control over zone and Pages |
+| Domain registrar access | Yes | DNS ownership continuity |
+| Mail provider access | Yes | Contact-path integrity |
 
-**All accounts must have MFA enabled.** An account without MFA is a critical
-security finding and must be remediated within 24 hours of discovery.
+An account without MFA should be treated as a critical issue and remediated as
+quickly as practical.
 
 ---
 
 ## 5. GitHub Access Controls
 
-### 5.1 Repository Permissions
+### 5.1 Repository roles
 
-| Principal | Permission Level | Justification |
+| Principal | Access | Notes |
 |---|---|---|
-| `@zrlopez` (owner) | Admin | Sole maintainer |
-| GitHub Actions (`GITHUB_TOKEN`) | `contents: read` (default) | Least-privilege; no write needed for CI |
-| Dependabot | PR creation only | Automated dependency updates |
-| External collaborators | None (public repo, read-only fork) | No write access granted |
+| `@zrlopez` | Admin | Primary maintainer |
+| `GITHUB_TOKEN` in CI | Minimal per workflow | Default `contents: read`, elevated only where required |
+| Dependabot automation | Limited automation scope | Used for dependency PR workflows |
+| External contributors | Standard PR model | No implicit write access |
 
-### 5.2 Branch Protection (Recommended — not yet enforced)
+### 5.2 Current workflow posture
 
-The following branch protection rules are recommended for `main`:
-- Require status checks to pass before merging (all CI jobs)
-- Require at least 1 approving review for non-owner PRs
-- Disallow force pushes
-- Disallow branch deletion
+The primary CI workflow is
+[`.github/workflows/secured_ci.yml`](.github/workflows/secured_ci.yml).
+It currently includes:
 
-> **Note:** As a solo project, branch protection is not currently enforced.
-> If collaborators are added, this must be activated immediately.
+- least-privilege default `permissions`
+- TruffleHog secret scanning
+- high-severity dependency audit with `pnpm audit`
+- CodeQL analysis
+- CycloneDX SBOM generation
+- test, lint, and type-check gates
 
-### 5.3 CI/CD Secret Scope
+The repository also includes
+[`.github/workflows/dependabot-auto-approve.yml`](.github/workflows/dependabot-auto-approve.yml),
+which uses `pull_request_target` with write permissions for Dependabot-only
+automation. Because `pull_request_target` is a higher-trust trigger, this
+workflow should remain narrow and should never execute untrusted PR code.
 
-All secrets are stored as **GitHub Actions repository secrets**, not
-environment or organization secrets. Scope is limited to this repository.
+### 5.3 Branch protection
 
-| Secret Name | Purpose | Rotation Cadence |
-|---|---|---|
-| `RESEND_API_KEY` | Resend email API authentication | Every 90 days or on suspected compromise |
-| `TURNSTILE_SECRET_KEY` | Cloudflare Turnstile server-side verification | Every 90 days or on suspected compromise |
-| `NEXT_PUBLIC_TURNSTILE_SITE_KEY` | Turnstile public site key (not secret, but scoped) | On site key rotation |
-
-CI build stubs (`ci-stub-*-not-real`) are hardcoded non-functional placeholders
-used only to satisfy build-time environment validation. They are not credentials.
+Branch protection and required checks should be treated as preferred practice
+for `main`, especially if write access expands beyond the current maintainer.
 
 ---
 
 ## 6. Cloudflare Access Controls
 
-### 6.1 Pages Deployment
+### 6.1 Zone and Pages state
 
-| Control | State |
+Live Cloudflare configuration checked on August 30, 2026 shows:
+
+| Control plane | Current state |
 |---|---|
-| Deployment trigger | Git push to `main` via GitHub integration |
-| Manual deploy access | Owner account only (MFA required) |
-| Preview deployments | Disabled for production (`zrl.dev`) |
-| Environment variable access | Owner account only; not exposed in build logs |
+| Zone | `zrl.dev` active on account `duloup-domains` |
+| Pages project | `zrl-dev` exists and tracks GitHub repo `zrlopez/zrl.dev` |
+| Production branch | `main` |
+| Preview deployments | Enabled for all branches |
+| Functions | In use on the live Pages project |
 
-### 6.2 KV Namespace — `zrl-rate-limits` (RateLimitKV)
+### 6.2 Rate limiting
 
-**Status: ✅ Configured and bound**
+Rate limiting is still present in the live Cloudflare configuration, but the
+implementation path is now split across deployment state and source history.
 
-| Control | Value |
-|---|---|
-| Binding name | `RateLimitKV` |
-| Namespace | `zrl-rate-limits` |
-| Access | Cloudflare Worker runtime only (no public API access) |
-| Key schema | `cf_rl:{ip}` (IP is hashed at log time; raw IP used only as KV key within Cloudflare infrastructure) |
-| TTL | 3,600 seconds (1-hour sliding window) |
-| Fail behavior | Fail-open with structured warning log — never breaks form |
-| Data classification | Transient operational counters; no PII stored at rest |
+What is confirmed:
 
-### 6.3 WAF Rules — Confirmed Active
+- the `zrl.dev` zone has an active `http_ratelimit` ruleset entrypoint
+- the Cloudflare Pages project still carries production configuration related
+  to `zrl-rate-limits`
 
-| Rule | Status | Scope |
-|---|---|---|
-| **AI Crawl Control** — Block AI bots by User-Agent | ✅ **Enabled** | Zone-wide; blocks known AI training crawlers (GPTBot, ClaudeBot, CCBot, etc.) |
-| **SSL/TLS DDoS Attack Protection** | ✅ **Enabled** | Protects TLS handshake layer against volumetric SSL exhaustion attacks |
-| **Network-layer DDoS Attack Protection** | ✅ **Enabled** | L3/L4 volumetric and protocol attack mitigation; automatic adaptive thresholds |
+What is not true in the revamp branch:
 
-**AI Crawl Control scope:** Cloudflare's managed "AI Crawl Control" ruleset
-matches User-Agent strings associated with AI training data collection
-(including but not limited to GPTBot, ClaudeBot, CCBot, Bytespider,
-Diffbot, ImgProxyBot). The rule action is **Block** — requests matching
-these patterns receive a 403 response and are not forwarded to the origin.
-This protects content from being used for model training without consent.
+- the old `functions/api/contact.ts` implementation from `main` is not present
+- the revamp source tree does not currently show the original KV-backed
+  application handler end to end
 
-### 6.4 DNS Access
+For this reason, rate limiting should be documented as a live production
+control, but not as a fully ported revamp-branch source control.
 
-- DNS records managed exclusively within Cloudflare dashboard
-- Cloudflare Proxy (orange cloud) enabled on `zrl.dev` A/AAAA records — origin IP is not exposed
-- No third-party DNS access granted
+### 6.3 Firewall and DDoS protections
+
+Live Cloudflare configuration also confirms:
+
+- a custom firewall ruleset is active on the zone
+- managed L7 DDoS protection is present
+
+The exact bot-block expression should be treated as operational configuration
+rather than hardcoded repository policy text, because it may change over time.
+
+### 6.4 DNS access
+
+DNS authority remains inside Cloudflare for `zrl.dev`. Any DNS change should be
+treated as privileged infrastructure work.
 
 ---
 
-## 7. Resend Access Controls
+## 7. Application and Mail Controls
 
-| Control | Value |
-|---|---|
-| API key scope | Send-only (no read/list access to message history) |
-| Key storage | Cloudflare Pages environment variable (`RESEND_API_KEY`) |
-| Key never in | Source code, `.env` files, CI logs, git history |
-| Authorized sender domain | `zrl.dev` (verified) |
-| Recipient whitelist | `hello@zrl.dev` only (hardcoded in `contact.ts`) |
-| `reply_to` field | User-supplied email — RFC 5321 sanitized, not HTML-encoded |
+### 7.1 Production path on `main`
 
-The hardcoded `to: ['hello@zrl.dev']` in `contact.ts` ensures the Resend API
-can never be abused to forward mail to arbitrary addresses, even if input
-validation were bypassed.
+The `main` branch includes a Pages Function at `functions/api/contact.ts` that
+implements:
+
+- strict JSON handling
+- Turnstile verification
+- request-size limits
+- input sanitization and HTML escaping
+- KV-backed contact rate limiting
+- structured request logging with `requestId`
+
+### 7.2 Current revamp branch
+
+The current revamp branch handles contact form submission in
+[app/routes/contact/contact.jsx](app/routes/contact/contact.jsx).
+That code currently uses:
+
+- a server action
+- AWS SES delivery
+- a honeypot field
+- server-side length and pattern checks
+
+It does **not** currently demonstrate the same Turnstile, KV, and structured
+logging controls that existed in the legacy production handler.
 
 ---
 
-## 8. Principle of Least Privilege — Verification Evidence
+## 8. Evidence References
 
-| Claim | Evidence Location |
+| Claim | Evidence |
 |---|---|
-| CI jobs use `permissions: contents: read` | `.github/workflows/ci.yml` — per-job `permissions` block |
-| No secrets in build artifact | CI artifact scoped to `.next/BUILD_ID` only |
-| No raw IP in logs | `contact.ts` — `hashIp()` SHA-256 before any log write |
-| Resend `to` hardcoded | `contact.ts` — `to: ['hello@zrl.dev']` literal |
-| KV data is transient | TTL = 3,600s; no persistence beyond rate window |
-| WAF blocks AI crawlers | Cloudflare dashboard — AI Crawl Control: Enabled |
+| CI uses least-privilege defaults | [secured_ci.yml](.github/workflows/secured_ci.yml) |
+| Dependabot automation uses `pull_request_target` | [dependabot-auto-approve.yml](.github/workflows/dependabot-auto-approve.yml) |
+| Revamp contact flow is Remix action based | [contact.jsx](app/routes/contact/contact.jsx) |
+| Legacy production handler carried Turnstile and KV rate limiting | `main:functions/api/contact.ts` |
+| RFC 9116 disclosure file exists | [public/.well-known/security.txt](public/.well-known/security.txt) |
 
 ---
 
-## 9. Access Review & Revocation
+## 9. Access Review and Revocation
 
-| Trigger | Action Required |
+| Trigger | Required action |
 |---|---|
-| Annual review | Audit all account permissions; rotate credentials older than 90 days |
-| Suspected credential compromise | Follow Incident Response Runbook — P1 Secret Exposure |
-| Collaborator offboarding | Remove GitHub collaborator access within 24 hours; rotate any shared secrets |
-| Third-party service breach | Rotate all credentials for affected service within 4 hours |
-| MFA device lost/replaced | Immediately revoke old MFA; re-enroll new device; verify access |
+| Suspected credential compromise | Revoke, rotate, and verify dependent services |
+| Maintainer or collaborator offboarding | Remove access promptly and review secret scope |
+| Workflow privilege expansion | Re-review token permissions and trigger model |
+| Material platform change | Update this policy and the incident runbook |
 
 ---
 
 ## 10. Exceptions
 
-No exceptions to this policy are currently granted. Any proposed exception
-must be documented with:
-- Business justification
-- Risk acceptance statement
-- Compensating control
-- Expiry date (maximum 90 days)
+Exceptions must be time-bounded, documented, and revisited. Migration drift
+between production and the revamp branch is a temporary state, not a permanent
+exception to the underlying access-control model.
 
 ---
 
 ## 11. Related Documents
 
-- [`docs/security/INCIDENT_RESPONSE_RUNBOOK.md`](./INCIDENT_RESPONSE_RUNBOOK.md) — Operational response procedures
-- [`SECURITY.md`](../../SECURITY.md) — Vulnerability disclosure policy
-- [`public/.well-known/security.txt`](../../public/.well-known/security.txt) — RFC 9116 disclosure
-- [`functions/api/contact.ts`](../../functions/api/contact.ts) — API security implementation
-- [`.github/workflows/ci.yml`](../../.github/workflows/ci.yml) — CI security gates
+- [`docs/security/INCIDENT_RESPONSE_RUNBOOK.md`](./INCIDENT_RESPONSE_RUNBOOK.md)
+- [`SECURITY.md`](../../SECURITY.md)
+- [`public/.well-known/security.txt`](../../public/.well-known/security.txt)
 
 ---
 
-*Policy Owner: Zachary Ryan Lopez · Review Date: May 2027*
+*Policy Owner: Zachary Ryan Lopez · Next Review: August 2027*

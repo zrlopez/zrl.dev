@@ -4,7 +4,7 @@
   <img src="app/assets/hero.png" alt="zrl.dev hero" width="100%" />
 </p>
 
-**Portfolio of Zachary Ryan Lopez — AI/ML Data Operations.**
+**Portfolio of Zachary Ryan Lopez — AI/ML Data Operations Analyst.**
 
 Built with [Remix](https://remix.run/), [Three.js](https://threejs.org/), and [Framer Motion](https://www.framer.com/motion/).
 

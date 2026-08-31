@@ -21,11 +21,12 @@ const ProfileText = ({ visible, titleId }) => (
       <DecoderText text="Hi there" start={visible} delay={500} />
     </Heading>
     <Text className={styles.description} data-visible={visible} size="l" as="p">
-      I'm Zachary, an AI/ML Data Operations specialist based in Austin, TX with 7+ years
-      of experience across Apple data operations, annotation QA, and workflow improvement.
-      I build Python and SQL tools, validate high-volume datasets, and ship dashboards
-      that track labeling quality and ML support metrics. If you're interested in the
-      tools and software I use, check out my <Link href="/uses">uses page</Link>.
+      I'm Zachary, an AI/ML Data Operations Analyst based in Austin, TX with 7+
+      years of experience across Apple data operations, annotation QA, and
+      workflow improvement. I build Python and SQL tools, validate high-volume
+      datasets, and ship dashboards that track labeling quality and ML support
+      metrics. If you're interested in the tools and software I use, check out
+      my <Link href="/uses">uses page</Link>.
     </Text>
     <Text className={styles.description} data-visible={visible} size="l" as="p">
       Previously at Apple, I partnered with global cross-functional teams on Siri NLP
@@ -87,7 +88,7 @@ export const Profile = ({ id, visible, sectionRef }) => {
                   width={960}
                   height={1280}
                   sizes={`(max-width: ${media.mobile}px) 100vw, 480px`}
-                  alt="Zachary Ryan Lopez — AI/ML Data Operations, Austin TX"
+                  alt="Zachary Ryan Lopez — AI/ML Data Operations Analyst, Austin TX"
                 />
                 <svg className={styles.svg} data-visible={visible} viewBox="0 0 136 766">
                   <use href={`${katakana}#katakana-profile`} />
