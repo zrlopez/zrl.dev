@@ -26,7 +26,7 @@ const ProfileText = ({ visible, titleId }) => (
       workflow improvement. I build Python and SQL tools, validate high-volume
       datasets, and ship dashboards that track labeling quality and ML support
       metrics. If you're interested in the tools and software I use, check out
-      my <Link href="/uses">tools</Link>.
+      my <Link href="/tools">tools</Link>.
     </Text>
     <Text className={styles.description} data-visible={visible} size="l" as="p">
       Previously at Apple, I partnered with global cross-functional teams on Siri NLP

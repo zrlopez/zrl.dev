@@ -14,7 +14,7 @@ import {
 import { baseMeta } from '~/utils/meta';
 import usesBackgroundPlaceholder from '~/assets/uses-background-placeholder.jpg';
 import usesBackground from '~/assets/uses-background.mp4';
-import styles from './uses/uses.module.css';
+import styles from './tools/tools.module.css';
 
 export const meta = () => {
   return baseMeta({
@@ -27,7 +27,7 @@ export const meta = () => {
 export const Experience = () => {
   return (
     <>
-      <ProjectContainer className={styles.uses}>
+      <ProjectContainer className={styles.tools}>
         <ProjectBackground
           src={usesBackground}
           placeholder={usesBackgroundPlaceholder}

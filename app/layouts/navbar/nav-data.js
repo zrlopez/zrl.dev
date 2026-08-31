@@ -7,7 +7,7 @@ export const navLinks = [
   },
   {
     label: 'Tools',
-    pathname: '/uses',
+    pathname: '/tools',
   },
   {
     label: 'Experience',

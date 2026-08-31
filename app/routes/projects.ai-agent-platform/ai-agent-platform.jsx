@@ -68,7 +68,7 @@ export const AiAgentPlatform = () => (
             <ProjectSectionText>
               Python, FastAPI, Remix/React, Three.js. CI hardening mirrors the ML incident
               system: TruffleHog, Trivy, Cosign, CodeQL. Journal and memory stay local —
-              see <Link href="/uses">tools</Link>.
+              see <Link href="/tools">tools</Link>.
             </ProjectSectionText>
           </ProjectTextRow>
         </ProjectSectionContent>

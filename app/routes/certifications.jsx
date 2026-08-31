@@ -14,7 +14,7 @@ import {
 import { baseMeta } from '~/utils/meta';
 import usesBackgroundPlaceholder from '~/assets/uses-background-placeholder.jpg';
 import usesBackground from '~/assets/uses-background.mp4';
-import styles from './uses/uses.module.css';
+import styles from './tools/tools.module.css';
 
 const certifications = [
   ['Programming with Python (CS50P)', 'Harvard University', 'May 20, 2026', 'https://cs50.harvard.edu/certificates/a2fb0892-7781-498c-b3e0-2552de74b397'],
@@ -37,7 +37,7 @@ export const meta = () =>
 export default function Certifications() {
   return (
     <>
-      <ProjectContainer className={styles.uses}>
+      <ProjectContainer className={styles.tools}>
         <ProjectBackground
           src={usesBackground}
           placeholder={usesBackgroundPlaceholder}
