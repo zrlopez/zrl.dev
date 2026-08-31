@@ -1,3 +1,13 @@
-kv_namespaces = [
-  { id = "MY_KV", binding="MY_KV" }
-]
+# Cloudflare Pages config for zrl.dev (Remix revamp)
+# Project: zrl-dev · Account: duloup-domains
+#
+# RateLimitKV is also bound in the Pages dashboard (Settings → Bindings).
+# Keep the binding name exactly `RateLimitKV` — contact action reads env.RateLimitKV.
+
+name = "zrl-dev"
+compatibility_date = "2024-09-23"
+pages_build_output_dir = "./build/client"
+
+[[kv_namespaces]]
+binding = "RateLimitKV"
+id = "c10b44ec4eb442eca5a737baba9881e3"

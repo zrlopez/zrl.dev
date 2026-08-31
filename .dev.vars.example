@@ -28,5 +28,7 @@ TURNSTILE_HOSTNAMES=localhost,127.0.0.1,zrl.dev,www.zrl.dev
 # Optional: extra allowed Origin headers for the contact action
 # CONTACT_ALLOWED_ORIGINS=https://my-preview.vercel.app
 
-# Optional: Cloudflare KV binding name used in production is RateLimitKV.
-# When absent, contact falls back to per-isolate memory rate limiting.
+# Cloudflare KV — production binding name MUST be RateLimitKV
+# Namespace: zrl-rate-limits (id c10b44ec4eb442eca5a737baba9881e3)
+# Declared in wrangler.toml; also bind in Pages → Settings → Bindings.
+# When absent at runtime, contact falls back to per-isolate memory rate limiting.

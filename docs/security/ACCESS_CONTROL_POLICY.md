@@ -142,17 +142,13 @@ implementation path is now split across deployment state and source history.
 What is confirmed:
 
 - the `zrl.dev` zone has an active `http_ratelimit` ruleset entrypoint
-- the Cloudflare Pages project still carries production configuration related
-  to `zrl-rate-limits`
+- KV namespace `zrl-rate-limits` exists (id `c10b44ec4eb442eca5a737baba9881e3`)
+- revamp contact code reads `env.RateLimitKV` (with memory fallback if unbound)
+- `wrangler.toml` declares the Pages binding as `RateLimitKV` → that namespace
 
-What is not true in the revamp branch:
-
-- the old `functions/api/contact.ts` implementation from `main` is not present
-- the revamp source tree does not currently show the original KV-backed
-  application handler end to end
-
-For this reason, rate limiting should be documented as a live production
-control, but not as a fully ported revamp-branch source control.
+Ensure the Cloudflare Pages project `zrl-dev` has the production (and preview)
+binding named exactly `RateLimitKV` pointing at `zrl-rate-limits`. Without the
+dashboard/project binding, only the memory fallback runs.
 
 ### 6.3 Firewall and DDoS protections
 
