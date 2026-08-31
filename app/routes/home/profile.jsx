@@ -21,17 +21,17 @@ const ProfileText = ({ visible, titleId }) => (
       <DecoderText text="Hi there" start={visible} delay={500} />
     </Heading>
     <Text className={styles.description} data-visible={visible} size="l" as="p">
-      I'm Zachary, an AI/ML Data Operations Analyst based in Austin, TX with 7+
+      I&apos;m Zachary, an AI/ML Data Operations Analyst based in Austin, TX with 7+
       years of experience across Apple data operations, annotation QA, and
       workflow improvement. I build Python and SQL tools, validate high-volume
       datasets, and ship dashboards that track labeling quality and ML support
-      metrics. If you're interested in the tools and software I use, check out
+      metrics. If you&apos;re interested in the tools and software I use, check out
       my <Link href="/tools">tools</Link>.
     </Text>
     <Text className={styles.description} data-visible={visible} size="l" as="p">
       Previously at Apple, I partnered with global cross-functional teams on Siri NLP
       annotation pipelines, drove 43% faster escalation resolution, and authored playbooks
-      adopted across multiple teams. I'm always open to hearing about new projects, so
+      adopted across multiple teams. I&apos;m always open to hearing about new projects, so
       feel free to drop me a line.
     </Text>
   </Fragment>

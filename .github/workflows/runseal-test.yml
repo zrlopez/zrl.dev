@@ -7,9 +7,9 @@ name: Runseal Test
 
 on:
   push:
-    branches: [main]
+    branches: [main, chore/revamp-portfolio]
   pull_request:
-    branches: [main]
+    branches: [main, chore/revamp-portfolio]
 
 permissions:
   contents: read
@@ -32,17 +32,14 @@ jobs:
         with:
           node-version: '22.16.0'
 
-      - name: Enable pnpm
-        run: corepack enable
-
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+        run: npm ci
 
       - name: Run ESLint inside Runseal sandbox
         uses: always-further/runseal@v0.3.3
         with:
           run: |
-            pnpm exec eslint . --max-warnings 0 || true
+            npx eslint "app/**/*.{js,jsx,ts,tsx}" --max-warnings 0 || true
             echo "✅ ESLint completed inside sandbox"
           policy: |
             fs:

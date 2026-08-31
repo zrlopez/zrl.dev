@@ -49,7 +49,7 @@ export function AlertsTab({ kpis, isDark, data }: Props) {
               <CartesianGrid strokeDasharray="3 3" stroke={theme.grid} />
               <XAxis dataKey="date" tick={{ fill: theme.text, fontSize: 10 }} tickFormatter={fmt} />
               <YAxis tick={{ fill: theme.text, fontSize: 11 }} />
-              <Tooltip contentStyle={{ background: theme.tooltip.bg, border: `1px solid ${theme.tooltip.border}`, borderRadius: 8 }} labelFormatter={(v) => new Date(v).toLocaleDateString()} />
+              <Tooltip contentStyle={{ background: theme.tooltip.bg, border: `1px solid ${theme.tooltip.border}`, borderRadius: 8 }} labelFormatter={(v) => new Date(String(v)).toLocaleDateString()} />
               <Legend wrapperStyle={{ fontSize: 12, color: theme.text }} />
               <Bar dataKey="total"    fill={CHART_COLORS[2]} name="Total"    />
               <Bar dataKey="resolved" fill={CHART_COLORS[0]} name="Resolved" />

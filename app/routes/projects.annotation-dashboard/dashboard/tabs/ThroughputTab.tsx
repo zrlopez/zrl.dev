@@ -34,7 +34,7 @@ export function ThroughputTab({ isDark, data }: Props) {
             <CartesianGrid strokeDasharray="3 3" stroke={theme.grid} />
             <XAxis dataKey="date" tick={{ fill: theme.text, fontSize: 10 }} interval={6} tickFormatter={fmt} />
             <YAxis tick={{ fill: theme.text, fontSize: 11 }} />
-            <Tooltip contentStyle={{ background: theme.tooltip.bg, border: `1px solid ${theme.tooltip.border}`, borderRadius: 8 }} labelFormatter={(v) => new Date(v).toLocaleDateString()} />
+            <Tooltip contentStyle={{ background: theme.tooltip.bg, border: `1px solid ${theme.tooltip.border}`, borderRadius: 8 }} labelFormatter={(v) => new Date(String(v)).toLocaleDateString()} />
             <Line type="monotone" dataKey="value" stroke={CHART_COLORS[1]} strokeWidth={2} dot={false} />
           </LineChart>
         </ResponsiveContainer>
