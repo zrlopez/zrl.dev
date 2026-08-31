@@ -1,0 +1,1 @@
+SECURITY.md content from main (full policy)
