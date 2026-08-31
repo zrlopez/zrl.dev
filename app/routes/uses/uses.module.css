@@ -19,7 +19,7 @@
 
 .projectLinkItem {
   display: inline-flex;
-  margin-right: var(--spaceM);
+  margin-right: var(--spaceL);
 }
 
 .projectLink {
@@ -27,8 +27,13 @@
 
   display: inline-flex;
   align-items: center;
-  gap: var(--space2XS);
+  gap: 0.5rem;
   padding-bottom: 0;
   background: none;
   font-weight: var(--fontWeightMedium);
+  line-height: 1.2;
+
+  svg {
+    flex: 0 0 auto;
+  }
 }

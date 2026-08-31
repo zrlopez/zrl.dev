@@ -15,18 +15,23 @@
 
   .link {
     display: inline-flex;
-    padding-left: var(--spaceXS);
   }
 
   .date {
-    padding-right: var(--spaceXS);
     display: inline-flex;
   }
 
   .text {
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
     justify-content: center;
-    gap: var(--spaceXS) 0;
+    gap: var(--spaceXS) var(--spaceM);
+  }
+
+  .link + .link::before {
+    content: '/';
+    color: color-mix(in lab, var(--textLight) 55%, transparent);
+    margin-right: var(--spaceM);
   }
 }
