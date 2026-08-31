@@ -9,10 +9,10 @@ import sliceAnnotationLarge from '~/assets/slice-annotation-large.png';
 import sliceAnnotationPlaceholder from '~/assets/slice-annotation-placeholder.png';
 import { Footer } from '~/components/footer';
 import { baseMeta } from '~/utils/meta';
+import { Impact } from './impact';
 import { Intro } from './intro';
 import { Profile } from './profile';
 import { ProjectSummary } from './project-summary';
-import { Stats } from './stats';
 import { useEffect, useRef, useState } from 'react';
 import config from '~/config.json';
 import styles from './home.module.css';
@@ -48,14 +48,14 @@ export const Home = () => {
   const [visibleSections, setVisibleSections] = useState([]);
   const [scrollIndicatorHidden, setScrollIndicatorHidden] = useState(false);
   const intro = useRef();
-  const proof = useRef();
   const projectOne = useRef();
   const projectTwo = useRef();
   const projectThree = useRef();
+  const impact = useRef();
   const details = useRef();
 
   useEffect(() => {
-    const sections = [intro, proof, projectOne, projectTwo, projectThree, details];
+    const sections = [intro, projectOne, projectTwo, projectThree, impact, details];
 
     const sectionObserver = new IntersectionObserver(
       (entries, observer) => {
@@ -96,11 +96,6 @@ export const Home = () => {
         id="intro"
         sectionRef={intro}
         scrollIndicatorHidden={scrollIndicatorHidden}
-      />
-      <Stats
-        id="proof"
-        sectionRef={proof}
-        visible={visibleSections.includes(proof.current)}
       />
       <ProjectSummary
         id="project-1"
@@ -162,6 +157,11 @@ export const Home = () => {
             },
           ],
         }}
+      />
+      <Impact
+        id="impact"
+        sectionRef={impact}
+        visible={visibleSections.includes(impact.current)}
       />
       <Profile
         sectionRef={details}

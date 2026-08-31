@@ -132,6 +132,54 @@
   }
 }
 
+.facts {
+  display: grid;
+  gap: var(--spaceL);
+  width: 100%;
+  margin: 0 0 var(--spaceXL);
+  opacity: 0;
+  transition: opacity var(--durationXL) ease var(--durationL);
+
+  &[data-visible='true'] {
+    opacity: 1;
+  }
+}
+
+.fact {
+  display: grid;
+  gap: 0.2rem;
+  padding-bottom: var(--spaceM);
+  border-bottom: 1px solid color-mix(in lab, var(--text) 12%, transparent);
+}
+
+.factLabel {
+  margin: 0;
+  color: var(--primary);
+  font-size: var(--fontSizeBodyXS);
+  font-weight: var(--fontWeightMedium);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.factValue {
+  margin: 0;
+  color: var(--textLight);
+  font-size: var(--fontSizeBodyS);
+  line-height: var(--lineHeightBody);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spaceM);
+  opacity: 0;
+  transition: opacity var(--durationXL) ease var(--durationL);
+
+  &[data-visible='true'] {
+    opacity: 1;
+  }
+}
+
 .button {
   opacity: 0;
   transition: opacity var(--durationXL) ease var(--durationL);
