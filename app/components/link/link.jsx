@@ -4,7 +4,7 @@ import { classes } from '~/utils/style';
 import styles from './link.module.css';
 
 // File extensions that can be linked to
-const VALID_EXT = ['txt', 'png', 'jpg'];
+const VALID_EXT = ['txt', 'png', 'jpg', 'pdf'];
 
 function isAnchor(href) {
   const isValidExtension = VALID_EXT.includes(href?.split('.').pop());

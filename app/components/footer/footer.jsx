@@ -6,6 +6,7 @@ import styles from './footer.module.css';
 
 const footerLinks = [
   ['Crafted by yours truly', '/humans.txt'],
+  ['Résumé', '/resume.pdf'],
   ['Privacy', '/privacy'],
   ['Terms', '/terms'],
   ['Security', '/.well-known/security.txt'],

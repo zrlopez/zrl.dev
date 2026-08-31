@@ -9,6 +9,7 @@ import sprTexturePlaceholder from '~/assets/spr-lesson-builder-dark-placeholder.
 import sprTexture from '~/assets/spr-lesson-builder-dark.jpg';
 import { Footer } from '~/components/footer';
 import { baseMeta } from '~/utils/meta';
+import { Impact } from './impact';
 import { Intro } from './intro';
 import { Profile } from './profile';
 import { ProjectSummary } from './project-summary';
@@ -50,10 +51,11 @@ export const Home = () => {
   const projectOne = useRef();
   const projectTwo = useRef();
   const projectThree = useRef();
+  const impact = useRef();
   const details = useRef();
 
   useEffect(() => {
-    const sections = [intro, projectOne, projectTwo, projectThree, details];
+    const sections = [intro, projectOne, projectTwo, projectThree, impact, details];
 
     const sectionObserver = new IntersectionObserver(
       (entries, observer) => {
@@ -155,6 +157,11 @@ export const Home = () => {
             },
           ],
         }}
+      />
+      <Impact
+        id="impact"
+        sectionRef={impact}
+        visible={visibleSections.includes(impact.current)}
       />
       <Profile
         sectionRef={details}

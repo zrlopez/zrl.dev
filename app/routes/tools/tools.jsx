@@ -103,6 +103,19 @@ const groups = [
     ],
   },
   {
+    title: 'Evaluation',
+    blurb: 'How labeling quality and model support get measured.',
+    items: [
+      { label: 'A/B testing' },
+      { label: 'Ontology design' },
+      { label: 'UX evaluation' },
+      { label: 'IAA' },
+      { label: 'IRR' },
+      { label: 'Error analysis' },
+      { label: 'NLP evaluation', core: true },
+    ],
+  },
+  {
     title: 'Collaborate',
     items: [
       { label: 'Jira' },
@@ -113,6 +126,20 @@ const groups = [
       { label: 'SOP / runbook authoring', core: true },
       { label: 'Cross-functional ops' },
       { label: 'Experiment design' },
+    ],
+  },
+  {
+    title: 'Professional practice',
+    blurb: 'The people-and-process side of high-volume annotation ops.',
+    items: [
+      { label: 'Stakeholder communication' },
+      { label: 'Training & enablement' },
+      { label: 'Escalation resolution' },
+      { label: 'Project coordination' },
+      { label: 'Workflow improvement' },
+      { label: 'Process automation' },
+      { label: 'Cross-functional collaboration' },
+      { label: 'SOP & guideline authoring', core: true },
     ],
   },
   {
@@ -156,7 +183,7 @@ export const Tools = () => {
         />
         <ProjectHeader
           title="Tools"
-          description="The stack behind annotation QA, ML incident response, and the systems I ship — languages first, then data, model ops, build, and desk."
+          description="The stack behind annotation QA, ML incident response, and the systems I ship — languages and data first, then model ops, evaluation practice, collaboration, and desk."
         />
 
         {groups.map(group => (
