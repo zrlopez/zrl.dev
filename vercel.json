@@ -1,6 +1,12 @@
 {
   "headers": [
     {
+      "source": "/humans.txt",
+      "headers": [
+        { "key": "Content-Type", "value": "text/plain; charset=utf-8" }
+      ]
+    },
+    {
       "source": "/(.*)\\.(css|js|woff2|glb|svg|jpg|png|mp4|hdr|wasm)",
       "headers": [
         { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
