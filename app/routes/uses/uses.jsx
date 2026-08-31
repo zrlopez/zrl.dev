@@ -1,8 +1,6 @@
 import usesBackgroundPlaceholder from '~/assets/uses-background-placeholder.jpg';
 import usesBackground from '~/assets/uses-background.mp4';
 import { Footer } from '~/components/footer';
-import { Link } from '~/components/link';
-import { List, ListItem } from '~/components/list';
 import { Table, TableBody, TableCell, TableHeadCell, TableRow } from '~/components/table';
 import {
   ProjectBackground,
@@ -11,18 +9,141 @@ import {
   ProjectSection,
   ProjectSectionContent,
   ProjectSectionHeading,
-  ProjectSectionText,
   ProjectTextRow,
 } from '~/layouts/project';
 import { baseMeta } from '~/utils/meta';
+import { classes } from '~/utils/style';
 import styles from './uses.module.css';
 
 export const meta = () => {
   return baseMeta({
-    title: 'Uses',
-    description: 'Tools, languages, and software I use as an AI/ML Data Operations Analyst.',
+    title: 'Tools',
+    description:
+      'Languages, data systems, ML tooling, and platforms used by Zachary Ryan Lopez — AI/ML Data Operations Analyst.',
   });
 };
+
+/** @type {{ title: string, blurb?: string, items: { label: string, core?: boolean }[] }[]} */
+const groups = [
+  {
+    title: 'Languages',
+    items: [
+      { label: 'Python', core: true },
+      { label: 'SQL', core: true },
+      { label: 'TypeScript' },
+      { label: 'Swift' },
+      { label: 'JSON / YAML' },
+    ],
+  },
+  {
+    title: 'Data systems',
+    blurb: 'High-volume validation, ETL, and reporting pipelines.',
+    items: [
+      { label: 'Pandas', core: true },
+      { label: 'SQLite', core: true },
+      { label: 'Jupyter' },
+      { label: 'ETL pipelines', core: true },
+      { label: 'Data validation', core: true },
+      { label: 'Tableau' },
+      { label: 'Power BI' },
+      { label: 'Excel' },
+      { label: 'Recharts' },
+    ],
+  },
+  {
+    title: 'AI / ML ops',
+    blurb: 'Label quality, model support, and evaluation loops.',
+    items: [
+      { label: 'Annotation QA', core: true },
+      { label: 'NLP evaluation', core: true },
+      { label: 'Prompt engineering', core: true },
+      { label: 'RLHF' },
+      { label: 'Taxonomy governance' },
+      { label: 'Error analysis' },
+      { label: 'PII handling' },
+      { label: 'MLOps', core: true },
+      { label: 'Hugging Face' },
+      { label: 'scikit-learn' },
+      { label: 'Gradio' },
+      { label: 'LangChain' },
+      { label: 'Weights & Biases' },
+      { label: 'OpenAI API' },
+      { label: 'Anthropic API' },
+    ],
+  },
+  {
+    title: 'Build',
+    items: [
+      { label: 'FastAPI', core: true },
+      { label: 'Pydantic' },
+      { label: 'async SQLAlchemy' },
+      { label: 'Next.js' },
+      { label: 'Remix' },
+      { label: 'React' },
+      { label: 'Vite' },
+      { label: 'Tailwind CSS' },
+      { label: 'Three.js' },
+      { label: 'Storybook' },
+      { label: 'structlog' },
+    ],
+  },
+  {
+    title: 'Ship & secure',
+    items: [
+      { label: 'Docker' },
+      { label: 'Git / GitHub', core: true },
+      { label: 'Vercel' },
+      { label: 'Cloudflare', core: true },
+      { label: 'Turnstile' },
+      { label: 'TruffleHog' },
+      { label: 'Trivy' },
+      { label: 'CodeQL' },
+      { label: 'Cosign' },
+      { label: 'VS Code' },
+    ],
+  },
+  {
+    title: 'Collaborate',
+    items: [
+      { label: 'Jira' },
+      { label: 'Confluence' },
+      { label: 'Linear' },
+      { label: 'Notion' },
+      { label: 'Figma' },
+      { label: 'SOP / runbook authoring', core: true },
+      { label: 'Cross-functional ops' },
+      { label: 'Experiment design' },
+    ],
+  },
+  {
+    title: 'Creative',
+    items: [
+      { label: 'Xcode' },
+      { label: 'Final Cut Pro' },
+      { label: 'Logic Pro' },
+    ],
+  },
+];
+
+const system = [
+  ['Laptop', '16″ MacBook Pro · M4 Pro'],
+  ['OS', 'macOS 15 Sequoia'],
+  ['Monitor', 'MSI MPG 274URDFW E16M'],
+  ['Keyboard', 'Keychron Q6 HE 8K'],
+  ['Pointer', 'Magic Trackpad (USB-C)'],
+  ['Audio', 'AirPods Max / AirPods Pro 3'],
+  ['Browser', 'Brave'],
+];
+
+function Chip({ label, core }) {
+  return (
+    <li className={classes(styles.chip, core && styles.chipCore)}>
+      {core && <span className={styles.chipDot} aria-hidden />}
+      <span>{label}</span>
+      {core && <span className={styles.chipBadge}>Core</span>}
+    </li>
+  );
+}
 
 export const Uses = () => {
   return (
@@ -34,138 +155,40 @@ export const Uses = () => {
           opacity={0.7}
         />
         <ProjectHeader
-          title="Uses"
-          description="A somewhat comprehensive list of the tools, technologies, software, and platforms I use to build data systems, analyze workflows, and manage AI operations."
+          title="Tools"
+          description="The stack behind annotation QA, ML incident response, and the systems I ship — languages first, then data, model ops, build, and desk."
         />
-        <ProjectSection padding="none" className={styles.section}>
-          <ProjectSectionContent>
-            <ProjectTextRow width="m">
-              <ProjectSectionHeading>Data & ML</ProjectSectionHeading>
-              <ProjectSectionText as="div">
-                <List>
-                  <ListItem>
-                    <Link href="https://www.python.org">Python</Link>,{' '}
-                    <Link href="https://pandas.pydata.org">Pandas</Link>,{' '}
-                    <Link href="https://jupyter.org">Jupyter</Link>, and{' '}
-                    <Link href="https://www.sqlite.org">SQLite</Link> for ETL,
-                    validation, and high-volume dataset audits — the core of both the{' '}
-                    <Link href="/projects/annotation-dashboard">annotation dashboard</Link>
-                    {' '}and the{' '}
-                    <Link href="/projects/ml-incident-response">ML incident system</Link>.
-                  </ListItem>
-                  <ListItem>
-                    <Link href="https://tableau.com">Tableau</Link> and{' '}
-                    <Link href="https://powerbi.microsoft.com">Power BI</Link> for
-                    reporting;{' '}
-                    <Link href="https://recharts.org">Recharts</Link> for the live
-                    dashboard.
-                  </ListItem>
-                  <ListItem>
-                    Annotation QA, taxonomy governance, RLHF, and prompt engineering —
-                    the ops layer behind Siri-scale labeling pipelines.
-                  </ListItem>
-                </List>
-              </ProjectSectionText>
-            </ProjectTextRow>
-          </ProjectSectionContent>
-        </ProjectSection>
-        <ProjectSection padding="none" className={styles.section}>
-          <ProjectSectionContent>
-            <ProjectTextRow width="m">
-              <ProjectSectionHeading>Development</ProjectSectionHeading>
-              <ProjectSectionText as="div">
-                <List>
-                  <ListItem>
-                    <Link href="https://remix.run">Remix 2.7</Link> +{' '}
-                    <Link href="https://react.dev">React 18</Link> +{' '}
-                    <Link href="https://vitejs.dev">Vite</Link> +{' '}
-                    <Link href="https://www.framer.com/motion/">Framer Motion</Link> for
-                    the redesigned portfolio.{' '}
-                    <Link href="https://nextjs.org">Next.js 15</Link> +{' '}
-                    <Link href="https://www.typescriptlang.org">TypeScript</Link> +{' '}
-                    <Link href="https://tailwindcss.com">Tailwind</Link> for the
-                    dashboard.{' '}
-                    <Link href="https://fastapi.tiangolo.com">FastAPI</Link> +{' '}
-                    <Link href="https://www.structlog.org/">structlog</Link> for the
-                    incident response service.
-                  </ListItem>
-                  <ListItem>
-                    <Link href="https://code.visualstudio.com">VS Code</Link>{' '}
-                    (Catppuccin, Vim bindings), deployed via{' '}
-                    <Link href="https://vercel.com">Vercel</Link> +{' '}
-                    <Link href="https://www.cloudflare.com">Cloudflare</Link>.
-                  </ListItem>
-                  <ListItem>
-                    For 3D/effects: <Link href="https://threejs.org">three.js</Link> (kept
-                    from this template) and Draco for the models. For isolation:{' '}
-                    <Link href="https://storybook.js.org">Storybook 7</Link>.
-                  </ListItem>
-                </List>
-              </ProjectSectionText>
-            </ProjectTextRow>
-          </ProjectSectionContent>
-        </ProjectSection>
-        <ProjectSection padding="none" className={styles.section}>
-          <ProjectSectionContent>
-            <ProjectTextRow width="m">
-              <ProjectSectionHeading>Workflow</ProjectSectionHeading>
-              <ProjectSectionText as="div">
-                <List>
-                  <ListItem>
-                    <Link href="https://github.com">GitHub</Link> +{' '}
-                    <Link href="https://git-scm.com">Git</Link> (Conventional Commits),{' '}
-                    <Link href="https://www.atlassian.com/software/jira">Jira</Link>, and{' '}
-                    <Link href="https://www.atlassian.com/software/confluence">
-                      Confluence
-                    </Link>{' '}
-                    for SOPs and runbooks.
-                  </ListItem>
-                  <ListItem>
-                    <Link href="https://trufflesecurity.com/trufflehog">TruffleHog</Link>,{' '}
-                    <Link href="https://aquasecurity.github.io/trivy/">Trivy</Link>,{' '}
-                    <Link href="https://www.sigstore.dev">Cosign</Link>, and{' '}
-                    <Link href="https://codeql.github.com">CodeQL</Link> in CI.
-                  </ListItem>
 
-                </List>
-              </ProjectSectionText>
-            </ProjectTextRow>
-          </ProjectSectionContent>
-        </ProjectSection>
+        {groups.map(group => (
+          <ProjectSection padding="none" className={styles.section} key={group.title}>
+            <ProjectSectionContent>
+              <ProjectTextRow width="m">
+                <div className={styles.groupHead}>
+                  <ProjectSectionHeading>{group.title}</ProjectSectionHeading>
+                  {group.blurb && <p className={styles.blurb}>{group.blurb}</p>}
+                </div>
+                <ul className={styles.chips} aria-label={group.title}>
+                  {group.items.map(item => (
+                    <Chip key={item.label} label={item.label} core={item.core} />
+                  ))}
+                </ul>
+              </ProjectTextRow>
+            </ProjectSectionContent>
+          </ProjectSection>
+        ))}
+
         <ProjectSection padding="none" className={styles.section}>
           <ProjectSectionContent>
             <ProjectTextRow stretch width="m">
-              <ProjectSectionHeading>System</ProjectSectionHeading>
+              <ProjectSectionHeading>Desk</ProjectSectionHeading>
               <Table>
                 <TableBody>
-                  <TableRow>
-                    <TableHeadCell>Operating system</TableHeadCell>
-                    <TableCell>macOS 15 Sequoia</TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableHeadCell>Browser</TableHeadCell>
-                    <TableCell>Brave</TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableHeadCell>Monitor</TableHeadCell>
-                    <TableCell>MSI MPG 274URDFW E16M</TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableHeadCell>Keyboard</TableHeadCell>
-                    <TableCell>Keychron Q6 HE 8K Magnetic Switch</TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableHeadCell>Mouse</TableHeadCell>
-                    <TableCell>Magic Trackpad (USB-C)</TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableHeadCell>Laptop</TableHeadCell>
-                    <TableCell>16" Macbook Pro M4 Pro</TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableHeadCell>Headphones</TableHeadCell>
-                    <TableCell>AirPod Max/AirPod Pro 3</TableCell>
-                  </TableRow>
+                  {system.map(([k, v]) => (
+                    <TableRow key={k}>
+                      <TableHeadCell>{k}</TableHeadCell>
+                      <TableCell>{v}</TableCell>
+                    </TableRow>
+                  ))}
                 </TableBody>
               </Table>
             </ProjectTextRow>
