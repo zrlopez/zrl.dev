@@ -36,11 +36,11 @@
   display: inline-flex !important;
   align-items: center;
   justify-content: flex-start;
-  gap: 0.4em;
+  gap: 0.5em;
   padding-bottom: 0 !important;
   background: none !important;
   font-weight: var(--fontWeightMedium);
-  line-height: 1;
+  line-height: 1.2;
   white-space: nowrap;
   vertical-align: middle;
 }
@@ -48,14 +48,13 @@
 .projectLinkIcon {
   display: block;
   flex: 0 0 auto;
-  width: 0.875em;
-  height: 0.875em;
-  overflow: hidden;
-  /* Optical nudge: stroke icons sit a hair high next to caps */
-  transform: translateY(0.06em);
+  width: 1em;
+  height: 1em;
+  /* Keep stroke icons fully visible — do not clip */
+  overflow: visible;
 }
 
 .projectLinkLabel {
   display: inline-block;
-  line-height: 1;
+  line-height: 1.2;
 }

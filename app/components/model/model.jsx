@@ -96,7 +96,8 @@ export const Model = ({
       alpha: true,
       antialias: false,
       powerPreference: 'high-performance',
-      failIfMajorPerformanceCaveat: true,
+      // false: still show models on machines Chrome flags as low-power
+      failIfMajorPerformanceCaveat: false,
     });
 
     renderer.current.setPixelRatio(2);
@@ -466,10 +467,16 @@ const Device = ({
           const frameNode = gltf.scene.children.find(
             node => node.name === MeshType.Frame
           );
+          gltf.scene.position.set(...targetPosition.toArray());
+
+          // If the GLB mesh names differ, still show the closed laptop
+          if (!frameNode) {
+            renderFrame();
+            return;
+          }
+
           const startRotation = new Vector3(MathUtils.degToRad(90), 0, 0);
           const endRotation = new Vector3(0, 0, 0);
-
-          gltf.scene.position.set(...targetPosition.toArray());
           frameNode.rotation.set(...startRotation.toArray());
 
           return animate(startRotation.x, endRotation.x, {
@@ -500,19 +507,28 @@ const Device = ({
     let animation;
 
     const onModelLoad = async () => {
-      const { loadFullResTexture, playAnimation } = await loadDevice.start();
+      try {
+        const { loadFullResTexture, playAnimation } = await loadDevice.start();
 
-      setLoaded(true);
-      onLoad?.();
+        setLoaded(true);
+        onLoad?.();
 
-      if (!reduceMotion) {
-        animation = playAnimation();
-      }
+        if (!reduceMotion && playAnimation) {
+          animation = playAnimation();
+        }
 
-      await loadFullResTexture();
+        if (loadFullResTexture) {
+          await loadFullResTexture();
+        }
 
-      if (reduceMotion) {
-        renderFrame();
+        if (reduceMotion) {
+          renderFrame();
+        }
+      } catch (error) {
+        console.error('[Model] failed to load device', error);
+        // Unblock the section loader so the page isn't stuck on a red bar
+        setLoaded(true);
+        onLoad?.();
       }
     };
 
@@ -521,7 +537,7 @@ const Device = ({
     });
 
     return () => {
-      animation?.stop();
+      animation?.stop?.();
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [loadDevice, show]);
