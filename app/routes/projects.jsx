@@ -26,7 +26,7 @@ const linkIcons = {
 function ProjectLink({ href, label }) {
   return (
     <Link className={styles.projectLink} href={href}>
-      <Icon icon={linkIcons[label] || 'link'} size={14} />
+      <Icon icon={linkIcons[label] || 'link'} size={12} />
       {label}
     </Link>
   );
@@ -123,16 +123,16 @@ export default function Projects() {
                   <List>
                     <ListItem>{project.meta}</ListItem>
                     <ListItem>{project.description}</ListItem>
-                    {!!project.links.length && (
-                      <ListItem>
-                        {project.links.map(([label, href]) => (
-                          <span className={styles.projectLinkItem} key={href}>
-                            <ProjectLink href={href} label={label} />
-                          </span>
-                        ))}
-                      </ListItem>
-                    )}
                   </List>
+                  {!!project.links.length && (
+                    <div className={styles.projectActions}>
+                      {project.links.map(([label, href]) => (
+                        <span className={styles.projectLinkItem} key={href}>
+                          <ProjectLink href={href} label={label} />
+                        </span>
+                      ))}
+                    </div>
+                  )}
                 </ProjectSectionText>
               </ProjectTextRow>
             ))}

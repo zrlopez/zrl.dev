@@ -1,6 +1,7 @@
 import { Button } from '~/components/button';
 import { Divider } from '~/components/divider';
 import { Heading } from '~/components/heading';
+import { Link } from '~/components/link';
 import { deviceModels } from '~/components/model/device-models';
 import { Section } from '~/components/section';
 import { Text } from '~/components/text';
@@ -100,7 +101,12 @@ export function ProjectSummary({
 
   function renderPreview(visible) {
     return (
-      <div className={styles.preview}>
+      <Link
+        className={styles.previewLink}
+        href={buttonLink}
+        aria-label={`${buttonText}: ${title}`}
+      >
+        <div className={styles.preview}>
         {model.type === 'laptop' && (
           <>
             {renderKatakana('laptop', visible)}
@@ -170,7 +176,8 @@ export function ProjectSummary({
             </div>
           </>
         )}
-      </div>
+        </div>
+      </Link>
     );
   }
 

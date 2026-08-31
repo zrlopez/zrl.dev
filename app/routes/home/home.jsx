@@ -143,7 +143,7 @@ export const Home = () => {
         index={3}
         title="Annotation Analytics Dashboard"
         description="A real-time annotation analytics dashboard tracking labeling quality trends and workflow performance"
-        buttonText="View dashboard"
+        buttonText="View demo"
         buttonLink="/projects/annotation-dashboard"
         model={{
           type: 'laptop',

@@ -17,9 +17,16 @@
   }
 }
 
+.projectActions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--spaceS) var(--spaceL);
+  margin-top: var(--spaceS);
+}
+
 .projectLinkItem {
   display: inline-flex;
-  margin-right: var(--spaceL);
 }
 
 .projectLink {
@@ -27,16 +34,18 @@
 
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.45rem;
   padding-bottom: 0;
   background: none;
   font-weight: var(--fontWeightMedium);
   line-height: 1.2;
+  white-space: nowrap;
+  vertical-align: middle;
 
   svg {
     flex: 0 0 auto;
     overflow: visible;
-    width: 0.875rem;
-    height: 0.875rem;
+    width: 0.75rem;
+    height: 0.75rem;
   }
 }
