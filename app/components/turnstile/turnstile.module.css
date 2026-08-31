@@ -1,0 +1,31 @@
+.widget {
+  min-height: 65px;
+}
+
+.error {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spaceXS);
+  align-items: center;
+  padding: var(--spaceM);
+  font-size: 14px;
+  line-height: 1.4;
+  color: var(--error);
+  background-color: color-mix(in lab, var(--error) 10%, transparent);
+  border-radius: 8px;
+}
+
+.retry {
+  appearance: none;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.retry:hover {
+  text-decoration: none;
+}

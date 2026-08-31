@@ -79,9 +79,14 @@ identical.
 ### Revamp branch status
 
 - The security-focused CI workflows have been ported into the Remix revamp branch
-- The legacy Next.js contact handler at `functions/api/contact.ts` has not been ported into the revamp branch as-is
-- The current revamp contact route uses a Remix action in [app/routes/contact/contact.jsx](app/routes/contact/contact.jsx) with SES-backed mail sending and a honeypot field
-- The old application-level Turnstile and KV-backed contact flow from `main` is therefore not yet fully represented in this branch's source tree
+- Contact on the revamp branch now uses the Remix action in `app/routes/contact/contact.jsx` with:
+  - Cloudflare Turnstile siteverify (`action=contact`, hostname allowlist)
+  - Resend mail delivery (same path as production `main`)
+  - shared sanitizers in `app/utils/security.js`
+  - rate limiting via Cloudflare `RateLimitKV` when bound, otherwise per-isolate memory
+  - honeypot field retained as defense-in-depth
+- Application-level CSP and baseline security headers are declared in `vercel.json` and `public/_headers`
+- Full nonce-based CSP parity with the old Next.js `middleware.ts` is still a follow-up
 
 If you are evaluating a vulnerability, please note whether it affects:
 

@@ -1,5 +1,5 @@
 .contact {
-  --formHeight: 530px;
+  --formHeight: 720px;
 
   display: grid;
   grid-template-rows: 1fr auto;
@@ -139,6 +139,32 @@
 
 .botkiller {
   display: none;
+}
+
+.turnstile {
+  margin-top: var(--spaceXL);
+  transition-property: opacity;
+  transition-timing-function: var(--bezierFastoutSlowin);
+  transition-duration: var(--durationXL);
+  transition-delay: var(--delay);
+  opacity: 0;
+
+  @media (--mediaUseMotion) {
+    transition-property: transform, opacity;
+    transform: translate3d(0, var(--space3XL), 0);
+  }
+
+  &[data-status='entering'],
+  &[data-status='entered'] {
+    transform: none;
+    opacity: 1;
+  }
+
+  &[data-status='exiting'] {
+    transition-duration: var(--durationM);
+    transition-delay: 0s;
+    opacity: 0;
+  }
 }
 
 .button {

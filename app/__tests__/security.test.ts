@@ -1,42 +1,15 @@
 /**
  * security.test.ts
- * Unit tests for security utilities — Vitest + Remix edition.
+ * Unit tests for app/utils/security.js
  */
 
 import { describe, it, expect } from 'vitest';
-
-// Placeholder sanitizers until real utils are ported or created in app/lib
-// These are minimal implementations matching the behavior from the original Next.js security.test.ts
-
-function sanitizeField(input: string, allowNewlines = false): string {
-  let s = input.replace(/[\x00-\x09\x0B\x0C\x0E-\x1F\x7F-\x9F]/g, '');
-  if (!allowNewlines) s = s.replace(/[\r\n]/g, '');
-  return s.trim();
-}
-
-function sanitizeHeaderField(input: string): string {
-  return input
-    .replace(/[\r\n\t]/g, ' ')
-    .replace(/[\x00-\x1F\x7F-\x9F]/g, '')
-    .trim();
-}
-
-function htmlEscape(input: string): string {
-  return input
-    .replace(/&/g, '&')
-    .replace(/</g, '<')
-    .replace(/>/g, '>')
-    .replace(/"/g, '"')
-    .replace(/'/g, '&#39;');
-}
-
-function validateEmail(email: string): boolean {
-  if (!email || email.length > 254) return false;
-  if (/[\r\n]/.test(email)) return false;
-  if (/[^\x00-\x7F]/.test(email)) return false;
-  const re = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
-  return re.test(email);
-}
+import {
+  sanitizeField,
+  sanitizeHeaderField,
+  htmlEscape,
+  validateEmail,
+} from '~/utils/security';
 
 // ── sanitizeField ────────────────────────────────────────────────────────────
 
@@ -87,13 +60,13 @@ describe('sanitizeHeaderField()', () => {
     expect(sanitizeHeaderField('John Doe')).toBe('John Doe');
   });
 
-  it('replaces \r\n with spaces (header injection guard)', () => {
+  it('replaces \\r\\n with spaces (header injection guard)', () => {
     const result = sanitizeHeaderField('Subject\r\nX-Injected: evil');
     expect(result).not.toContain('\r');
     expect(result).not.toContain('\n');
   });
 
-  it('replaces \t with space (header folding guard)', () => {
+  it('replaces \\t with space (header folding guard)', () => {
     expect(sanitizeHeaderField('hello\tworld')).toBe('hello world');
   });
 
@@ -114,15 +87,15 @@ describe('sanitizeHeaderField()', () => {
 
 describe('htmlEscape()', () => {
   it('escapes ampersand', () => {
-    expect(htmlEscape('a & b')).toBe('a & b');
+    expect(htmlEscape('a & b')).toBe('a &amp; b');
   });
 
   it('escapes less-than and greater-than', () => {
-    expect(htmlEscape('<script>')).toBe('<script>');
+    expect(htmlEscape('<script>')).toBe('&lt;script&gt;');
   });
 
   it('escapes double quotes', () => {
-    expect(htmlEscape('say "hi"')).toBe('say "hi"');
+    expect(htmlEscape('say "hi"')).toBe('say &quot;hi&quot;');
   });
 
   it('escapes single quotes', () => {
@@ -169,11 +142,11 @@ describe('validateEmail()', () => {
       expect(validateEmail(long)).toBe(false);
     });
 
-    it('rejects address with \r (header injection)', () => {
+    it('rejects address with \\r (header injection)', () => {
       expect(validateEmail('user@example.com\r')).toBe(false);
     });
 
-    it('rejects address with \n (header injection)', () => {
+    it('rejects address with \\n (header injection)', () => {
       expect(validateEmail('user@example.com\n')).toBe(false);
     });
 

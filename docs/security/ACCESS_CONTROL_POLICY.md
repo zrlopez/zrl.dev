@@ -188,16 +188,19 @@ implements:
 ### 7.2 Current revamp branch
 
 The current revamp branch handles contact form submission in
-[app/routes/contact/contact.jsx](app/routes/contact/contact.jsx).
-That code currently uses:
+`app/routes/contact/contact.jsx`. That code currently uses:
 
-- a server action
-- AWS SES delivery
-- a honeypot field
-- server-side length and pattern checks
+- a Remix server action
+- Cloudflare Turnstile siteverify (`action=contact`)
+- Resend delivery
+- shared sanitizers (`app/utils/security.js`)
+- honeypot field
+- rate limiting via `RateLimitKV` when bound, else memory fallback
+- security headers / CSP allowlisting Turnstile in `vercel.json` + `public/_headers`
 
-It does **not** currently demonstrate the same Turnstile, KV, and structured
-logging controls that existed in the legacy production handler.
+Remaining gap vs legacy production handler: durable shared KV is only
+guaranteed when the Cloudflare binding is present; Vercel isolates use
+memory fallback.
 
 ---
 
