@@ -1,15 +1,16 @@
+# zrl.dev
+
 <p align="center">
-  <img src="/public/favicon.svg" width="50" alt="Logo" />
+  <img src="app/assets/hero.png" alt="zrl.dev hero" width="100%" />
 </p>
-<h1 align="center">zrl.dev</h1>
 
-Portfolio of Zachary Ryan Lopez — AI/ML Data Operations, Austin TX. Built with [Remix](https://remix.run/), [Three.js](https://threejs.org/), and [Framer Motion](https://www.framer.com/motion/).
+**Portfolio of Zachary Ryan Lopez — AI/ML Data Operations.**
 
-Live at [zrl.dev](https://zrl.dev) · Based on [Hamish Williams portfolio](https://github.com/HamishMW/portfolio) (MIT) with custom content and Vercel adaptation.
+Built with [Remix](https://remix.run/), [Three.js](https://threejs.org/), and [Framer Motion](https://www.framer.com/motion/).
 
-## Install & run
+**Live:** [zrl.dev](https://zrl.dev)
 
-Requires Node `19.9.0+` and npm `9.6.3+`:
+## Development
 
 ```bash
 npm install
@@ -22,9 +23,16 @@ Storybook:
 npm run dev:storybook
 ```
 
+Tests:
+
+```bash
+npm test
+npm run test:coverage
+```
+
 ## Deployment
 
-This fork is configured for Vercel via `@vercel/remix` (see `vite.config.js` `vercelPreset`). Preview deploys on push; production is manual.
+Preview deploys run automatically on push. Production deploys from `main` are manual.
 
 ```bash
 npm run build
@@ -32,7 +40,7 @@ npm run build
 
 ## Credits
 
-Original design and template by [Hamish Williams](https://hamishw.com) — MIT licensed. Content, projects, and data replaced for personal use. Do not present template projects as your own.
+Original design template by [Hamish Williams](https://hamishw.com) (MIT). All content, projects, and data are original.
 
 ## License
 
