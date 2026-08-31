@@ -13,6 +13,7 @@ import { Intro } from './intro';
 import { Profile } from './profile';
 import { ProjectSummary } from './project-summary';
 import { useEffect, useRef, useState } from 'react';
+import { Link } from '~/components/link';
 import config from '~/config.json';
 import styles from './home.module.css';
 
@@ -142,7 +143,7 @@ export const Home = () => {
         visible={visibleSections.includes(projectThree.current)}
         index={3}
         title="Annotation Analytics Dashboard"
-        description="A real-time annotation analytics dashboard tracking labeling quality trends and workflow performance"
+        description="A real-time annotation analytics dashboard tracking labeling quality trends and workflow performance — includes live demo with 6 interactive tabs"
         buttonText="View live demo"
         buttonLink="/projects/annotation-dashboard#live-demo"
         model={{
@@ -156,6 +157,19 @@ export const Home = () => {
           ],
         }}
       />
+      <div
+        style={{
+          display: 'flex',
+          gap: '24px',
+          justifyContent: 'center',
+          marginTop: '-32px',
+          marginBottom: '32px',
+          fontSize: '14px',
+        }}
+      >
+        <Link href="/projects/annotation-dashboard">View case study</Link>
+        <Link href="/projects/annotation-dashboard#live-demo">Open live demo →</Link>
+      </div>
       <Profile
         sectionRef={details}
         visible={visibleSections.includes(details.current)}
