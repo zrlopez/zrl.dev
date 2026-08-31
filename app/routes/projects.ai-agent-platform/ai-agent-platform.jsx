@@ -13,9 +13,9 @@ import { Link } from '~/components/link';
 import { baseMeta } from '~/utils/meta';
 import usesBackgroundPlaceholder from '~/assets/uses-background-placeholder.jpg';
 import usesBackground from '~/assets/uses-background.mp4';
-import sprTexture from '~/assets/spr-lesson-builder-dark.jpg';
-import sprTexturePlaceholder from '~/assets/spr-lesson-builder-dark-placeholder.jpg';
-import sprTextureLarge from '~/assets/spr-lesson-builder-dark-large.jpg';
+import agentOrch from '~/assets/agent-orchestration.jpg';
+import agentOrchPlaceholder from '~/assets/agent-orchestration-placeholder.jpg';
+import agentOrchLarge from '~/assets/agent-orchestration-large.jpg';
 import { Image } from '~/components/image';
 import { Fragment } from 'react';
 import { media } from '~/utils/style';
@@ -39,11 +39,11 @@ export const AiAgentPlatform = () => (
       <ProjectSection padding="top">
         <ProjectSectionContent>
           <Image
-            srcSet={`${sprTexture} 1280w, ${sprTextureLarge} 2560w`}
-            placeholder={sprTexturePlaceholder}
+            srcSet={`${agentOrch} 1280w, ${agentOrchLarge} 2560w`}
+            placeholder={agentOrchPlaceholder}
             width={1280}
             height={800}
-            alt="AI Agent Orchestration Platform — model texture placeholder"
+            alt="AI Agent Orchestration Platform console — live graph, agents, and task queue"
             sizes={`(max-width: ${media.mobile}px) 100vw, 80vw`}
           />
         </ProjectSectionContent>

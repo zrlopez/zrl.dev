@@ -1,17 +1,18 @@
+import agentOrchLarge from '~/assets/agent-orchestration-large.jpg';
+import agentOrchPlaceholder from '~/assets/agent-orchestration-placeholder.jpg';
+import agentOrch from '~/assets/agent-orchestration.jpg';
 import mlopsProfileLarge from '~/assets/mlops-profile-large.jpg';
 import mlopsProfilePlaceholder from '~/assets/mlops-profile-placeholder.jpg';
 import mlopsProfile from '~/assets/mlops-profile.jpg';
 import sliceAnnotation from '~/assets/slice-annotation.png';
 import sliceAnnotationLarge from '~/assets/slice-annotation-large.png';
 import sliceAnnotationPlaceholder from '~/assets/slice-annotation-placeholder.png';
-import sprTextureLarge from '~/assets/spr-lesson-builder-dark-large.jpg';
-import sprTexturePlaceholder from '~/assets/spr-lesson-builder-dark-placeholder.jpg';
-import sprTexture from '~/assets/spr-lesson-builder-dark.jpg';
 import { Footer } from '~/components/footer';
 import { baseMeta } from '~/utils/meta';
 import { Intro } from './intro';
 import { Profile } from './profile';
 import { ProjectSummary } from './project-summary';
+import { Stats } from './stats';
 import { useEffect, useRef, useState } from 'react';
 import config from '~/config.json';
 import styles from './home.module.css';
@@ -47,13 +48,14 @@ export const Home = () => {
   const [visibleSections, setVisibleSections] = useState([]);
   const [scrollIndicatorHidden, setScrollIndicatorHidden] = useState(false);
   const intro = useRef();
+  const proof = useRef();
   const projectOne = useRef();
   const projectTwo = useRef();
   const projectThree = useRef();
   const details = useRef();
 
   useEffect(() => {
-    const sections = [intro, projectOne, projectTwo, projectThree, details];
+    const sections = [intro, proof, projectOne, projectTwo, projectThree, details];
 
     const sectionObserver = new IntersectionObserver(
       (entries, observer) => {
@@ -95,6 +97,11 @@ export const Home = () => {
         sectionRef={intro}
         scrollIndicatorHidden={scrollIndicatorHidden}
       />
+      <Stats
+        id="proof"
+        sectionRef={proof}
+        visible={visibleSections.includes(proof.current)}
+      />
       <ProjectSummary
         id="project-1"
         sectionRef={projectOne}
@@ -109,8 +116,8 @@ export const Home = () => {
           alt: 'AI Agent Orchestration Platform',
           textures: [
             {
-              srcSet: `${sprTexture} 1280w, ${sprTextureLarge} 2560w`,
-              placeholder: sprTexturePlaceholder,
+              srcSet: `${agentOrch} 1280w, ${agentOrchLarge} 2560w`,
+              placeholder: agentOrchPlaceholder,
             },
           ],
         }}
