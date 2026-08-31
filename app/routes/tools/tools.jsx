@@ -1,7 +1,6 @@
 import usesBackgroundPlaceholder from '~/assets/uses-background-placeholder.jpg';
 import usesBackground from '~/assets/uses-background.mp4';
 import { Footer } from '~/components/footer';
-import { Table, TableBody, TableCell, TableHeadCell, TableRow } from '~/components/table';
 import {
   ProjectBackground,
   ProjectContainer,
@@ -24,8 +23,8 @@ export const meta = () => {
 };
 
 /**
- * Four workstreams + Desk.
- * Every group has a blurb so section headers share the same vertical rhythm.
+ * Four workstreams. Every group has a blurb so section headers share
+ * the same vertical rhythm.
  * @type {{ title: string, blurb: string, items: { label: string, core?: boolean }[] }[]}
  */
 const groups = [
@@ -125,17 +124,6 @@ const groups = [
   },
 ];
 
-const system = [
-  ['Laptop', '16″ MacBook Pro · M4 Pro'],
-  ['OS', 'macOS 15 Sequoia'],
-  ['Monitor', 'MSI MPG 274URDFW E16M'],
-  ['Keyboard', 'Keychron Q6 HE 8K'],
-  ['Pointer', 'Magic Trackpad (USB-C)'],
-  ['Audio', 'AirPods Max / AirPods Pro 3'],
-  ['Browser', 'Brave'],
-  ['Also', 'Final Cut Pro · Logic Pro'],
-];
-
 function Chip({ label, core }) {
   return (
     <li className={classes(styles.chip, core && styles.chipCore)}>
@@ -157,7 +145,7 @@ export const Tools = () => {
         />
         <ProjectHeader
           title="Tools"
-          description="Four workstreams behind the annotation QA, ML incident response, and systems I ship — then the desk."
+          description="Four workstreams behind the annotation QA, ML incident response, and systems I ship."
         />
 
         {groups.map(group => (
@@ -177,27 +165,6 @@ export const Tools = () => {
             </ProjectSectionContent>
           </ProjectSection>
         ))}
-
-        <ProjectSection padding="none" className={styles.section}>
-          <ProjectSectionContent>
-            <ProjectTextRow stretch width="m">
-              <div className={styles.groupHead}>
-                <ProjectSectionHeading>Desk</ProjectSectionHeading>
-                <p className={styles.blurb}>Hardware day-to-day, plus the odd studio app.</p>
-              </div>
-              <Table>
-                <TableBody>
-                  {system.map(([k, v]) => (
-                    <TableRow key={k}>
-                      <TableHeadCell>{k}</TableHeadCell>
-                      <TableCell>{v}</TableCell>
-                    </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
-            </ProjectTextRow>
-          </ProjectSectionContent>
-        </ProjectSection>
       </ProjectContainer>
       <Footer />
     </>
