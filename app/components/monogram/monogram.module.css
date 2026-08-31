@@ -1,34 +1,51 @@
 @layer components {
   .monogram {
-    display: inline-flex;
+    display: inline-block;
     width: 48px;
     height: 45px;
-    position: relative;
     flex-shrink: 0;
+    background-color: var(--textTitle);
+    -webkit-mask: var(--monogram-mask) center / contain no-repeat;
+    mask: var(--monogram-mask) center / contain no-repeat;
+    transition: background-color var(--durationM) ease;
   }
 
-  .image {
+  /* Wipe / flash to Harvard Crimson when the wrapping logo link is hovered */
+  .highlight {
+    position: relative;
+  }
+
+  .highlight::after {
+    content: '';
     position: absolute;
     inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    object-position: center;
+    background-color: var(--accent);
+    -webkit-mask: var(--monogram-mask) center / contain no-repeat;
+    mask: var(--monogram-mask) center / contain no-repeat;
+    opacity: 0;
+    transform: scale3d(1, 0, 1);
+    transform-origin: top;
+    transition: opacity 0.1s ease var(--durationM);
+    pointer-events: none;
+
+    @media (--mediaUseMotion) {
+      transition:
+        transform var(--durationM) var(--bezierFastoutSlowin),
+        opacity 0.1s ease var(--durationM);
+    }
   }
 
-  .image[data-theme='dark'] {
-    display: block;
-  }
+  :global(a:hover) .highlight::after,
+  .highlight:hover::after {
+    opacity: 1;
+    transform: scale3d(1, 1, 1);
+    transform-origin: bottom;
+    transition: opacity 0.1s ease;
 
-  .image[data-theme='light'] {
-    display: none;
-  }
-
-  :global([data-theme='light']) .image[data-theme='dark'] {
-    display: none;
-  }
-
-  :global([data-theme='light']) .image[data-theme='light'] {
-    display: block;
+    @media (--mediaUseMotion) {
+      transition:
+        transform var(--durationM) var(--bezierFastoutSlowin),
+        opacity 0.1s ease;
+    }
   }
 }
