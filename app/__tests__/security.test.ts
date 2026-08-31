@@ -9,8 +9,7 @@ import { describe, it, expect } from 'vitest';
 // These are minimal implementations matching the behavior from the original Next.js security.test.ts
 
 function sanitizeField(input: string, allowNewlines = false): string {
-  let s = input
-    .replace(/[\x00-\x08\x0B\x0C\x0E-\x1F\x7F-\x9F]/g, '');
+  let s = input.replace(/[\x00-\x09\x0B\x0C\x0E-\x1F\x7F-\x9F]/g, '');
   if (!allowNewlines) s = s.replace(/[\r\n]/g, '');
   return s.trim();
 }
