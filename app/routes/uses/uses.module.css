@@ -16,3 +16,19 @@
     margin-top: 0;
   }
 }
+
+.projectLinkItem {
+  display: inline-flex;
+  margin-right: var(--spaceM);
+}
+
+.projectLink {
+  --lineStrokeWidth: 0;
+
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space2XS);
+  padding-bottom: 0;
+  background: none;
+  font-weight: var(--fontWeightMedium);
+}

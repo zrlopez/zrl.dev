@@ -1,4 +1,5 @@
 import { Footer } from '~/components/footer';
+import { Icon } from '~/components/icon';
 import { Link } from '~/components/link';
 import { List, ListItem } from '~/components/list';
 import {
@@ -15,6 +16,21 @@ import { baseMeta } from '~/utils/meta';
 import usesBackgroundPlaceholder from '~/assets/uses-background-placeholder.jpg';
 import usesBackground from '~/assets/uses-background.mp4';
 import styles from './uses/uses.module.css';
+
+const linkIcons = {
+  Code: 'github',
+  Demo: 'flask-conical',
+  Docs: 'book-open',
+};
+
+function ProjectLink({ href, label }) {
+  return (
+    <Link className={styles.projectLink} href={href}>
+      <Icon icon={linkIcons[label] || 'link'} size={18} />
+      {label}
+    </Link>
+  );
+}
 
 const projects = [
   {
@@ -109,10 +125,9 @@ export default function Projects() {
                     <ListItem>{project.description}</ListItem>
                     {!!project.links.length && (
                       <ListItem>
-                        {project.links.map(([label, href], index) => (
-                          <span key={href}>
-                            {index > 0 ? ' · ' : ''}
-                            <Link href={href}>{label}</Link>
+                        {project.links.map(([label, href]) => (
+                          <span className={styles.projectLinkItem} key={href}>
+                            <ProjectLink href={href} label={label} />
                           </span>
                         ))}
                       </ListItem>
