@@ -27,15 +27,11 @@ export const meta = () => baseMeta({ title, description, prefix: 'Projects' });
 export const AnnotationDashboard = () => (
   <Fragment>
     <ProjectContainer>
-      <ProjectBackground
-        src={usesBackground}
-        placeholder={usesBackgroundPlaceholder}
-        opacity={0.6}
-      />
+      <ProjectBackground src={usesBackground} placeholder={usesBackgroundPlaceholder} opacity={0.6} />
       <ProjectHeader
         title={title}
         description={description}
-        url="/projects/annotation-dashboard#live-demo"
+        url="#live-demo"
         linkLabel="Jump to live demo"
         roles={roles}
       />
@@ -46,11 +42,9 @@ export const AnnotationDashboard = () => (
             <ProjectSectionText>
               Live KPIs, error and throughput trends, and capacity forecasts. ETL +
               validation pipelines (Pandas/SQLite) automate high-volume checks — see{' '}
-              <Link href="/experience">experience</Link> for the ops layer. The
-              interactive demo below mirrors the Next.js production dashboard at{' '}
-              <Link href="/projects/annotation-dashboard#live-demo">
-                live dashboard section
-              </Link>{' '}
+              <Link href="/experience">experience</Link> for the ops layer. The interactive
+              demo below mirrors the Next.js production dashboard at{' '}
+              <Link href="/projects/annotation-dashboard#live-demo">live dashboard section</Link>{' '}
               — KPIs refresh every 5 seconds.
             </ProjectSectionText>
           </ProjectTextRow>
@@ -67,15 +61,7 @@ export const AnnotationDashboard = () => (
               this dashboard.
             </ProjectSectionText>
           </ProjectTextRow>
-          <div
-            className="dashboard-root"
-            style={{
-              marginTop: 32,
-              borderRadius: 16,
-              border: '1px solid color-mix(in lab, var(--text) 10%, transparent)',
-              overflow: 'hidden',
-            }}
-          >
+          <div className="dashboard-root" style={{ marginTop: 32, borderRadius: 16, border: '1px solid color-mix(in lab, var(--text) 10%, transparent)', overflow: 'hidden' }}>
             <div style={{ maxHeight: 900, overflowY: 'auto' }}>
               <AnnotationDashboardDemo />
             </div>
@@ -89,10 +75,9 @@ export const AnnotationDashboard = () => (
             <ProjectSectionText>
               <Link href="https://nextjs.org">Next.js 15</Link> + TypeScript +{' '}
               <Link href="https://recharts.org">Recharts</Link> + Tailwind, ported into
-              this Remix route with{' '}
-              <Link href="https://www.npmjs.com/package/recharts">recharts</Link> +{' '}
-              <Link href="https://www.npmjs.com/package/lucide-react">lucide-react</Link>.
-              Data from <code>dashboardData.ts</code> + <code>useLiveKpis(5000)</code>.
+              this Remix route with <Link href="https://www.npmjs.com/package/recharts">recharts</Link> +{' '}
+              <Link href="https://www.npmjs.com/package/lucide-react">lucide-react</Link>. Data
+              from <code>dashboardData.ts</code> + <code>useLiveKpis(5000)</code>.
             </ProjectSectionText>
           </ProjectTextRow>
         </ProjectSectionContent>
