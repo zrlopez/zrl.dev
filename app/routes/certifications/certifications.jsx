@@ -12,7 +12,7 @@ import {
 import { baseMeta } from '~/utils/meta';
 import usesBackgroundPlaceholder from '~/assets/uses-background-placeholder.jpg';
 import usesBackground from '~/assets/uses-background.mp4';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import styles from './certifications.module.css';
 
 const CERTIFICATIONS = [
@@ -96,7 +96,11 @@ export const meta = () =>
 function CertLightbox({ cert, onClose, titleId }) {
   const [loaded, setLoaded] = useState(false);
 
+  // Lock page scroll only while the dialog is open — mounting this
+  // effect with cert=null was freezing /certifications with overflow:hidden.
   useEffect(() => {
+    if (!cert) return undefined;
+
     const onKey = event => {
       if (event.key === 'Escape') onClose();
     };
@@ -107,7 +111,7 @@ function CertLightbox({ cert, onClose, titleId }) {
       window.removeEventListener('keydown', onKey);
       document.body.style.overflow = previousOverflow;
     };
-  }, [onClose]);
+  }, [cert, onClose]);
 
   useEffect(() => {
     setLoaded(false);
@@ -186,6 +190,7 @@ function CertLightbox({ cert, onClose, titleId }) {
 export default function Certifications() {
   const [openCert, setOpenCert] = useState(null);
   const titleId = 'certificate-dialog-title';
+  const closeLightbox = useCallback(() => setOpenCert(null), []);
 
   return (
     <>
@@ -243,11 +248,13 @@ export default function Certifications() {
           </ProjectSectionContent>
         </ProjectSection>
       </ProjectContainer>
-      <CertLightbox
-        cert={openCert}
-        onClose={() => setOpenCert(null)}
-        titleId={titleId}
-      />
+      {openCert && (
+        <CertLightbox
+          cert={openCert}
+          onClose={closeLightbox}
+          titleId={titleId}
+        />
+      )}
       <Footer />
     </>
   );
