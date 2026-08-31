@@ -4,6 +4,7 @@
   "description": "Portfolio of Zachary Ryan Lopez — AI/ML Data Operations Analyst, Austin TX",
   "repository": "https://github.com/zrlopez/zrl.dev.git",
   "author": "Zachary Ryan Lopez",
+  "packageManager": "npm@10.9.8",
   "sideEffects": false,
   "type": "module",
   "scripts": {

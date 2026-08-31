@@ -1,4 +1,5 @@
 import { DecoderText } from '~/components/decoder-text';
+import { Button } from '~/components/button';
 import { Heading } from '~/components/heading';
 import { Section } from '~/components/section';
 import { useTheme } from '~/components/theme-provider';
@@ -110,6 +111,14 @@ export function Intro({ id, sectionRef, scrollIndicatorHidden, ...rest }) {
                   ))}
                 </div>
               </Heading>
+              <div className={styles.actions} data-visible={visible}>
+                <Button href={`${config.url}/resume.pdf`} iconEnd="arrow-right">
+                  View resume
+                </Button>
+                <Button secondary href="/tools" iconEnd="chevron-right">
+                  Browse tools
+                </Button>
+              </div>
             </header>
             <RouterLink
               to="/#project-1"

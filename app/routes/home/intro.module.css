@@ -75,6 +75,24 @@
   letter-spacing: -0.03em;
 }
 
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spaceL);
+  margin-top: var(--space2XL);
+  opacity: 0;
+  transition: opacity var(--durationL) ease var(--durationM);
+
+  &[data-visible='true'] {
+    opacity: 1;
+  }
+
+  @media (--mediaTablet) {
+    margin-top: var(--spaceXL);
+    gap: var(--spaceM);
+  }
+}
+
 .row {
   display: flex;
   flex-direction: row;

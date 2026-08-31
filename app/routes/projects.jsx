@@ -31,7 +31,7 @@ function ProjectLink({ href, label }) {
       <Icon
         className={styles.projectLinkIcon}
         icon={linkIcons[label] || 'link'}
-        size={14}
+        size={12}
       />
       <span className={styles.projectLinkLabel}>{label}</span>
     </Link>

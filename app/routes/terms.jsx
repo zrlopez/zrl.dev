@@ -33,7 +33,7 @@ export default function Terms() {
         />
         <ProjectHeader
           title="Terms of Service"
-          description="Last updated: August 31, 2026. These terms cover use of zrl.dev as a personal portfolio and professional contact site."
+          description="Last updated: August 31, 2026. These terms cover use of zrl.dev as a portfolio, project showcase, and professional contact site."
         />
         <ProjectSection padding="none" className={styles.section}>
           <ProjectSectionContent>
@@ -41,8 +41,9 @@ export default function Terms() {
               <ProjectSectionHeading>1. Site description and purpose</ProjectSectionHeading>
               <ProjectSectionText>
                 zrl.dev is a personal portfolio showcasing work experience, projects,
-                qualifications, embedded third-party links, and a contact form. It is
-                provided for informational, networking, recruiting, and business purposes.
+                qualifications, selected live demos, embedded third-party links, and a
+                contact form. It is provided for informational, networking, recruiting,
+                and business purposes.
               </ProjectSectionText>
             </ProjectTextRow>
             <ProjectTextRow width="m">
@@ -51,7 +52,7 @@ export default function Terms() {
                 <List>
                   <ListItem>You must be at least the age of majority in your jurisdiction.</ListItem>
                   <ListItem>The site is intended for professional use, including networking, recruiting, and business inquiries.</ListItem>
-                  <ListItem>If account-based features are ever offered, you are responsible for safeguarding your credentials.</ListItem>
+                  <ListItem>If account-based or invite-only features are ever offered, you are responsible for safeguarding your credentials.</ListItem>
                 </List>
               </ProjectSectionText>
             </ProjectTextRow>
@@ -62,6 +63,7 @@ export default function Terms() {
                   <ListItem>Use the site only for lawful, professional purposes.</ListItem>
                   <ListItem>Do not interfere with site security, functionality, or availability.</ListItem>
                   <ListItem>Do not misrepresent your identity or qualifications.</ListItem>
+                  <ListItem>Do not attempt to bypass rate limits, bot verification, or other abuse protections.</ListItem>
                   <ListItem>Do not upload, transmit, or attempt to introduce harmful code.</ListItem>
                 </List>
               </ProjectSectionText>
@@ -80,15 +82,15 @@ export default function Terms() {
               <ProjectSectionText>
                 If you provide feedback, comments, or other submissions through a contact
                 form, you grant permission to use those submissions for the purpose of
-                responding to you and improving the site.
+                responding to you, evaluating opportunities, and improving the site.
               </ProjectSectionText>
             </ProjectTextRow>
             <ProjectTextRow width="m">
               <ProjectSectionHeading>6. Third-party links</ProjectSectionHeading>
               <ProjectSectionText>
-                The site may contain links to third-party websites for convenience. I do
-                not control those websites and am not responsible for their content,
-                security, or practices.
+                The site may contain links to third-party websites, repositories, demos,
+                or documentation for convenience. I do not control those websites and am
+                not responsible for their content, security, availability, or practices.
               </ProjectSectionText>
             </ProjectTextRow>
             <ProjectTextRow width="m">
@@ -102,8 +104,8 @@ export default function Terms() {
               <ProjectSectionHeading>8. Disclaimers and liability</ProjectSectionHeading>
               <ProjectSectionText>
                 The site is provided as is and as available, without warranties of any kind
-                regarding accuracy, completeness, reliability, or availability. To the
-                maximum extent permitted by law, I will not be liable for indirect,
+                regarding accuracy, completeness, reliability, demo uptime, or availability.
+                To the maximum extent permitted by law, I will not be liable for indirect,
                 incidental, consequential, or punitive damages arising from use of the site.
               </ProjectSectionText>
             </ProjectTextRow>

@@ -32,11 +32,30 @@
   .linkGroup {
     display: inline-flex;
     align-items: center;
+    flex-wrap: wrap;
     gap: var(--spaceM);
   }
 
   .separator {
     color: color-mix(in lab, var(--textLight) 55%, transparent);
     display: inline-flex;
+  }
+
+  @media (--mediaMobile) {
+    .footer {
+      width: 100%;
+      padding-right: var(--spaceM);
+      padding-left: var(--spaceM);
+    }
+
+    .text {
+      flex-direction: column;
+      gap: var(--spaceS);
+    }
+
+    .linkGroup {
+      justify-content: center;
+      gap: var(--spaceS);
+    }
   }
 }

@@ -7,9 +7,10 @@ import {
   useFetcher,
   useLoaderData,
   useNavigation,
+  useRouteLoaderData,
   useRouteError,
 } from '@remix-run/react';
-import { createCookieSessionStorage, json } from '@remix-run/cloudflare';
+import { json } from '@remix-run/cloudflare';
 import { ThemeProvider, themeStyles } from '~/components/theme-provider';
 import GothamBook from '~/assets/fonts/gotham-book.woff2';
 import GothamMedium from '~/assets/fonts/gotham-medium.woff2';
@@ -19,6 +20,8 @@ import { VisuallyHidden } from '~/components/visually-hidden';
 import { Navbar } from '~/layouts/navbar';
 import { Progress } from '~/components/progress';
 import config from '~/config.json';
+import { buildContentSecurityPolicy } from '~/utils/csp';
+import { getSessionSecret, getSessionStorage } from '~/utils/session.server';
 import styles from './root.module.css';
 import './reset.module.css';
 import './global.module.css';
@@ -51,39 +54,34 @@ export const loader = async ({ request, context }) => {
   const { pathname } = new URL(url);
   const pathnameSliced = pathname.endsWith('/') ? pathname.slice(0, -1) : pathname;
   const canonicalUrl = `${config.url}${pathnameSliced}`;
-
-  const sessionSecret =
-    context?.cloudflare?.env?.SESSION_SECRET ||
-    context?.env?.SESSION_SECRET ||
-    process.env.SESSION_SECRET ||
-    'fallback-secret';
-  const { getSession, commitSession } = createCookieSessionStorage({
-    cookie: {
-      name: '__session',
-      httpOnly: true,
-      maxAge: 604_800,
-      path: '/',
-      sameSite: 'lax',
-      secrets: [sessionSecret],
-      secure: true,
-    },
+  const nonce = crypto.randomUUID();
+  const headers = new Headers({
+    'Content-Security-Policy': buildContentSecurityPolicy(nonce),
+    'X-Content-Type-Options': 'nosniff',
+    'Referrer-Policy': 'strict-origin-when-cross-origin',
+    'X-Frame-Options': 'DENY',
+    'Permissions-Policy': 'camera=(), microphone=(), geolocation=()',
+    'Cross-Origin-Opener-Policy': 'same-origin',
+    'Cross-Origin-Resource-Policy': 'same-origin',
   });
+  const sessionStorage = getSessionStorage(getSessionSecret(context));
+  let theme = 'dark';
 
-  const session = await getSession(request.headers.get('Cookie'));
-  const theme = session.get('theme') || 'dark';
+  if (sessionStorage) {
+    const { getSession, commitSession } = sessionStorage;
+    const session = await getSession(request.headers.get('Cookie'));
+    theme = session.get('theme') || 'dark';
+    headers.set('Set-Cookie', await commitSession(session));
+  }
 
   return json(
-    { canonicalUrl, theme },
-    {
-      headers: {
-        'Set-Cookie': await commitSession(session),
-      },
-    }
+    { canonicalUrl, theme, nonce },
+    { headers }
   );
 };
 
 export default function App() {
-  let { canonicalUrl, theme } = useLoaderData();
+  let { canonicalUrl, theme, nonce } = useLoaderData();
   const fetcher = useFetcher();
   const { state } = useNavigation();
 
@@ -116,7 +114,7 @@ export default function App() {
           name="color-scheme"
           content={theme === 'light' ? 'light dark' : 'dark light'}
         />
-        <style dangerouslySetInnerHTML={{ __html: themeStyles }} />
+        <style nonce={nonce} dangerouslySetInnerHTML={{ __html: themeStyles }} />
         <Meta />
         <Links />
         <link rel="canonical" href={canonicalUrl} />
@@ -137,8 +135,8 @@ export default function App() {
             <Outlet />
           </main>
         </ThemeProvider>
-        <ScrollRestoration />
-        <Scripts />
+        <ScrollRestoration nonce={nonce} />
+        <Scripts nonce={nonce} />
       </body>
     </html>
   );
@@ -146,6 +144,8 @@ export default function App() {
 
 export function ErrorBoundary() {
   const error = useRouteError();
+  const rootData = useRouteLoaderData('root');
+  const nonce = rootData?.nonce;
 
   return (
     <html lang="en">
@@ -154,14 +154,14 @@ export function ErrorBoundary() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#111" />
         <meta name="color-scheme" content="dark light" />
-        <style dangerouslySetInnerHTML={{ __html: themeStyles }} />
+        <style nonce={nonce} dangerouslySetInnerHTML={{ __html: themeStyles }} />
         <Meta />
         <Links />
       </head>
       <body data-theme="dark">
         <Error error={error} />
-        <ScrollRestoration />
-        <Scripts />
+        <ScrollRestoration nonce={nonce} />
+        <Scripts nonce={nonce} />
       </body>
     </html>
   );

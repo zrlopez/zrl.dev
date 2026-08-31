@@ -43,10 +43,13 @@ const LIMITS = {
   message: 5_000,
   turnstileToken: 2_048,
 };
+const MAX_CONTENT_LENGTH = 12_000;
 
 const ALLOWED_ORIGINS = new Set([
   'https://zrl.dev',
   'https://www.zrl.dev',
+  'http://localhost:5173',
+  'http://127.0.0.1:5173',
   'http://localhost:7777',
   'http://127.0.0.1:7777',
   'http://localhost:3000',
@@ -107,6 +110,11 @@ export async function action({ context, request }) {
     'X-Request-Id': requestId,
     'Cache-Control': 'no-store, max-age=0',
     Pragma: 'no-cache',
+    'X-Content-Type-Options': 'nosniff',
+    'Referrer-Policy': 'no-referrer',
+    'Cross-Origin-Resource-Policy': 'same-origin',
+    'Content-Security-Policy':
+      "default-src 'none'; frame-ancestors 'none'; base-uri 'none'; form-action 'none'",
   };
 
   try {
@@ -122,6 +130,14 @@ export async function action({ context, request }) {
       return json(
         { errors: { form: 'Forbidden origin.' } },
         { status: 403, headers: actionHeaders }
+      );
+    }
+
+    const contentLength = Number(request.headers.get('content-length') || '0');
+    if (contentLength > MAX_CONTENT_LENGTH) {
+      return json(
+        { errors: { form: 'Request body too large.' } },
+        { status: 413, headers: actionHeaders }
       );
     }
 

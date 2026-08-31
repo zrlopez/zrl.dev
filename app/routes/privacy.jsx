@@ -33,7 +33,7 @@ export default function Privacy() {
         />
         <ProjectHeader
           title="Privacy Policy"
-          description="Last updated: August 31, 2026. This page explains how zrl.dev handles personal information when you visit the site or send a message."
+          description="Last updated: August 31, 2026. This policy explains how zrl.dev handles information across the portfolio, project pages, and contact workflow."
         />
         <ProjectSection padding="none" className={styles.section}>
           <ProjectSectionContent>
@@ -42,8 +42,8 @@ export default function Privacy() {
               <ProjectSectionText as="div">
                 <List>
                   <ListItem>Identifiers such as your name and email address if you contact me.</ListItem>
-                  <ListItem>Device and usage data such as browser details and pages viewed to understand site performance.</ListItem>
-                  <ListItem>Communications and any information you choose to include in a message.</ListItem>
+                  <ListItem>Communications and project details you choose to include in a contact form message.</ListItem>
+                  <ListItem>Basic request metadata such as browser details, page path, and diagnostic information used to keep the site reliable and secure.</ListItem>
                   <ListItem>I do not intentionally collect sensitive personal data.</ListItem>
                 </List>
               </ProjectSectionText>
@@ -52,9 +52,9 @@ export default function Privacy() {
               <ProjectSectionHeading>How information is collected</ProjectSectionHeading>
               <ProjectSectionText>
                 Information may be collected directly from you, such as through the contact
-                form; automatically through your browser or device; and through trusted
-                service providers that help operate the site, deliver messages, or
-                understand site performance.
+                form; automatically through your browser or device when pages load; and
+                through trusted service providers that help host the site, verify bot
+                protection, or deliver email.
               </ProjectSectionText>
             </ProjectTextRow>
             <ProjectTextRow width="m">
@@ -63,28 +63,27 @@ export default function Privacy() {
                 <List>
                   <ListItem>Operate, maintain, and improve zrl.dev.</ListItem>
                   <ListItem>Respond to inquiries or requests.</ListItem>
-                  <ListItem>Understand site performance and user experience.</ListItem>
-                  <ListItem>Detect, prevent, and address technical or security issues.</ListItem>
+                  <ListItem>Review portfolio traffic and site performance at a high level.</ListItem>
+                  <ListItem>Detect, prevent, and address spam, abuse, or technical security issues.</ListItem>
                   <ListItem>Comply with legal obligations and protect rights.</ListItem>
                 </List>
               </ProjectSectionText>
             </ProjectTextRow>
             <ProjectTextRow width="m">
-              <ProjectSectionHeading>Sharing information</ProjectSectionHeading>
+              <ProjectSectionHeading>Service providers and sharing</ProjectSectionHeading>
               <ProjectSectionText>
-                Personal information may be shared with service providers that host the
-                site, deliver email, or provide analytics; with legal authorities when
-                required by law; or with parties involved in a sale, merger, or similar
-                transaction. I do not sell personal information or use it for targeted
-                advertising.
+                Personal information may be processed by service providers that host the
+                site, protect the contact workflow from abuse, or deliver email responses.
+                It may also be disclosed when required by law. I do not sell personal
+                information or use it for targeted advertising.
               </ProjectSectionText>
             </ProjectTextRow>
             <ProjectTextRow width="m">
-              <ProjectSectionHeading>Cookies and analytics</ProjectSectionHeading>
+              <ProjectSectionHeading>Cookies, sessions, and analytics</ProjectSectionHeading>
               <ProjectSectionText>
-                zrl.dev may use essential cookies and privacy-preserving analytics tools to
-                understand how the site is used. You can adjust your browser settings to
-                manage cookies.
+                zrl.dev may use essential cookies or session data for site preferences,
+                along with limited analytics or request logs to understand performance and
+                investigate abuse. You can adjust your browser settings to manage cookies.
               </ProjectSectionText>
             </ProjectTextRow>
             <ProjectTextRow width="m">
@@ -99,7 +98,8 @@ export default function Privacy() {
               <ProjectSectionHeading>Retention and security</ProjectSectionHeading>
               <ProjectSectionText>
                 Personal information is retained only as long as necessary for the purposes
-                above or as required by law. Reasonable safeguards are used, but no internet
+                above or as required by law. Reasonable safeguards such as security headers,
+                verification checks, and service-level protections are used, but no internet
                 transmission is guaranteed to be perfectly secure.
               </ProjectSectionText>
             </ProjectTextRow>

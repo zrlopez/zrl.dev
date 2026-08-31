@@ -9,7 +9,7 @@ and craft choices behind this site: humanstxt.org.
 
 _______________________________________________________________________________
 
-HUMAN | ヒューマン
+HUMAN | \u30d2\u30e5\u30fc\u30de\u30f3
 
 Zachary Ryan Lopez
 AI/ML Data Operations Analyst
@@ -28,7 +28,7 @@ Focus:
 
 _______________________________________________________________________________
 
-TECHNOLOGY | テクノロジー
+TECHNOLOGY | \u30c6\u30af\u30ce\u30ed\u30b8\u30fc
 
 Infrastructure:
 - Cloudflare
@@ -51,7 +51,7 @@ Project tooling:
 
 _______________________________________________________________________________
 
-FONTS | フォント
+FONTS | \u30d5\u30a9\u30f3\u30c8
 
 Primary:
 - Gotham
@@ -63,7 +63,7 @@ Support:
 
 _______________________________________________________________________________
 
-STANDARDS | スタンダード
+STANDARDS | \u30b9\u30bf\u30f3\u30c0\u30fc\u30c9
 
 Web:
 - HTML5
@@ -74,26 +74,27 @@ Application:
 - TypeScript
 - Accessibility-minded responsive design
 - Static asset optimization
+- Security headers and bot verification for contact workflows
 
 _______________________________________________________________________________
 
-SITE | サイト
+SITE | \u30b5\u30a4\u30c8
 
 Purpose:
-- Portfolio for an AI/ML Data Operations Analyst focused on systems thinking and selected builds
+- Portfolio for an AI/ML Data Operations Analyst focused on systems thinking, workflow reliability, and selected builds
 
 Current branch:
 - Remix revamp of zrl.dev
 
 Last update:
-- 2026/08/30
+- 2026/08/31
 
 Language:
 - English
 
 _______________________________________________________________________________
 
-COLOPHON | コロフォン
+COLOPHON | \u30b3\u30ed\u30d5\u30a9\u30f3
 
 Visual direction:
 - Harvard Crimson #A51C30
@@ -106,11 +107,11 @@ Build character:
 
 _______________________________________________________________________________
 
-CREDITS | クレジット
+CREDITS | \u30af\u30ec\u30b8\u30c3\u30c8
 
 Original portfolio foundation:
 - Hamish Williams portfolio (MIT)
 
 This version:
-- Custom content, rewritten project narratives, refreshed imagery, and ML/AI ops framing by Zachary Ryan Lopez
+- Custom content, rewritten project narratives, refreshed imagery, and AI/ML data operations framing by Zachary Ryan Lopez
 `;

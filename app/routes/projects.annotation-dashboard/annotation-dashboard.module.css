@@ -1,0 +1,130 @@
+.overviewRow {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
+  gap: var(--space2XL);
+  align-items: start;
+
+  @media (--mediaTablet) {
+    grid-template-columns: 100%;
+  }
+}
+
+.overviewCopy {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spaceL);
+}
+
+.detailCard,
+.highlightCard {
+  border: 1px solid color-mix(in lab, var(--text) 10%, transparent);
+  background: color-mix(in lab, var(--backgroundLight) 82%, transparent);
+}
+
+.detailCard {
+  padding: var(--spaceL);
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%);
+}
+
+.cardTitle {
+  margin: 0 0 var(--spaceM);
+  color: var(--textLight);
+  font-size: var(--fontSizeBodyXS);
+  font-weight: var(--fontWeightBold);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.detailList {
+  margin: 0 0 var(--spaceL);
+}
+
+.detailList > div {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--spaceL);
+  padding: 0.45rem 0;
+  border-top: 1px solid color-mix(in lab, var(--text) 10%, transparent);
+}
+
+.detailList > div:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.detailList dt {
+  color: var(--textLight);
+}
+
+.detailList dd {
+  margin: 0;
+  color: var(--textTitle);
+  font-weight: var(--fontWeightMedium);
+  text-align: right;
+}
+
+.techChips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.techChip {
+  padding: 0.45rem 0.7rem;
+  border: 1px solid color-mix(in lab, var(--text) 10%, transparent);
+  background: color-mix(in lab, var(--background) 70%, transparent);
+  color: var(--textTitle);
+  font-family: var(--monoFontStack);
+  font-size: 0.78rem;
+}
+
+.highlightGrid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--spaceL);
+  margin-top: var(--spaceL);
+
+  @media (--mediaMobile) {
+    grid-template-columns: 100%;
+  }
+}
+
+.highlightCard {
+  padding: var(--spaceL);
+}
+
+.highlightTitle {
+  margin: 0 0 var(--spaceS);
+  color: var(--textTitle);
+  font-size: var(--fontSizeBodyM);
+}
+
+.highlightCopy {
+  margin: 0;
+  color: var(--textLight);
+  font-size: var(--fontSizeBodyS);
+  line-height: var(--lineHeightBody);
+}
+
+.demoFrame {
+  margin-top: 32px;
+  border-radius: 16px;
+  border: 1px solid color-mix(in lab, var(--text) 10%, transparent);
+  overflow: hidden;
+}
+
+.demoViewport {
+  overflow-x: auto;
+}
+
+.actionRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spaceL);
+  align-items: center;
+  margin-top: var(--spaceS);
+}
