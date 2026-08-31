@@ -4,24 +4,31 @@ import { classes } from '~/utils/style';
 import config from '~/config.json';
 import styles from './footer.module.css';
 
+const footerLinks = [
+  ['Crafted by yours truly', '/humans.txt'],
+  ['Privacy', '/privacy'],
+  ['Terms', '/terms'],
+  ['Security', '/.well-known/security.txt'],
+];
+
 export const Footer = ({ className }) => (
   <footer className={classes(styles.footer, className)}>
     <Text className={styles.text} size="s" align="center">
       <span className={styles.date}>
         {`© ${new Date().getFullYear()} ${config.name}.`}
       </span>
-      <Link secondary className={styles.link} href="/humans.txt" target="_self">
-        Crafted by yours truly
-      </Link>
-      <Link secondary className={styles.link} href="/privacy" target="_self">
-        Privacy
-      </Link>
-      <Link secondary className={styles.link} href="/terms" target="_self">
-        Terms
-      </Link>
-      <Link secondary className={styles.link} href="/.well-known/security.txt" target="_self">
-        Security
-      </Link>
+      {footerLinks.map(([label, href], index) => (
+        <span className={styles.linkGroup} key={href}>
+          {index > 0 && (
+            <span className={styles.separator} aria-hidden="true">
+              /
+            </span>
+          )}
+          <Link secondary className={styles.link} href={href} target="_self">
+            {label}
+          </Link>
+        </span>
+      ))}
     </Text>
   </footer>
 );

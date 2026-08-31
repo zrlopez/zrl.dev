@@ -26,12 +26,17 @@
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    gap: var(--spaceXS) var(--spaceM);
+    gap: var(--spaceS) var(--spaceL);
   }
 
-  .link + .link::before {
-    content: '/';
+  .linkGroup {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spaceM);
+  }
+
+  .separator {
     color: color-mix(in lab, var(--textLight) 55%, transparent);
-    margin-right: var(--spaceM);
+    display: inline-flex;
   }
 }

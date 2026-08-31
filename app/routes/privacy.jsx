@@ -44,15 +44,47 @@ export default function Privacy() {
                   <ListItem>Identifiers such as your name and email address if you contact me.</ListItem>
                   <ListItem>Device and usage data such as browser details and pages viewed to understand site performance.</ListItem>
                   <ListItem>Communications and any information you choose to include in a message.</ListItem>
+                  <ListItem>I do not intentionally collect sensitive personal data.</ListItem>
                 </List>
               </ProjectSectionText>
             </ProjectTextRow>
             <ProjectTextRow width="m">
-              <ProjectSectionHeading>Use and sharing</ProjectSectionHeading>
+              <ProjectSectionHeading>How information is collected</ProjectSectionHeading>
               <ProjectSectionText>
-                Information is used to operate and improve the site, respond to inquiries,
-                detect technical or security issues, and comply with legal obligations.
-                I do not sell personal information or use it for targeted advertising.
+                Information may be collected directly from you, such as through the contact
+                form; automatically through your browser or device; and through trusted
+                service providers that help operate the site, deliver messages, or
+                understand site performance.
+              </ProjectSectionText>
+            </ProjectTextRow>
+            <ProjectTextRow width="m">
+              <ProjectSectionHeading>How information is used</ProjectSectionHeading>
+              <ProjectSectionText as="div">
+                <List>
+                  <ListItem>Operate, maintain, and improve zrl.dev.</ListItem>
+                  <ListItem>Respond to inquiries or requests.</ListItem>
+                  <ListItem>Understand site performance and user experience.</ListItem>
+                  <ListItem>Detect, prevent, and address technical or security issues.</ListItem>
+                  <ListItem>Comply with legal obligations and protect rights.</ListItem>
+                </List>
+              </ProjectSectionText>
+            </ProjectTextRow>
+            <ProjectTextRow width="m">
+              <ProjectSectionHeading>Sharing information</ProjectSectionHeading>
+              <ProjectSectionText>
+                Personal information may be shared with service providers that host the
+                site, deliver email, or provide analytics; with legal authorities when
+                required by law; or with parties involved in a sale, merger, or similar
+                transaction. I do not sell personal information or use it for targeted
+                advertising.
+              </ProjectSectionText>
+            </ProjectTextRow>
+            <ProjectTextRow width="m">
+              <ProjectSectionHeading>Cookies and analytics</ProjectSectionHeading>
+              <ProjectSectionText>
+                zrl.dev may use essential cookies and privacy-preserving analytics tools to
+                understand how the site is used. You can adjust your browser settings to
+                manage cookies.
               </ProjectSectionText>
             </ProjectTextRow>
             <ProjectTextRow width="m">
@@ -69,6 +101,22 @@ export default function Privacy() {
                 Personal information is retained only as long as necessary for the purposes
                 above or as required by law. Reasonable safeguards are used, but no internet
                 transmission is guaranteed to be perfectly secure.
+              </ProjectSectionText>
+            </ProjectTextRow>
+            <ProjectTextRow width="m">
+              <ProjectSectionHeading>Children and transfers</ProjectSectionHeading>
+              <ProjectSectionText>
+                The site is not intended for children under 13, and I do not knowingly
+                collect personal information from children. Information may be processed in
+                the United States and other countries where service providers operate.
+              </ProjectSectionText>
+            </ProjectTextRow>
+            <ProjectTextRow width="m">
+              <ProjectSectionHeading>Changes and contact</ProjectSectionHeading>
+              <ProjectSectionText>
+                This policy may be updated from time to time by revising the last-updated
+                date above. Questions about this policy can be sent to{' '}
+                <Link href="mailto:privacy@zrl.dev">privacy@zrl.dev</Link>.
               </ProjectSectionText>
             </ProjectTextRow>
           </ProjectSectionContent>
