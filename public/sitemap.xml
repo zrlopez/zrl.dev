@@ -16,6 +16,22 @@
     <changefreq>monthly</changefreq>
   </url>
   <url>
+    <loc>https://zrl.dev/projects/</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://zrl.dev/certifications/</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://zrl.dev/privacy/</loc>
+    <changefreq>yearly</changefreq>
+  </url>
+  <url>
+    <loc>https://zrl.dev/terms/</loc>
+    <changefreq>yearly</changefreq>
+  </url>
+  <url>
     <loc>https://zrl.dev/projects/ai-agent-platform/</loc>
     <changefreq>monthly</changefreq>
   </url>

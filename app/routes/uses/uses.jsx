@@ -80,7 +80,7 @@ export const Uses = () => {
                     <Link href="https://react.dev">React 18</Link> +{' '}
                     <Link href="https://vitejs.dev">Vite</Link> +{' '}
                     <Link href="https://www.framer.com/motion/">Framer Motion</Link> for
-                    this site.{' '}
+                    the redesigned portfolio.{' '}
                     <Link href="https://nextjs.org">Next.js 15</Link> +{' '}
                     <Link href="https://www.typescriptlang.org">TypeScript</Link> +{' '}
                     <Link href="https://tailwindcss.com">Tailwind</Link> for the
@@ -140,7 +140,7 @@ export const Uses = () => {
                 <TableBody>
                   <TableRow>
                     <TableHeadCell>Operating system</TableHeadCell>
-                    <TableCell>macOS 27</TableCell>
+                    <TableCell>macOS 15 Sequoia</TableCell>
                   </TableRow>
                   <TableRow>
                     <TableHeadCell>Browser</TableHeadCell>

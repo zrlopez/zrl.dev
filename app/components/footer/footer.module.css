@@ -15,10 +15,18 @@
 
   .link {
     display: inline-flex;
+    padding-left: var(--spaceXS);
   }
 
   .date {
     padding-right: var(--spaceXS);
     display: inline-flex;
+  }
+
+  .text {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--spaceXS) 0;
   }
 }

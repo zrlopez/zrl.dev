@@ -63,7 +63,7 @@ export const Experience = () => {
                   <ListItem>
                     ETL + validation pipelines (Pandas/SQLite) automating high-volume
                     checks; portfolio at <Link href="https://zrl.dev">zrl.dev</Link>{' '}
-                    (Next.js 15, Tailwind, Vercel + Cloudflare Turnstile).
+                    with the revamp moving toward Remix, Vite, Vercel, and Cloudflare.
                   </ListItem>
                 </List>
               </ProjectSectionText>
@@ -164,6 +164,10 @@ export const Experience = () => {
                       Annotation Analytics Dashboard
                     </Link>{' '}
                     — live KPI/ML visibility (Sep 2025–Present).
+                  </ListItem>
+                  <ListItem>
+                    <Link href="/projects">Project archive</Link> — AI/ML experiments,
+                    ETL prototypes, the portfolio rebuild, and selected data systems.
                   </ListItem>
                 </List>
               </ProjectSectionText>

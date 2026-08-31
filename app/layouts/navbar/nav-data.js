@@ -3,15 +3,19 @@ import config from '~/config.json';
 export const navLinks = [
   {
     label: 'Projects',
-    pathname: '/#project-1',
+    pathname: '/projects',
   },
   {
-    label: 'Details',
-    pathname: '/#details',
+    label: 'Uses',
+    pathname: '/uses',
   },
   {
     label: 'Experience',
     pathname: '/experience',
+  },
+  {
+    label: 'Certifications',
+    pathname: '/certifications',
   },
   {
     label: 'Contact',
