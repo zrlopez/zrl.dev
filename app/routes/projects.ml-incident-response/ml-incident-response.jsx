@@ -13,9 +13,9 @@ import { Link } from '~/components/link';
 import { baseMeta } from '~/utils/meta';
 import usesBackgroundPlaceholder from '~/assets/uses-background-placeholder.jpg';
 import usesBackground from '~/assets/uses-background.mp4';
-import sliceApp from '~/assets/slice-app.jpg';
-import sliceAppLarge from '~/assets/slice-app-large.jpg';
-import sliceAppPlaceholder from '~/assets/slice-app-placeholder.jpg';
+import mlopsProfile from '~/assets/mlops-profile.jpg';
+import mlopsProfileLarge from '~/assets/mlops-profile-large.jpg';
+import mlopsProfilePlaceholder from '~/assets/mlops-profile-placeholder.jpg';
 import { Image } from '~/components/image';
 import { Fragment } from 'react';
 import { media } from '~/utils/style';
@@ -44,11 +44,11 @@ export const MlIncidentResponse = () => (
       <ProjectSection padding="top">
         <ProjectSectionContent>
           <Image
-            srcSet={`${sliceApp} 800w, ${sliceAppLarge} 1920w`}
-            placeholder={sliceAppPlaceholder}
+            srcSet={`${mlopsProfile} 800w, ${mlopsProfileLarge} 1920w`}
+            placeholder={mlopsProfilePlaceholder}
             width={800}
             height={500}
-            alt="ML Incident Response runbook browser placeholder"
+            alt="ML Incident Response Playbook documentation home screen"
             sizes={`(max-width: ${media.mobile}px) 100vw, 80vw`}
           />
         </ProjectSectionContent>

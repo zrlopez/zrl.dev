@@ -1,6 +1,6 @@
-import sliceTextureLarge from '~/assets/slice-app-large.jpg';
-import sliceTexturePlaceholder from '~/assets/slice-app-placeholder.jpg';
-import sliceTexture from '~/assets/slice-app.jpg';
+import mlopsProfileLarge from '~/assets/mlops-profile-large.jpg';
+import mlopsProfilePlaceholder from '~/assets/mlops-profile-placeholder.jpg';
+import mlopsProfile from '~/assets/mlops-profile.jpg';
 import sliceAnnotation from '~/assets/slice-annotation.png';
 import sliceAnnotationLarge from '~/assets/slice-annotation-large.png';
 import sliceAnnotationPlaceholder from '~/assets/slice-annotation-placeholder.png';
@@ -130,8 +130,8 @@ export const Home = () => {
           alt: 'ML Incident Response System runbook browser',
           textures: [
             {
-              srcSet: `${sliceTexture} 800w, ${sliceTextureLarge} 1920w`,
-              placeholder: sliceTexturePlaceholder,
+              srcSet: `${mlopsProfile} 800w, ${mlopsProfileLarge} 1920w`,
+              placeholder: mlopsProfilePlaceholder,
             },
           ],
         }}
