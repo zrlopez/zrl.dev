@@ -18,8 +18,9 @@
 }
 
 .groupHead {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-rows: auto 3.2em;
+  align-content: end;
   gap: var(--spaceXS);
   margin-bottom: var(--spaceL);
 }
@@ -29,7 +30,7 @@
   max-width: 42ch;
   color: var(--textLight);
   font-size: var(--fontSizeBodyS);
-  line-height: var(--lineHeightBody);
+  line-height: 1.6;
 }
 
 .chips {
