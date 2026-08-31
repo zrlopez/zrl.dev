@@ -27,25 +27,35 @@
 
 .projectLinkItem {
   display: inline-flex;
+  align-items: center;
 }
 
 .projectLink {
-  --lineStrokeWidth: 0;
+  --lineStrokeWidth: 0px;
 
-  display: inline-flex;
+  display: inline-flex !important;
   align-items: center;
-  gap: 0.45rem;
-  padding-bottom: 0;
-  background: none;
+  justify-content: flex-start;
+  gap: 0.4em;
+  padding-bottom: 0 !important;
+  background: none !important;
   font-weight: var(--fontWeightMedium);
-  line-height: 1.2;
+  line-height: 1;
   white-space: nowrap;
   vertical-align: middle;
+}
 
-  svg {
-    flex: 0 0 auto;
-    overflow: visible;
-    width: 0.75rem;
-    height: 0.75rem;
-  }
+.projectLinkIcon {
+  display: block;
+  flex: 0 0 auto;
+  width: 0.875em;
+  height: 0.875em;
+  overflow: hidden;
+  /* Optical nudge: stroke icons sit a hair high next to caps */
+  transform: translateY(0.06em);
+}
+
+.projectLinkLabel {
+  display: inline-block;
+  line-height: 1;
 }

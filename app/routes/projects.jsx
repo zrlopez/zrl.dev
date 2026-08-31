@@ -21,13 +21,19 @@ const linkIcons = {
   Code: 'github',
   Demo: 'flask-conical',
   Docs: 'book-open',
+  'Case study': 'link',
+  'Live site': 'link',
 };
 
 function ProjectLink({ href, label }) {
   return (
     <Link className={styles.projectLink} href={href}>
-      <Icon icon={linkIcons[label] || 'link'} size={12} />
-      {label}
+      <Icon
+        className={styles.projectLinkIcon}
+        icon={linkIcons[label] || 'link'}
+        size={14}
+      />
+      <span className={styles.projectLinkLabel}>{label}</span>
     </Link>
   );
 }
