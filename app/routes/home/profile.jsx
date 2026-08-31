@@ -12,21 +12,8 @@ import { Text } from '~/components/text';
 import { Transition } from '~/components/transition';
 import { Fragment, useState } from 'react';
 import { media } from '~/utils/style';
-import config from '~/config.json';
 import katakana from './katakana.svg';
 import styles from './profile.module.css';
-
-const QUICK_FACTS = [
-  { label: 'Base', value: 'Austin, TX' },
-  {
-    label: 'Focus',
-    value: 'AI/ML data quality, diagnostics, and practical web builds',
-  },
-  {
-    label: 'Interests',
-    value: 'Cinematography, performance, and design systems',
-  },
-];
 
 const ProfileText = ({ visible, titleId }) => (
   <Fragment>
@@ -47,14 +34,6 @@ const ProfileText = ({ visible, titleId }) => (
       adopted across multiple teams. I&apos;m always open to hearing about new projects, so
       feel free to drop me a line.
     </Text>
-    <dl className={styles.facts} data-visible={visible}>
-      {QUICK_FACTS.map(fact => (
-        <div className={styles.fact} key={fact.label}>
-          <dt className={styles.factLabel}>{fact.label}</dt>
-          <dd className={styles.factValue}>{fact.value}</dd>
-        </div>
-      ))}
-    </dl>
   </Fragment>
 );
 
@@ -78,18 +57,15 @@ export const Profile = ({ id, visible, sectionRef }) => {
           <div className={styles.content} ref={nodeRef}>
             <div className={styles.column}>
               <ProfileText visible={visible} titleId={titleId} />
-              <div className={styles.actions} data-visible={visible}>
-                <Button href="/contact" icon="send">
-                  Send me a message
-                </Button>
-                <Button
-                  secondary
-                  href={`${config.url}/resume.pdf`}
-                  icon="book-open"
-                >
-                  Download résumé
-                </Button>
-              </div>
+              <Button
+                secondary
+                className={styles.button}
+                data-visible={visible}
+                href="/contact"
+                icon="send"
+              >
+                Send me a message
+              </Button>
             </div>
             <div className={styles.column}>
               <div className={styles.tag} aria-hidden>
