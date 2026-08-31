@@ -26,7 +26,7 @@ const linkIcons = {
 function ProjectLink({ href, label }) {
   return (
     <Link className={styles.projectLink} href={href}>
-      <Icon icon={linkIcons[label] || 'link'} size={18} />
+      <Icon icon={linkIcons[label] || 'link'} size={14} />
       {label}
     </Link>
   );
@@ -50,7 +50,7 @@ const projects = [
     description:
       'Interactive dashboard for annotation quality trends, ML support metrics, alert thresholds, capacity forecasting, and workflow performance patterns.',
     links: [
-      ['Dashboard', '/projects/annotation-dashboard'],
+      ['Demo', '/projects/annotation-dashboard'],
       ['Code', 'https://github.com/zrlopez/performance-analytics-tool'],
     ],
   },

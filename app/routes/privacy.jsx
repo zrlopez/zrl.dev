@@ -33,7 +33,7 @@ export default function Privacy() {
         />
         <ProjectHeader
           title="Privacy Policy"
-          description="Last updated: November 2025. This page explains how zrl.dev handles personal information when you visit the site or send a message."
+          description="Last updated: August 31, 2026. This page explains how zrl.dev handles personal information when you visit the site or send a message."
         />
         <ProjectSection padding="none" className={styles.section}>
           <ProjectSectionContent>

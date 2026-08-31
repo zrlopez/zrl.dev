@@ -35,5 +35,8 @@
 
   svg {
     flex: 0 0 auto;
+    overflow: visible;
+    width: 0.875rem;
+    height: 0.875rem;
   }
 }

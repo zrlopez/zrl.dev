@@ -33,7 +33,7 @@ export default function Terms() {
         />
         <ProjectHeader
           title="Terms of Service"
-          description="Last updated: November 2025. These terms cover use of zrl.dev as a personal portfolio and professional contact site."
+          description="Last updated: August 31, 2026. These terms cover use of zrl.dev as a personal portfolio and professional contact site."
         />
         <ProjectSection padding="none" className={styles.section}>
           <ProjectSectionContent>
