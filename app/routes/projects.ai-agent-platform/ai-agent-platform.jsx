@@ -136,7 +136,7 @@ export const AiAgentPlatform = () => (
               operational: reliable handoffs, memory that survives sessions, and a
               path to ship agent work with the same hygiene as any other production
               system. Inventory of the surrounding stack lives on{' '}
-              <Link href="/tools">Tools &amp; skills</Link>.
+              <Link href="/tools">Tools &amp; Skills</Link>.
             </ProjectSectionText>
           </ProjectTextRow>
         </ProjectSectionContent>

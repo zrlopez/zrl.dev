@@ -16,7 +16,7 @@ import styles from './tools.module.css';
 
 export const meta = () => {
   return baseMeta({
-    title: 'Tools & skills',
+    title: 'Tools & Skills',
     description:
       'Languages, data systems, ML tooling, craft skills, and platforms used by Zachary Ryan Lopez.',
   });
@@ -24,7 +24,7 @@ export const meta = () => {
 
 /**
  * Tools (what I use) + skills (how I work), one surface.
- * URL stays /tools — nav label is Tools & skills.
+ * URL stays /tools — nav label is Tools & Skills.
  * @type {{ title: string, blurb: string, items: { label: string, core?: boolean }[] }[]}
  */
 const groups = [
@@ -141,7 +141,7 @@ export const Tools = () => {
           opacity={0.7}
         />
         <ProjectHeader
-          title="Tools & skills"
+          title="Tools & Skills"
           description="What I use and how I work — stacked for annotation QA, ML ops, and the systems I ship."
         />
 

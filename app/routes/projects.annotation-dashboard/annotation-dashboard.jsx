@@ -22,49 +22,8 @@ import styles from './annotation-dashboard.module.css';
 
 const title = 'Annotation Analytics Dashboard';
 const description =
-  'Real-time KPI, alert thresholds, and capacity forecasting across six-tab workflow visibility — 40% reporting time cut.';
-const roles = ['Recharts / React', 'Pandas / SQLite', 'Annotation QA'];
-
-const tech = [
-  'TypeScript',
-  'React',
-  'Recharts',
-  'Remix',
-  'Live KPIs',
-  'Tailwind CSS',
-];
-
-const highlights = [
-  {
-    title: 'Live KPI metrics',
-    description:
-      'Throughput, error rate, team efficiency, and capacity utilization update every 5 seconds with independent variation.',
-  },
-  {
-    title: 'Alert threshold engine',
-    description:
-      'Warning states stay wired to current KPI values, so alerting mirrors live dashboard state instead of static seed values.',
-  },
-  {
-    title: 'Team performance view',
-    description:
-      'Per-member productivity cards, task completion bars, and a weekly utilization heatmap keep quality and staffing in the same picture.',
-  },
-  {
-    title: 'Capacity forecasting',
-    description:
-      'Historical vs predicted capacity trends help surface resource pressure before it turns into a workflow bottleneck.',
-  },
-];
-
-const fixes = [
-  'Independent +/-2.5% variation per metric with no correlated ticks',
-  'Live trend badge text re-rendered each interval',
-  'Error rate precision preserved to 2 decimal places',
-  'Lower error rate correctly reads as healthier state',
-  'Alert threshold current values synced to live KPIs',
-  'Theme toggle stays isolated to the embedded dashboard',
-];
+  'Operational visibility for annotation pipelines: live KPIs, alert thresholds, team performance, and capacity forecasting — six tabs, one control surface.';
+const roles = ['Analytics UI', 'Annotation QA', 'Python / SQL'];
 
 export const meta = () => baseMeta({ title, description, prefix: 'Projects' });
 
@@ -79,86 +38,99 @@ export const AnnotationDashboard = () => (
         linkLabel="Jump to live demo"
         roles={roles}
       />
-      <ProjectSection>
-        <ProjectSectionContent width="xl">
-          <ProjectTextRow width="l" className={styles.overviewRow}>
-            <div className={styles.overviewCopy}>
-              <ProjectSectionHeading>Overview</ProjectSectionHeading>
-              <ProjectSectionText>
-                Built to simulate the operational visibility used in ML data
-                operations: tracking pipeline throughput, annotation error rates,
-                team efficiency, and capacity planning in one live surface.
-              </ProjectSectionText>
-              <ProjectSectionText>
-                ETL and validation pipelines in Pandas and SQLite feed the same
-                style of workflow monitoring highlighted on the{' '}
-                <Link href="/experience">experience</Link> page. The demo below is
-                the live revamp version, not a static screenshot.
-              </ProjectSectionText>
-              <div className={styles.actionRow}>
-                <Button href="https://github.com/zrlopez/performance-analytics-tool" icon="github">
-                  View code
-                </Button>
-              </div>
-            </div>
-            <div className={styles.detailCard}>
-              <h3 className={styles.cardTitle}>Project details</h3>
-              <dl className={styles.detailList}>
-                <div>
-                  <dt>Role</dt>
-                  <dd>Developer</dd>
-                </div>
-                <div>
-                  <dt>Year</dt>
-                  <dd>2025-Present</dd>
-                </div>
-                <div>
-                  <dt>Type</dt>
-                  <dd>Frontend / Analytics</dd>
-                </div>
-                <div>
-                  <dt>Tabs</dt>
-                  <dd>6 views</dd>
-                </div>
-                <div>
-                  <dt>Refresh</dt>
-                  <dd>Every 5 seconds</dd>
-                </div>
-              </dl>
-              <ul className={styles.techChips} aria-label="Tech stack">
-                {tech.map(item => (
-                  <li key={item} className={styles.techChip}>
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </ProjectTextRow>
-        </ProjectSectionContent>
-      </ProjectSection>
+
       <ProjectSection>
         <ProjectSectionContent width="xl">
           <ProjectTextRow width="l">
-            <ProjectSectionHeading>Feature highlights</ProjectSectionHeading>
-            <div className={styles.highlightGrid}>
-              {highlights.map(item => (
-                <article key={item.title} className={styles.highlightCard}>
-                  <h3 className={styles.highlightTitle}>{item.title}</h3>
-                  <p className={styles.highlightCopy}>{item.description}</p>
-                </article>
-              ))}
+            <ProjectSectionHeading>Problem</ProjectSectionHeading>
+            <ProjectSectionText>
+              Annotation ops drown in spreadsheets: throughput, error classes, staffing,
+              and capacity live in different tools and go stale by the next stand-up.
+              Leads need one surface that answers “are we healthy right now?” without a
+              reporting lag that eats half a day.
+            </ProjectSectionText>
+            <ProjectSectionText>
+              This dashboard is that surface — built for ML data operations pressure,
+              not a generic analytics template. It tracks pipeline throughput, annotation
+              error rates, team efficiency, and capacity planning together, the same
+              monitoring shape used on the{' '}
+              <Link href="/experience">experience</Link> page.
+            </ProjectSectionText>
+          </ProjectTextRow>
+        </ProjectSectionContent>
+      </ProjectSection>
+
+      <ProjectSection light>
+        <ProjectSectionContent width="xl">
+          <ProjectTextRow width="l">
+            <ProjectSectionHeading>What the live system does</ProjectSectionHeading>
+            <ProjectSectionText>
+              Six tabs share one live KPI spine. Metrics refresh on a five-second loop
+              with independent jitter so charts and badges move like production traffic —
+              not a locked seed. Alert thresholds re-bind to current values each tick, so
+              warning state tracks reality instead of yesterday’s CSV.
+            </ProjectSectionText>
+            <ProjectSectionText as="div">
+              <List>
+                <ListItem>
+                  <strong>Live KPI spine</strong> — throughput, error rate, team efficiency,
+                  and capacity utilization update independently (±2.5%), with trend badges
+                  re-rendered every interval.
+                </ListItem>
+                <ListItem>
+                  <strong>Alert threshold engine</strong> — thresholds sync to live KPIs;
+                  lower error rate correctly reads as healthier, not “down is bad.”
+                </ListItem>
+                <ListItem>
+                  <strong>Team performance</strong> — per-member cards, completion bars, and
+                  a utilization heatmap keep quality and staffing in one frame.
+                </ListItem>
+                <ListItem>
+                  <strong>Capacity forecasting</strong> — historical vs predicted capacity
+                  surfaces resource pressure before it becomes a queue fire.
+                </ListItem>
+                <ListItem>
+                  <strong>Isolated demo theme</strong> — dark/light inside the frame stays
+                  local so the portfolio chrome is never yanked around by the demo.
+                </ListItem>
+              </List>
+            </ProjectSectionText>
+            <div className={styles.actionRow}>
+              <Button href="https://github.com/zrlopez/performance-analytics-tool" icon="github">
+                View code
+              </Button>
             </div>
           </ProjectTextRow>
         </ProjectSectionContent>
       </ProjectSection>
+
+      <ProjectSection>
+        <ProjectSectionContent width="xl">
+          <ProjectTextRow width="l">
+            <ProjectSectionHeading>Data path</ProjectSectionHeading>
+            <ProjectSectionText>
+              Upstream, Pandas and SQLite handle ETL and validation the way production
+              annotation QA does: clean feeds, explicit error classes, and rollups a
+              dashboard can trust. The embedded demo drives UI state from
+              <code>dashboardData</code> and <code>useLiveKpis(5000)</code> so the
+              interaction model is real even when the feed is simulated.
+            </ProjectSectionText>
+            <ProjectSectionText>
+              That split matters: the case study is about operational design — what
+              managers see, what alerts mean, how capacity is forecast — not about
+              wiring charts to a fake JSON blob and calling it done.
+            </ProjectSectionText>
+          </ProjectTextRow>
+        </ProjectSectionContent>
+      </ProjectSection>
+
       <ProjectSection light id="live-demo">
         <ProjectSectionContent width="xl">
           <ProjectTextRow width="l">
-            <ProjectSectionHeading>Live Demo — 6 tabs</ProjectSectionHeading>
+            <ProjectSectionHeading>Live demo</ProjectSectionHeading>
             <ProjectSectionText>
-              Fully interactive — throughput, error rate, team efficiency, and capacity
-              update independently (+/-2.5% jitter). Toggle dark mode inside the demo;
-              it stays isolated from the site theme.
+              Full interactive console — not a screenshot. Switch tabs, watch KPIs drift,
+              flip the in-demo theme. This is the product surface, given room to breathe.
             </ProjectSectionText>
           </ProjectTextRow>
           <div className={`dashboard-root ${styles.demoFrame}`}>
@@ -168,23 +140,20 @@ export const AnnotationDashboard = () => (
           </div>
         </ProjectSectionContent>
       </ProjectSection>
+
       <ProjectSection>
         <ProjectSectionContent width="xl">
           <ProjectTextRow width="l">
-            <ProjectSectionHeading>Review fixes and implementation notes</ProjectSectionHeading>
+            <ProjectSectionHeading>Hardening notes</ProjectSectionHeading>
             <ProjectSectionText as="div">
               <List>
-                {fixes.map(item => (
-                  <ListItem key={item}>{item}</ListItem>
-                ))}
+                <ListItem>Independent metric jitter — no correlated fake “everything moves together”</ListItem>
+                <ListItem>Error rate precision held to two decimals; polarity correct (lower = healthier)</ListItem>
+                <ListItem>Alert “current” values always equal live KPIs after each tick</ListItem>
+                <ListItem>Trend badge copy re-rendered with the data, not stale on first paint</ListItem>
+                <ListItem>Demo theme isolated from site theme</ListItem>
               </List>
             </ProjectSectionText>
-          </ProjectTextRow>
-        </ProjectSectionContent>
-      </ProjectSection>
-      <ProjectSection>
-        <ProjectSectionContent width="xl">
-          <ProjectTextRow width="l">
             <div className={styles.actionRow}>
               <Button href="/projects" iconEnd="arrow-right">
                 Back to projects
