@@ -72,7 +72,7 @@ const projects = [
     title: 'Portfolio Website',
     meta: 'Developer — 2025-Present — Web Development',
     description:
-      'The zrl.dev portfolio, evolving from Next.js, TypeScript, and Tailwind into a Remix/Vite redesign deployed through Vercel and Cloudflare.',
+      'The zrl.dev portfolio — Remix/Vite, Vercel delivery, Cloudflare edge — case studies, tools, and contact.',
     links: [
       ['Live site', 'https://zrl.dev'],
       ['Code', 'https://github.com/zrlopez/zrl.dev'],

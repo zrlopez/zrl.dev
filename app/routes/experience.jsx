@@ -53,8 +53,7 @@ export const Experience = () => {
                   </ListItem>
                   <ListItem>
                     Annotation analytics dashboard — live KPIs, alert thresholds, capacity
-                    forecasting, six-tab workflow visibility (rebuilt JS →
-                    Next.js/TS/Recharts) at{' '}
+                    forecasting, six-tab workflow visibility at{' '}
                     <Link href="/projects/annotation-dashboard#live-demo">
                       zrl.dev/projects/annotation-dashboard#live-demo
                     </Link>
@@ -62,8 +61,7 @@ export const Experience = () => {
                   </ListItem>
                   <ListItem>
                     ETL + validation pipelines (Pandas/SQLite) automating high-volume
-                    checks; portfolio at <Link href="https://zrl.dev">zrl.dev</Link>{' '}
-                    with the revamp moving toward Remix, Vite, Vercel, and Cloudflare.
+                    checks; portfolio at <Link href="https://zrl.dev">zrl.dev</Link>.
                   </ListItem>
                 </List>
               </ProjectSectionText>

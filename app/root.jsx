@@ -103,6 +103,24 @@ export default function App() {
     );
   }, []);
 
+  // Legacy main-site hash deep-links (fragments never hit the server).
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const { hash, pathname } = window.location;
+    if (pathname !== '/' && pathname !== '') return;
+    const map = {
+      '#contact': '/contact',
+      '#tools': '/tools',
+      '#projects': '/projects',
+      '#experience': '/experience',
+      '#about': '/#profile',
+    };
+    const target = map[hash];
+    if (target) {
+      window.location.replace(target);
+    }
+  }, []);
+
   return (
     <html lang="en">
       <head>
