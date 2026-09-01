@@ -185,16 +185,6 @@ export const AnnotationDashboard = () => (
       <ProjectSection>
         <ProjectSectionContent width="xl">
           <ProjectTextRow width="l">
-            <ProjectSectionHeading>Stack</ProjectSectionHeading>
-            <ProjectSectionText>
-              <Link href="https://nextjs.org">Next.js 15</Link> + TypeScript +{' '}
-              <Link href="https://recharts.org">Recharts</Link> + Tailwind, then ported
-              into this Remix route with{' '}
-              <Link href="https://www.npmjs.com/package/recharts">recharts</Link> and{' '}
-              <Link href="https://www.npmjs.com/package/lucide-react">lucide-react</Link>.
-              Live state comes from <code>dashboardData.ts</code> and{' '}
-              <code>useLiveKpis(5000)</code>.
-            </ProjectSectionText>
             <div className={styles.actionRow}>
               <Button href="/projects" iconEnd="arrow-right">
                 Back to projects
