@@ -185,6 +185,10 @@ jobs:
     timeout-minutes: 15
     permissions:
       contents: read
+    # Map secret → env so step `if` can gate without illegal `secrets` context
+    # (secrets-in-if invalidates the whole workflow → 0 jobs → red CI badge).
+    env:
+      CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_PROJECT_TOKEN }}
     steps:
       - name: Checkout
         uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0
@@ -202,10 +206,10 @@ jobs:
         run: npm run test:coverage
 
       - name: Upload coverage to Codacy
-        if: github.actor != 'dependabot[bot]' && secrets.CODACY_PROJECT_TOKEN != ''
+        if: ${{ github.actor != 'dependabot[bot]' && env.CODACY_PROJECT_TOKEN != '' }}
         uses: codacy/codacy-coverage-reporter-action@v1
         with:
-          project-token: ${{ secrets.CODACY_PROJECT_TOKEN }}
+          project-token: ${{ env.CODACY_PROJECT_TOKEN }}
           coverage-reports: coverage/lcov.info
 
   build:
