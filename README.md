@@ -1,11 +1,5 @@
 # zrl.dev
 
-**[zrl.dev](https://zrl.dev)** — portfolio of **Zachary Ryan Lopez**, AI/ML Data Operations Analyst (Austin, TX).
-
-Annotation QA · ML incident response · durable agent systems · the tools behind them.
-
-This repository is itself a portfolio artifact: live demo, hardened contact path, CI/security surface, and case-study depth — not a template dump.
-
 [![Status](https://img.shields.io/badge/status-live-brightgreen?style=flat-square)](https://zrl.dev)
 [![Stack](https://img.shields.io/badge/stack-Remix%20%2B%20Vite%20%2B%20Vercel-brightgreen?style=flat-square)](https://zrl.dev/tools)
 [![CI](https://github.com/zrlopez/zrl.dev/actions/workflows/secured_ci.yml/badge.svg?branch=main)](https://github.com/zrlopez/zrl.dev/actions/workflows/secured_ci.yml)
@@ -14,8 +8,14 @@ This repository is itself a portfolio artifact: live demo, hardened contact path
 [![License](https://img.shields.io/badge/license-MIT-blue?style=flat-square)](./LICENSE)
 
 <p align="center">
-  <img src="public/social-image.png" alt="zrl.dev portfolio preview" width="720" />
+  <img src="public/public/site-preview.png" alt="zrl.dev portfolio preview" width="720" />
 </p>
+
+**[zrl.dev](https://zrl.dev)** — portfolio of **Zachary Ryan Lopez**, AI/ML Data Operations Analyst (Austin, TX).
+
+Annotation QA · ML incident response · durable agent systems · the tools behind them.
+
+This repository is itself a portfolio artifact: live demo, hardened contact path, CI/security surface, and case-study depth — not a template dump.
 
 ## If you only have 5 minutes
 
