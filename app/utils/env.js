@@ -30,9 +30,9 @@ export function validateContactEnv(env = {}) {
     read(env, 'NEXT_PUBLIC_TURNSTILE_SITE_KEY') ||
     read(env, 'VITE_TURNSTILE_SITE_KEY');
 
-  const CONTACT_TO = read(env, 'CONTACT_TO') || 'hello@zrl.dev';
+  const CONTACT_TO = read(env, 'CONTACT_TO') || 'contact@zrl.dev';
   const CONTACT_FROM =
-    read(env, 'CONTACT_FROM') || 'Contact Form <hello@zrl.dev>';
+    read(env, 'CONTACT_FROM') || 'Contact Form <no-reply@zrl.dev>';
 
   const hostnamesRaw =
     read(env, 'TURNSTILE_HOSTNAMES') ||

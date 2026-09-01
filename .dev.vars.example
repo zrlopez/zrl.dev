@@ -10,9 +10,9 @@ SESSION_SECRET=KEEP_IT_SECRET_KEEP_IT_SAFE
 # Resend — https://resend.com/api-keys (must start with re_)
 RESEND_API_KEY=re_PASTE_YOUR_KEY
 
-# Mail routing
-CONTACT_TO=hello@zrl.dev
-CONTACT_FROM=Contact Form <hello@zrl.dev>
+# Mail routing (Proton catch-all @zrl.dev)
+CONTACT_TO=contact@zrl.dev
+CONTACT_FROM=Contact Form <no-reply@zrl.dev>
 
 # Cloudflare Turnstile
 # Dashboard: https://dash.cloudflare.com/?to=/:account/turnstile

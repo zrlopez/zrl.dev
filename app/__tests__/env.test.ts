@@ -17,7 +17,8 @@ describe('validateContactEnv()', () => {
     expect(result.RESEND_API_KEY).toBe(valid.RESEND_API_KEY);
     expect(result.TURNSTILE_SECRET_KEY).toBe(valid.TURNSTILE_SECRET_KEY);
     expect(result.TURNSTILE_SITE_KEY).toBe(valid.TURNSTILE_SITE_KEY);
-    expect(result.CONTACT_TO).toBe('hello@zrl.dev');
+    expect(result.CONTACT_TO).toBe('contact@zrl.dev');
+    expect(result.CONTACT_FROM).toBe('Contact Form <no-reply@zrl.dev>');
   });
 
   it('accepts TURNSTILE_SECRET alias', () => {
