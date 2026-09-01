@@ -68,8 +68,9 @@ Copy `.dev.vars.example` → `.dev.vars` for local contact / session secrets. Ne
 
 | Setting | Value |
 |--------|--------|
-| Build command | `npm run pages:build` |
+| Build command | `npm run pages:build` (`CF_PAGES=1` → CF server shape) |
 | Output directory | `build/client` |
+| Functions | `functions/[[path]].js` → `build/server` |
 | Node | `22` |
 | Package manager | **npm** (not pnpm — `packageManager` is npm) |
 

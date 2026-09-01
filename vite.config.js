@@ -9,10 +9,18 @@ import rehypeImgSize from 'rehype-img-size';
 import rehypeSlug from 'rehype-slug';
 import rehypePrism from '@mapbox/rehype-prism';
 
+// Cloudflare Pages sets CF_PAGES=1; pages:build also sets it.
+const isCloudflarePages =
+  process.env.CF_PAGES === '1' || process.env.PAGES === '1';
+
 export default defineConfig({
   assetsInclude: ['**/*.glb', '**/*.hdr', '**/*.glsl'],
   build: {
     assetsInlineLimit: 1024,
+  },
+  // Bake CF_PAGES into the server bundle so entry.server.jsx can branch.
+  define: {
+    'process.env.CF_PAGES': JSON.stringify(isCloudflarePages ? '1' : ''),
   },
   server: {
     host: '127.0.0.1',
@@ -25,7 +33,9 @@ export default defineConfig({
       providerImportSource: '@mdx-js/react',
     }),
     remix({
-      presets: [vercelPreset()],
+      // Vercel: nodejs bundles under build/server/nodejs-*
+      // CF Pages: ESM server at build/server (functions/[[path]].js)
+      ...(isCloudflarePages ? {} : { presets: [vercelPreset()] }),
       routes(defineRoutes) {
         return defineRoutes(route => {
           route('/', 'routes/home/route.js', { index: true });

@@ -1,7 +1,7 @@
-import { RemixServer } from '@remix-run/react';
-import { handleRequest } from '@vercel/remix';
+import cloudflareHandler from './entry.server.cloudflare.jsx';
+import vercelHandler from './entry.server.vercel.jsx';
 
-export default function (request, responseStatusCode, responseHeaders, remixContext) {
-  let remixServer = <RemixServer context={remixContext} url={request.url} />;
-  return handleRequest(request, responseStatusCode, responseHeaders, remixServer);
-}
+// CF_PAGES is inlined at build time (see vite.config.js define).
+const isCloudflarePages = process.env.CF_PAGES === '1';
+
+export default isCloudflarePages ? cloudflareHandler : vercelHandler;
