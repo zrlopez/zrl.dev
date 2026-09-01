@@ -39,7 +39,7 @@ export const links = () => {
 
 export const meta = () => {
   return baseMeta({
-    title: 'AI/ML Data Ops',
+    title: 'AI/ML Data Operations Analyst',
     description: `Portfolio of ${config.name} — an AI/ML Data Operations Analyst building Python and SQL tools, validating high-volume datasets, and improving labeling pipelines.`,
   });
 };
