@@ -8,7 +8,7 @@
 [![License](https://img.shields.io/badge/license-MIT-blue?style=flat-square)](./LICENSE)
 
 <p align="center">
-  <img src="public/public/site-preview.png" alt="zrl.dev portfolio preview" width="720" />
+  <img src="public/site-preview.png" alt="zrl.dev portfolio preview" width="720" />
 </p>
 
 **[zrl.dev](https://zrl.dev)** — portfolio of **Zachary Ryan Lopez**, AI/ML Data Operations Analyst (Austin, TX).
