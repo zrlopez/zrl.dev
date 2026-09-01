@@ -4,48 +4,21 @@
     width: 48px;
     height: 45px;
     flex-shrink: 0;
-    background-color: var(--textTitle);
+    background-color: var(--textLight);
     -webkit-mask: var(--monogram-mask) center / contain no-repeat;
     mask: var(--monogram-mask) center / contain no-repeat;
-    transition: background-color var(--durationM) ease;
+    transition: background-color var(--durationM) var(--bezierFastoutSlowin);
   }
 
-  /* Wipe / flash to Harvard Crimson when the wrapping logo link is hovered */
+  /* Match social icons: muted → Harvard Crimson on logo hover */
   .highlight {
-    position: relative;
+    background-color: var(--textLight);
   }
 
-  .highlight::after {
-    content: '';
-    position: absolute;
-    inset: 0;
+  :global(a:hover) .highlight,
+  :global(a:active) .highlight,
+  :global(a:focus-visible) .highlight,
+  .highlight:hover {
     background-color: var(--accent);
-    -webkit-mask: var(--monogram-mask) center / contain no-repeat;
-    mask: var(--monogram-mask) center / contain no-repeat;
-    opacity: 0;
-    transform: scale3d(1, 0, 1);
-    transform-origin: top;
-    transition: opacity 0.1s ease var(--durationM);
-    pointer-events: none;
-
-    @media (--mediaUseMotion) {
-      transition:
-        transform var(--durationM) var(--bezierFastoutSlowin),
-        opacity 0.1s ease var(--durationM);
-    }
-  }
-
-  :global(a:hover) .highlight::after,
-  .highlight:hover::after {
-    opacity: 1;
-    transform: scale3d(1, 1, 1);
-    transform-origin: bottom;
-    transition: opacity 0.1s ease;
-
-    @media (--mediaUseMotion) {
-      transition:
-        transform var(--durationM) var(--bezierFastoutSlowin),
-        opacity 0.1s ease;
-    }
   }
 }

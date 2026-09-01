@@ -4,8 +4,8 @@ import styles from './monogram.module.css';
 import zMask from '~/assets/z-blk.png';
 
 /**
- * Z mark as a CSS mask so fill can swap to Harvard Crimson (--accent)
- * on hover when `highlight` is set (navbar logo).
+ * Z mark as a CSS mask. With `highlight`, fill fades textLight →
+ * Harvard Crimson (--accent) on hover — same treatment as nav social icons.
  */
 export const Monogram = forwardRef(({ highlight, className, ...props }, ref) => {
   return (
