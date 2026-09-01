@@ -15,6 +15,33 @@
 
   .link {
     display: inline-flex;
+    align-items: center;
+  }
+
+  .madeLink {
+    gap: 0.35em;
+  }
+
+  .pixelHeart {
+    width: 11px;
+    height: 10px;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+    flex-shrink: 0;
+    position: relative;
+    top: 0.5px;
+  }
+
+  .srOnly {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
   }
 
   .date {

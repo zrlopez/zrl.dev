@@ -3,10 +3,8 @@ import { Text } from '~/components/text';
 import { classes } from '~/utils/style';
 import config from '~/config.json';
 import { useId, useState } from 'react';
+import pixelHeart from '~/assets/pixel-heart.png';
 import styles from './footer.module.css';
-
-// Hamish-tight primary row; legal/meta tucked behind "More"
-const primaryLinks = [['Crafted by yours truly', '/humans.txt']];
 
 const moreLinks = [
   ['Résumé', '/resume.pdf'],
@@ -23,16 +21,30 @@ export const Footer = ({ className }) => {
     <footer className={classes(styles.footer, className)}>
       <Text className={styles.text} size="s" align="center">
         <span className={styles.date}>{`© ${new Date().getFullYear()} ${config.name}.`}</span>
-        {primaryLinks.map(([label, href]) => (
-          <span className={styles.linkGroup} key={href}>
-            <span className={styles.separator} aria-hidden="true">
-              /
-            </span>
-            <Link secondary className={styles.link} href={href} target="_self">
-              {label}
-            </Link>
+        <span className={styles.linkGroup}>
+          <span className={styles.separator} aria-hidden="true">
+            /
           </span>
-        ))}
+          <Link
+            secondary
+            className={classes(styles.link, styles.madeLink)}
+            href="/humans.txt"
+            target="_self"
+          >
+            <span>Made with</span>
+            <img
+              className={styles.pixelHeart}
+              src={pixelHeart}
+              width={11}
+              height={10}
+              alt=""
+              aria-hidden="true"
+              draggable={false}
+            />
+            <span className={styles.srOnly}>love</span>
+            <span>in ATX</span>
+          </Link>
+        </span>
         <span className={styles.linkGroup}>
           <span className={styles.separator} aria-hidden="true">
             /
