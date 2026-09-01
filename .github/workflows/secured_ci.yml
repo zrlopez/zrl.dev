@@ -46,8 +46,6 @@ jobs:
     name: Dependency Security Audit
     runs-on: ubuntu-latest
     timeout-minutes: 15
-    # Advisory until Remix/miniflare/aws-sdk lockfile prune drops inherited highs.
-    continue-on-error: true
     permissions:
       contents: read
     steps:
