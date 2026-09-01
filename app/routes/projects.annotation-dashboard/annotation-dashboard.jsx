@@ -70,7 +70,7 @@ export const meta = () => baseMeta({ title, description, prefix: 'Projects' });
 
 export const AnnotationDashboard = () => (
   <Fragment>
-    <ProjectContainer>
+    <ProjectContainer className={styles.page}>
       <ProjectBackground src={usesBackground} placeholder={usesBackgroundPlaceholder} opacity={0.6} />
       <ProjectHeader
         title={title}
@@ -80,8 +80,8 @@ export const AnnotationDashboard = () => (
         roles={roles}
       />
       <ProjectSection>
-        <ProjectSectionContent>
-          <ProjectTextRow className={styles.overviewRow}>
+        <ProjectSectionContent width="xl">
+          <ProjectTextRow width="l" className={styles.overviewRow}>
             <div className={styles.overviewCopy}>
               <ProjectSectionHeading>Overview</ProjectSectionHeading>
               <ProjectSectionText>
@@ -98,9 +98,6 @@ export const AnnotationDashboard = () => (
               <div className={styles.actionRow}>
                 <Button href="https://github.com/zrlopez/performance-analytics-tool" icon="github">
                   View code
-                </Button>
-                <Button secondary href="#live-demo" iconEnd="chevron-right">
-                  Jump to demo
                 </Button>
               </div>
             </div>
@@ -140,8 +137,8 @@ export const AnnotationDashboard = () => (
         </ProjectSectionContent>
       </ProjectSection>
       <ProjectSection>
-        <ProjectSectionContent>
-          <ProjectTextRow width="m">
+        <ProjectSectionContent width="xl">
+          <ProjectTextRow width="l">
             <ProjectSectionHeading>Feature highlights</ProjectSectionHeading>
             <div className={styles.highlightGrid}>
               {highlights.map(item => (
@@ -155,14 +152,13 @@ export const AnnotationDashboard = () => (
         </ProjectSectionContent>
       </ProjectSection>
       <ProjectSection light id="live-demo">
-        <ProjectSectionContent>
-          <ProjectTextRow>
+        <ProjectSectionContent width="xl">
+          <ProjectTextRow width="l">
             <ProjectSectionHeading>Live Demo — 6 tabs</ProjectSectionHeading>
             <ProjectSectionText>
               Fully interactive — throughput, error rate, team efficiency, and capacity
               update independently (+/-2.5% jitter). Toggle dark mode inside the demo;
-              it stays isolated from the site theme. This section now shows the full
-              live dashboard instead of clipping it into a short viewport.
+              it stays isolated from the site theme.
             </ProjectSectionText>
           </ProjectTextRow>
           <div className={`dashboard-root ${styles.demoFrame}`}>
@@ -173,8 +169,8 @@ export const AnnotationDashboard = () => (
         </ProjectSectionContent>
       </ProjectSection>
       <ProjectSection>
-        <ProjectSectionContent>
-          <ProjectTextRow>
+        <ProjectSectionContent width="xl">
+          <ProjectTextRow width="l">
             <ProjectSectionHeading>Review fixes and implementation notes</ProjectSectionHeading>
             <ProjectSectionText as="div">
               <List>
@@ -187,8 +183,8 @@ export const AnnotationDashboard = () => (
         </ProjectSectionContent>
       </ProjectSection>
       <ProjectSection>
-        <ProjectSectionContent>
-          <ProjectTextRow>
+        <ProjectSectionContent width="xl">
+          <ProjectTextRow width="l">
             <ProjectSectionHeading>Stack</ProjectSectionHeading>
             <ProjectSectionText>
               <Link href="https://nextjs.org">Next.js 15</Link> + TypeScript +{' '}

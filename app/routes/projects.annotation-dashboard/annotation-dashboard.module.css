@@ -1,18 +1,26 @@
+.page {
+  --maxWidthL: min(1280px, 100%);
+}
+
 .overviewRow {
   display: grid;
-  grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
-  gap: var(--space2XL);
+  grid-template-columns: minmax(0, 1.35fr) minmax(300px, 0.75fr);
+  gap: var(--space3XL);
   align-items: start;
+  width: 100%;
+  max-width: none;
 
   @media (--mediaTablet) {
     grid-template-columns: 100%;
+    gap: var(--space2XL);
   }
 }
 
 .overviewCopy {
   display: flex;
   flex-direction: column;
-  gap: var(--spaceL);
+  gap: var(--spaceXL);
+  max-width: 42rem;
 }
 
 .detailCard,
@@ -22,7 +30,7 @@
 }
 
 .detailCard {
-  padding: var(--spaceL);
+  padding: var(--spaceXL);
   clip-path: polygon(0 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%);
 }
 
@@ -43,7 +51,7 @@
   display: flex;
   justify-content: space-between;
   gap: var(--spaceL);
-  padding: 0.45rem 0;
+  padding: 0.55rem 0;
   border-top: 1px solid color-mix(in lab, var(--text) 10%, transparent);
 }
 
@@ -85,8 +93,8 @@
   width: 100%;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: var(--spaceL);
-  margin-top: var(--spaceL);
+  gap: var(--spaceXL);
+  margin-top: var(--spaceXL);
 
   @media (--mediaMobile) {
     grid-template-columns: 100%;
@@ -94,7 +102,7 @@
 }
 
 .highlightCard {
-  padding: var(--spaceL);
+  padding: var(--spaceXL);
 }
 
 .highlightTitle {
@@ -111,7 +119,8 @@
 }
 
 .demoFrame {
-  margin-top: 32px;
+  width: 100%;
+  margin-top: var(--space2XL);
   border-radius: 16px;
   border: 1px solid color-mix(in lab, var(--text) 10%, transparent);
   overflow: hidden;
@@ -126,5 +135,5 @@
   flex-wrap: wrap;
   gap: var(--spaceL);
   align-items: center;
-  margin-top: var(--spaceS);
+  margin-top: var(--spaceM);
 }
