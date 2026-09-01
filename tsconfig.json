@@ -25,5 +25,13 @@
     "vitest.config.ts",
     "vitest.setup.ts"
   ],
-  "exclude": ["node_modules", "build", ".cache", "storybook-static"]
+  "exclude": [
+    "node_modules",
+    "build",
+    ".cache",
+    "storybook-static",
+    "app/**/*.test.ts",
+    "app/**/*.test.tsx",
+    "app/**/__tests__/**"
+  ]
 }

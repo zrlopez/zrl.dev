@@ -26,6 +26,8 @@ export default defineConfig({
         '**/*.stories.*',
         '**/*.{test,spec}.{ts,tsx}',
         '**/__tests__/**',
+        // Dead legacy posts helper (src/posts removed); would throw on import.
+        'app/utils/mdx.js',
       ],
     },
   },
