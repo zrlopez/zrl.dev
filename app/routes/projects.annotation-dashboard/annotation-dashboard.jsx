@@ -22,16 +22,16 @@ import styles from './annotation-dashboard.module.css';
 
 const title = 'Annotation Analytics Dashboard';
 const description =
-  'Real-time KPI, alert thresholds, and capacity forecasting across six-tab workflow visibility — rebuilt JS → Next.js/TS/Recharts, 40% reporting time cut.';
-const roles = ['Next.js / Recharts', 'Pandas / SQLite', 'Annotation QA'];
+  'Real-time KPI, alert thresholds, and capacity forecasting across six-tab workflow visibility — 40% reporting time cut.';
+const roles = ['Recharts / React', 'Pandas / SQLite', 'Annotation QA'];
 
 const tech = [
-  'Next.js 15',
   'TypeScript',
+  'React',
   'Recharts',
+  'Remix',
+  'Live KPIs',
   'Tailwind CSS',
-  'React Hooks',
-  'Real-time State',
 ];
 
 const highlights = [

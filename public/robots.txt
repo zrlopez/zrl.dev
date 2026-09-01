@@ -2,4 +2,8 @@ User-agent: *
 Allow: /
 Disallow: /api/
 
+# Prefetch / preview noise
+Disallow: /*?*utm_
+Disallow: /*?*fbclid=
+
 Sitemap: https://zrl.dev/sitemap.xml

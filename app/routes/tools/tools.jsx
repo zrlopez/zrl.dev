@@ -16,21 +16,21 @@ import styles from './tools.module.css';
 
 export const meta = () => {
   return baseMeta({
-    title: 'Tools',
+    title: 'Tools & skills',
     description:
-      'Languages, data systems, ML tooling, and platforms used by Zachary Ryan Lopez — AI/ML Data Operations Analyst.',
+      'Languages, data systems, ML tooling, craft skills, and platforms used by Zachary Ryan Lopez.',
   });
 };
 
 /**
- * Four workstreams. Every group has a blurb so section headers share
- * the same vertical rhythm.
+ * Tools (what I use) + skills (how I work), one surface.
+ * URL stays /tools — nav label is Tools & skills.
  * @type {{ title: string, blurb: string, items: { label: string, core?: boolean }[] }[]}
  */
 const groups = [
   {
     title: 'Languages & data',
-    blurb: 'What I write in and the pipelines that move the data.',
+    blurb: 'What I write in and the stores that hold the work.',
     items: [
       { label: 'Python', core: true },
       { label: 'SQL', core: true },
@@ -40,8 +40,6 @@ const groups = [
       { label: 'Pandas', core: true },
       { label: 'SQLite', core: true },
       { label: 'Jupyter' },
-      { label: 'ETL pipelines', core: true },
-      { label: 'Data validation', core: true },
       { label: 'Tableau' },
       { label: 'Power BI' },
       { label: 'Excel' },
@@ -49,8 +47,8 @@ const groups = [
     ],
   },
   {
-    title: 'Annotation & ML',
-    blurb: 'Label quality, model support, and how results get measured.',
+    title: 'Annotation & ML ops',
+    blurb: 'Label quality, evaluation, and model support loops.',
     items: [
       { label: 'Annotation QA', core: true },
       { label: 'NLP evaluation', core: true },
@@ -58,12 +56,12 @@ const groups = [
       { label: 'RLHF' },
       { label: 'Taxonomy governance' },
       { label: 'Ontology design' },
-      { label: 'IAA' },
-      { label: 'IRR' },
-      { label: 'A/B testing' },
-      { label: 'UX evaluation' },
+      { label: 'IAA / IRR' },
       { label: 'Error analysis' },
       { label: 'PII handling' },
+      { label: 'A/B testing' },
+      { label: 'ETL pipelines', core: true },
+      { label: 'Data validation', core: true },
       { label: 'MLOps', core: true },
       { label: 'Hugging Face' },
       { label: 'scikit-learn' },
@@ -76,20 +74,17 @@ const groups = [
   },
   {
     title: 'Build & ship',
-    blurb: 'APIs, front ends, deploy targets, and the security checks around them.',
+    blurb: 'APIs, front ends, deploy, and the checks around them.',
     items: [
       { label: 'FastAPI', core: true },
       { label: 'Pydantic' },
       { label: 'async SQLAlchemy' },
-      { label: 'Next.js' },
       { label: 'Remix' },
       { label: 'React' },
       { label: 'Vite' },
+      { label: 'Next.js' },
       { label: 'Tailwind CSS' },
       { label: 'Three.js' },
-      { label: 'Storybook' },
-      { label: 'structlog' },
-      { label: 'Xcode' },
       { label: 'Docker' },
       { label: 'Git / GitHub', core: true },
       { label: 'Vercel' },
@@ -99,27 +94,29 @@ const groups = [
       { label: 'Trivy' },
       { label: 'CodeQL' },
       { label: 'Cosign' },
+      { label: 'structlog' },
       { label: 'VS Code' },
+      { label: 'Xcode' },
     ],
   },
   {
-    title: 'Practice',
-    blurb: 'How the work gets coordinated, documented, and handed off.',
+    title: 'Practice & craft',
+    blurb: 'How work is coordinated, documented, and handed off — plus creative tools.',
     items: [
-      { label: 'Jira' },
-      { label: 'Confluence' },
-      { label: 'Linear' },
-      { label: 'Notion' },
-      { label: 'Figma' },
       { label: 'SOP / runbook authoring', core: true },
       { label: 'Stakeholder communication' },
       { label: 'Training & enablement' },
       { label: 'Escalation resolution' },
-      { label: 'Project coordination' },
-      { label: 'Workflow improvement' },
-      { label: 'Process automation' },
       { label: 'Cross-functional ops' },
       { label: 'Experiment design' },
+      { label: 'Process automation' },
+      { label: 'Jira' },
+      { label: 'Linear' },
+      { label: 'Notion' },
+      { label: 'Confluence' },
+      { label: 'Figma' },
+      { label: 'Final Cut Pro' },
+      { label: 'Logic Pro' },
     ],
   },
 ];
@@ -144,8 +141,8 @@ export const Tools = () => {
           opacity={0.7}
         />
         <ProjectHeader
-          title="Tools"
-          description="Four workstreams behind the annotation QA, ML incident response, and systems I ship."
+          title="Tools & skills"
+          description="What I use and how I work — stacked for annotation QA, ML ops, and the systems I ship."
         />
 
         {groups.map(group => (

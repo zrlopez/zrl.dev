@@ -9,7 +9,7 @@ const footerLinks = [
   ['Résumé', '/resume.pdf'],
   ['Privacy', '/privacy'],
   ['Terms', '/terms'],
-  ['Security', '/.well-known/security.txt'],
+  ['Security', '/security'],
 ];
 
 export const Footer = ({ className }) => (

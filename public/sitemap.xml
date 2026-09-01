@@ -24,6 +24,10 @@
     <changefreq>monthly</changefreq>
   </url>
   <url>
+    <loc>https://zrl.dev/security/</loc>
+    <changefreq>yearly</changefreq>
+  </url>
+  <url>
     <loc>https://zrl.dev/privacy/</loc>
     <changefreq>yearly</changefreq>
   </url>
