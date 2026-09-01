@@ -113,7 +113,7 @@ export default function App() {
       '#tools': '/tools',
       '#projects': '/projects',
       '#experience': '/experience',
-      '#about': '/#profile',
+      '#about': '/#details',
     };
     const target = map[hash];
     if (target) {
