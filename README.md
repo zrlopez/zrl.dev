@@ -11,106 +11,125 @@
   <img src="public/site-preview.png" alt="zrl.dev portfolio preview" width="720" />
 </p>
 
-**[zrl.dev](https://zrl.dev)** — portfolio of **Zachary Ryan Lopez**, AI/ML Data Operations Analyst (Austin, TX).
+Personal portfolio of **Zachary Ryan Lopez**, AI/ML Data Operations Analyst based in Austin, Texas.
 
-Annotation QA · ML incident response · durable agent systems · the tools behind them.
+**Live site:** [https://zrl.dev](https://zrl.dev)
 
-This repository is itself a portfolio artifact: live demo, hardened contact path, CI/security surface, and case-study depth — not a template dump.
+The site presents professional experience, certifications, and project case studies in annotation quality assurance, machine learning operations, and multi-agent systems. The repository is the production source for the site, including continuous integration, security controls, and an interactive annotation analytics demonstration.
 
-## If you only have 5 minutes
+## Featured work
 
-1. **Live site:** [zrl.dev](https://zrl.dev)
-2. **Flagship demo:** [Annotation Analytics Dashboard](https://zrl.dev/projects/annotation-dashboard#live-demo) — 6-tab interactive analytics
-3. **Case studies:** [AI Agent Platform](https://zrl.dev/projects/ai-agent-platform) · [ML Incident Response](https://zrl.dev/projects/ml-incident-response)
-4. **Stack / skills:** [Tools & Skills](https://zrl.dev/tools)
-5. **This repo:** CI (secret scan · CodeQL · coverage → Codacy) · Turnstile contact · dual Vercel/CF build shape
+| Project | Description |
+|---------|-------------|
+| [Annotation Analytics Dashboard](https://zrl.dev/projects/annotation-dashboard#live-demo) | Interactive six-tab analytics demonstration for annotation throughput, quality, and capacity |
+| [AI Agent Platform](https://zrl.dev/projects/ai-agent-platform) | Case study on cross-agent orchestration and durable agent systems |
+| [ML Incident Response](https://zrl.dev/projects/ml-incident-response) | Case study on MLOps incident handling and operational runbooks |
 
-## Design intent
+## Site map
 
-| | |
-|--|--|
-| **Role signal** | AI/ML data operations — annotation QA, incident response, agent systems |
-| **What is live** | Full Remix app on Vercel; annotation demo is runnable in-browser |
-| **What is intentional** | Case-study depth over feature count; quiet chrome; Harvard Crimson system |
-| **Security surface** | Turnstile + Resend contact, CSP/nonce, rate-limit path, `security.txt`, secured CI |
-
-## Routes
-
-| Path | |
-|------|--|
-| [`/`](https://zrl.dev/) | Intro, featured projects, profile |
+| Path | Description |
+|------|-------------|
+| [`/`](https://zrl.dev/) | Home — introduction, featured projects, profile |
 | [`/projects`](https://zrl.dev/projects) | Project archive |
-| [`/projects/annotation-dashboard`](https://zrl.dev/projects/annotation-dashboard#live-demo) | **Live** annotation analytics demo (6 tabs) |
-| [`/projects/ai-agent-platform`](https://zrl.dev/projects/ai-agent-platform) | Cross-agent orchestration case study |
-| [`/projects/ml-incident-response`](https://zrl.dev/projects/ml-incident-response) | MLOps incident / runbook system |
-| [`/tools`](https://zrl.dev/tools) | Tools & Skills |
-| [`/experience`](https://zrl.dev/experience) | Experience |
+| [`/projects/annotation-dashboard`](https://zrl.dev/projects/annotation-dashboard#live-demo) | Annotation analytics case study and live demo |
+| [`/projects/ai-agent-platform`](https://zrl.dev/projects/ai-agent-platform) | Agent platform case study |
+| [`/projects/ml-incident-response`](https://zrl.dev/projects/ml-incident-response) | ML incident response case study |
+| [`/tools`](https://zrl.dev/tools) | Tools and skills inventory |
+| [`/experience`](https://zrl.dev/experience) | Professional experience |
 | [`/certifications`](https://zrl.dev/certifications) | Certifications |
-| [`/contact`](https://zrl.dev/contact) | Contact (Turnstile + Resend) |
+| [`/contact`](https://zrl.dev/contact) | Contact form (Cloudflare Turnstile and Resend) |
 
-Also: [`/humans.txt`](https://zrl.dev/humans.txt) · [`/security`](https://zrl.dev/security) · [security.txt](https://zrl.dev/.well-known/security.txt)
+Additional public resources: [`/humans.txt`](https://zrl.dev/humans.txt), [`/security`](https://zrl.dev/security), [security.txt](https://zrl.dev/.well-known/security.txt).
 
-## Evidence matrix
+## Technology
 
-| Signal | Where to look |
-|--------|----------------|
-| Interactive product sense | `/projects/annotation-dashboard#live-demo` |
-| Systems / agents narrative | `/projects/ai-agent-platform` |
-| MLOps / incident craft | `/projects/ml-incident-response` |
-| Stack breadth | `/tools` |
-| Contact hardening | `app/routes/contact/`, Turnstile + Resend |
-| CI / security hygiene | `.github/workflows/secured_ci.yml` |
-| Visual system | Crimson `#A51C30` · Gotham + IPA Gothic · 3D laptop (Three/Draco) |
+| Layer | Technologies |
+|-------|----------------|
+| Application | Remix, React, Vite |
+| Motion and 3D | Framer Motion, Three.js (Draco) |
+| Visualization | Recharts |
+| Hosting | Vercel (production), Cloudflare (DNS and edge) |
+| Contact | Cloudflare Turnstile, Resend (`contact@zrl.dev` / `no-reply@zrl.dev`) |
+| Quality | Vitest, Codacy (grade and coverage), ESLint, TypeScript, CodeQL, TruffleHog, CycloneDX SBOM |
 
-## Stack
+Visual system: Harvard Crimson (`#A51C30`), Gotham, IPA Gothic.
 
-- **App:** Remix, React, Vite
-- **Motion / 3D:** Framer Motion, Three.js (Draco)
-- **Charts:** Recharts (annotation demo)
-- **Deploy:** Vercel (production) · Cloudflare DNS / edge · optional CF Pages dual-build
-- **Contact:** Cloudflare Turnstile · Resend · `contact@` / `no-reply@` on zrl.dev
-- **Quality:** Vitest + coverage → Codacy · ESLint · TypeScript · CodeQL · TruffleHog · CycloneDX SBOM
+## Getting started
 
-## Develop
+**Requirements:** Node.js 22.16 or later, npm.
 
 ```bash
+git clone https://github.com/zrlopez/zrl.dev.git
+cd zrl.dev
 npm install
-npm run dev          # http://127.0.0.1:5173
-npm test
-npm run test:coverage
-npm run build
+npm run dev
 ```
 
-Optional: `npm run dev:storybook` · `npm run lint` · `npm run type-check`
+Local development server: [http://127.0.0.1:5173](http://127.0.0.1:5173)
 
-Copy `.dev.vars.example` → `.dev.vars` for local contact / session secrets. Never commit real keys.
+```bash
+npm test                 # unit and component tests
+npm run test:coverage    # coverage report (lcov)
+npm run build            # production build
+npm run lint
+npm run type-check
+```
 
-## Deploy
+### Environment configuration
 
-**Production:** Vercel tracks **`main`**.
+Local secrets are loaded from **`.dev.vars`** (Cloudflare / Wrangler convention; gitignored). A committed template is provided:
 
-**Cloudflare Pages** (optional / RateLimitKV path):
+```bash
+cp .dev.vars.example .dev.vars
+```
+
+Required keys for contact-form parity with production:
+
+| Variable | Purpose |
+|----------|---------|
+| `SESSION_SECRET` | Theme session cookie signing |
+| `RESEND_API_KEY` | Transactional email via Resend |
+| `TURNSTILE_SITE_KEY` / `TURNSTILE_SECRET_KEY` | Cloudflare Turnstile verification |
+| `CONTACT_TO` / `CONTACT_FROM` | Mail routing (defaults to `contact@` / `no-reply@` on zrl.dev) |
+
+Do not commit real credentials. Production values are set in the Vercel project environment.
+
+## Deployment
+
+Production deploys from the **`main`** branch on **Vercel**.
+
+Optional Cloudflare Pages dual-build (npm, not pnpm):
 
 | Setting | Value |
-|--------|--------|
-| Build command | `npm run pages:build` (`CF_PAGES=1` → CF server shape) |
+|---------|--------|
+| Build command | `npm run pages:build` |
 | Output directory | `build/client` |
-| Functions | `functions/[[path]].js` → `build/server` |
-| Node | `22` |
-| Package manager | **npm** (not pnpm) |
+| Functions entry | `functions/[[path]].js` → `build/server` |
+| Node.js | 22 |
 
 ```bash
 npm run build
-# or: npm run pages:build
+# or
+npm run pages:build
 ```
 
-Preview deploys on Vercel may require SSO.
+## Continuous integration
+
+Workflow: [`.github/workflows/secured_ci.yml`](./.github/workflows/secured_ci.yml)
+
+- Secret scanning (TruffleHog)
+- Dependency audit
+- TypeScript type check and ESLint
+- CycloneDX SBOM generation
+- CodeQL static analysis
+- Vitest with coverage upload to Codacy
+- Production build verification
 
 ## Credits
 
-Layout foundation: [Hamish Williams](https://hamishw.com) portfolio (MIT).  
-Content, case studies, systems, and imagery: Zachary Ryan Lopez.
+Layout foundation adapted from [Hamish Williams](https://hamishw.com) (MIT).  
+Content, case studies, systems design, and imagery by Zachary Ryan Lopez.
 
 ## License
 
-MIT — see [`LICENSE`](./LICENSE).
+MIT. See [`LICENSE`](./LICENSE).
