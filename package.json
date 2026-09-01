@@ -9,6 +9,7 @@
   "type": "module",
   "scripts": {
     "build": "remix vite:build",
+    "pages:build": "npm run build",
     "dev": "node ./scripts/dev.cjs && remix vite:dev",
     "start": "wrangler pages dev ./build/client",
     "postinstall": "node ./scripts/draco.cjs",

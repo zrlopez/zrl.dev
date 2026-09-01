@@ -4,8 +4,12 @@
 
 Annotation QA, ML incident response, durable agent systems, and the tools behind them.
 
-[![Live site](https://img.shields.io/badge/live-zrl.dev-A51C30?style=flat-square)](https://zrl.dev)
-[![Stack](https://img.shields.io/badge/stack-Remix%20%2B%20Vite%20%2B%20Vercel-111111?style=flat-square)](https://zrl.dev/tools)
+[![Status](https://img.shields.io/badge/status-live-brightgreen?style=flat-square)](https://zrl.dev)
+[![Stack](https://img.shields.io/badge/stack-Remix%20%2B%20Vite%20%2B%20Vercel-A51C30?style=flat-square)](https://zrl.dev/tools)
+[![CI](https://github.com/zrlopez/zrl.dev/actions/workflows/secured_ci.yml/badge.svg?branch=main)](https://github.com/zrlopez/zrl.dev/actions/workflows/secured_ci.yml)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/aeaf6b328db0474f84f5fde4fd0bc174)](https://app.codacy.com/gh/zrlopez/zrl.dev/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
+[![Codacy Badge](https://app.codacy.com/project/badge/Coverage/aeaf6b328db0474f84f5fde4fd0bc174)](https://app.codacy.com/gh/zrlopez/zrl.dev/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_coverage)
+[![License](https://img.shields.io/badge/license-MIT-blue?style=flat-square)](./LICENSE)
 
 <p align="center">
   <img src="public/social-image.png" alt="zrl.dev" width="720" />
@@ -58,9 +62,23 @@ Copy `.dev.vars.example` → `.dev.vars` for local contact / session secrets. Ne
 
 ## Deploy
 
-Production tracks **`main`**. Pushes to `main` deploy on Vercel.
+**Production:** Vercel tracks **`main`**.
 
-Preview deploys ship from feature branches (may require Vercel SSO).
+**Cloudflare Pages** (optional / RateLimitKV path):
+
+| Setting | Value |
+|--------|--------|
+| Build command | `npm run pages:build` |
+| Output directory | `build/client` |
+| Node | `22` |
+| Package manager | **npm** (not pnpm — `packageManager` is npm) |
+
+```bash
+npm run build
+# or: npm run pages:build
+```
+
+Preview deploys on Vercel may require SSO.
 
 ## Credits
 
