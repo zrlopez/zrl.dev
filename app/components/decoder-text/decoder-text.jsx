@@ -54,7 +54,6 @@ export const DecoderText = memo(
     useEffect(() => {
       const containerInstance = container.current;
       const content = text.split('');
-      let animation;
 
       const renderOutput = () => {
         const characterMap = output.current.map(item => {
@@ -74,7 +73,7 @@ export const DecoderText = memo(
         decoderSpring.set(content.length);
       };
 
-      if (start && !animation && !reduceMotion) {
+      if (start && !reduceMotion) {
         startSpring();
       }
 
