@@ -120,7 +120,15 @@
     "esbuild": "^0.25.0",
     "defu": "^6.1.7",
     "on-headers": "^1.1.0",
-    "micromatch": "^4.0.8"
+    "micromatch": "^4.0.8",
+    "react-router": "6.30.6",
+    "react-router-dom": "6.30.6",
+    "@remix-run/router": "1.23.4",
+    "prismjs": "1.30.0",
+    "estree-util-value-to-estree": "3.5.0",
+    "@vercel/static-config": {
+      "ajv": "8.18.0"
+    }
   },
   "engines": {
     "node": ">=22.16.0"
