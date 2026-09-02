@@ -1,7 +1,7 @@
 /**
  * Pure utility unit tests — raises Codacy coverage on app/utils.
  */
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+import { afterEach, describe, expect, it, vi } from 'vitest';
 
 import { clamp } from '~/utils/clamp';
 import { buildContentSecurityPolicy } from '~/utils/csp';

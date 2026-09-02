@@ -7,7 +7,6 @@ const disposeMat = vi.fn();
 const disposeGeo = vi.fn();
 const disposeTex = vi.fn();
 const closeBitmap = vi.fn();
-const traverse = vi.fn();
 const removeLight = vi.fn();
 
 vi.mock('three', () => {
