@@ -54,6 +54,7 @@ vi.mock('~/routes/projects.annotation-dashboard/dashboard/useLiveKpis', () => ({
 }));
 
 class ResizeObserverStub {
+  constructor(_callback?: ResizeObserverCallback) {}
   observe() {}
   unobserve() {}
   disconnect() {}
