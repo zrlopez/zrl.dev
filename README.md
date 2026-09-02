@@ -1,7 +1,9 @@
-# zrl.dev
+<p align="center"> 
+  # Portfolio | zrl.dev 
+</p>
 
-[![Status](https://img.shields.io/badge/status-live-brightgreen?style=flat-square)](https://zrl.dev)
 [![Stack](https://img.shields.io/badge/stack-Remix%20%2B%20Vite%20%2B%20Vercel-brightgreen?style=flat-square)](https://zrl.dev/tools)
+[![Status](https://img.shields.io/badge/status-live-brightgreen?style=flat-square)](https://zrl.dev)
 [![CI](https://github.com/zrlopez/zrl.dev/actions/workflows/secured_ci.yml/badge.svg?branch=main)](https://github.com/zrlopez/zrl.dev/actions/workflows/secured_ci.yml)
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/aeaf6b328db0474f84f5fde4fd0bc174)](https://app.codacy.com/gh/zrlopez/zrl.dev/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
 [![Codacy Badge](https://app.codacy.com/project/badge/Coverage/aeaf6b328db0474f84f5fde4fd0bc174)](https://app.codacy.com/gh/zrlopez/zrl.dev/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_coverage)
