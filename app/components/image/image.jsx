@@ -122,7 +122,7 @@ const ImageElements = ({
 
     if (!inViewport) {
       pauseVideo();
-    } else if (inViewport && !reduceMotion && play) {
+    } else if (!reduceMotion && play) {
       playVideo();
     }
   }, [inViewport, play, reduceMotion, restartOnPause, videoInteracted, videoSrc]);
