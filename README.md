@@ -1,6 +1,4 @@
-<p align="center"> 
-  # Portfolio | zrl.dev 
-</p>
+# Portfolio | zrl.dev 
 
 [![Stack](https://img.shields.io/badge/stack-Remix%20%2B%20Vite%20%2B%20Vercel-brightgreen?style=flat-square)](https://zrl.dev/tools)
 [![Status](https://img.shields.io/badge/status-live-brightgreen?style=flat-square)](https://zrl.dev)
