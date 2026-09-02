@@ -10,11 +10,12 @@
 @custom-media --mediaNoTouch (pointer: fine);
 
 @layer base {
-  :global(:root) {
+  :root {
     --mobileNavOffset: calc(var(--spaceOuter) * 2 + var(--space2XL));
   }
 
-  :global(html, body) {
+  html,
+  body {
     font-family: var(--fontStack);
     font-weight: var(--fontWeightRegular);
     background-color: var(--background);
@@ -30,25 +31,25 @@
     }
   }
 
-  :global(:where(code, pre)) {
+  :where(code, pre) {
     font-family: var(--monoFontStack);
   }
 
-  :global(::selection) {
+  ::selection {
     background: var(--accent);
     color: var(--black);
   }
 
-  :global(:focus) {
+  :focus {
     outline: 4px solid var(--text);
     outline-offset: 4px;
   }
 
-  :global(:focus:not(:focus-visible)) {
+  :focus:not(:focus-visible) {
     outline: none;
   }
 
-  @keyframes :global(fade-in) {
+  @keyframes fade-in {
     0% {
       opacity: 0;
     }
@@ -58,7 +59,7 @@
     }
   }
 
-  @keyframes :global(reveal) {
+  @keyframes reveal {
     0% {
       transform: scale3d(0, 1, 1);
       transform-origin: left;
