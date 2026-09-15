@@ -35,8 +35,10 @@
     display: block;
   }
 
+  /* Inherit text color so UA default link blue never paints bare <a>/RouterLink. */
   :any-link {
     text-decoration: none;
+    color: inherit;
   }
 
   ul {
