@@ -85,7 +85,7 @@
     "vite-jsconfig-paths": "^2.0.1",
     "vite-tsconfig-paths": "^4.3.1",
     "vitest": "^3.2.6",
-    "wrangler": "^4.136.3"
+    "wrangler": "^4.140.0"
   },
   "overrides": {
     "sharp": "0.35.4",
