@@ -37,7 +37,7 @@ jobs:
           node-version: '24'
 
       - name: TruffleHog OSS Secret Scan
-        uses: trufflesecurity/trufflehog@f714bf454f350590f4a24c3ddb1aef02c35bf5b6
+        uses: trufflesecurity/trufflehog@4dd8831c5f12599465d4d45c3c447b4018a34c85
         with:
           path: ./
           extra_args: --only-verified
