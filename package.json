@@ -127,7 +127,9 @@
     "estree-util-value-to-estree": "3.5.0",
     "@vercel/static-config": {
       "ajv": "8.18.0"
-    }
+    },
+    "source-map-js": "1.2.2",
+    "tinypool": "^2.1.2"
   },
   "engines": {
     "node": ">=22.16.0"
