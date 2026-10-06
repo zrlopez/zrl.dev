@@ -38,6 +38,10 @@ The site presents professional experience, certifications, and project case stud
 | [`/experience`](https://zrl.dev/experience) | Professional experience |
 | [`/certifications`](https://zrl.dev/certifications) | Certifications |
 | [`/contact`](https://zrl.dev/contact) | Contact form (Cloudflare Turnstile and Resend) |
+| [`/privacy`](https://zrl.dev/privacy) | Privacy policy |
+| [`/terms`](https://zrl.dev/terms) | Terms of service |
+
+Legacy redirects (kept for old links): `/articles` → `/experience`, `/uses` → `/tools` (both 301).
 
 Additional public resources: [`/humans.txt`](https://zrl.dev/humans.txt), [`/security`](https://zrl.dev/security), [security.txt](https://zrl.dev/.well-known/security.txt).
 
@@ -48,6 +52,9 @@ Additional public resources: [`/humans.txt`](https://zrl.dev/humans.txt), [`/sec
 | Application | Remix, React, Vite |
 | Motion and 3D | Framer Motion, Three.js (Draco) |
 | Visualization | Recharts |
+| Icons | Lucide React |
+| Content | MDX (@mdx-js/react, remark/rehype) |
+| Component workshop | Storybook |
 | Hosting | Vercel (production), Cloudflare (DNS and edge) |
 | Contact | Cloudflare Turnstile, Resend (`contact@zrl.dev` / `no-reply@zrl.dev`) |
 | Quality | Vitest, Codacy (grade and coverage), ESLint, TypeScript, CodeQL, TruffleHog, CycloneDX SBOM |
