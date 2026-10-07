@@ -88,7 +88,7 @@
     "wrangler": "^4.140.0"
   },
   "overrides": {
-    "sharp": "0.35.4",
+    "sharp": "0.35.5",
     "toml": "5.0.0",
     "qs": "^6.15.4",
     "undici": "^6.28.0",
@@ -117,7 +117,9 @@
     "yaml": "^2.8.1",
     "node-forge": "^1.4.0",
     "turbo-stream": "^3.2.1",
+    "tinypool": "2.2.0",
     "rollup": "^4.63.1",
+    "source-map-js": "1.2.2",
     "vite": "^6.4.3",
     "esbuild": "^0.25.0",
     "defu": "^6.1.7",
