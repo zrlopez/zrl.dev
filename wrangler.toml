@@ -10,4 +10,4 @@ pages_build_output_dir = "./build/client"
 
 [[kv_namespaces]]
 binding = "RateLimitKV"
-id = "c10b44ec4eb442eca5a737baba9881e3"
+id = "4cb6e88ab438470db40edde9185fab80"
