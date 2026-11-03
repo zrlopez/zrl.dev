@@ -3,13 +3,14 @@
 # Uses nono kernel-enforced sandboxing from always-further/runseal.
 # Pin to @v0.3.3 — early alpha, use with caution.
 
-name: Runseal Test
+# EXPERIMENTAL / QUARANTINED: manual runs only (workflow_dispatch).
+# Not a PR/push check — the lint step uses `|| true` and can never fail,
+# so it must not appear as a green status on PRs.
+
+name: Runseal Test (experimental)
 
 on:
-  push:
-    branches: [main, chore/revamp-portfolio]
-  pull_request:
-    branches: [main, chore/revamp-portfolio]
+  workflow_dispatch:
 
 permissions:
   contents: read
