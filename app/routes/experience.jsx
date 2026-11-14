@@ -20,7 +20,7 @@ export const meta = () => {
   return baseMeta({
     title: 'Experience',
     description:
-      'Work history and selected projects from an AI/ML Data Operations Analyst focused on annotation QA and workflow systems.',
+      'Work history and selected projects from a Data Collection Operator on Tesla Optimus, previously an AI/ML Data Operations Analyst focused on annotation QA and workflow systems.',
   });
 };
 
@@ -35,8 +35,26 @@ export const Experience = () => {
         />
         <ProjectHeader
           title="Experience"
-          description="Seven-plus years across Apple Data Operations and independent AI/ML R&D — shipping Python/SQL tooling, hardened incident systems, and dashboards that cut reporting time by 40%."
+          description="Now collecting data for Tesla Optimus, after seven-plus years across Apple Data Operations and independent AI/ML R&D — shipping Python/SQL tooling, hardened incident systems, and dashboards that cut reporting time by 40%."
         />
+        <ProjectSection padding="none" className={styles.section}>
+          <ProjectSectionContent>
+            <ProjectTextRow width="m">
+              <ProjectSectionHeading>
+                Tesla — Data Collection Operator, Optimus
+              </ProjectSectionHeading>
+              <ProjectSectionText as="div">
+                <List>
+                  <ListItem>Austin, TX — Nov 2026–Present</ListItem>
+                  <ListItem>
+                    Collecting demonstration data used to train Optimus,
+                    Tesla&apos;s general-purpose humanoid robot.
+                  </ListItem>
+                </List>
+              </ProjectSectionText>
+            </ProjectTextRow>
+          </ProjectSectionContent>
+        </ProjectSection>
         <ProjectSection padding="none" className={styles.section}>
           <ProjectSectionContent>
             <ProjectTextRow width="m">

@@ -21,18 +21,18 @@ const ProfileText = ({ visible, titleId }) => (
       <DecoderText text="Hi there" start={visible} delay={500} />
     </Heading>
     <Text className={styles.description} data-visible={visible} size="l" as="p">
-      I&apos;m Zachary, an AI/ML Data Operations Analyst based in Austin, TX with 7+
-      years of experience across Apple data operations, annotation QA, and
-      workflow improvement. I build Python and SQL tools, validate high-volume
-      datasets, and ship dashboards that track labeling quality and ML support
-      metrics. If you&apos;re interested in the tools and software I use, check out
-      my <Link href="/tools">Tools &amp; Skills</Link>.
+      I&apos;m Zachary, a Data Collection Operator on Tesla&apos;s Optimus team based
+      in Austin, TX, with 7+ years of experience across AI/ML data operations,
+      annotation QA, and workflow improvement. I build Python and SQL tools,
+      validate high-volume datasets, and ship dashboards that track labeling
+      quality and ML support metrics. If you&apos;re interested in the tools and
+      software I use, check out my <Link href="/tools">Tools &amp; Skills</Link>.
     </Text>
     <Text className={styles.description} data-visible={visible} size="l" as="p">
       Previously at Apple, I partnered with global cross-functional teams on Siri NLP
       annotation pipelines, drove 43% faster escalation resolution, and authored playbooks
-      adopted across multiple teams. I&apos;m always open to hearing about new projects, so
-      feel free to drop me a line.
+      adopted across multiple teams. If you&apos;d like to collaborate, feel free to drop
+      me a line.
     </Text>
   </Fragment>
 );
@@ -88,7 +88,7 @@ export const Profile = ({ id, visible, sectionRef }) => {
                   width={960}
                   height={1280}
                   sizes={`(max-width: ${media.mobile}px) 100vw, 480px`}
-                  alt="Zachary Ryan Lopez — AI/ML Data Operations Analyst, Austin TX"
+                  alt="Zachary Ryan Lopez — Data Collection Operator, Tesla Optimus, Austin TX"
                 />
                 <svg className={styles.svg} data-visible={visible} viewBox="0 0 136 766">
                   <use href={`${katakana}#katakana-profile`} />
