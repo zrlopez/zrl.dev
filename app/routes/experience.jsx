@@ -63,7 +63,7 @@ export const Experience = () => {
               </ProjectSectionHeading>
               <ProjectSectionText as="div">
                 <List>
-                  <ListItem>Austin, TX — Jun 2024–Present</ListItem>
+                  <ListItem>Austin, TX — Jun 2024–Nov 2026</ListItem>
                   <ListItem>
                     Built ML incident-response system (Python, FastAPI, async SQLAlchemy)
                     with SEV1–SEV3 state, audit trails, versioned runbooks (8), model
